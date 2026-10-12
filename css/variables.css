@@ -1,0 +1,57 @@
+:root {
+  --color-accent: #08a6c5;
+  --color-accent-hover: #0089ad;
+  --color-accent-soft: rgba(8, 166, 197, 0.14);
+  --color-on-accent: #0b0c10;
+  --color-surface: #25262e;
+  --color-bg: #121318;
+  --color-bg-elevated: #1b1c23;
+  --color-panel: #1e1f27;
+  --color-text: #f4f6f8;
+  --color-text-muted: #a8adb8;
+  --color-border: #3a3c46;
+  --color-border-subtle: #2e3038;
+  --color-success: #2fbf7a;
+  --color-success-on: #062015;
+  --color-warning: #e6b84c;
+  --color-warning-on: #231a05;
+  --color-error: #e35d66;
+  --color-error-on: #2a0c0e;
+  --color-info: #6ec8dc;
+
+  --sidebar-width: 268px;
+  --header-height: 64px;
+  --content-max: 1080px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.28);
+  --shadow-sidebar: 8px 0 24px rgba(0, 0, 0, 0.22);
+  --focus-ring: 0 0 0 3px rgba(8, 166, 197, 0.5);
+
+  --font-sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --line-tight: 1.25;
+  --line-body: 1.6;
+  --transition: 160ms ease;
+}
