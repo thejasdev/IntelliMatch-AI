@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home | Smart Resume AI</title>
+    <title>IntelliMatch AI — AI-Powered Resume Analysis & Semantic Job Matching Platform</title>
     <meta
       name="description"
-      content="Smart Resume AI is a student frontend prototype for resume analysis, job-description matching, writing suggestions, and ATS-friendly templates."
+      content="An intelligent career-assistance platform designed to analyze resumes against job descriptions, identify relevant skills and keyword gaps, provide evidence-based writing suggestions, and offer editable ATS-friendly resume templates."
     />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/base.css" />
@@ -23,196 +23,558 @@
       <div class="app-main">
         <header id="header" class="header"></header>
         <main id="main-content" class="page-content">
+          <!-- Hero Section -->
           <section class="hero" aria-labelledby="hero-heading">
-            <h1 id="hero-heading">Build a Stronger Resume with Smart Resume AI</h1>
-            <p class="hero-lead">
-              Compare your resume with a target job description, review skill and keyword gaps, collect writing
-              suggestions, and apply an ATS-friendly template. This phase is a frontend prototype. Analysis scoring
-              will connect to a backend in a later phase.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="pages/analyzer.html">Analyze My Resume</a>
-              <a class="btn btn-secondary" href="pages/templates.html">Explore Templates</a>
+            <div class="hero-content">
+              <span class="hero-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="m12 3 2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z" />
+                </svg>
+                AI-Powered Career Intelligence
+              </span>
+              <h1 id="hero-heading">Make Your Resume Work <span class="highlight">Smarter</span></h1>
+              <p class="hero-lead">
+                Analyze your resume against job descriptions, discover skill gaps, and improve your application with intelligent, evidence-based suggestions.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-lg" href="pages/analyzer.html">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z" />
+                    <circle cx="11" cy="14" r="2.4" />
+                    <path d="m13 16 1.8 1.8" />
+                  </svg>
+                  Analyze Resume
+                </a>
+                <a class="btn btn-secondary btn-lg" href="pages/templates.html">
+                  Explore PDF Templates
+                </a>
+                <a class="btn btn-secondary btn-lg" href="pages/job-search.html">
+                  Semantic Job Search
+                </a>
+              </div>
+            </div>
+
+            <!-- Subtle Visual Treatment: Interactive Match Simulation Card -->
+            <div class="hero-visual" aria-hidden="true">
+              <div class="match-preview-card">
+                <div class="preview-header">
+                  <div>
+                    <span class="badge badge-purple" style="font-size: 0.7rem; margin-bottom: 4px;">Target Match</span>
+                    <div class="preview-role">Senior Software Engineer</div>
+                  </div>
+                  <div class="score-badge-circle" title="Compatibility Score">88%</div>
+                </div>
+
+                <div class="preview-metric-row">
+                  <div class="preview-metric-label">
+                    <span>Keyword &amp; Skill Coverage</span>
+                    <span style="color: var(--color-primary); font-weight: 700;">92%</span>
+                  </div>
+                  <div class="metric-bar-bg">
+                    <div class="metric-bar-fill" style="width: 92%;"></div>
+                  </div>
+                </div>
+
+                <div class="preview-metric-row">
+                  <div class="preview-metric-label">
+                    <span>Contextual Semantic Fit</span>
+                    <span style="color: var(--color-primary); font-weight: 700;">84%</span>
+                  </div>
+                  <div class="metric-bar-bg">
+                    <div class="metric-bar-fill" style="width: 84%;"></div>
+                  </div>
+                </div>
+
+                <div class="preview-skills-group">
+                  <span class="preview-skills-title">Matched Core Competencies</span>
+                  <div class="preview-tags-wrap">
+                    <span class="skill-tag match">✓ Python</span>
+                    <span class="skill-tag match">✓ System Design</span>
+                    <span class="skill-tag match">✓ REST APIs</span>
+                    <span class="skill-tag match">✓ PostgreSQL</span>
+                    <span class="skill-tag gap">✕ Docker CI/CD</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
+          <!-- Quick-Action Cards Section -->
           <section class="section" aria-labelledby="quick-actions-heading">
             <div class="section-heading">
-              <h2 id="quick-actions-heading">Quick actions</h2>
-              <p>Start with a workspace. Pages beyond Home are scaffolded until Phase 2.</p>
+              <h2 id="quick-actions-heading">Quick Actions</h2>
+              <p>Direct entry points into core career assistance workflows.</p>
             </div>
             <div class="card-grid">
               <article class="card action-card">
                 <div class="card-body">
-                  <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                    <path d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z" />
-                    <path d="M14 3.5V8h4.5" />
-                    <circle cx="11" cy="14" r="2.4" />
-                    <path d="m13 16 1.8 1.8" />
-                  </svg>
-                  <h3>Analyze Resume</h3>
-                  <p>Upload a resume and a job description, then review a labelled demo compatibility report.</p>
+                  <div class="action-card-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z" />
+                      <path d="M14 3.5V8h4.5" />
+                      <circle cx="11" cy="14" r="2.4" />
+                      <path d="m13 16 1.8 1.8" />
+                    </svg>
+                  </div>
+                  <h3>Resume Analysis</h3>
+                  <p>Upload a resume and compare it with a target job description to compute compatibility and highlight missing keywords.</p>
                   <div class="card-meta">
                     <a class="btn btn-primary" href="pages/analyzer.html">Open Analyzer</a>
                   </div>
                 </div>
               </article>
+
               <article class="card action-card">
                 <div class="card-body">
-                  <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                    <rect x="4" y="5" width="16" height="14" rx="2" />
-                    <path d="M4 10h16M10 10v9" />
-                  </svg>
-                  <h3>Explore Resume Templates</h3>
-                  <p>Choose Classic Professional, Technical Projects, or Data &amp; Analytics layouts.</p>
+                  <div class="action-card-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="8" cy="8" r="3.2" />
+                      <circle cx="16" cy="16" r="3.2" />
+                      <path d="M9.5 9.5 14.5 14.5" />
+                    </svg>
+                  </div>
+                  <h3>Semantic Job Matching</h3>
+                  <p>Explore relevant skills and contextual alignment between your resume content and modern job requirements.</p>
                   <div class="card-meta">
-                    <a class="btn btn-secondary" href="pages/templates.html">View templates</a>
+                    <a class="btn btn-secondary" href="pages/job-search.html">Explore Matching</a>
                   </div>
                 </div>
               </article>
+
               <article class="card action-card">
                 <div class="card-body">
-                  <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                    <circle cx="8" cy="8" r="3.2" />
-                    <circle cx="16" cy="16" r="3.2" />
-                    <path d="M9.5 9.5 14.5 14.5" />
-                  </svg>
-                  <h3>Match a Job Description</h3>
-                  <p>Browse sample jobs and send a description into the analyzer when that workflow is connected.</p>
+                  <div class="action-card-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <rect x="4" y="4" width="16" height="16" rx="2" />
+                      <path d="M8 9h8M8 13h5" />
+                    </svg>
+                  </div>
+                  <h3>Resume Templates</h3>
+                  <p>Select an ATS-friendly layout, preview real-time formatting, and customize your resume content with confidence.</p>
                   <div class="card-meta">
-                    <a class="btn btn-secondary" href="pages/job-search.html">Open Job Search</a>
+                    <a class="btn btn-secondary" href="pages/templates.html">Browse Templates</a>
                   </div>
                 </div>
               </article>
             </div>
           </section>
 
+          <!-- Supported Engineering Domains Section -->
+          <section class="section" aria-labelledby="domains-heading">
+            <div class="section-heading">
+              <h2 id="domains-heading">Supported Engineering Domains</h2>
+              <p>IntelliMatch AI provides career intelligence across all major technology career tracks—not only AI and Data Science. Explore our centralized role catalogue spanning 10 engineering domains.</p>
+            </div>
+            <div class="domains-grid">
+              <!-- 1. Software Development -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">💻</span>
+                    <div>
+                      <h3>Software Development</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">13 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Full-stack, backend, frontend, mobile apps, and low-level systems programming.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">Software Engineer</span>
+                    <span class="domain-role-pill">Backend Dev</span>
+                    <span class="domain-role-pill">Frontend Dev</span>
+                    <span class="domain-role-pill">Full Stack</span>
+                    <span class="domain-role-pill">Mobile / iOS / Android</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 2. Data and Analytics -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">📊</span>
+                    <div>
+                      <h3>Data and Analytics</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">11 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Data pipelines, lakehouses, warehousing, business intelligence, and SQL analytics.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">Data Analyst</span>
+                    <span class="domain-role-pill">Data Scientist</span>
+                    <span class="domain-role-pill">Data Engineer</span>
+                    <span class="domain-role-pill">BI Analyst</span>
+                    <span class="domain-role-pill">ETL Developer</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 3. AI and Machine Learning -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">🧠</span>
+                    <div>
+                      <h3>AI &amp; Machine Learning</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">8 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Deep learning, LLMs, computer vision, NLP transformers, and MLOps deployments.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">ML Engineer</span>
+                    <span class="domain-role-pill">AI Engineer</span>
+                    <span class="domain-role-pill">Generative AI</span>
+                    <span class="domain-role-pill">NLP Engineer</span>
+                    <span class="domain-role-pill">MLOps Engineer</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 4. Cloud, DevOps and Infrastructure -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">☁️</span>
+                    <div>
+                      <h3>Cloud, DevOps &amp; Infra</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">13 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Multi-cloud platforms, Kubernetes, CI/CD pipelines, SRE, and Infrastructure as Code.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">Cloud Engineer</span>
+                    <span class="domain-role-pill">DevOps Engineer</span>
+                    <span class="domain-role-pill">SRE</span>
+                    <span class="domain-role-pill">AWS / Azure / GCP</span>
+                    <span class="domain-role-pill">Linux Admin</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 5. Cybersecurity -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">🛡️</span>
+                    <div>
+                      <h3>Cybersecurity</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">12 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Threat hunting, SOC operations, penetration testing, ethical hacking, and compliance.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">Security Analyst</span>
+                    <span class="domain-role-pill">Pen Tester</span>
+                    <span class="domain-role-pill">SOC Analyst</span>
+                    <span class="domain-role-pill">AppSec Engineer</span>
+                    <span class="domain-role-pill">Cloud Security</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 6. Networking and IT Support -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">🌐</span>
+                    <div>
+                      <h3>Networking &amp; IT Support</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">9 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Enterprise networking, systems administration, NOC operations, and IT service delivery.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">Network Engineer</span>
+                    <span class="domain-role-pill">IT Support</span>
+                    <span class="domain-role-pill">NOC Engineer</span>
+                    <span class="domain-role-pill">SysAdmin</span>
+                    <span class="domain-role-pill">Technical Consultant</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 7. Testing and Quality Assurance -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">🧪</span>
+                    <div>
+                      <h3>Testing &amp; QA</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">8 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Test automation frameworks, SDET engineering, load testing, and manual quality assurance.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">QA Engineer</span>
+                    <span class="domain-role-pill">SDET</span>
+                    <span class="domain-role-pill">Automation Tester</span>
+                    <span class="domain-role-pill">Performance QA</span>
+                    <span class="domain-role-pill">Test Automation Dev</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 8. Embedded Systems and Electronics -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">⚡</span>
+                    <div>
+                      <h3>Embedded &amp; Electronics</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">9 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Microcontroller firmware, FreeRTOS, IoT devices, robotics, FPGA, and hardware validation.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">Embedded C/C++</span>
+                    <span class="domain-role-pill">Firmware Dev</span>
+                    <span class="domain-role-pill">IoT Engineer</span>
+                    <span class="domain-role-pill">Robotics</span>
+                    <span class="domain-role-pill">VLSI / FPGA</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 9. Enterprise and Business Technology -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">🏢</span>
+                    <div>
+                      <h3>Enterprise &amp; Business Tech</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">8 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>SAP ABAP, Salesforce LWC, enterprise integrations (MuleSoft), RPA, and solutions engineering.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">SAP Consultant</span>
+                    <span class="domain-role-pill">Salesforce Dev</span>
+                    <span class="domain-role-pill">RPA Dev</span>
+                    <span class="domain-role-pill">Integration Eng</span>
+                    <span class="domain-role-pill">Solutions Eng</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+
+              <!-- 10. Emerging and Specialist Roles -->
+              <article class="domain-card">
+                <div>
+                  <div class="domain-card-header">
+                    <span class="domain-icon-circle" aria-hidden="true">✨</span>
+                    <div>
+                      <h3>Emerging &amp; Specialist</h3>
+                      <span style="font-size: 0.72rem; color: var(--color-primary); font-weight: 600;">7 Roles Available</span>
+                    </div>
+                  </div>
+                  <p>Smart contracts, AR/VR spatial computing, game development, GIS mapping, and R&amp;D engineering.</p>
+                  <div class="domain-roles-tags">
+                    <span class="domain-role-pill">Blockchain / Web3</span>
+                    <span class="domain-role-pill">AR/VR Dev</span>
+                    <span class="domain-role-pill">Game Dev</span>
+                    <span class="domain-role-pill">GIS Developer</span>
+                    <span class="domain-role-pill">R&amp;D Engineer</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-3);">
+                  <a class="btn btn-secondary btn-sm" href="pages/analyzer.html" style="flex: 1;">Analyze Resume</a>
+                  <a class="btn btn-ghost btn-sm" href="pages/job-search.html">Explore Roles →</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- How It Works Section -->
           <section class="section" aria-labelledby="how-heading">
             <div class="section-heading">
-              <h2 id="how-heading">How it works</h2>
-              <p>The steps below describe the intended workflow. Live analysis is not connected yet.</p>
+              <h2 id="how-heading">How It Works</h2>
+              <p>Three straightforward steps to optimize your resume for recruiters and ATS systems.</p>
             </div>
             <ol class="step-list">
               <li class="card step-card">
                 <div class="card-body">
-                  <span class="step-index" aria-hidden="true">1</span>
-                  <h3>Provide your materials</h3>
-                  <p>Select a resume file and paste a target job description so the future analyzer has both sides of the comparison.</p>
+                  <span class="step-badge" aria-hidden="true">1</span>
+                  <h3>Upload &amp; Provide Job Details</h3>
+                  <p>Upload your resume in PDF or DOCX format and paste the target job description to establish the comparison baseline.</p>
                 </div>
               </li>
               <li class="card step-card">
                 <div class="card-body">
-                  <span class="step-index" aria-hidden="true">2</span>
-                  <h3>Review findings</h3>
-                  <p>Inspect skill coverage, missing keywords, evidence snippets, and writing suggestions from the planned analysis service.</p>
+                  <span class="step-badge" aria-hidden="true">2</span>
+                  <h3>Review Skill Matches &amp; Gaps</h3>
+                  <p>Inspect keyword coverage, verified evidence snippets, and clear phrasing recommendations to eliminate critical blind spots.</p>
                 </div>
               </li>
               <li class="card step-card">
                 <div class="card-body">
-                  <span class="step-index" aria-hidden="true">3</span>
-                  <h3>Edit and preview</h3>
-                  <p>Apply a suitable template, edit your own content, and preview the result. Export to DOCX or PDF is planned for a later phase.</p>
+                  <span class="step-badge" aria-hidden="true">3</span>
+                  <h3>Improve &amp; Preview with Templates</h3>
+                  <p>Refine your bullet points using action verbs and preview your updated resume in clean, ATS-compliant formats.</p>
                 </div>
               </li>
             </ol>
           </section>
 
+          <!-- Feature Overview Section -->
           <section class="section" aria-labelledby="features-heading">
             <div class="section-heading">
-              <h2 id="features-heading">Features</h2>
-              <p>Each item states whether it is available now or planned.</p>
+              <h2 id="features-heading">Platform Features</h2>
+              <p>Comprehensive tools designed to guide you through career preparation.</p>
             </div>
             <div class="feature-grid">
               <article class="card feature-card">
                 <div class="card-body">
-                  <span class="badge badge-planned">Planned</span>
-                  <h3>Resume and job-description comparison</h3>
-                  <p class="feature-status">Will compare your document text with a pasted job description after the analyzer is built.</p>
+                  <div class="feature-header-row">
+                    <h3>Resume Analysis</h3>
+                    <span class="badge badge-available">Interactive Demo</span>
+                  </div>
+                  <p>Parses uploaded resume text and extracts core qualifications, technologies, and experience sections for rapid benchmarking.</p>
                 </div>
               </article>
+
               <article class="card feature-card">
                 <div class="card-body">
-                  <span class="badge badge-planned">Planned</span>
-                  <h3>Skill and keyword gap identification</h3>
-                  <p class="feature-status">Will highlight required terms that do not appear in the resume. Missing words are not proof that you lack the skill.</p>
+                  <div class="feature-header-row">
+                    <h3>Skill &amp; Keyword Gap Identification</h3>
+                    <span class="badge badge-available">Interactive Demo</span>
+                  </div>
+                  <p>Detects missing skills from the job description and organizes them by industry relevance to help tailor your application.</p>
                 </div>
               </article>
+
               <article class="card feature-card">
                 <div class="card-body">
-                  <span class="badge badge-planned">Planned</span>
-                  <h3>Grammar and clarity suggestions</h3>
-                  <p class="feature-status">Will offer writing improvements as guidance, not as an official language-test result.</p>
+                  <div class="feature-header-row">
+                    <h3>Semantic Job Matching</h3>
+                    <span class="badge badge-available">Interactive Demo</span>
+                  </div>
+                  <p>Goes beyond verbatim keyword counting by evaluating contextual relevance and semantic intent between candidate and role.</p>
                 </div>
               </article>
+
               <article class="card feature-card">
                 <div class="card-body">
-                  <span class="badge badge-planned">Planned</span>
-                  <h3>Three ATS-friendly resume templates</h3>
-                  <p class="feature-status">Classic Professional, Technical Projects, and Data &amp; Analytics will ship in Phase 2. No template guarantees a better ATS score.</p>
+                  <div class="feature-header-row">
+                    <h3>Grammar &amp; Clarity Suggestions</h3>
+                    <span class="badge badge-planned">Planned Backend</span>
+                  </div>
+                  <p>Provides actionable writing recommendations, active voice encouragement, and quantifiable metric prompts for bullet points.</p>
                 </div>
               </article>
+
               <article class="card feature-card">
                 <div class="card-body">
-                  <span class="badge badge-planned">Planned</span>
-                  <h3>Resume preview and export</h3>
-                  <p class="feature-status">On-screen preview and print view are planned first. DOCX and PDF generation may need backend support later.</p>
+                  <div class="feature-header-row">
+                    <h3>ATS-Friendly Resume Templates</h3>
+                    <span class="badge badge-available">Interactive Demo</span>
+                  </div>
+                  <p>Offers three clean layout options—Classic Professional, Technical Projects, and Data &amp; Analytics—tested for readability.</p>
                 </div>
               </article>
+
               <article class="card feature-card">
                 <div class="card-body">
-                  <span class="badge badge-available">This phase</span>
-                  <h3>Application shell and Home</h3>
-                  <p class="feature-status">Shared sidebar, header, responsive navigation, and this Home page are implemented now.</p>
+                  <div class="feature-header-row">
+                    <h3>Resume Preview &amp; Export</h3>
+                    <span class="badge badge-available">Interactive Demo</span>
+                  </div>
+                  <p>Provides responsive on-screen resume preview and browser print-to-PDF formatting without layout distortion.</p>
+                </div>
+              </article>
+
+              <article class="card feature-card">
+                <div class="card-body">
+                  <div class="feature-header-row">
+                    <h3>Saved Analysis History</h3>
+                    <span class="badge badge-available">Interactive Demo</span>
+                  </div>
+                  <p>Keeps track of recent analyses and saved resume versions within your session workspace for quick reference.</p>
                 </div>
               </article>
             </div>
           </section>
 
+          <!-- Score Methodology Section -->
           <section class="section" aria-labelledby="score-heading">
             <div class="section-heading">
-              <h2 id="score-heading">How the matching score is intended to work</h2>
-              <p>This is a methodology sketch, not a validated hiring score.</p>
+              <h2 id="score-heading">How the Matching Score Works</h2>
+              <p>Transparent evaluation criteria balancing exact term match with contextual relevance.</p>
             </div>
             <div class="method-grid">
               <article class="card method-card">
                 <div class="card-body">
-                  <h3>Required-skill coverage</h3>
-                  <p>Share of job-required skills that also appear in the resume text.</p>
+                  <h3>1. Required-Skill Coverage</h3>
+                  <p>Proportion of essential requirements explicitly present in candidate skills and experience sections.</p>
                 </div>
               </article>
               <article class="card method-card">
                 <div class="card-body">
-                  <h3>Relevant evidence</h3>
-                  <p>Whether listed skills are backed by nearby project or experience wording.</p>
+                  <h3>2. Relevant Evidence</h3>
+                  <p>Verifies whether claimed skills are supported by surrounding context, metrics, and project descriptions.</p>
                 </div>
               </article>
               <article class="card method-card">
                 <div class="card-body">
-                  <h3>Text similarity</h3>
-                  <p>Overlap between resume wording and the job description.</p>
+                  <h3>3. Lexical Similarity</h3>
+                  <p>Calculates term frequency overlap and industry keyword density against the target posting.</p>
                 </div>
               </article>
               <article class="card method-card">
                 <div class="card-body">
-                  <h3>Optional semantic similarity</h3>
-                  <p>Future NLP embeddings may compare meaning, not only exact keywords.</p>
+                  <h3>4. Semantic Alignment</h3>
+                  <p>Evaluates conceptual alignment and domain proximity between your background and the role requirements.</p>
                 </div>
               </article>
             </div>
-            <p class="method-note">
-              Any percentage shown in later demo screens will be labelled sample data. It will not be an actual AI
-              prediction until a backend model is connected and clearly identified.
-            </p>
+            <div class="method-note">
+              <strong>Methodology Notice:</strong> All scores generated in this interface are analytical estimations intended for informational guidance. Real applicant tracking systems utilize proprietary parsing engines, and compatibility scores do not guarantee interview invitation or hiring decisions.
+            </div>
           </section>
 
+          <!-- Final Call to Action -->
           <section class="cta-banner" aria-labelledby="cta-heading">
-            <div>
-              <h2 id="cta-heading">Continue to a workspace</h2>
-              <p>Open Resume Analyzer to prepare a comparison, or browse templates while those pages are being built.</p>
+            <div class="cta-content">
+              <h2 id="cta-heading">Ready to Optimize Your Career Preparation?</h2>
+              <p>Upload your resume now to uncover skill matches, identify keywords you might have overlooked, explore multi-domain jobs, and download verified ATS-friendly templates.</p>
             </div>
             <div class="cta-actions">
-              <a class="btn btn-primary" href="pages/analyzer.html">Open Resume Analyzer</a>
-              <a class="btn btn-secondary" href="pages/templates.html">Explore Resume Templates</a>
+              <a class="btn btn-primary btn-lg" href="pages/analyzer.html">Open Resume Analyzer</a>
+              <a class="btn btn-secondary btn-lg" href="pages/templates.html">Explore PDF Templates</a>
+              <a class="btn btn-secondary btn-lg" href="pages/job-search.html">Semantic Job Search</a>
             </div>
           </section>
         </main>
