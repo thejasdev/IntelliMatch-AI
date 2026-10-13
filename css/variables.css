@@ -1,28 +1,54 @@
 :root {
-  --color-accent: #08a6c5;
-  --color-accent-hover: #0089ad;
-  --color-accent-soft: rgba(8, 166, 197, 0.14);
-  --color-on-accent: #0b0c10;
-  --color-surface: #25262e;
-  --color-bg: #121318;
-  --color-bg-elevated: #1b1c23;
-  --color-panel: #1e1f27;
-  --color-text: #f4f6f8;
-  --color-text-muted: #a8adb8;
-  --color-border: #3a3c46;
-  --color-border-subtle: #2e3038;
-  --color-success: #2fbf7a;
-  --color-success-on: #062015;
-  --color-warning: #e6b84c;
-  --color-warning-on: #231a05;
-  --color-error: #e35d66;
-  --color-error-on: #2a0c0e;
-  --color-info: #6ec8dc;
+  /* IntelliMatch AI — Purple & White Design Tokens */
+  --color-primary: #6C4CF1;
+  --color-primary-dark: #4F35C7;
+  --color-primary-light: #F1EDFF;
+  --color-primary-soft: rgba(108, 76, 241, 0.08);
+  --color-primary-glow: rgba(108, 76, 241, 0.16);
 
-  --sidebar-width: 268px;
-  --header-height: 64px;
-  --content-max: 1080px;
+  --color-background: #F8F9FC;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #FFFFFF;
+  --color-surface-subtle: #F4F5FA;
 
+  --color-text: #202033;
+  --color-text-muted: #70748A;
+  --color-text-subtle: #9498AB;
+
+  --color-border: #E7E8F0;
+  --color-border-subtle: #F0F1F7;
+  --color-border-focus: #6C4CF1;
+
+  --color-success: #0DAD91;
+  --color-success-light: #E7F7F4;
+  --color-success-on: #097B67;
+
+  --color-warning: #F2A93B;
+  --color-warning-light: #FEF7EC;
+  --color-warning-on: #8F5E12;
+
+  --color-error: #D94B62;
+  --color-error-light: #FDF0F2;
+  --color-error-on: #8E1F32;
+
+  --color-info: #6C4CF1;
+  --color-info-light: #F1EDFF;
+
+  /* Legacy mappings for seamless compatibility */
+  --color-accent: var(--color-primary);
+  --color-accent-hover: var(--color-primary-dark);
+  --color-accent-soft: var(--color-primary-light);
+  --color-on-accent: #FFFFFF;
+  --color-bg: var(--color-background);
+  --color-bg-elevated: var(--color-surface);
+  --color-panel: var(--color-surface);
+
+  /* Layout Dimensions */
+  --sidebar-width: 272px;
+  --header-height: 68px;
+  --content-max: 1140px;
+
+  /* Spacing Scale */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -34,24 +60,33 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
+  /* Border Radii */
+  --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-pill: 999px;
 
-  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.28);
-  --shadow-sidebar: 8px 0 24px rgba(0, 0, 0, 0.22);
-  --focus-ring: 0 0 0 3px rgba(8, 166, 197, 0.5);
+  /* Shadows (Subtle, Clean SaaS) */
+  --shadow-sm: 0 1px 3px rgba(32, 32, 51, 0.05);
+  --shadow-card: 0 2px 8px rgba(32, 32, 51, 0.04), 0 1px 2px rgba(32, 32, 51, 0.02);
+  --shadow-card-hover: 0 8px 24px rgba(108, 76, 241, 0.08), 0 2px 6px rgba(32, 32, 51, 0.04);
+  --shadow-dropdown: 0 10px 30px rgba(32, 32, 51, 0.08), 0 2px 6px rgba(32, 32, 51, 0.04);
+  --shadow-sidebar: 1px 0 0 var(--color-border);
+  --focus-ring: 0 0 0 3px rgba(108, 76, 241, 0.25);
 
-  --font-sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  /* Typography */
+  --font-sans: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Fira Code", "Cascadia Code", Consolas, Monaco, monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.125rem;
-  --font-size-xl: 1.5rem;
-  --font-size-2xl: 2rem;
-  --font-size-3xl: 2.5rem;
+  --font-size-xl: 1.375rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2.25rem;
   --line-tight: 1.25;
   --line-body: 1.6;
-  --transition: 160ms ease;
+  --transition: 180ms ease-in-out;
 }

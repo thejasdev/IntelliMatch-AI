@@ -7,6 +7,7 @@
 html {
   height: 100%;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -16,7 +17,9 @@ body {
   font-size: var(--font-size-md);
   line-height: var(--line-body);
   color: var(--color-text);
-  background: var(--color-bg);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img,
@@ -26,27 +29,32 @@ svg {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-decoration: none;
+  transition: color var(--transition);
 }
 
 a:hover {
-  color: var(--color-accent-hover);
+  color: var(--color-primary-dark);
 }
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
   margin: 0 0 var(--space-3);
   line-height: var(--line-tight);
-  font-weight: 650;
+  font-weight: 700;
   color: var(--color-text);
   overflow-wrap: break-word;
+  letter-spacing: -0.015em;
 }
 
 p {
   margin: 0 0 var(--space-4);
+  color: var(--color-text-muted);
 }
 
 p:last-child {
@@ -64,17 +72,21 @@ input,
 select,
 textarea {
   font: inherit;
+  color: inherit;
 }
 
 .skip-link {
   position: absolute;
   left: var(--space-4);
-  top: -4rem;
+  top: -5rem;
   z-index: 1000;
-  padding: var(--space-2) var(--space-4);
-  background: var(--color-accent);
-  color: var(--color-on-accent);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
   border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-dropdown);
+  transition: top var(--transition);
 }
 
 .skip-link:focus {
