@@ -1,6 +1,6 @@
 import { ICONS } from "./icons.js";
 import { el, svgIcon } from "../utils/dom.js";
-import { getCurrentPageId, getPageMeta } from "../navigation.js";
+import { getCurrentPageId, getPageMeta, hrefFromRoot } from "../navigation.js";
 import { toggleSidebar } from "../state.js";
 import { syncSidebarDom } from "./sidebar.js";
 
@@ -29,19 +29,43 @@ export function renderHeader() {
     [svgIcon(ICONS.menu, "nav-icon"), el("span", { class: "visually-hidden" }, "Open navigation")]
   );
 
-  header.replaceChildren(
+  const headerLeft = el("div", { class: "header-left" }, [
     toggle,
     el("div", { class: "header-copy" }, [
-      el("p", { class: "header-kicker" }, meta.kicker),
-      el("p", { class: "header-title" }, meta.title),
+      el("p", { class: "header-kicker" }, meta.kicker || "IntelliMatch AI"),
+      el("h1", { class: "header-title" }, meta.title || "IntelliMatch AI"),
     ]),
-    el(
-      "span",
-      {
-        class: "badge badge-demo",
-        title: "This frontend runs locally with no backend, live scoring, or account data.",
-      },
-      [el("span", { class: "status-dot" }, []), "Prototype"]
-    )
-  );
+  ]);
+
+  const headerRight = el("div", { class: "header-right" }, [
+    pageId === "home"
+      ? el("div", { style: "display: flex; gap: var(--space-2);" }, [
+          el(
+            "a",
+            {
+              class: "btn btn-primary btn-sm",
+              href: hrefFromRoot("pages/analyzer.html"),
+            },
+            [svgIcon(ICONS.analyzer, "nav-icon"), "Analyze Resume"]
+          ),
+          el(
+            "a",
+            {
+              class: "btn btn-secondary btn-sm",
+              href: hrefFromRoot("pages/templates.html"),
+            },
+            "Explore Templates"
+          ),
+        ])
+      : el(
+          "span",
+          {
+            class: "badge badge-demo",
+            title: "This frontend prototype runs locally with demonstration data.",
+          },
+          [el("span", { class: "status-dot" }), "Frontend Prototype"]
+        ),
+  ]);
+
+  header.replaceChildren(headerLeft, headerRight);
 }

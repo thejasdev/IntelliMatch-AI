@@ -51,28 +51,47 @@ export function renderSidebar() {
         "aria-current": item.id === currentPage ? "page" : null,
         onClick: closeSidebarIfMobile,
       },
-      [svgIcon(ICONS[item.icon]), item.label]
+      [svgIcon(ICONS[item.icon]), el("span", {}, item.label)]
     )
   );
 
+  const brandMark = el("span", { class: "brand-mark", "aria-hidden": "true" }, "IM");
+
+  const brandLink = el(
+    "a",
+    {
+      class: "sidebar-brand",
+      href: hrefFromRoot("index.html"),
+      "aria-label": "IntelliMatch AI home",
+    },
+    [
+      brandMark,
+      el("span", { class: "brand-text" }, [
+        el("span", { class: "brand-name" }, "IntelliMatch AI"),
+        el("span", { class: "brand-tag" }, "Semantic Career Matcher"),
+      ]),
+    ]
+  );
+
   sidebar.replaceChildren(
+    brandLink,
+    el("hr", { class: "sidebar-divider" }),
     el(
-      "a",
-      {
-        class: "sidebar-brand",
-        href: hrefFromRoot("index.html"),
-        "aria-label": "Smart Resume AI home",
-      },
+      "nav",
+      { class: "sidebar-nav", "aria-label": "Primary" },
       [
-        svgIcon(ICONS.brand, "brand-mark"),
-        el("span", { class: "brand-text" }, [
-          el("span", { class: "brand-name" }, "Smart Resume AI"),
-          el("span", { class: "brand-tag" }, "Resume analysis prototype"),
-        ]),
+        el("span", { class: "sidebar-section-label" }, "Platform"),
+        ...navLinks,
       ]
     ),
-    el("hr", { class: "sidebar-divider" }),
-    el("nav", { class: "sidebar-nav", "aria-label": "Primary" }, navLinks)
+    el("div", { class: "sidebar-footer-card" }, [
+      el("h4", {}, "Frontend Prototype"),
+      el("p", {}, "Interactive SaaS interface with purple theme & modular demo data."),
+      el("span", { class: "badge badge-purple" }, [
+        el("span", { class: "status-dot" }),
+        "v1.2 Active",
+      ]),
+    ])
   );
 
   syncSidebarDom();

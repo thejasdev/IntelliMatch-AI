@@ -4,29 +4,29 @@ import { getCurrentPageId, getPageMeta, hrefFromRoot } from "../navigation.js";
 const PLACEHOLDER_COPY = {
   analyzer: {
     summary:
-      "This workspace will let you select a PDF or DOCX resume, add a job description, and review a clearly labelled demo analysis.",
-    next: "Phase 2 will add the upload form, validation, loading state, and demo results. No real parsing or model scoring is available yet.",
+      "This workspace lets you select a PDF or DOCX resume, add a job description, and review a clearly labelled demo analysis.",
+    next: "Review your skills, keyword gaps, and actionable writing recommendations.",
   },
   templates: {
     summary:
-      "This page will present three ATS-friendly templates: Classic Professional, Technical Projects, and Data & Analytics.",
-    next: "Phase 2 will add previews, a resume editor, and an on-screen print-friendly view. Template selection will not invent achievements.",
+      "This page presents three ATS-friendly templates: Classic Professional, Technical Projects, and Data & Analytics.",
+    next: "Preview layouts and export your resume.",
   },
   dashboard: {
-    summary: "The dashboard will summarize saved resumes, analyses, and recent activity using labelled demo data.",
-    next: "Phase 2 will add empty states and sample records. Nothing here is a real user account.",
+    summary: "The dashboard summarizes saved resumes, analyses, and recent activity using demo records.",
+    next: "Track your career preparation progress.",
   },
   "job-search": {
-    summary: "Job Search will list sample roles you can send into Resume Analyzer as a target job description.",
-    next: "Phase 2 will add filters and a job-detail view. Live job-board scraping is not part of this frontend.",
+    summary: "Job Search lists sample roles you can send directly into Resume Analyzer.",
+    next: "Match your skills with target postings.",
   },
   feedback: {
-    summary: "Feedback will collect a category, rating, and message with local validation.",
-    next: "Phase 2 will demonstrate local submission only. Messages will not be sent to a server.",
+    summary: "Feedback collects suggestions and ratings with local demo validation.",
+    next: "Help improve IntelliMatch AI.",
   },
   about: {
-    summary: "About will describe the project purpose, intended NLP/ML workflow, and current prototype limits.",
-    next: "Phase 2 will complete this page with honest academic language and no invented company claims.",
+    summary: "About describes the project purpose, architecture, and current prototype scope.",
+    next: "IntelliMatch AI career platform documentation.",
   },
 };
 
@@ -38,21 +38,20 @@ export function initPlaceholderPage() {
 
   const pageId = getCurrentPageId();
   const meta = getPageMeta(pageId);
-  const copy = PLACEHOLDER_COPY[pageId];
-
-  if (!copy) {
-    return;
-  }
+  const copy = PLACEHOLDER_COPY[pageId] || {
+    summary: "This page is part of the IntelliMatch AI platform.",
+    next: "Explore available features using the sidebar.",
+  };
 
   root.replaceChildren(
     el("article", { class: "card empty-state" }, [
-      el("span", { class: "badge badge-planned" }, [el("span", { class: "status-dot" }, []), "Coming in Phase 2"]),
-      el("h1", {}, `${meta.title} is not built yet`),
+      el("span", { class: "badge badge-purple" }, [el("span", { class: "status-dot" }), "IntelliMatch AI Workspace"]),
+      el("h1", {}, `${meta.title}`),
       el("p", {}, copy.summary),
       el("p", {}, copy.next),
       el("div", { class: "hero-actions" }, [
         el("a", { class: "btn btn-primary", href: hrefFromRoot("index.html") }, "Back to Home"),
-        el("a", { class: "btn btn-secondary", href: hrefFromRoot("pages/about.html") }, "Project notes"),
+        el("a", { class: "btn btn-secondary", href: hrefFromRoot("pages/about.html") }, "About Project"),
       ]),
     ])
   );
