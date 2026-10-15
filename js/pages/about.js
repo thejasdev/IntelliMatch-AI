@@ -124,13 +124,13 @@ export function initAboutPage() {
             <strong>External Job Search:</strong> Clicking external platform links (LinkedIn, Naukri, Internshala) launches official external search queries in a new tab. External listings are not scraped or imported into the prototype.
           </li>
           <li>
-            <strong>Genuine PDF Assets:</strong> The 6 resume templates in the library are valid, downloadable vector PDF files created with ATS-tested layouts and fictional sample data.
+            <strong>Genuine PDF Assets:</strong> The 5 resume templates in the library are valid, downloadable vector PDF files created with ATS-conscious layouts and selectable text.
           </li>
         </ul>
         <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
           <a class="btn btn-primary btn-sm" href="${hrefFromRoot("pages/analyzer.html")}">Try Resume Analyzer</a>
           <a class="btn btn-secondary btn-sm" href="${hrefFromRoot("pages/templates.html")}">Download ATS Templates</a>
-          <a class="btn btn-secondary btn-sm" href="${hrefFromRoot("pages/job-search.html")}">Search Jobs</a>
+          <a class="btn btn-secondary btn-sm" href="${hrefFromRoot("pages/internships.html")}">Explore Internships</a>
         </div>
       </article>
     </div>

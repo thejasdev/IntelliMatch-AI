@@ -1,46 +1,62 @@
+/**
+ * Navigation System — IntelliMatch
+ * Manages platform routing, navigation items, page metadata, and root-relative path resolution.
+ */
+
 export const NAV_ITEMS = [
   { id: "home", label: "Home", hrefFromRoot: "index.html", icon: "home" },
-  { id: "analyzer", label: "Resume Analyzer", hrefFromRoot: "pages/analyzer.html", icon: "analyzer" },
+  { id: "roadmaps", label: "Domains Roadmaps", hrefFromRoot: "pages/roadmaps.html", icon: "roadmap" },
+  { id: "projects", label: "Projects Hub", hrefFromRoot: "pages/projects.html", icon: "project" },
   { id: "templates", label: "Resume Templates", hrefFromRoot: "pages/templates.html", icon: "templates" },
+  { id: "analyzer", label: "Resume Analyzer", hrefFromRoot: "pages/analyzer.html", icon: "analyzer" },
+  { id: "internships", label: "Internships", hrefFromRoot: "pages/internships.html", icon: "briefcase" },
   { id: "dashboard", label: "Dashboard", hrefFromRoot: "pages/dashboard.html", icon: "dashboard" },
-  { id: "job-search", label: "Job Search", hrefFromRoot: "pages/job-search.html", icon: "jobs" },
   { id: "feedback", label: "Feedback", hrefFromRoot: "pages/feedback.html", icon: "feedback" },
   { id: "about", label: "About", hrefFromRoot: "pages/about.html", icon: "about" },
 ];
 
 export const PAGE_META = {
   home: {
-    kicker: "Overview",
-    title: "Home",
+    kicker: "Platform",
+    title: "Career Discovery & Readiness",
   },
-  analyzer: {
-    kicker: "Workspace",
-    title: "Resume Analyzer",
+  roadmaps: {
+    kicker: "Curriculum",
+    title: "Domains & Roadmaps",
+  },
+  projects: {
+    kicker: "Portfolio Lab",
+    title: "Projects Hub",
   },
   templates: {
-    kicker: "Workspace",
+    kicker: "Career Documents",
     title: "Resume Templates",
   },
+  analyzer: {
+    kicker: "Intelligence Workspace",
+    title: "Resume Analyzer",
+  },
+  internships: {
+    kicker: "Opportunities",
+    title: "Internships & Jobs",
+  },
   dashboard: {
-    kicker: "Overview",
+    kicker: "Candidate Portal",
     title: "Dashboard",
   },
-  "job-search": {
-    kicker: "Workspace",
-    title: "Job Search",
-  },
   feedback: {
-    kicker: "Support",
+    kicker: "Community Support",
     title: "Feedback",
   },
   about: {
-    kicker: "Project",
-    title: "About",
+    kicker: "Platform Architecture",
+    title: "About IntelliMatch",
   },
 };
 
 export function isNestedPage() {
-  return window.location.pathname.includes("/pages/");
+  const p = window.location.pathname.replace(/\\/g, "/");
+  return p.includes("/pages/");
 }
 
 export function hrefFromRoot(pathFromRoot) {

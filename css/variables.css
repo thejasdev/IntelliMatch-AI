@@ -1,38 +1,38 @@
 :root {
-  /* IntelliMatch AI — Purple & White Design Tokens */
-  --color-primary: #6C4CF1;
-  --color-primary-dark: #4F35C7;
-  --color-primary-light: #F1EDFF;
-  --color-primary-soft: rgba(108, 76, 241, 0.08);
-  --color-primary-glow: rgba(108, 76, 241, 0.16);
+  /* IntelliMatch AI — Refined Purple & White Design Tokens */
+  --color-primary: #6548E8;
+  --color-primary-dark: #4E34C8;
+  --color-primary-light: #F3EFFF;
+  --color-primary-soft: rgba(101, 72, 232, 0.08);
+  --color-primary-glow: rgba(101, 72, 232, 0.16);
 
-  --color-background: #F8F9FC;
+  --color-background: #FAF9FE;
   --color-surface: #FFFFFF;
   --color-surface-elevated: #FFFFFF;
-  --color-surface-subtle: #F4F5FA;
+  --color-surface-subtle: #F3EFFE;
 
-  --color-text: #202033;
-  --color-text-muted: #70748A;
-  --color-text-subtle: #9498AB;
+  --color-text: #202036;
+  --color-text-muted: #74748A;
+  --color-text-subtle: #9898AC;
 
-  --color-border: #E7E8F0;
-  --color-border-subtle: #F0F1F7;
-  --color-border-focus: #6C4CF1;
+  --color-border: #E7E5F0;
+  --color-border-subtle: #F1EFF8;
+  --color-border-focus: #6548E8;
 
-  --color-success: #0DAD91;
-  --color-success-light: #E7F7F4;
-  --color-success-on: #097B67;
+  --color-success: #14B8A6;
+  --color-success-light: #E6FBF8;
+  --color-success-on: #0D8275;
 
-  --color-warning: #F2A93B;
-  --color-warning-light: #FEF7EC;
+  --color-warning: #E9A23B;
+  --color-warning-light: #FEF8ED;
   --color-warning-on: #8F5E12;
 
   --color-error: #D94B62;
-  --color-error-light: #FDF0F2;
+  --color-error-light: #FDF0F3;
   --color-error-on: #8E1F32;
 
-  --color-info: #6C4CF1;
-  --color-info-light: #F1EDFF;
+  --color-info: #6548E8;
+  --color-info-light: #F3EFFF;
 
   /* Legacy mappings for seamless compatibility */
   --color-accent: var(--color-primary);
@@ -42,6 +42,7 @@
   --color-bg: var(--color-background);
   --color-bg-elevated: var(--color-surface);
   --color-panel: var(--color-surface);
+  --color-danger: var(--color-error);
 
   /* Layout Dimensions */
   --sidebar-width: 272px;
@@ -72,12 +73,13 @@
   --shadow-sm: 0 1px 3px rgba(32, 32, 51, 0.05);
   --shadow-card: 0 2px 8px rgba(32, 32, 51, 0.04), 0 1px 2px rgba(32, 32, 51, 0.02);
   --shadow-card-hover: 0 8px 24px rgba(108, 76, 241, 0.08), 0 2px 6px rgba(32, 32, 51, 0.04);
-  --shadow-dropdown: 0 10px 30px rgba(32, 32, 51, 0.08), 0 2px 6px rgba(32, 32, 51, 0.04);
+  --shadow-dropdown: 0 10px 30px rgba(32, 32, 54, 0.08), 0 2px 6px rgba(32, 32, 54, 0.04);
   --shadow-sidebar: 1px 0 0 var(--color-border);
-  --focus-ring: 0 0 0 3px rgba(108, 76, 241, 0.25);
+  --focus-ring: 0 0 0 3px rgba(101, 72, 232, 0.25);
 
-  /* Typography */
-  --font-sans: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  /* Typography System */
+  --font-display: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "Fira Code", "Cascadia Code", Consolas, Monaco, monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;

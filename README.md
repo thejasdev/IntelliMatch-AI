@@ -48,13 +48,12 @@ IntelliMatch AI/
 ├── README.md                    # Platform documentation
 ├── LICENSE                      # Project license
 ├── assets/
-│   └── resume-templates/        # 6 genuine ATS-tested PDF resume files
-│       ├── classic-professional-template.pdf
-│       ├── technical-projects-template.pdf
-│       ├── data-analytics-template.pdf
-│       ├── cloud-infrastructure-template.pdf
-│       ├── cybersecurity-template.pdf
-│       └── software-engineering-template.pdf
+│   └── resume-templates/        # 5 reusable ATS-tested PDF resume templates
+│       ├── clean-professional.pdf
+│       ├── technical-projects.pdf
+│       ├── experience-focused.pdf
+│       ├── fresher-project-focused.pdf
+│       └── traditional-academic.pdf
 ├── data/
 │   ├── jobRoles.js              # Centralized 10 engineering domains & role catalogue
 │   └── jobSources.js            # Job sources status registry & connector blueprints
@@ -133,20 +132,19 @@ IntelliMatch AI/
 - Clear explanation of scoring methodology (keyword vs semantic vs evidence) and ATS disclaimer.
 
 ### 4. Resume Templates Library (`pages/templates.html`)
-- **6 Genuine, Downloadable Vector PDF Files** in `assets/resume-templates/` with selectable text, clean typography, ATS single-page layouts, and fictional sample data:
-  1. `classic-professional-template.pdf` (Classic Professional)
-  2. `technical-projects-template.pdf` (Technical Projects)
-  3. `data-analytics-template.pdf` (Data and Analytics)
-  4. `cloud-infrastructure-template.pdf` (Cloud and Infrastructure)
-  5. `cybersecurity-template.pdf` (Cybersecurity)
-  6. `software-engineering-template.pdf` (Software Engineering)
+- **5 Reusable, Downloadable Vector PDF Files** in `assets/resume-templates/` with selectable text, clean typography, ATS single-page and two-page layouts, and neutral placeholder data:
+  1. `clean-professional.pdf` (Clean Professional — Classic/Minimalist single-page format)
+  2. `technical-projects.pdf` (Technical Projects — Technical/Project-heavy single-page format)
+  3. `experience-focused.pdf` (Experience-Focused — Corporate/Chronological single-page format)
+  4. `fresher-project-focused.pdf` (Fresher Project-Focused — Modern student single-page format)
+  5. `traditional-academic.pdf` (Traditional Academic — Comprehensive two-page format)
 - Every template card includes:
-  - Verified 1-Page badge
-  - Domain, role, style, and experience level metadata
-  - Key ATS advantages list
+  - Verified Page Count badge (1 Page / 2 Pages)
+  - Target audience, design style, and layout metadata
+  - Key layout advantages list
   - **Preview PDF:** Opens an accessible modal with inline document viewer, new tab launcher, and zoom support
   - **Download PDF:** Direct link downloading the genuine corresponding PDF file
-- Filtering by domain, experience level, and template style with live search.
+- Filtering by design style and page count with live text search.
 
 ### 5. Semantic Job Search (`pages/job-search.html`)
 - Dedicated multi-domain job discovery supporting 10 engineering domains.

@@ -44,12 +44,13 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-display);
   margin: 0 0 var(--space-3);
   line-height: var(--line-tight);
   font-weight: 700;
   color: var(--color-text);
   overflow-wrap: break-word;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.025em;
 }
 
 p {

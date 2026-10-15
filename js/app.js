@@ -4,8 +4,11 @@ import { bindSidebarControls, renderSidebar } from "./components/sidebar.js";
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
 import { initHomePage } from "./pages/home.js";
-import { initAnalyzerPage } from "./pages/analyzer.js";
+import { initRoadmapsPage } from "./pages/roadmaps.js";
+import { initProjectsPage } from "./pages/projects.js";
 import { initTemplatesPage } from "./pages/templates.js";
+import { initAnalyzerPage } from "./pages/analyzer.js";
+import { initInternshipsPage } from "./pages/internships.js";
 import { initDashboardPage } from "./pages/dashboard.js";
 import { initJobSearchPage } from "./pages/job-search.js";
 import { initFeedbackPage } from "./pages/feedback.js";
@@ -14,8 +17,11 @@ import { initPlaceholderPage } from "./pages/placeholder.js";
 
 const PAGE_INITIALIZERS = {
   home: initHomePage,
-  analyzer: initAnalyzerPage,
+  roadmaps: initRoadmapsPage,
+  projects: initProjectsPage,
   templates: initTemplatesPage,
+  analyzer: initAnalyzerPage,
+  internships: initInternshipsPage,
   dashboard: initDashboardPage,
   "job-search": initJobSearchPage,
   feedback: initFeedbackPage,

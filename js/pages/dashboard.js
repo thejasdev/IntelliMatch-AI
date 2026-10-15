@@ -63,7 +63,7 @@ const SAVED_RESUMES = [
     domain: "Cloud, DevOps & Infra",
     updated: "Oct 08, 2026",
     size: "98 KB",
-    template: "Cloud & Infrastructure",
+    template: "Clean Professional",
   },
 ];
 
