@@ -211,11 +211,40 @@ export const CURATED_PROJECTS = [
   }
 ];
 
-export function getProjectsByFilter(domainId = "all", difficulty = "all") {
-  return CURATED_PROJECTS.filter((proj) => {
-    const matchDomain = domainId === "all" || proj.domainId === domainId;
-    const matchDiff = difficulty === "all" || proj.difficulty.toLowerCase() === difficulty.toLowerCase();
-    return matchDomain && matchDiff;
-  });
+// Ensure all projects have array deliverables and fallback description
+CURATED_PROJECTS.forEach((proj) => {
+  if (!proj.deliverables) {
+    proj.deliverables = proj.deliverable ? [proj.deliverable] : [];
+  }
+  if (!proj.description) {
+    proj.description = proj.deliverable || proj.highlights || "";
+  }
+});
+
+export function getProjectsByFilter(domainOrFilter = "all", difficultyArg = "all") {
+  let domainId = "all";
+  let difficulty = "all";
+
+  if (typeof domainOrFilter === "object" && domainOrFilter !== null) {
+    domainId = domainOrFilter.domain || domainOrFilter.domainId || "all";
+    difficulty = domainOrFilter.difficulty || "all";
+  } else {
+    domainId = domainOrFilter || "all";
+    difficulty = difficultyArg || "all";
+  }
+
+  return CURATED_PROJECTS
+    .filter((proj) => {
+      const matchDomain = domainId === "all" || proj.domainId === domainId;
+      const matchDiff = difficulty === "all" || proj.difficulty.toLowerCase() === difficulty.toLowerCase();
+      return matchDomain && matchDiff;
+    })
+    .map((proj) => ({
+      ...proj,
+      deliverables: Array.isArray(proj.deliverables)
+        ? proj.deliverables
+        : (proj.deliverable ? [proj.deliverable] : []),
+      description: proj.description || proj.deliverable || proj.highlights || "",
+    }));
 }
 
