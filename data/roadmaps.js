@@ -424,11 +424,26 @@ export const ROADMAP_DOMAINS = [
 
 export function getRoadmapForDomainAndYear(domainId, yearId) {
   const domain = ROADMAP_DOMAINS.find((d) => d.id === domainId) || ROADMAP_DOMAINS[0];
-  const milestones = (domain.years && domain.years[yearId]) ? domain.years[yearId] : (domain.years["year-1"] || []);
+  const yearMeta = ROADMAP_YEARS.find((y) => y.id === yearId) || ROADMAP_YEARS[0];
+  const rawMilestones = (domain && domain.years && domain.years[yearId])
+    ? domain.years[yearId]
+    : (domain?.years?.["year-1"] || []);
+
+  const milestones = rawMilestones.map((m) => ({
+    ...m,
+    topics: Array.isArray(m.topics) ? m.topics : (Array.isArray(m.skills) ? m.skills : []),
+    skills: Array.isArray(m.skills) ? m.skills : (Array.isArray(m.topics) ? m.topics : []),
+    duration: m.duration || m.timeframe || "",
+    timeframe: m.timeframe || m.duration || "",
+  }));
+
   return {
     domain,
     milestones,
-    yearMeta: ROADMAP_YEARS.find((y) => y.id === yearId) || ROADMAP_YEARS[0]
+    yearMeta,
+    yearLabel: yearMeta ? yearMeta.label : "",
+    stageLabel: yearMeta ? yearMeta.stage : "",
+    overview: domain ? (domain.overview || "") : "",
   };
 }
 
