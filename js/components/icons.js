@@ -29,4 +29,7 @@ export const ICONS = {
   arrowRight: svg('<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'),
   chevronDown: svg('<polyline points="6 9 12 15 18 9"/>'),
   milestone: svg('<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>'),
+  builder: svg('<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>'),
+  collapse: svg('<polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/>'),
+  expand: svg('<polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/>'),
 };
