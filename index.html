@@ -33,82 +33,179 @@
         <header id="header" class="header"></header>
         <main id="main-content" class="page-content">
 
-          <!-- 1. Hero Section -->
-          <section class="hero" aria-labelledby="hero-heading">
-            <div class="hero-content">
-              <span class="hero-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="m12 3 2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z" />
-                </svg>
-                Career Discovery &amp; Readiness Platform
-              </span>
-              <h1 id="hero-heading">Find Your Path. <span class="highlight">Build Your Future.</span></h1>
-              <p class="hero-lead">
-                Explore technology careers, follow structured learning roadmaps, build practical projects and prepare for opportunities that match your skills.
-              </p>
-              <div class="hero-actions">
-                <a class="btn btn-primary btn-lg" href="#explore-careers">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-                  </svg>
-                  Explore Career Paths
-                </a>
-                <a class="btn btn-secondary btn-lg" href="#learning-roadmaps">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/>
-                  </svg>
-                  View Roadmaps
-                </a>
-                <a class="btn btn-outline btn-lg" href="pages/analyzer.html">
-                  Resume Analyzer
-                </a>
-              </div>
-            </div>
+          <!-- WORKSPACE 1: PLATFORM OVERVIEW & CAREER DISCOVERY -->
+          <div id="workspace-overview" class="workspace-module is-active">
 
-            <!-- Ecosystem Connection Visual Card -->
-            <div class="hero-visual" aria-hidden="true">
-              <div class="hero-ecosystem-card">
-                <div class="ecosystem-header">
+            <!-- 1. Split Hero Banner -->
+            <section class="hero-split-container" aria-labelledby="hero-heading">
+              <div class="hero-split-left">
+                <span class="hero-brand-pill">
+                  <span class="badge-dot"></span>
+                  IntelliMatch — Career Discovery &amp; Readiness
+                </span>
+                <h1 class="hero-title-bold" id="hero-heading">
+                  <span class="hero-line hero-line-white">Empower Your Career.</span>
+                  <span class="hero-line hero-line-white">Discover Your Potential.</span>
+                  <span class="hero-line hero-line-gradient">Build Real Readiness.</span>
+                </h1>
+                <p class="hero-lead-text">
+                  Explore 10 engineering domains, follow structured semester roadmaps, build production-grade projects, and benchmark your resume with neural semantic matching.
+                </p>
+                <div class="hero-btn-row">
+                  <a class="btn-hero-primary" href="#explore-careers">
+                    <span>Explore Programs</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </a>
+                  <button type="button" class="btn-hero-white" id="hero-btn-builder">
+                    <span>Resume Builder</span>
+                  </button>
+                  <a class="btn-hero-outline" href="pages/dashboard.html">
+                    <span>Explore Dashboard</span>
+                  </a>
+                </div>
+                <!-- 4-Avatar A/S/R/K Student Trust Strip -->
+                <div class="student-trust-strip">
+                  <div class="avatar-group" aria-hidden="true">
+                    <span class="avatar-circle avatar-a">A</span>
+                    <span class="avatar-circle avatar-s">S</span>
+                    <span class="avatar-circle avatar-r">R</span>
+                    <span class="avatar-circle avatar-k">K</span>
+                  </div>
+                  <span class="trust-text">Joined by <strong>400,000+</strong> students &amp; professionals</span>
+                </div>
+              </div>
+
+              <!-- Right Column: White Floating Quick Contact Card -->
+              <div class="hero-split-right">
+                <div class="quick-contact-card">
+                  <div class="quick-contact-header">
+                    <span class="badge badge-purple" style="width: fit-content;">Quick Inquiry</span>
+                    <h2 class="quick-contact-title">Quick Contact</h2>
+                    <p class="quick-contact-subtitle">Have questions about engineering roadmaps or platform readiness? Reach our team.</p>
+                  </div>
+                  <div class="quick-contact-list">
+                    <div class="quick-contact-item">
+                      <div class="contact-icon-wrap" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                      </div>
+                      <div class="contact-text-wrap">
+                        <span class="contact-label">Direct Phone</span>
+                        <a class="contact-val" href="tel:+9108028394567">+91 (080) 2839-4567</a>
+                      </div>
+                    </div>
+                    <div class="quick-contact-item">
+                      <div class="contact-icon-wrap" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                      </div>
+                      <div class="contact-text-wrap">
+                        <span class="contact-label">Official Email</span>
+                        <a class="contact-val" href="mailto:contact@intellimatch.ai">contact@intellimatch.ai</a>
+                      </div>
+                    </div>
+                    <div class="quick-contact-item">
+                      <div class="contact-icon-wrap" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                        </svg>
+                      </div>
+                      <div class="contact-text-wrap">
+                        <span class="contact-label">Bengaluru Campus</span>
+                        <span class="contact-val">Bengaluru, Karnataka 560001, India</span>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn-contact-submit" id="quick-contact-trigger">
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2. Animated Feature Cards Below Hero -->
+            <section class="feature-cards-section" aria-label="Core Intelligence Modules">
+              <div class="feature-cards-grid">
+                <!-- Card 1: AI-Powered Analysis -->
+                <article class="feature-card" id="card-feature-analysis">
                   <div>
-                    <span class="badge badge-purple" style="font-size: 0.68rem; margin-bottom: 2px;">The Engineering Journey</span>
-                    <div class="ecosystem-title">Career Readiness Pipeline</div>
+                    <div class="feature-card-header">
+                      <div class="feature-card-icon icon-cyan" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z"/>
+                          <circle cx="11" cy="14" r="2.4"/>
+                          <path d="m13 16 1.8 1.8"/>
+                        </svg>
+                      </div>
+                      <span class="feature-badge">Neural Benchmarking</span>
+                    </div>
+                    <h3 class="feature-card-title">AI-Powered Analysis</h3>
+                    <p class="feature-card-desc">
+                      Deep neural keyword benchmarking, instant skill gap identification, and quantified ATS readiness against real job requirements.
+                    </p>
                   </div>
-                  <span class="badge badge-connected" style="font-size: 0.65rem;">Active Path</span>
-                </div>
+                  <div class="feature-card-action">
+                    <a class="feature-link" href="pages/analyzer.html">Launch Analyzer →</a>
+                  </div>
+                </article>
 
-                <div class="ecosystem-flow">
-                  <div class="ecosystem-step">
-                    <span class="ecosystem-step-num">1</span>
-                    <div class="ecosystem-step-info">
-                      <strong>Explore Domain &amp; Roles</strong>
-                      <span>Discover 10 career tracks &amp; required skills</span>
+                <!-- Card 2: Smart Resume Builder -->
+                <article class="feature-card" id="card-feature-builder">
+                  <div>
+                    <div class="feature-card-header">
+                      <div class="feature-card-icon icon-purple" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                      </div>
+                      <span class="feature-badge">Interactive Workspace</span>
                     </div>
+                    <h3 class="feature-card-title">Smart Resume Builder</h3>
+                    <p class="feature-card-desc">
+                      Interactive multi-section resume architect with live experience entries, project showcases, and one-click formatted ATS exports.
+                    </p>
                   </div>
-                  <div class="ecosystem-step">
-                    <span class="ecosystem-step-num">2</span>
-                    <div class="ecosystem-step-info">
-                      <strong>Follow Learning Roadmap</strong>
-                      <span>Structured milestones from Year 1 to Year 4</span>
+                  <div class="feature-card-action">
+                    <button type="button" class="feature-link-btn" id="card-open-builder">Open Resume Builder →</button>
+                  </div>
+                </article>
+
+                <!-- Card 3: Career Insights -->
+                <article class="feature-card" id="card-feature-insights">
+                  <div>
+                    <div class="feature-card-header">
+                      <div class="feature-card-icon icon-indigo" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                        </svg>
+                      </div>
+                      <span class="feature-badge">10 Engineering Tracks</span>
                     </div>
+                    <h3 class="feature-card-title">Career Insights</h3>
+                    <p class="feature-card-desc">
+                      Real-time industry telemetry, multi-year curriculum roadmaps, and recruiter keyword expectations across 10 engineering domains.
+                    </p>
                   </div>
-                  <div class="ecosystem-step">
-                    <span class="ecosystem-step-num">3</span>
-                    <div class="ecosystem-step-info">
-                      <strong>Build in Project Lab</strong>
-                      <span>Beginner to advanced portfolio deliverables</span>
-                    </div>
+                  <div class="feature-card-action">
+                    <a class="feature-link" href="#explore-careers">Explore 10 Domains →</a>
                   </div>
-                  <div class="ecosystem-step">
-                    <span class="ecosystem-step-num">4</span>
-                    <div class="ecosystem-step-info">
-                      <strong>Benchmark Resume &amp; Apply</strong>
-                      <span>Evaluate skill match &amp; download ATS templates</span>
-                    </div>
-                  </div>
-                </div>
+                </article>
               </div>
-            </div>
-          </section>
+
+              <!-- Centered 'Get Started' CTA pill button beneath cards -->
+              <div class="feature-get-started-wrap">
+                <button type="button" class="btn-get-started-pill" id="btn-get-started-cta">
+                  <span>Get Started with IntelliMatch</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </button>
+              </div>
+            </section>
 
           <!-- 2. Explore Your Career Path (The 4 Principal Destinations) -->
           <section class="section" aria-labelledby="paths-heading">
@@ -528,10 +625,315 @@
             </div>
           </section>
 
+          </div> <!-- end #workspace-overview -->
+
+          <!-- WORKSPACE 2: INTERACTIVE RESUME BUILDER -->
+          <div id="workspace-builder" class="workspace-module" hidden>
+            <div class="builder-workspace">
+              <div class="builder-top-bar">
+                <button type="button" class="btn-builder-back" id="btn-builder-back">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+                  </svg>
+                  <span>Back to Platform Overview</span>
+                </button>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span class="badge badge-purple">Interactive Workspace</span>
+                  <span class="badge badge-connected">ATS Single-Page Format</span>
+                </div>
+              </div>
+
+              <div class="builder-header" style="margin-bottom: var(--space-6);">
+                <h2>Smart Resume Builder</h2>
+                <p>Build an ATS-optimized, single-page engineering resume with live dynamic experience tracking and formatted instant export.</p>
+              </div>
+
+              <form id="resume-builder-form" class="builder-form-card" onsubmit="return false;">
+                <!-- 1. Personal Information -->
+                <div class="builder-section">
+                  <h3 class="builder-section-title">
+                    <span class="section-num">1</span> Personal &amp; Contact Details
+                  </h3>
+                  <div class="builder-grid-2col">
+                    <div class="builder-field">
+                      <label for="builder-name">Full Name *</label>
+                      <input type="text" id="builder-name" class="builder-input" placeholder="e.g. Alex Morgan" value="Alex Morgan" required />
+                    </div>
+                    <div class="builder-field">
+                      <label for="builder-title">Target Job Title / Headline *</label>
+                      <input type="text" id="builder-title" class="builder-input" placeholder="e.g. Full Stack Software Engineer" value="Software Development Engineer" required />
+                    </div>
+                  </div>
+                  <div class="builder-grid-3col">
+                    <div class="builder-field">
+                      <label for="builder-email">Email Address *</label>
+                      <input type="email" id="builder-email" class="builder-input" placeholder="e.g. alex.morgan@college.edu" value="alex.morgan@college.edu" required />
+                    </div>
+                    <div class="builder-field">
+                      <label for="builder-phone">Phone Number *</label>
+                      <input type="tel" id="builder-phone" class="builder-input" placeholder="e.g. +91 98765 43210" value="+91 98765 43210" required />
+                    </div>
+                    <div class="builder-field">
+                      <label for="builder-location">City, State / Country</label>
+                      <input type="text" id="builder-location" class="builder-input" placeholder="e.g. Bengaluru, India" value="Bengaluru, Karnataka, India" />
+                    </div>
+                  </div>
+                  <div class="builder-grid-2col">
+                    <div class="builder-field">
+                      <label for="builder-linkedin">LinkedIn Profile URL</label>
+                      <input type="url" id="builder-linkedin" class="builder-input" placeholder="e.g. https://linkedin.com/in/alexmorgan" value="https://linkedin.com/in/alexmorgan" />
+                    </div>
+                    <div class="builder-field">
+                      <label for="builder-portfolio">Portfolio / GitHub URL</label>
+                      <input type="url" id="builder-portfolio" class="builder-input" placeholder="e.g. https://github.com/alexmorgan" value="https://github.com/alexmorgan" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Professional Summary -->
+                <div class="builder-section">
+                  <h3 class="builder-section-title">
+                    <span class="section-num">2</span> Professional Summary
+                  </h3>
+                  <div class="builder-field">
+                    <label for="builder-summary">Executive Summary (2–4 High-Impact Sentences)</label>
+                    <textarea id="builder-summary" class="builder-textarea" rows="3" placeholder="Detail your core engineering focus, technical strengths, and project accomplishments...">Disciplined Software Engineering candidate with hands-on proficiency in modern web architecture, distributed systems, and RESTful API development. Experienced in building full-stack applications with TypeScript, Python, and PostgreSQL, focusing on scalable clean code and agile delivery.</textarea>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                      <span style="font-size: 0.72rem; color: var(--color-text-muted);">Tip: Focus on technical skills, domain scope, and key engineering achievements.</span>
+                      <span id="builder-summary-counter" style="font-size: 0.72rem; font-weight: 600; color: var(--brand-violet);">286 chars</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Work & Internship Experience -->
+                <div class="builder-section">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 class="builder-section-title" style="border-bottom: none; padding-bottom: 0;">
+                      <span class="section-num">3</span> Work &amp; Internship Experience
+                    </h3>
+                    <button type="button" class="btn-add-item" id="btn-add-experience">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                      </svg>
+                      ADD EXPERIENCE
+                    </button>
+                  </div>
+                  <div id="experience-list-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Default initial card -->
+                    <div class="builder-item-card experience-item">
+                      <div class="builder-item-header">
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand-violet);">Experience Entry #1</span>
+                        <button type="button" class="btn-remove-item" onclick="this.closest('.experience-item').remove()">✕ Remove</button>
+                      </div>
+                      <div class="builder-grid-2col">
+                        <div class="builder-field">
+                          <label>Job Title / Role</label>
+                          <input type="text" class="builder-input exp-title" placeholder="e.g. Software Engineer Intern" value="Software Engineering Intern" />
+                        </div>
+                        <div class="builder-field">
+                          <label>Company / Organization</label>
+                          <input type="text" class="builder-input exp-company" placeholder="e.g. NexaTech Solutions" value="Innovate Cloud Labs" />
+                        </div>
+                      </div>
+                      <div class="builder-grid-2col">
+                        <div class="builder-field">
+                          <label>Date Range</label>
+                          <input type="text" class="builder-input exp-period" placeholder="e.g. May 2025 – July 2025" value="May 2025 – July 2025" />
+                        </div>
+                        <div class="builder-field">
+                          <label>Location</label>
+                          <input type="text" class="builder-input exp-location" placeholder="e.g. Bengaluru, Karnataka (Hybrid)" value="Bengaluru, Karnataka (Hybrid)" />
+                        </div>
+                      </div>
+                      <div class="builder-field">
+                        <label>Accomplishments &amp; Responsibilities (One bullet per line)</label>
+                        <textarea class="builder-textarea exp-bullets" rows="3" placeholder="• Architected and deployed microservices...&#10;• Reduced latency by 28%...">• Built reusable UI components and state stores for client dashboard using React &amp; TypeScript.&#10;• Designed RESTful backend endpoints in FastAPI, improving response latency by 24%.&#10;• Configured CI/CD GitHub Actions pipelines for automated test runs and lint enforcement.</textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. Projects & Portfolio Lab -->
+                <div class="builder-section">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 class="builder-section-title" style="border-bottom: none; padding-bottom: 0;">
+                      <span class="section-num">4</span> Practical Projects &amp; Lab Blueprints
+                    </h3>
+                    <button type="button" class="btn-add-item" id="btn-add-project">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                      </svg>
+                      ADD PROJECT
+                    </button>
+                  </div>
+                  <div id="project-list-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Default initial card -->
+                    <div class="builder-item-card project-item">
+                      <div class="builder-item-header">
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand-cyan);">Project Entry #1</span>
+                        <button type="button" class="btn-remove-item" onclick="this.closest('.project-item').remove()">✕ Remove</button>
+                      </div>
+                      <div class="builder-grid-2col">
+                        <div class="builder-field">
+                          <label>Project Title</label>
+                          <input type="text" class="builder-input proj-title" placeholder="e.g. IntelliMatch AI Platform" value="IntelliMatch AI — Career Readiness Platform" />
+                        </div>
+                        <div class="builder-field">
+                          <label>Technologies Used</label>
+                          <input type="text" class="builder-input proj-tech" placeholder="e.g. JavaScript, CSS3, DOM, Python, Docker" value="Vanilla JavaScript, HTML5, CSS3 Custom Properties, Responsive Architecture" />
+                        </div>
+                      </div>
+                      <div class="builder-grid-2col">
+                        <div class="builder-field">
+                          <label>Repository / Demo Link</label>
+                          <input type="text" class="builder-input proj-link" placeholder="e.g. https://github.com/alexmorgan/intellimatch-ai" value="https://github.com/alexmorgan/intellimatch-ai" />
+                        </div>
+                        <div class="builder-field">
+                          <label>Project Type / Scope</label>
+                          <input type="text" class="builder-input proj-scope" placeholder="e.g. Full-Stack Capstone" value="Full-Stack Capstone Project" />
+                        </div>
+                      </div>
+                      <div class="builder-field">
+                        <label>Key Deliverables &amp; Technical Highlights</label>
+                        <textarea class="builder-textarea proj-desc" rows="3" placeholder="• Engineered semantic matching algorithm...&#10;• Implemented responsive UI...">• Engineered client-side ATS analysis engine computing semantic keyword overlap across 10 engineering domains.&#10;• Designed sliding collapsible navigation sidebar with smooth cubic-bezier transitions and draggable handle.&#10;• Tested across Chrome, Firefox and Edge achieving 100% responsive accessibility.</textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5. Education -->
+                <div class="builder-section">
+                  <h3 class="builder-section-title">
+                    <span class="section-num">5</span> Education &amp; Credentials
+                  </h3>
+                  <div class="builder-grid-2col">
+                    <div class="builder-field">
+                      <label for="builder-degree">Degree &amp; Major *</label>
+                      <input type="text" id="builder-degree" class="builder-input" placeholder="e.g. B.E. in Computer Science" value="Bachelor of Engineering (B.E.) in Computer Science &amp; Engineering" required />
+                    </div>
+                    <div class="builder-field">
+                      <label for="builder-institution">Institution / University *</label>
+                      <input type="text" id="builder-institution" class="builder-input" placeholder="e.g. Visvesvaraya Technological University" value="Visvesvaraya Technological University" required />
+                    </div>
+                  </div>
+                  <div class="builder-grid-2col">
+                    <div class="builder-field">
+                      <label for="builder-grad-year">Graduation Year / Timeline</label>
+                      <input type="text" id="builder-grad-year" class="builder-input" placeholder="e.g. 2023 – 2027" value="2023 – 2027 (Expected)" />
+                    </div>
+                    <div class="builder-field">
+                      <label for="builder-gpa">CGPA / Percentage</label>
+                      <input type="text" id="builder-gpa" class="builder-input" placeholder="e.g. 8.85 / 10.0 CGPA" value="8.85 / 10.0 CGPA" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 6. Technical Competencies & Skills -->
+                <div class="builder-section">
+                  <h3 class="builder-section-title">
+                    <span class="section-num">6</span> Technical Competencies &amp; Skills
+                  </h3>
+                  <div class="builder-field">
+                    <label for="builder-skills">Core Technical Skills (Comma-separated)</label>
+                    <textarea id="builder-skills" class="builder-textarea" rows="2" placeholder="e.g. Python, JavaScript, React, SQL, Git">Python, JavaScript (ES6+), React, Node.js, SQL (PostgreSQL), Git, Docker, RESTful APIs, Linux, Agile Methodologies, Data Structures &amp; Algorithms</textarea>
+                  </div>
+                </div>
+
+                <!-- Bottom Actions Bar -->
+                <div class="builder-actions-bar">
+                  <div>
+                    <button type="button" class="btn btn-outline" id="btn-builder-reset">
+                      Reset Form
+                    </button>
+                  </div>
+                  <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+                    <button type="button" class="btn btn-secondary" id="btn-builder-export">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                      </svg>
+                      Download JSON / Text
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-builder-preview">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
+                      </svg>
+                      Preview ATS Resume
+                    </button>
+                    <a href="pages/analyzer.html" class="btn btn-secondary">
+                      Benchmark in Analyzer →
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
         </main>
         <footer id="site-footer" class="site-footer"></footer>
       </div>
     </div>
+
+    <!-- Resume Preview Modal -->
+    <div id="resume-preview-modal" class="modal-overlay" hidden aria-hidden="true">
+      <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="resume-preview-title">
+        <div class="modal-header">
+          <h3 id="resume-preview-title" class="modal-title">ATS Resume Document Preview</h3>
+          <button type="button" class="modal-close-btn" id="resume-preview-close" aria-label="Close modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div id="resume-preview-sheet" class="resume-preview-sheet">
+            <!-- Compiled dynamically by js/pages/home.js -->
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-5);">
+            <button type="button" class="btn btn-outline" id="btn-print-resume">Print / Save as PDF</button>
+            <button type="button" class="btn btn-primary" id="btn-copy-resume-text">Copy Plain Text</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Contact Inquiry Modal -->
+    <div id="quick-contact-modal" class="modal-overlay" hidden aria-hidden="true">
+      <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" style="max-width: 520px;">
+        <div class="modal-header">
+          <h3 id="contact-modal-title" class="modal-title">Contact IntelliMatch Admissions &amp; Support</h3>
+          <button type="button" class="modal-close-btn" id="contact-modal-close" aria-label="Close modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="quick-contact-form" onsubmit="return false;" style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <div class="builder-field">
+              <label for="contact-name">Your Full Name *</label>
+              <input type="text" id="contact-name" class="builder-input" placeholder="e.g. Alex Morgan" required />
+            </div>
+            <div class="builder-field">
+              <label for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" class="builder-input" placeholder="e.g. alex@college.edu" required />
+            </div>
+            <div class="builder-field">
+              <label for="contact-topic">Inquiry Area</label>
+              <select id="contact-topic" class="builder-input">
+                <option value="roadmaps">Engineering Curriculum &amp; Roadmaps</option>
+                <option value="analyzer">Resume Analyzer Intelligence</option>
+                <option value="projects">Projects Hub &amp; Blueprints</option>
+                <option value="partnership">Institutional / Campus Partnership</option>
+                <option value="general">General Support</option>
+              </select>
+            </div>
+            <div class="builder-field">
+              <label for="contact-msg">Message</label>
+              <textarea id="contact-msg" class="builder-textarea" rows="3" placeholder="Tell us how we can assist your engineering career journey..."></textarea>
+            </div>
+            <div id="contact-feedback-msg" style="display: none; padding: 0.75rem; border-radius: 8px; background: var(--color-success-light); color: var(--color-success-on); font-size: 0.84rem; font-weight: 600;">
+              ✓ Thank you! Your message has been routed to our Bengaluru support team.
+            </div>
+            <button type="submit" class="btn btn-primary" id="btn-submit-contact" style="width: 100%;">
+              Send Inquiry
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="js/app.js"></script>
   </body>
 </html>
