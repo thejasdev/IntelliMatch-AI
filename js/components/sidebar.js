@@ -1,6 +1,6 @@
 import { ICONS } from "./icons.js";
 import { el, svgIcon } from "../utils/dom.js";
-import { getNavItems, getCurrentPageId, hrefFromRoot } from "../navigation.js";
+import { getCurrentPageId, hrefFromRoot } from "../navigation.js";
 import { getState, setSidebarOpen } from "../state.js";
 
 function closeSidebarIfMobile() {
@@ -37,27 +37,164 @@ export function syncSidebarDom() {
 
 export function renderSidebar() {
   const sidebar = document.getElementById("sidebar");
-  if (!sidebar) {
-    return;
-  }
+  if (!sidebar) return;
 
   const currentPage = getCurrentPageId();
-  const navLinks = getNavItems().map((item) =>
-    el(
+
+  // Ensure floating expand button exists in DOM
+  ensureFloatingExpandButton();
+
+  // Restore desktop collapsed state from localStorage
+  const isCollapsed = localStorage.getItem("intellimatch_sidebar_collapsed") === "true";
+  if (isCollapsed && window.innerWidth > 768) {
+    sidebar.classList.add("is-collapsed");
+    const floatingBtn = document.getElementById("sidebar-floating-toggle");
+    if (floatingBtn) floatingBtn.classList.add("is-visible");
+  }
+
+  // Restore custom sidebar width if stored
+  const savedWidth = localStorage.getItem("intellimatch_sidebar_width");
+  if (savedWidth && window.innerWidth > 768) {
+    document.documentElement.style.setProperty("--sidebar-width", `${savedWidth}px`);
+  }
+
+  // 7 Stacked Primary Pill Navigation Buttons from Master Prompt
+  const primaryPills = [
+    {
+      id: "home",
+      label: "HOME",
+      icon: "home",
+      href: hrefFromRoot("index.html"),
+      action: "home",
+    },
+    {
+      id: "analyzer",
+      label: "RESUME ANALYZER",
+      icon: "analyzer",
+      href: hrefFromRoot("pages/analyzer.html"),
+    },
+    {
+      id: "builder",
+      label: "RESUME BUILDER",
+      icon: "builder",
+      href: currentPage === "home" ? "#builder" : hrefFromRoot("index.html#builder"),
+      action: "builder",
+    },
+    {
+      id: "dashboard",
+      label: "DASHBOARD",
+      icon: "dashboard",
+      href: hrefFromRoot("pages/dashboard.html"),
+    },
+    {
+      id: "job-search",
+      label: "JOB SEARCH",
+      icon: "briefcase",
+      href: hrefFromRoot("pages/job-search.html"),
+    },
+    {
+      id: "feedback",
+      label: "FEEDBACK",
+      icon: "feedback",
+      href: hrefFromRoot("pages/feedback.html"),
+    },
+    {
+      id: "about",
+      label: "ABOUT",
+      icon: "about",
+      href: hrefFromRoot("pages/about.html"),
+    },
+  ];
+
+  // Secondary Curriculum & Templates Section
+  const secondaryItems = [
+    {
+      id: "roadmaps",
+      label: "Domains Roadmaps",
+      icon: "roadmap",
+      href: hrefFromRoot("pages/roadmaps.html"),
+    },
+    {
+      id: "projects",
+      label: "Projects Hub",
+      icon: "project",
+      href: hrefFromRoot("pages/projects.html"),
+    },
+    {
+      id: "templates",
+      label: "Resume Templates",
+      icon: "templates",
+      href: hrefFromRoot("pages/templates.html"),
+    },
+    {
+      id: "internships",
+      label: "Internships & Trainees",
+      icon: "briefcase",
+      href: hrefFromRoot("pages/internships.html"),
+    },
+  ];
+
+  // Render Primary Pill Buttons
+  const primaryNavElements = primaryPills.map((item) => {
+    const isPillActive =
+      item.id === currentPage && !(item.id === "home" && window.location.hash === "#builder");
+
+    const a = el(
       "a",
       {
-        class: `nav-link${item.id === currentPage ? " is-active" : ""}`,
+        class: `sidebar-nav-pill${isPillActive ? " is-active" : ""}`,
         href: item.href,
-        "aria-current": item.id === currentPage ? "page" : null,
+        "data-nav-id": item.id,
+        "aria-current": isPillActive ? "page" : null,
+      },
+      [svgIcon(ICONS[item.icon], "nav-icon"), el("span", { class: "nav-label" }, item.label)]
+    );
+
+    a.addEventListener("click", (e) => {
+      closeSidebarIfMobile();
+
+      // Handle interactive workspace view switching on home page
+      if (currentPage === "home") {
+        if (item.action === "builder") {
+          e.preventDefault();
+          window.location.hash = "builder";
+          if (window.switchWorkspaceView) {
+            window.switchWorkspaceView("builder");
+          }
+          updateActivePill("builder");
+        } else if (item.action === "home") {
+          e.preventDefault();
+          window.location.hash = "";
+          if (window.switchWorkspaceView) {
+            window.switchWorkspaceView("overview");
+          }
+          updateActivePill("home");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+    });
+
+    return a;
+  });
+
+  // Render Secondary Links
+  const secondaryNavElements = secondaryItems.map((item) => {
+    const isSecActive = item.id === currentPage;
+    return el(
+      "a",
+      {
+        class: `sidebar-secondary-link${isSecActive ? " is-active" : ""}`,
+        href: item.href,
+        "aria-current": isSecActive ? "page" : null,
         onClick: closeSidebarIfMobile,
       },
-      [svgIcon(ICONS[item.icon]), el("span", {}, item.label)]
-    )
-  );
+      [svgIcon(ICONS[item.icon], "nav-icon-sm"), el("span", {}, item.label)]
+    );
+  });
 
-  // Approved connected-ribbon IntelliMatch vector symbol
+  // Approved connected-ribbon IntelliMatch vector symbol with float animation
   const brandMarkSvgHtml = `
-    <svg class="brand-mark-svg" width="36" height="30" viewBox="0 0 374 308" role="img" aria-hidden="true">
+    <svg class="brand-mark-svg" width="38" height="32" viewBox="0 0 374 308" role="img" aria-hidden="true">
       <defs>
         <linearGradient id="sidebarRibbonGrad" x1="0%" y1="50%" x2="100%" y2="50%">
           <stop offset="0%" stop-color="#4E34C8"/>
@@ -69,7 +206,7 @@ export function renderSidebar() {
     </svg>
   `;
 
-  const brandMark = el("div", { class: "brand-mark-wrap" });
+  const brandMark = el("div", { class: "brand-mark-wrap floating-brand-mark" });
   brandMark.innerHTML = brandMarkSvgHtml;
 
   const brandLink = el(
@@ -88,26 +225,146 @@ export function renderSidebar() {
     ]
   );
 
+  // Collapse toggle button « inside header
+  const collapseBtn = el(
+    "button",
+    {
+      class: "sidebar-collapse-btn",
+      id: "sidebar-collapse-btn",
+      type: "button",
+      "aria-label": "Collapse sidebar",
+      title: "Collapse sidebar",
+    },
+    [svgIcon(ICONS.collapse, "collapse-icon")]
+  );
+
+  collapseBtn.addEventListener("click", () => {
+    toggleDesktopSidebar(true);
+  });
+
+  const headerRow = el("div", { class: "sidebar-header-row" }, [brandLink, collapseBtn]);
+
+  // Glowing Gradient Divider Bar (#4E34C8 -> #6548E8 -> #19C6E8)
+  const glowDivider = el("div", { class: "sidebar-glow-divider" });
+
+  // Draggable Resize Handle
+  const resizeHandle = el("div", {
+    class: "sidebar-resize-handle",
+    id: "sidebar-resize-handle",
+    title: "Drag to resize sidebar width",
+  });
+
+  initResizeHandle(resizeHandle);
+
   sidebar.replaceChildren(
-    brandLink,
-    el("hr", { class: "sidebar-divider" }),
-    el(
-      "nav",
-      { class: "sidebar-nav", "aria-label": "Primary" },
-      [
-        el("span", { class: "sidebar-section-label" }, "Platform"),
-        ...navLinks,
-      ]
-    ),
+    headerRow,
+    glowDivider,
+    el("nav", { class: "sidebar-nav", "aria-label": "Primary Platform Navigation" }, [
+      el("div", { class: "sidebar-nav-group primary-pills-group" }, primaryNavElements),
+      el("div", { class: "sidebar-nav-divider" }),
+      el("span", { class: "sidebar-section-label" }, "Curriculum & Assets"),
+      el("div", { class: "sidebar-nav-group secondary-links-group" }, secondaryNavElements),
+    ]),
     el("div", { class: "sidebar-footer-card" }, [
       el("h4", {}, "Career Readiness"),
-      el("p", {}, "Explore technology paths, follow learning roadmaps, and build real-world engineering projects."),
+      el("p", {}, "10 engineering domains, roadmaps, project blueprints & ATS resume benchmarks."),
       el("span", { class: "badge badge-purple" }, [
         el("span", { class: "status-dot" }),
         "IntelliMatch Platform",
       ]),
-    ])
+    ]),
+    resizeHandle
   );
+}
+
+function updateActivePill(activeId) {
+  const pills = document.querySelectorAll(".sidebar-nav-pill");
+  pills.forEach((p) => {
+    if (p.getAttribute("data-nav-id") === activeId) {
+      p.classList.add("is-active");
+      p.setAttribute("aria-current", "page");
+    } else {
+      p.classList.remove("is-active");
+      p.removeAttribute("aria-current");
+    }
+  });
+}
+
+function ensureFloatingExpandButton() {
+  if (document.getElementById("sidebar-floating-toggle")) return;
+
+  const btn = el(
+    "button",
+    {
+      id: "sidebar-floating-toggle",
+      class: "sidebar-floating-toggle",
+      type: "button",
+      "aria-label": "Expand sidebar",
+      title: "Expand sidebar",
+    },
+    [svgIcon(ICONS.expand, "expand-icon")]
+  );
+
+  btn.addEventListener("click", () => {
+    toggleDesktopSidebar(false);
+  });
+
+  document.body.appendChild(btn);
+}
+
+function toggleDesktopSidebar(collapse) {
+  const sidebar = document.getElementById("sidebar");
+  const floatingBtn = document.getElementById("sidebar-floating-toggle");
+  if (!sidebar) return;
+
+  if (collapse) {
+    sidebar.classList.add("is-collapsed");
+    if (floatingBtn) floatingBtn.classList.add("is-visible");
+    localStorage.setItem("intellimatch_sidebar_collapsed", "true");
+  } else {
+    sidebar.classList.remove("is-collapsed");
+    if (floatingBtn) floatingBtn.classList.remove("is-visible");
+    localStorage.setItem("intellimatch_sidebar_collapsed", "false");
+  }
+}
+
+function initResizeHandle(handle) {
+  let isDragging = false;
+  let startX = 0;
+  let startWidth = 270;
+
+  handle.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    const currentWidthStr = getComputedStyle(document.documentElement).getPropertyValue("--sidebar-width");
+    startWidth = parseInt(currentWidthStr, 10) || 270;
+    document.body.classList.add("is-resizing-sidebar");
+    e.preventDefault();
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    const delta = e.clientX - startX;
+    let newWidth = startWidth + delta;
+
+    if (newWidth < 160) {
+      toggleDesktopSidebar(true);
+      isDragging = false;
+      document.body.classList.remove("is-resizing-sidebar");
+      return;
+    }
+
+    newWidth = Math.max(220, Math.min(420, newWidth));
+    document.documentElement.style.setProperty("--sidebar-width", `${newWidth}px`);
+    localStorage.setItem("intellimatch_sidebar_width", newWidth);
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (isDragging) {
+      isDragging = false;
+      document.body.classList.remove("is-resizing-sidebar");
+    }
+  });
 }
 
 export function bindSidebarControls() {
