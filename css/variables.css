@@ -1,4 +1,29 @@
 :root {
+  /* Official IntelliMatch Logo Colors & Brand Ribbon */
+  --brand-indigo: #4E34C8;
+  --brand-violet: #6548E8;
+  --brand-cyan: #19C6E8;
+  --brand-gradient: linear-gradient(90deg, #4E34C8 0%, #6548E8 48%, #19C6E8 100%);
+
+  /* Logo-Matched Typography Colors */
+  --text-primary: #202036;       /* Exact "Intelli" SVG fill */
+  --text-secondary: #343442;     /* Exact Tagline SVG fill */
+  --text-muted: #64647A;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-muted: #D0D4E8;
+
+  /* Surfaces (Hero Dark, Contact Card White, Footer Soft Gray-Lavender) */
+  --bg-hero-dark: #181B2E;
+  --bg-sidebar-dark: #121424;
+  --bg-card-dark: #1E2238;
+  --bg-white: #FFFFFF;
+  --bg-footer: #F4F6FA;
+  --border-light: #E2E8F0;
+  --border-dark: rgba(255, 255, 255, 0.12);
+
+  /* Animation Timings */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
   /* IntelliMatch AI — Refined Purple & White Design Tokens */
   --color-primary: #6548E8;
   --color-primary-dark: #4E34C8;
@@ -45,7 +70,7 @@
   --color-danger: var(--color-error);
 
   /* Layout Dimensions */
-  --sidebar-width: 272px;
+  --sidebar-width: 270px;
   --header-height: 68px;
   --content-max: 1140px;
 
