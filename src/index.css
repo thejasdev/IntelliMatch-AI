@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Global Midnight Navy, Blue, Cyan and Ice-White Tokens */
+  --bg-navy-top: #181727;
+  --bg-navy-mid: #1A1B2F;
+  --bg-navy-bottom: #1B1C30;
+
+  --wave-steel-blue: #314F81;
+  --wave-blue: #354F82;
+  --wave-royal-blue: #146FE8;
+  --wave-electric-blue: #1684FF;
+  --wave-cyan: #19C6E8;
+
+  --brand-indigo: #4E34C8;
+  --brand-violet: #6548E8;
+  --brand-periwinkle: #8B7FF5;
+  --brand-ice-blue: #93C5FD;
+
+  --surface-card: rgba(36, 38, 62, 0.72);
+  --surface-pill: #333446;
+  --surface-ice: #F5F9FF;
+  --surface-blue-white: #EAF3FF;
+
+  --border-ice: rgba(255, 255, 255, 0.22);
+  --border-cyan-glow: rgba(25, 198, 232, 0.45);
+
+  --text-pure-white: #FFFFFF;
+  --text-ice-muted: #CBD5E1;
+  --text-dark: #17233D;
+
+  /* Aliases for backwards compatibility */
+  --ink: #FFFFFF;
+  --violet: #6548E8;
+  --violet-hover: #5538D4;
+  --indigo: #4E34C8;
+  --cyan: #19C6E8;
+  --bg: #181727;
+  --bg-soft: rgba(36, 38, 62, 0.72);
+  --bg-tint: rgba(40, 43, 72, 0.72);
+  --surface: rgba(40, 43, 72, 0.72);
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(25, 198, 232, 0.35);
+  --text-heading: #FFFFFF;
+  --text-body: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-link: #19C6E8;
+
+  /* Semantic status */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+}
+
+html {
+  min-height: 100%;
+  background: #181727;
+  color: #FFFFFF;
+}
+
+body {
+  font-family: "Inter", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #FFFFFF;
+  background: #181727;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* Ensure clean link styling */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--wave-cyan);
+}
+
+/* Headings font family: Source Serif 4 for standard headings, Manrope for hero */
+h1, h2, h3, h4, .font-heading {
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  color: #FFFFFF;
+}
+
+.font-hero {
+  font-family: "Manrope", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Focus styles for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--wave-cyan);
+  outline-offset: 2px;
+}
+
+/* Reusable brand card styling — Translucent Midnight Navy Glass */
+.im-card {
+  background: linear-gradient(
+    145deg,
+    rgba(40, 43, 72, 0.72) 0%,
+    rgba(28, 30, 52, 0.82) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  box-shadow: 0 14px 32px rgba(25, 198, 232, 0.08), 0 0 0 1px rgba(101, 72, 232, 0.14);
+  color: #FFFFFF;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.im-card:hover {
+  border-color: rgba(25, 198, 232, 0.55);
+  box-shadow: 0 14px 32px rgba(25, 198, 232, 0.18), 0 0 0 1px rgba(25, 198, 232, 0.35);
+}
+
+.im-card-interactive {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.im-card-interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgba(25, 198, 232, 0.55);
+  box-shadow: 0 14px 32px rgba(25, 198, 232, 0.22), 0 0 0 1px rgba(25, 198, 232, 0.45);
+}
+
+/* Clean ice-white/pale-blue high-readability panels */
+.im-panel-ice {
+  background: #F5F9FF;
+  color: #17233D;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar deep navy background and dark scrollbar */
+#app-sidebar {
+  background: rgba(20, 21, 38, 0.78) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  color: #FFFFFF !important;
+}
+
+#app-sidebar ::-webkit-scrollbar {
+  width: 5px;
+}
+
+#app-sidebar ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#app-sidebar ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+#app-sidebar ::-webkit-scrollbar-thumb:hover {
+  background: var(--wave-cyan);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .im-card-interactive:hover {
+    transform: none;
+  }
+}
+
+/* Custom dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #181727;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--wave-cyan);
+}
+
+/* Ribbon subtle glow animation */
+@keyframes ribbonGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(101, 72, 232, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(25, 198, 232, 0.55));
+  }
+}
+
+.brand-ribbon-glow {
+  animation: ribbonGlow 3s ease-in-out infinite;
+}
+
+/* Ambient wave spine subtle pulse */
+@keyframes ambientWavePulse {
+  0%, 100% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 4px rgba(25, 198, 232, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(25, 198, 232, 0.75));
+  }
+}
+
+.ambient-wave-pulse {
+  animation: ambientWavePulse 6s ease-in-out infinite;
+}
