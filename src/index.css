@@ -114,22 +114,46 @@ h1, h2, h3, h4, .font-heading {
   border-radius: 1rem;
   box-shadow: 0 14px 32px rgba(25, 198, 232, 0.08), 0 0 0 1px rgba(101, 72, 232, 0.14);
   color: #FFFFFF;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .im-card:hover {
+  border-color: rgba(25, 198, 232, 0.45);
+  box-shadow: 0 14px 32px rgba(25, 198, 232, 0.14), 0 0 0 1px rgba(25, 198, 232, 0.25);
+}
+
+.im-card-interactive, .im-card-lift {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.im-card-interactive:hover, .im-card-lift:hover {
+  transform: translateY(-2.5px);
   border-color: rgba(25, 198, 232, 0.55);
   box-shadow: 0 14px 32px rgba(25, 198, 232, 0.18), 0 0 0 1px rgba(25, 198, 232, 0.35);
 }
 
-.im-card-interactive {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+/* Restrained entrance transitions for Hero section elements */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.im-card-interactive:hover {
-  transform: translateY(-3px);
-  border-color: rgba(25, 198, 232, 0.55);
-  box-shadow: 0 14px 32px rgba(25, 198, 232, 0.22), 0 0 0 1px rgba(25, 198, 232, 0.45);
+.animate-hero-heading {
+  animation: heroFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-hero-subtext {
+  animation: heroFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.animate-hero-actions {
+  animation: heroFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
 }
 
 /* Clean ice-white/pale-blue high-readability panels */
@@ -175,8 +199,9 @@ h1, h2, h3, h4, .font-heading {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .im-card-interactive:hover {
-    transform: none;
+  .im-card-interactive:hover,
+  .im-card-lift:hover {
+    transform: none !important;
   }
 }
 
@@ -224,4 +249,130 @@ h1, h2, h3, h4, .font-heading {
 
 .ambient-wave-pulse {
   animation: ambientWavePulse 6s ease-in-out infinite;
+}
+
+/* Original Watermark-Free Motion-Graphics Wave & Constellation Animations */
+@keyframes waveFlowPrimary {
+  0% {
+    transform: translate3d(0%, 0, 0) scaleY(1);
+  }
+  50% {
+    transform: translate3d(-3%, -12px, 0) scaleY(1.03);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0) scaleY(1);
+  }
+}
+
+@keyframes waveFlowSecondary {
+  0% {
+    transform: translate3d(0%, 0, 0) scaleY(1);
+  }
+  50% {
+    transform: translate3d(2.5%, 10px, 0) scaleY(0.97);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0) scaleY(1);
+  }
+}
+
+@keyframes waveFlowTertiary {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  50% {
+    transform: translate3d(-2%, 8px, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes ambientOrbDrift1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.22;
+  }
+  50% {
+    transform: translate3d(40px, -25px, 0) scale(1.12);
+    opacity: 0.32;
+  }
+}
+
+@keyframes ambientOrbDrift2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate3d(-35px, 30px, 0) scale(1.08);
+    opacity: 0.26;
+  }
+}
+
+@keyframes constellationPulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes nodeTwinkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+.animate-wave-primary {
+  animation: waveFlowPrimary 14s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.animate-wave-secondary {
+  animation: waveFlowSecondary 18s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.animate-wave-tertiary {
+  animation: waveFlowTertiary 22s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.animate-orb-1 {
+  animation: ambientOrbDrift1 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-orb-2 {
+  animation: ambientOrbDrift2 24s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-constellation {
+  animation: constellationPulse 8s ease-in-out infinite;
+}
+
+.animate-node-twinkle-1 {
+  animation: nodeTwinkle 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-node-twinkle-2 {
+  animation: nodeTwinkle 5s ease-in-out 1.5s infinite;
+  transform-origin: center;
+}
+
+.animate-node-twinkle-3 {
+  animation: nodeTwinkle 6s ease-in-out 3s infinite;
+  transform-origin: center;
 }
