@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_ent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg_ent)"/>
+  <rect x="35" y="25" width="530" height="290" rx="12" fill="#131036" stroke="#4338CA" stroke-width="2"/>
+  <text x="55" y="58" fill="#A5B4FC" font-family="sans-serif" font-size="16" font-weight="bold">Enterprise Platforms &amp; Business Systems</text>
+  <text x="55" y="78" fill="#94A3B8" font-family="sans-serif" font-size="11">SAP • Salesforce • ERP Architectures • Solutions Engineering</text>
+  <g transform="translate(55, 105)">
+    <rect x="0" y="10" width="140" height="95" rx="8" fill="#1E1B4B" stroke="#6366F1"/>
+    <text x="18" y="36" fill="#A5B4FC" font-family="sans-serif" font-size="11" font-weight="bold">ERP ENGINE</text>
+    <text x="18" y="54" fill="#94A3B8" font-family="sans-serif" font-size="9">Supply Chain Sync</text>
+    <text x="18" y="70" fill="#94A3B8" font-family="sans-serif" font-size="9">Financial Ledger</text>
+    <text x="18" y="90" fill="#34D399" font-family="sans-serif" font-size="9">✓ Real-time Sync</text>
+    <line x1="140" y1="58" x2="165" y2="58" stroke="#818CF8" stroke-width="2"/>
+    <rect x="165" y="10" width="140" height="95" rx="8" fill="#1E1B4B" stroke="#6366F1"/>
+    <text x="182" y="36" fill="#A5B4FC" font-family="sans-serif" font-size="11" font-weight="bold">CRM &amp; PIPELINES</text>
+    <text x="182" y="54" fill="#94A3B8" font-family="sans-serif" font-size="9">Salesforce Service</text>
+    <text x="182" y="70" fill="#94A3B8" font-family="sans-serif" font-size="9">Customer 360</text>
+    <text x="182" y="90" fill="#34D399" font-family="sans-serif" font-size="9">✓ Omnichannel</text>
+    <line x1="305" y1="58" x2="330" y2="58" stroke="#818CF8" stroke-width="2"/>
+    <rect x="330" y="10" width="140" height="95" rx="8" fill="#1E1B4B" stroke="#6366F1"/>
+    <text x="345" y="36" fill="#A5B4FC" font-family="sans-serif" font-size="11" font-weight="bold">DATA LAKEHOUSE</text>
+    <text x="345" y="54" fill="#94A3B8" font-family="sans-serif" font-size="9">Automated ETL</text>
+    <text x="345" y="70" fill="#94A3B8" font-family="sans-serif" font-size="9">BI Dashboards</text>
+    <text x="345" y="90" fill="#34D399" font-family="sans-serif" font-size="9">✓ Governance OK</text>
+  </g>
+</svg>
