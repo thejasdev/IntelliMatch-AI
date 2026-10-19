@@ -112,7 +112,7 @@ export default function AboutPage({ onOpenContact }) {
           {ENGINEERING_DOMAINS.map((domain, idx) => (
             <div
               key={domain.id}
-              className="p-3.5 rounded-xl border border-brand-border bg-brand-surface hover:border-brand-violet/40 transition-colors"
+              className="p-3.5 rounded-xl border border-brand-border bg-brand-surface hover:border-brand-cyan/40 im-card-lift transition-all"
             >
               <span className="text-[10px] font-bold text-brand-violet uppercase tracking-wider block">
                 Track {idx + 1}
@@ -140,7 +140,7 @@ export default function AboutPage({ onOpenContact }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div className="p-5 rounded-xl border border-brand-border bg-brand-surface space-y-2">
+          <div className="p-5 rounded-xl border border-brand-border bg-brand-surface space-y-2 im-card-lift transition-all">
             <div className="flex items-center justify-between">
               <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
                 Phase 1: Live Frontend
@@ -153,7 +153,7 @@ export default function AboutPage({ onOpenContact }) {
             </p>
           </div>
 
-          <div className="p-5 rounded-xl border border-brand-border bg-brand-surface space-y-2">
+          <div className="p-5 rounded-xl border border-brand-border bg-brand-surface space-y-2 im-card-lift transition-all">
             <div className="flex items-center justify-between">
               <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-500/15 text-blue-300 border border-blue-500/30">
                 Phase 2: Microservice
@@ -166,7 +166,7 @@ export default function AboutPage({ onOpenContact }) {
             </p>
           </div>
 
-          <div className="p-5 rounded-xl border border-brand-border bg-brand-surface space-y-2">
+          <div className="p-5 rounded-xl border border-brand-border bg-brand-surface space-y-2 im-card-lift transition-all">
             <div className="flex items-center justify-between">
               <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-purple-500/15 text-purple-300 border border-purple-500/30">
                 Phase 3: Deep NLP
