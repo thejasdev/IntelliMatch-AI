@@ -295,7 +295,7 @@ export default function DashboardPage({ onOpenContact }) {
 
           {/* KPI Stat Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="im-card p-5">
+            <div className="im-card im-card-lift p-5">
               <span className="text-xs font-semibold text-brand-muted uppercase tracking-wider block">
                 Logged Evaluations
               </span>
@@ -312,7 +312,7 @@ export default function DashboardPage({ onOpenContact }) {
               </span>
             </div>
 
-            <div className="im-card p-5">
+            <div className="im-card im-card-lift p-5">
               <span className="text-xs font-semibold text-brand-muted uppercase tracking-wider block">
                 Average ATS Match
               </span>
@@ -330,7 +330,7 @@ export default function DashboardPage({ onOpenContact }) {
               </span>
             </div>
 
-            <div className="im-card p-5">
+            <div className="im-card im-card-lift p-5">
               <span className="text-xs font-semibold text-brand-muted uppercase tracking-wider block">
                 Active Domains
               </span>
@@ -345,7 +345,7 @@ export default function DashboardPage({ onOpenContact }) {
               </span>
             </div>
 
-            <div className="im-card p-5">
+            <div className="im-card im-card-lift p-5">
               <span className="text-xs font-semibold text-brand-muted uppercase tracking-wider block">
                 ATS PDF Templates
               </span>
