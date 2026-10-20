@@ -243,82 +243,93 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
 
   return (
     <div className="space-y-8 sm:space-y-10 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* 1. Modulus-Inspired Centered Hero Composition */}
+      {/* 1. Large Editorial Two-Column Hero Composition (Image 1 Reference) */}
       <section
-        className="relative overflow-hidden rounded-3xl text-white border border-white/12 px-6 py-10 sm:py-14 lg:py-16 shadow-2xl text-center backdrop-blur-md"
+        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-10 lg:px-14 py-10 sm:py-14 lg:py-16 shadow-2xl backdrop-blur-md"
         style={{
           background:
-            "linear-gradient(145deg, rgba(32, 34, 60, 0.45) 0%, rgba(22, 23, 42, 0.55) 100%)",
+            "linear-gradient(145deg, rgba(20, 24, 48, 0.55) 0%, rgba(14, 18, 36, 0.7) 100%)",
         }}
       >
-        {/* Subtle translucent atmospheric depth accents */}
+        {/* Subtle atmospheric depth glow accents */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-brand-violet/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
         </div>
 
-        {/* Centered Modulus Content Composition */}
-        <div className="relative z-10 max-w-4xl mx-auto space-y-6">
-          {/* Top Kicker Pill */}
-          <div
-            className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full text-sm font-medium text-[#38BDF8] shadow-xs"
-            style={{
-              background: "rgba(51, 52, 70, 0.55)",
-              border: "1px solid rgba(255, 255, 255, 0.32)",
-            }}
-          >
-            <span>✨ AI-Powered Career Discovery &amp; Readiness Platform</span>
+        {/* Editorial Two-Column Grid Layout (Image 1) */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center">
+          
+          {/* Left Column (Wider, ~7 cols): Large, bold typography & secondary line */}
+          <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-6 text-left">
+            {/* Top kicker specification */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
+              <Sparkles size={12} className="text-[#38BDF8]" />
+              <span className="uppercase tracking-wider">§ 01 — Career Discovery &amp; Readiness</span>
+            </div>
+
+            {/* Prominent Large Headline across lines */}
+            <h1 className="font-hero font-extrabold text-white text-[clamp(2.75rem,5.5vw,5rem)] leading-[1.08] tracking-[-0.03em] m-0">
+              <span className="block text-white">Find Your Path.</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
+                Build Your Future.
+              </span>
+            </h1>
+
+            {/* Secondary line beneath main heading */}
+            <p className="font-heading font-semibold text-lg sm:text-xl lg:text-2xl text-slate-300 m-0 tracking-tight">
+              Career Discovery &amp; Readiness
+            </p>
           </div>
 
-          {/* Centered Oversized Headline with Restrained Entrance Transition */}
-          <h1 className="font-hero font-extrabold text-white text-[clamp(2.75rem,5.2vw,4.5rem)] leading-[1.12] tracking-[-0.025em] m-0 animate-hero-heading">
-            <span className="text-[#FFFFFF]">Find Your Path. </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] to-[#9B8AFB]">
-              Build
-            </span>
-            <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A5B4FC] via-[#7DD3FC] to-[#19C6E8]">
-              {" "}Your Future.
-            </span>
-          </h1>
+          {/* Right Column (Narrower, ~5 cols): Abstract, supporting description & actions */}
+          <div className="lg:col-span-5 xl:col-span-4 space-y-6 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
+            <div>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
+                OVERVIEW
+              </span>
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
+                Explore technology careers, follow structured learning roadmaps, build practical projects and prepare for opportunities that match your goals.
+              </p>
+            </div>
 
-          {/* Centered Supporting Copy with Restrained Coordinated Entrance */}
-          <p className="text-sm sm:text-base md:text-lg text-[#D1D5EA] leading-relaxed max-w-[68ch] mx-auto m-0 font-normal animate-hero-subtext">
-            Explore technology careers, follow structured learning roadmaps, build practical projects
-            and prepare for opportunities that match your goals.
-          </p>
+            {/* Actions: Prominent Image-1-style Explore CTA + Roadmaps & Analyzer */}
+            <div className="space-y-4 pt-1">
+              {/* Primary Image 1 CTA */}
+              <div>
+                <a
+                  href="#domains"
+                  className="inline-flex items-stretch rounded-xl overflow-hidden shadow-lg group focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/50"
+                >
+                  <span className="bg-[#0B57D0] group-hover:bg-[#1D6CE5] text-white px-4 py-3 flex items-center justify-center transition-colors">
+                    <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                  <span className="bg-[#0F172A] group-hover:bg-[#1E293B] text-white px-5 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors border-y border-r border-slate-700/80 flex items-center">
+                    Explore Career Domains
+                  </span>
+                </a>
+              </div>
 
-          {/* Centered 3 Working Actions with Restrained Natural Timing */}
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-3 animate-hero-actions">
-            <a
-              href="#domains"
-              className="inline-flex items-center gap-2 px-3 py-3 text-sm sm:text-base font-semibold text-white hover:text-brand-cyan transition-colors"
-            >
-              <span>Explore Career Domains</span>
-              <ArrowRight size={18} />
-            </a>
+              {/* Secondary Actions */}
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <Link
+                  to="/roadmaps"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-200 hover:text-white px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/60 shadow-sm transition-all"
+                >
+                  <span>View Learning Roadmaps</span>
+                </Link>
 
-            <Link
-              to="/roadmaps"
-              className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-white rounded-xl shadow-lg transition-all duration-200 hover:border-brand-cyan hover:shadow-brand-hover hover:scale-[1.02] active:scale-[0.98]"
-              style={{
-                background: "#333446",
-                border: "1px solid rgba(255, 255, 255, 0.42)",
-                borderRadius: "12px",
-                padding: "14px 28px",
-              }}
-            >
-              <span>View Learning Roadmaps</span>
-            </Link>
-
-            <Link
-              to="/analyzer"
-              className="inline-flex items-center gap-1.5 px-3 py-3 text-sm sm:text-base font-semibold text-[#19C6E8] hover:text-[#93C5FD] transition-colors"
-            >
-              <span>Open Resume Analyzer</span>
-              <ChevronRight size={18} />
-            </Link>
+                <Link
+                  to="/analyzer"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#38BDF8] hover:text-cyan-200 px-3 py-2 transition-colors"
+                >
+                  <span>Open Resume Analyzer</span>
+                  <ChevronRight size={16} />
+                </Link>
+              </div>
+            </div>
           </div>
+
         </div>
       </section>
 
@@ -390,7 +401,6 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               desc: "Survey 10 technical domains and understand industry role expectations.",
               linkText: "Explore Domains",
               href: "#domains",
-              color: "text-brand-periwinkle bg-brand-violet/20 border border-brand-violet/30",
             },
             {
               stage: "Follow a Roadmap",
@@ -399,7 +409,6 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               desc: "Progress step-by-step through semester curricula and recommended resources.",
               linkText: "View Roadmaps",
               href: "/roadmaps",
-              color: "text-indigo-300 bg-indigo-500/20 border border-indigo-500/30",
             },
             {
               stage: "Build Projects",
@@ -408,7 +417,6 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               desc: "Apply concepts into portfolio-grade, deliverable software projects.",
               linkText: "Browse Projects",
               href: "/projects",
-              color: "text-brand-cyan bg-brand-cyan/20 border border-brand-cyan/30",
             },
             {
               stage: "Prepare for Opportunities",
@@ -417,50 +425,53 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               desc: "Benchmark your resume against job postings and explore internships.",
               linkText: "Prepare Resume",
               href: "/analyzer",
-              color: "text-emerald-300 bg-emerald-500/20 border border-emerald-500/30",
             },
           ].map((card, i) => {
             const Icon = card.icon;
             return (
               <div
                 key={card.stage}
-                className="im-card im-card-lift p-6 flex flex-col justify-between group transition-all duration-200"
+                className="bg-[#0E162B]/85 hover:bg-[#131D38]/90 border border-blue-500/25 hover:border-blue-400/50 rounded-3xl p-7 sm:p-8 flex flex-col items-center text-center justify-between shadow-xl transition-all duration-300 group hover:-translate-y-1 backdrop-blur-md"
               >
-                <div className="space-y-3.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-brand-cyan bg-brand-surface px-2.5 py-0.5 rounded-full border border-brand-border">
-                      Stage {i + 1}
-                    </span>
-                    <div className={`w-9 h-9 rounded-xl ${card.color} flex items-center justify-center flex-shrink-0`}>
-                      <Icon size={18} />
-                    </div>
+                <div className="w-full flex flex-col items-center">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#38BDF8] bg-blue-950/70 px-3.5 py-1 rounded-full border border-blue-500/30 shadow-xs mb-3">
+                    Stage 0{i + 1}
+                  </span>
+                  
+                  <div className="w-14 h-14 rounded-full bg-blue-950/80 text-[#38BDF8] shadow-inner border border-blue-500/30 flex items-center justify-center my-2 group-hover:scale-110 transition-transform duration-300">
+                    <Icon size={24} strokeWidth={2.2} />
                   </div>
-                  <div>
-                    <span className="text-[11px] font-semibold text-brand-muted block uppercase tracking-wide">
+
+                  <div className="space-y-1.5 my-2">
+                    <span className="text-[11px] font-semibold text-slate-400 block uppercase tracking-wide">
                       {card.stage}
                     </span>
-                    <h3 className="font-heading font-bold text-base text-brand-slate m-0 mt-0.5">
+                    <h3 className="font-heading font-bold text-lg text-white m-0">
                       {card.title}
                     </h3>
                   </div>
-                  <p className="text-xs text-brand-muted leading-relaxed m-0">{card.desc}</p>
+
+                  <p className="text-xs text-slate-300 leading-relaxed m-0 mt-1 max-w-[220px]">
+                    {card.desc}
+                  </p>
                 </div>
-                <div className="pt-4 mt-3 border-t border-brand-border/60">
+
+                <div className="pt-5 mt-3 w-full flex justify-center">
                   {card.href.startsWith("#") ? (
                     <a
                       href={card.href}
-                      className="text-xs font-semibold text-brand-cyan hover:text-white inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                      className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs font-semibold shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5 group/btn transition-all duration-200"
                     >
                       <span>{card.linkText}</span>
-                      <ChevronRight size={14} />
+                      <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
                     </a>
                   ) : (
                     <Link
                       to={card.href}
-                      className="text-xs font-semibold text-brand-cyan hover:text-white inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                      className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs font-semibold shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5 group/btn transition-all duration-200"
                     >
                       <span>{card.linkText}</span>
-                      <ChevronRight size={14} />
+                      <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
                     </Link>
                   )}
                 </div>
@@ -523,56 +534,72 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
           ))}
         </div>
 
-        {/* Domain Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Domain Cards Grid — Image-Led Discovery Cards (Harmonized with Dark Background) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDomains.map((domain) => (
             <div
               key={domain.id}
-              className="im-card p-6 flex flex-col justify-between group hover:border-brand-violet/50 transition-all duration-200"
+              className="rounded-3xl flex flex-col justify-between group shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border border-blue-500/25 hover:border-blue-400/50 bg-[#0E162B]/90 hover:bg-[#121B36]/95 backdrop-blur-md"
             >
-              <div className="space-y-3.5">
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="font-heading font-bold text-base text-brand-slate m-0">
-                    {domain.name}
-                  </h3>
-                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-brand-surface text-brand-violet border border-brand-border whitespace-nowrap">
+              {/* Top Image Container */}
+              <div className="relative w-full h-48 bg-slate-950 overflow-hidden border-b border-blue-500/20">
+                <img
+                  src={`/assets/domains/${domain.id}.svg`}
+                  alt={`${domain.name} track`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute top-3.5 right-3.5">
+                  <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#0B132B]/90 text-cyan-300 shadow-sm border border-blue-500/30 whitespace-nowrap backdrop-blur-md">
                     {domain.roles.length} Roles
                   </span>
                 </div>
-                <p className="text-xs text-brand-muted leading-relaxed m-0 line-clamp-2">
-                  {domain.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {domain.roles.slice(0, 3).map((r) => (
-                    <span
-                      key={r.id}
-                      className="text-[11px] px-2.5 py-1 rounded-lg bg-brand-surface text-brand-slate border border-brand-border/70"
-                    >
-                      {r.title}
-                    </span>
-                  ))}
-                  {domain.roles.length > 3 && (
-                    <span className="text-[11px] px-2.5 py-1 rounded-lg bg-brand-violet/10 text-brand-violet font-semibold border border-brand-violet/20">
-                      +{domain.roles.length - 3} more
-                    </span>
-                  )}
-                </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-brand-border/60 flex items-center justify-between">
-                <Link
-                  to={`/roadmaps?domain=${domain.id}`}
-                  className="text-xs font-semibold text-brand-violet hover:underline inline-flex items-center gap-1"
-                >
-                  <span>View Roadmaps</span>
-                  <ChevronRight size={13} />
-                </Link>
-                <Link
-                  to={`/projects?domain=${domain.id}`}
-                  className="text-xs text-brand-muted hover:text-brand-slate font-medium"
-                >
-                  Projects &rarr;
-                </Link>
+              {/* Card Body */}
+              <div className="p-6 bg-[#0E162B]/90 hover:bg-[#121B36]/95 flex-1 flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#38BDF8] block">
+                    Engineering Track
+                  </span>
+                  <h3 className="font-heading font-bold text-lg text-white m-0 group-hover:text-cyan-200 transition-colors">
+                    {domain.name}
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed m-0 line-clamp-2">
+                    {domain.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {domain.roles.slice(0, 3).map((r) => (
+                      <span
+                        key={r.id}
+                        className="text-[11px] px-2.5 py-1 rounded-lg bg-[#18223B] text-slate-200 font-medium border border-blue-500/20"
+                      >
+                        {r.title}
+                      </span>
+                    ))}
+                    {domain.roles.length > 3 && (
+                      <span className="text-[11px] px-2.5 py-1 rounded-lg bg-blue-950/70 text-[#38BDF8] font-semibold border border-blue-500/30">
+                        +{domain.roles.length - 3} more
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
+                  <Link
+                    to={`/roadmaps?domain=${domain.id}`}
+                    className="text-xs font-bold text-[#38BDF8] hover:text-cyan-200 hover:underline inline-flex items-center gap-1 group/btn"
+                  >
+                    <span>View Roadmaps</span>
+                    <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link
+                    to={`/projects?domain=${domain.id}`}
+                    className="text-xs text-slate-400 hover:text-white font-medium inline-flex items-center gap-1"
+                  >
+                    <span>Projects &rarr;</span>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -646,33 +673,63 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
             </p>
           </div>
 
-          {/* Milestones Timeline */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {(currentRoadmap?.milestones || []).map((m, idx) => (
-              <div
-                key={m.id || idx}
-                className="p-5 rounded-xl border border-brand-border bg-brand-surface/60 hover:border-brand-violet/40 hover:bg-brand-surface transition-all duration-150 space-y-3"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-brand-violet bg-brand-card px-2.5 py-0.5 rounded-md border border-brand-border">
-                    Milestone {idx + 1}
-                  </span>
-                  <span className="text-[11px] text-brand-muted font-medium">{m.duration || m.timeframe || ""}</span>
-                </div>
-                <h4 className="font-heading font-bold text-sm text-brand-slate m-0">{m.title}</h4>
-                <p className="text-xs text-brand-muted leading-relaxed m-0">{m.description}</p>
-                <div className="pt-2 flex flex-wrap gap-1">
-                  {(m.topics || m.skills || []).map((t) => (
-                    <span
-                      key={t}
-                      className="text-[10px] px-2 py-0.5 rounded bg-brand-card text-brand-slate border border-brand-border/60"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+          {/* Connected Numbered Roadmap Timeline (Image 5 Reference) */}
+          <div className="relative pt-6 pb-2">
+            {/* Horizontal Connecting Line for Desktop */}
+            <div className="hidden md:block absolute top-[44px] left-[10%] right-[10%] h-[3px] bg-gradient-to-r from-[#0B57D0] via-[#0284C7] to-[#8B5CF6] -z-0 opacity-70 rounded-full" />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+              {(currentRoadmap?.milestones || []).map((m, idx) => {
+                const stepNum = String(idx + 1).padStart(2, "0");
+                return (
+                  <div
+                    key={m.id || idx}
+                    className="relative flex flex-col items-center text-center group"
+                  >
+                    {/* Numbered Step Circle (Image 5 reference) */}
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#0B57D0] to-[#0284C7] text-white font-heading font-extrabold text-base flex items-center justify-center shadow-lg ring-4 ring-white/90 group-hover:scale-110 group-hover:ring-[#0B57D0]/30 transition-all duration-300 mb-4 z-10 cursor-default">
+                      {stepNum}
+                    </div>
+
+                    {/* Step Content Card */}
+                    <div className="w-full bg-brand-surface/80 hover:bg-brand-surface border border-brand-border hover:border-[#0284C7]/50 rounded-2xl p-5 shadow-sm transition-all duration-200 flex flex-col justify-between flex-1 space-y-3 text-left">
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#0284C7] bg-[#0284C7]/10 px-2.5 py-0.5 rounded-full border border-[#0284C7]/20">
+                            Checkpoint {stepNum}
+                          </span>
+                          <span className="text-[11px] text-brand-muted font-medium flex items-center gap-1">
+                            <Clock size={11} /> {m.duration || m.timeframe || "4-6 Weeks"}
+                          </span>
+                        </div>
+                        <h4 className="font-heading font-bold text-base text-brand-slate m-0 pt-1 group-hover:text-[#0284C7] transition-colors">
+                          {m.title}
+                        </h4>
+                        <p className="text-xs text-brand-muted leading-relaxed m-0 pt-0.5">
+                          {m.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-brand-border/60">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-brand-slate block mb-1.5">
+                          Key Competencies:
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {(m.topics || m.skills || []).map((t) => (
+                            <span
+                              key={t}
+                              className="text-[10px] px-2 py-0.5 rounded-md bg-brand-card text-brand-slate border border-brand-border/70"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Footer CTA */}
@@ -729,7 +786,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
           {(filteredProjects || []).slice(0, 3).map((project) => (
             <div
               key={project.id}
-              className="im-card p-6 flex flex-col justify-between group hover:border-brand-violet/40 transition-all duration-200"
+              className="im-card im-card-lift p-6 flex flex-col justify-between group hover:border-brand-cyan/40 transition-all duration-200"
             >
               <div className="space-y-3.5">
                 <div className="flex items-center justify-between">
@@ -1170,124 +1227,6 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               )}
             </div>
           )}
-        </div>
-
-        {/* Semantic Matching Demonstration Preview */}
-        <div className="im-card p-6 md:p-8 space-y-6">
-          <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
-              Algorithmic Intelligence Preview
-            </span>
-            <h3 className="text-xl sm:text-2xl font-bold font-heading text-brand-slate m-0 mt-1">
-              Resume-to-Job Semantic Matching
-            </h3>
-            <p className="text-sm text-brand-muted mt-2 m-0">
-              Interactive simulation illustrating how keyword coverage, experience evaluation, and ATS
-              benchmarking work on sample candidate profiles.
-            </p>
-          </div>
-
-          {/* Scenario Buttons */}
-          <div className="flex flex-wrap items-center gap-2 pb-4 border-b border-brand-border">
-            <span className="text-xs font-bold text-brand-slate mr-2">Sample Role:</span>
-            {MATCHING_DEMO_SCENARIOS.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => setSelectedScenarioId(s.id)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
-                  selectedScenarioId === s.id
-                    ? "bg-brand-violet text-white shadow-xs font-semibold"
-                    : "bg-brand-surface text-brand-slate hover:bg-brand-violet/10 hover:text-brand-violet border border-brand-border"
-                }`}
-              >
-                {s.roleTitle}
-              </button>
-            ))}
-          </div>
-
-          {/* Scenario Results Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            {/* Score Wheel */}
-            <div className="lg:col-span-4 p-6 rounded-2xl bg-brand-surface border border-brand-border flex flex-col items-center text-center space-y-3">
-              <div className="w-28 h-28 rounded-full border-4 border-brand-violet flex flex-col items-center justify-center bg-brand-card shadow-xs">
-                <span className="text-3xl font-bold font-heading text-brand-violet">
-                  {currentScenario.matchScore}%
-                </span>
-                <span className="text-[10px] font-semibold text-brand-muted uppercase">Match Score</span>
-              </div>
-
-              <div>
-                <h4 className="font-heading font-bold text-base text-brand-slate m-0">
-                  {currentScenario.candidateName}
-                </h4>
-                <p className="text-xs text-brand-muted m-0">{currentScenario.candidateBackground}</p>
-              </div>
-
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                <CheckCircle2 size={12} /> {currentScenario.overallVerdict}
-              </span>
-            </div>
-
-            {/* Analysis Details */}
-            <div className="lg:col-span-8 space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25">
-                  <div className="text-xs font-bold text-emerald-300 mb-2 flex items-center gap-1.5">
-                    <CheckCircle2 size={14} className="text-emerald-400" />
-                    <span>Matched Keywords ({(currentScenario.matchedSkills || []).length})</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {(currentScenario.matchedSkills || []).map((s) => (
-                      <span key={s} className="text-[11px] px-2 py-0.5 rounded bg-brand-card text-emerald-300 font-medium border border-emerald-500/30">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25">
-                  <div className="text-xs font-bold text-amber-300 mb-2 flex items-center gap-1.5">
-                    <Sparkles size={14} className="text-amber-400" />
-                    <span>Skill Gaps ({(currentScenario.missingSkills || []).length})</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {(currentScenario.missingSkills || []).map((s) => (
-                      <span key={s} className="text-[11px] px-2 py-0.5 rounded bg-brand-card text-amber-300 font-medium border border-amber-500/30">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Bullet Optimization Tip */}
-              <div className="p-4 rounded-xl bg-brand-surface border border-brand-border space-y-2">
-                <div className="text-xs font-bold text-brand-cyan uppercase tracking-wide">
-                  💡 Action Verb &amp; Metrics Optimization Tip
-                </div>
-                <div className="text-xs space-y-1">
-                  <div className="text-rose-300">
-                    <span className="font-bold">Before:</span> <em>"{currentScenario.sampleBulletOptimization?.original || ""}"</em>
-                  </div>
-                  <div className="text-emerald-300">
-                    <span className="font-bold">Optimized:</span> <strong>"{currentScenario.sampleBulletOptimization?.optimized || ""}"</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between text-xs pt-1">
-                <span className="text-brand-muted">Ready to test your actual resume with ATS parsing?</span>
-                <Link
-                  to="/analyzer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet text-white font-semibold hover:bg-brand-violetHover shadow-xs transition-colors"
-                >
-                  <span>Launch Live Analyzer</span>
-                  <ArrowRight size={13} />
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
