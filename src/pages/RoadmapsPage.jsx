@@ -423,6 +423,64 @@ export default function RoadmapsPage({ onPreviewPdf }) {
               </p>
             </div>
 
+            {/* Connected Numbered Stepper (Image 5 Reference) */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/90 border border-brand-border space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-brand-cyan">
+                  Connected Milestones Pathway
+                </span>
+                <span className="text-[11px] text-brand-muted">
+                  Click any checkpoint to view syllabus &amp; tools
+                </span>
+              </div>
+
+              <div className="relative py-3">
+                {/* Continuous Connecting Line for Desktop */}
+                <div className="hidden sm:block absolute top-[28px] left-[6%] right-[6%] h-[3px] bg-gradient-to-r from-[#0B57D0] via-[#0284C7] to-[#8B5CF6] -z-0 opacity-70 rounded-full" />
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 relative z-10">
+                  {(currentRoadmap?.milestones || []).map((m, idx) => {
+                    const stepNum = String(idx + 1).padStart(2, "0");
+                    const isExpanded = expandedMilestone === idx;
+                    const statusKey = `${selectedDomainId}_${selectedYearId}_${m.id || idx}`;
+                    const currentStatus = milestoneProgress[statusKey] || "Not Started";
+
+                    return (
+                      <button
+                        key={m.id || idx}
+                        type="button"
+                        onClick={() => setExpandedMilestone(idx)}
+                        className={`text-center p-3 rounded-xl transition-all flex flex-col items-center group cursor-pointer ${
+                          isExpanded
+                            ? "bg-brand-card/90 ring-1 ring-brand-cyan shadow-sm"
+                            : "hover:bg-brand-card/50"
+                        }`}
+                      >
+                        {/* Numbered Circle Node */}
+                        <div
+                          className={`w-11 h-11 rounded-full text-xs font-heading font-extrabold flex items-center justify-center shadow-md transition-all duration-200 mb-2 ring-4 ${
+                            currentStatus === "Completed"
+                              ? "bg-emerald-600 text-white ring-emerald-500/30"
+                              : isExpanded
+                              ? "bg-gradient-to-br from-[#0B57D0] to-[#0284C7] text-white ring-cyan-400/50 scale-110"
+                              : "bg-brand-card text-brand-slate border border-brand-border ring-white/10 group-hover:scale-105"
+                          }`}
+                        >
+                          {currentStatus === "Completed" ? "✓" : stepNum}
+                        </div>
+                        <span className="text-xs font-bold text-brand-slate line-clamp-1 group-hover:text-brand-cyan transition-colors">
+                          {m.title}
+                        </span>
+                        <span className="text-[10px] text-brand-muted mt-0.5">
+                          {m.timeframe || m.duration || `Checkpoint ${stepNum}`}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
             {/* Interactive Connected Milestones List */}
             <div className="relative pl-6 sm:pl-8 space-y-6 before:absolute before:left-3 sm:before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-brand-border">
               {(currentRoadmap?.milestones || []).map((milestone, idx) => {
@@ -443,15 +501,15 @@ export default function RoadmapsPage({ onPreviewPdf }) {
                   >
                     {/* Timeline Node Indicator */}
                     <div
-                      className={`absolute -left-[31px] sm:-left-[39px] top-5 w-6 h-6 rounded-full text-white text-[11px] font-bold flex items-center justify-center ring-4 ring-[#181727] shadow-xs transition-colors ${
+                      className={`absolute -left-[33px] sm:-left-[41px] top-5 w-7 h-7 rounded-full text-white text-[11px] font-heading font-bold flex items-center justify-center ring-4 ring-[#181727] shadow-sm transition-colors ${
                         currentStatus === "Completed"
                           ? "bg-emerald-600"
                           : currentStatus === "In Progress"
                           ? "bg-amber-500"
-                          : "bg-brand-violet"
+                          : "bg-gradient-to-br from-[#0B57D0] to-[#0284C7]"
                       }`}
                     >
-                      {currentStatus === "Completed" ? "✓" : idx + 1}
+                      {currentStatus === "Completed" ? "✓" : String(idx + 1).padStart(2, "0")}
                     </div>
 
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
