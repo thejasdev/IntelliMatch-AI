@@ -187,14 +187,14 @@ export default function Header({ onOpenContact }) {
 
   return (
     <>
-      {/* Target Header Layout Inspired by Image 1: Elevated, Pill-Shaped Floating Bar with Light Surface */}
-      <div className="sticky top-2 sm:top-3 z-40 px-3 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto transition-all">
-        <header className="w-full bg-white/95 text-slate-800 backdrop-blur-2xl border border-slate-200/90 shadow-xl shadow-slate-950/10 rounded-full px-4 sm:px-7 h-18 sm:h-20 flex items-center justify-between gap-3 sm:gap-4">
+      {/* Target Header Layout Inspired by Image 1 & Harmonized via Image 3: Elevated, Pill-Shaped Floating Bar with Dark-Navy Surface */}
+      <div className="sticky top-2 sm:top-3 z-50 px-3 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto transition-all">
+        <header className="w-full bg-[#0B132B]/90 text-slate-200 backdrop-blur-2xl border border-blue-500/25 shadow-2xl shadow-black/50 rounded-full px-4 sm:px-7 h-18 sm:h-20 flex items-center justify-between gap-3 sm:gap-4">
           
           {/* 1. Left Section — Official IntelliMatch Logo, Wordmark & Tagline */}
           <Link
             to="/"
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#0B57D0]/50 rounded-full p-1 -ml-1 flex-shrink-0"
+            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/50 rounded-full p-1 -ml-1 flex-shrink-0"
             aria-label="IntelliMatch Home"
           >
             {/* Standalone Official Ribbon Symbol */}
@@ -206,16 +206,16 @@ export default function Header({ onOpenContact }) {
             {/* Vertically Aligned Text Group */}
             <div className="flex flex-col min-w-0">
               <span className="font-heading font-extrabold text-[22px] sm:text-[25px] leading-none tracking-tight flex items-center">
-                <span className="text-[#0F172A] group-hover:text-slate-900 transition-colors">Intelli</span>
-                <span className="text-[#0284C7]">Match</span>
+                <span className="text-white group-hover:text-cyan-200 transition-colors">Intelli</span>
+                <span className="text-[#38BDF8]">Match</span>
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 tracking-[0.08em] uppercase leading-tight mt-1 whitespace-nowrap block">
+              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 tracking-[0.08em] uppercase leading-tight mt-1 whitespace-nowrap block">
                 Career Discovery &amp; Readiness
               </span>
             </div>
           </Link>
 
-          {/* 2. Center Section — Horizontal Navigation with Image 1's Blue Active Underline Indicator */}
+          {/* 2. Center Section — Horizontal Navigation with Blue Active Underline Indicator */}
           <nav
             aria-label="Main Navigation"
             className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0"
@@ -227,10 +227,10 @@ export default function Header({ onOpenContact }) {
                   to={item.path}
                   end={item.path === "/"}
                   className={({ isActive }) =>
-                    `relative py-2 px-2 text-xs xl:text-[14px] font-medium transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#0B57D0]/40 rounded-lg ${
+                    `relative py-2 px-2 text-xs xl:text-[14px] font-medium transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/40 rounded-lg ${
                       isActive
-                        ? "text-[#0B57D0] font-semibold after:absolute after:-bottom-0.5 after:left-2 after:right-2 after:h-[2.5px] after:bg-[#0B57D0] after:rounded-full"
-                        : "text-slate-600 hover:text-[#0B57D0]"
+                        ? "text-[#38BDF8] font-semibold after:absolute after:-bottom-0.5 after:left-2 after:right-2 after:h-[2.5px] after:bg-[#38BDF8] after:rounded-full"
+                        : "text-slate-300 hover:text-[#38BDF8]"
                     }`
                   }
                 >
@@ -239,33 +239,33 @@ export default function Header({ onOpenContact }) {
               );
             })}
 
-            {/* More Dropdown Menu */}
+            {/* More Dropdown Menu (Anchored & Layered Above Content) */}
             <div className="relative" ref={moreRef}>
               <button
                 type="button"
                 onClick={() => setMoreOpen(!moreOpen)}
                 aria-haspopup="true"
                 aria-expanded={moreOpen}
-                className={`relative py-2 px-2 text-xs xl:text-[14px] font-medium transition-colors duration-150 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-[#0B57D0]/40 rounded-lg ${
+                className={`relative py-2 px-2 text-xs xl:text-[14px] font-medium transition-colors duration-150 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/40 rounded-lg ${
                   moreOpen || isMoreActive
-                    ? "text-[#0B57D0] font-semibold after:absolute after:-bottom-0.5 after:left-2 after:right-2 after:h-[2.5px] after:bg-[#0B57D0] after:rounded-full"
-                    : "text-slate-600 hover:text-[#0B57D0]"
+                    ? "text-[#38BDF8] font-semibold after:absolute after:-bottom-0.5 after:left-2 after:right-2 after:h-[2.5px] after:bg-[#38BDF8] after:rounded-full"
+                    : "text-slate-300 hover:text-[#38BDF8]"
                 }`}
               >
                 <span>More</span>
                 <ChevronDown
                   size={14}
-                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180 text-[#0B57D0]" : "text-slate-400"}`}
+                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180 text-[#38BDF8]" : "text-slate-400"}`}
                 />
               </button>
 
-              {/* Dropdown Panel */}
+              {/* Dropdown Panel — Opaque Dark-Navy Panel matching background (Image 6 Reference) */}
               {moreOpen && (
                 <div
-                  className="absolute right-0 mt-3 w-64 bg-white/98 backdrop-blur-2xl border border-slate-200 rounded-2xl p-2 shadow-2xl z-50 flex flex-col space-y-1 animate-in fade-in duration-150"
+                  className="absolute right-0 top-full mt-3 w-64 bg-[#0D152A] backdrop-blur-2xl border border-blue-500/35 rounded-2xl p-2.5 shadow-2xl shadow-black/80 z-50 flex flex-col space-y-1 animate-in fade-in duration-150"
                   role="menu"
                 >
-                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#0284C7] border-b border-slate-100 mb-1">
+                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#38BDF8] border-b border-slate-700/60 mb-1">
                     Platform Tools &amp; Info
                   </div>
                   {MORE_NAV.map((subItem, index) => {
@@ -280,18 +280,18 @@ export default function Header({ onOpenContact }) {
                         tabIndex={0}
                         onKeyDown={(e) => handleDropdownKeyDown(e, index)}
                         onClick={() => setMoreOpen(false)}
-                        className={`flex items-start gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#0B57D0]/40 ${
+                        className={`flex items-start gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/40 ${
                           isSubActive
-                            ? "bg-blue-50 text-[#0B57D0] font-semibold border border-blue-200"
-                            : "text-slate-700 hover:text-[#0B57D0] hover:bg-slate-50"
+                            ? "bg-blue-600/25 text-[#38BDF8] font-semibold border border-blue-500/30"
+                            : "text-slate-200 hover:text-white hover:bg-slate-800/80"
                         }`}
                       >
-                        <div className="p-1.5 rounded-lg bg-blue-50 text-[#0284C7] flex-shrink-0 mt-0.5">
+                        <div className="p-1.5 rounded-lg bg-blue-950/70 text-[#38BDF8] border border-blue-800/50 flex-shrink-0 mt-0.5">
                           <SubIcon size={16} />
                         </div>
                         <div className="flex flex-col min-w-0">
-                          <span className="text-xs font-semibold text-slate-900">{subItem.label}</span>
-                          <span className="text-[11px] text-slate-500">{subItem.kicker}</span>
+                          <span className="text-xs font-semibold text-white">{subItem.label}</span>
+                          <span className="text-[11px] text-slate-400">{subItem.kicker}</span>
                         </div>
                       </NavLink>
                     );
@@ -306,29 +306,29 @@ export default function Header({ onOpenContact }) {
             {/* Image 1 Primary Rounded CTA: Royal Blue Pill Button */}
             <Link
               to="/analyzer"
-              className="inline-flex items-center gap-1.5 px-4 sm:px-6 py-2.5 text-xs sm:text-sm font-semibold rounded-full bg-[#0B57D0] hover:bg-[#0842A0] text-white shadow-md shadow-blue-500/20 transition-all hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-1.5 px-4 sm:px-6 py-2.5 text-xs sm:text-sm font-semibold rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white shadow-md shadow-blue-500/20 transition-all hover:scale-105 active:scale-95"
             >
               <Sparkles size={14} className="text-cyan-200" />
               <span>Resume Analyzer</span>
             </Link>
 
-            {/* Functional Search Control Icon Button (From Image 1) */}
+            {/* Functional Search Control Icon Button */}
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
               aria-label="Search platform resources (Ctrl+K)"
-              className="p-2 sm:p-2.5 rounded-full text-slate-600 hover:text-[#0B57D0] hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#0B57D0]/50"
+              className="p-2 sm:p-2.5 rounded-full text-slate-300 hover:text-[#38BDF8] hover:bg-slate-800/70 transition-colors focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/50"
             >
               <Search size={18} />
             </button>
 
-            {/* Compact Menu / Hamburger Control (From Image 1) */}
+            {/* Compact Menu / Hamburger Control */}
             <button
               type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={mobileOpen}
-              className="lg:hidden p-2 sm:p-2.5 rounded-full text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#0B57D0]/50"
+              className="lg:hidden p-2 sm:p-2.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/50"
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -346,26 +346,26 @@ export default function Header({ onOpenContact }) {
           />
 
           <div
-            className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-10 flex flex-col animate-in fade-in zoom-in-95 duration-150"
+            className="relative w-full max-w-xl bg-[#0B132B] rounded-2xl shadow-2xl border border-blue-500/30 overflow-hidden z-10 flex flex-col animate-in fade-in zoom-in-95 duration-150"
             role="dialog"
             aria-modal="true"
             aria-label="Search Platform Resources"
           >
             {/* Search Input Bar */}
-            <div className="p-4 border-b border-slate-100 flex items-center gap-3">
-              <Search size={18} className="text-[#0B57D0] flex-shrink-0" />
+            <div className="p-4 border-b border-slate-700/60 flex items-center gap-3">
+              <Search size={18} className="text-[#38BDF8] flex-shrink-0" />
               <input
                 ref={searchInputRef}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search domains, roles, roadmaps, or projects (e.g. SDE, Cloud, Docker)..."
-                className="w-full text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none bg-transparent"
+                className="w-full text-sm font-medium text-white placeholder:text-slate-400 focus:outline-none bg-transparent"
               />
               <button
                 type="button"
                 onClick={() => setSearchOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/70"
               >
                 <X size={16} />
               </button>
@@ -378,7 +378,7 @@ export default function Header({ onOpenContact }) {
                   Type to search across all 10 engineering tracks, 50+ roles, roadmaps, and projects.
                 </div>
               ) : searchResults.length === 0 ? (
-                <div className="p-6 text-center text-slate-500 text-xs">
+                <div className="p-6 text-center text-slate-400 text-xs">
                   No matching resources found for "{searchQuery}".
                 </div>
               ) : (
@@ -391,15 +391,15 @@ export default function Header({ onOpenContact }) {
                         navigate(item.path);
                         setSearchOpen(false);
                       }}
-                      className="w-full text-left p-2.5 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-between group"
+                      className="w-full text-left p-2.5 rounded-xl hover:bg-slate-800/80 transition-colors flex items-center justify-between group"
                     >
                       <div>
-                        <div className="text-xs font-bold text-slate-900 group-hover:text-[#0B57D0]">
+                        <div className="text-xs font-bold text-white group-hover:text-[#38BDF8]">
                           {item.title}
                         </div>
-                        <div className="text-[11px] text-slate-500">{item.subtitle}</div>
+                        <div className="text-[11px] text-slate-400">{item.subtitle}</div>
                       </div>
-                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-[#0B57D0]">
+                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-950/70 text-[#38BDF8] border border-blue-800/50 group-hover:border-[#38BDF8]/40">
                         {item.category}
                       </span>
                     </button>
@@ -409,8 +409,8 @@ export default function Header({ onOpenContact }) {
             </div>
 
             {/* Footer */}
-            <div className="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-              <span>Press <kbd className="font-mono bg-slate-200 px-1 py-0.5 rounded text-slate-700">ESC</kbd> to exit</span>
+            <div className="px-4 py-2 bg-[#080E1E] border-t border-slate-700/60 flex items-center justify-between text-[11px] text-slate-400">
+              <span>Press <kbd className="font-mono bg-slate-800 px-1 py-0.5 rounded text-slate-300">ESC</kbd> to exit</span>
               <span>IntelliMatch Career Search</span>
             </div>
           </div>
@@ -422,20 +422,20 @@ export default function Header({ onOpenContact }) {
         <div className="fixed inset-0 z-50 lg:hidden">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity"
+            className="fixed inset-0 bg-slate-950/70 backdrop-blur-md transition-opacity"
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
 
           {/* Drawer Panel */}
           <div
-            className="fixed inset-y-0 right-0 w-full max-w-sm bg-white text-slate-900 shadow-2xl z-50 flex flex-col p-6 overflow-y-auto"
+            className="fixed inset-y-0 right-0 w-full max-w-sm bg-[#0B132B] text-slate-100 border-l border-slate-800 shadow-2xl z-50 flex flex-col p-6 overflow-y-auto"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation Menu"
           >
             {/* Drawer Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
               <Link
                 to="/"
                 onClick={() => setMobileOpen(false)}
@@ -443,10 +443,10 @@ export default function Header({ onOpenContact }) {
               >
                 <LogoMark className="w-[40px] h-[33px] flex-shrink-0" />
                 <div className="flex flex-col">
-                  <span className="font-heading font-extrabold text-[20px] text-slate-900 leading-none">
-                    Intelli<span className="text-[#0284C7]">Match</span>
+                  <span className="font-heading font-extrabold text-[20px] text-white leading-none">
+                    Intelli<span className="text-[#38BDF8]">Match</span>
                   </span>
-                  <span className="text-[10px] font-semibold text-slate-500 tracking-wider uppercase mt-0.5">
+                  <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase mt-0.5">
                     Career Discovery
                   </span>
                 </div>
@@ -454,7 +454,7 @@ export default function Header({ onOpenContact }) {
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
-                className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"
                 aria-label="Close navigation menu"
               >
                 <X size={20} />
@@ -463,7 +463,7 @@ export default function Header({ onOpenContact }) {
 
             {/* All 9 Platform Destinations in Exact Order */}
             <nav className="flex-1 space-y-1.5">
-              <div className="text-[11px] font-bold uppercase tracking-wider text-[#0284C7] px-3 py-1 mb-1">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#38BDF8] px-3 py-1 mb-1">
                 Platform Destinations
               </div>
               {ALL_MOBILE_NAV.map((item) => {
@@ -477,12 +477,12 @@ export default function Header({ onOpenContact }) {
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium transition-all duration-150 focus:outline-none ${
                         isActive
-                          ? "bg-blue-50 text-[#0B57D0] font-semibold border border-blue-200 shadow-xs"
-                          : "text-slate-700 hover:text-[#0B57D0] hover:bg-slate-50"
+                          ? "bg-blue-600/25 text-[#38BDF8] font-semibold border border-blue-500/30 shadow-xs"
+                          : "text-slate-300 hover:text-white hover:bg-slate-800/60"
                       }`
                     }
                   >
-                    <Icon size={18} className="flex-shrink-0 text-[#0284C7]" />
+                    <Icon size={18} className="flex-shrink-0 text-[#38BDF8]" />
                     <span>{item.label}</span>
                   </NavLink>
                 );
@@ -490,11 +490,11 @@ export default function Header({ onOpenContact }) {
             </nav>
 
             {/* Mobile Actions in Drawer Footer */}
-            <div className="pt-4 mt-4 border-t border-slate-100 space-y-2">
+            <div className="pt-4 mt-4 border-t border-slate-800 space-y-2">
               <Link
                 to="/analyzer"
                 onClick={() => setMobileOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-sm font-semibold bg-[#0B57D0] text-white shadow-md shadow-blue-500/20"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-sm font-semibold bg-[#0B57D0] hover:bg-[#1D6CE5] text-white shadow-md shadow-blue-500/20"
               >
                 <Sparkles size={16} className="text-cyan-200" />
                 <span>Launch Resume Analyzer</span>
@@ -506,7 +506,7 @@ export default function Header({ onOpenContact }) {
                   setMobileOpen(false);
                   if (onOpenContact) onOpenContact();
                 }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full text-sm font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60"
               >
                 <MessageSquare size={16} />
                 <span>Contact IntelliMatch</span>
