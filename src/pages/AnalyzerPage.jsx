@@ -190,7 +190,7 @@ export default function AnalyzerPage() {
               <div
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={handleDrop}
-                className="border-2 border-dashed border-brand-border rounded-2xl p-6 text-center bg-brand-surface hover:bg-brand-violet/5 hover:border-brand-violet/50 transition-all cursor-pointer relative"
+                className="border-2 border-dashed border-brand-border rounded-2xl p-6 text-center bg-brand-surface hover:bg-brand-cyan/5 hover:border-brand-cyan/60 transition-all cursor-pointer relative group"
               >
                 <input
                   type="file"
@@ -199,7 +199,7 @@ export default function AnalyzerPage() {
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
                 <div className="flex flex-col items-center justify-center gap-2">
-                  <div className="w-11 h-11 rounded-xl bg-brand-card border border-brand-border shadow-xs text-brand-violet flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-xl bg-brand-card border border-brand-border shadow-xs text-brand-cyan flex items-center justify-center group-hover:scale-105 transition-transform">
                     <Upload size={20} />
                   </div>
                   {uploadedFile ? (
@@ -266,16 +266,16 @@ export default function AnalyzerPage() {
               type="button"
               disabled={isAnalyzing}
               onClick={handleRunAnalysis}
-              className="w-full py-3 px-4 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs font-semibold shadow-xs flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-violet to-brand-indigo hover:brightness-110 text-white text-xs font-semibold shadow-md shadow-brand-indigo/30 border border-brand-cyan/30 flex items-center justify-center gap-2 transition-all active:scale-[0.99] disabled:opacity-50"
             >
               {isAnalyzing ? (
                 <>
-                  <RefreshCw size={14} className="animate-spin" />
+                  <RefreshCw size={14} className="animate-spin text-brand-cyan" />
                   <span>Analyzing Resume Keywords...</span>
                 </>
               ) : (
                 <>
-                  <SearchCode size={16} />
+                  <SearchCode size={16} className="text-brand-cyan" />
                   <span>Run ATS Benchmark Analysis</span>
                 </>
               )}
@@ -315,15 +315,15 @@ export default function AnalyzerPage() {
 
               {/* Sub-scores */}
               <div className="grid grid-cols-3 gap-3">
-                <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center">
+                <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center im-card-lift transition-all">
                   <div className="text-sm font-bold text-brand-slate">{analysisResult.keywordCoverage}%</div>
                   <div className="text-[10px] text-brand-muted uppercase tracking-wider mt-0.5">Keyword Match</div>
                 </div>
-                <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center">
+                <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center im-card-lift transition-all">
                   <div className="text-sm font-bold text-brand-slate">{analysisResult.formatScore}%</div>
                   <div className="text-[10px] text-brand-muted uppercase tracking-wider mt-0.5">ATS Formatting</div>
                 </div>
-                <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center">
+                <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center im-card-lift transition-all">
                   <div className="text-sm font-bold text-brand-slate">{analysisResult.actionVerbsScore}%</div>
                   <div className="text-[10px] text-brand-muted uppercase tracking-wider mt-0.5">Action Metrics</div>
                 </div>
