@@ -126,13 +126,13 @@ export default function AnalyzerPage() {
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header Banner */}
       <div className="im-card p-6 md:p-8 space-y-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
           Intelligence Workspace
         </span>
-        <h1 className="text-2xl md:text-3xl font-bold font-heading text-brand-slate m-0">
+        <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
           Resume Analyzer &amp; ATS Benchmark
         </h1>
-        <p className="text-sm text-brand-muted leading-relaxed m-0 max-w-3xl">
+        <p className="text-sm sm:text-base text-brand-muted leading-relaxed m-0 max-w-3xl">
           Compare your resume against real-world engineering job descriptions. Evaluate keyword coverage,
           detect missing competencies, and review actionable writing suggestions.
         </p>
@@ -146,13 +146,13 @@ export default function AnalyzerPage() {
             {/* 1. Domain & Role Selectors */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold text-brand-slate uppercase tracking-wide mb-1.5">
+                <label className="block text-xs sm:text-[13px] font-bold text-brand-slate uppercase tracking-wide mb-1.5">
                   1. Target Engineering Domain
                 </label>
                 <select
                   value={selectedDomain}
                   onChange={(e) => setSelectedDomain(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-[13px] rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
                 >
                   {ENGINEERING_DOMAINS.map((d) => (
                     <option key={d.id} value={d.id}>
@@ -163,13 +163,13 @@ export default function AnalyzerPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-brand-slate uppercase tracking-wide mb-1.5">
+                <label className="block text-xs sm:text-[13px] font-bold text-brand-slate uppercase tracking-wide mb-1.5">
                   Target Job Role
                 </label>
                 <select
                   value={selectedRole}
                   onChange={(e) => setSelectedRole(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-[13px] rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
                 >
                   {availableRoles.map((r) => (
                     <option key={r.id} value={r.id}>
@@ -182,7 +182,7 @@ export default function AnalyzerPage() {
 
             {/* 2. Resume File Upload / Text Input */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold text-brand-slate uppercase tracking-wide">
+              <label className="block text-xs sm:text-[13px] font-bold text-brand-slate uppercase tracking-wide">
                 2. Upload Resume (PDF / DOCX) or Paste Text
               </label>
 
@@ -204,19 +204,19 @@ export default function AnalyzerPage() {
                   </div>
                   {uploadedFile ? (
                     <div className="space-y-0.5">
-                      <span className="text-xs font-bold text-brand-violet block">
+                      <span className="text-xs sm:text-[13px] font-bold text-brand-violet block">
                         ✓ {uploadedFile.name}
                       </span>
-                      <span className="text-[11px] text-brand-muted">
+                      <span className="text-[11px] sm:text-xs text-brand-muted">
                         {(uploadedFile.size / 1024).toFixed(1)} KB &bull; Click or drop to replace
                       </span>
                     </div>
                   ) : (
                     <>
-                      <span className="text-xs font-semibold text-brand-slate">
+                      <span className="text-xs sm:text-[13px] font-semibold text-brand-slate">
                         Click to upload or drag &amp; drop
                       </span>
-                      <span className="text-[11px] text-brand-muted">
+                      <span className="text-[11px] sm:text-xs text-brand-muted">
                         Supports PDF, DOCX, or plain text (Max 10MB)
                       </span>
                     </>
@@ -231,7 +231,7 @@ export default function AnalyzerPage() {
                   value={resumeText}
                   onChange={(e) => setResumeText(e.target.value)}
                   placeholder="Or paste resume skills, summary, and experience text here directly..."
-                  className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-brand-border bg-brand-surface text-brand-slate placeholder:text-brand-muted focus:outline-none focus:border-brand-violet focus:ring-2 focus:ring-brand-violet/20 resize-none"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-[13px] rounded-xl border border-brand-border bg-brand-surface text-brand-slate placeholder:text-brand-muted focus:outline-none focus:border-brand-violet focus:ring-2 focus:ring-brand-violet/20 resize-none"
                 />
               </div>
             </div>
@@ -239,15 +239,15 @@ export default function AnalyzerPage() {
             {/* 3. Job Description Textarea */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="block text-xs font-bold text-brand-slate uppercase tracking-wide">
+                <label className="block text-xs sm:text-[13px] font-bold text-brand-slate uppercase tracking-wide">
                   3. Target Job Description
                 </label>
                 <button
                   type="button"
                   onClick={handleLoadSampleJob}
-                  className="text-[11px] font-semibold text-brand-violet hover:underline inline-flex items-center gap-1"
+                  className="text-[11px] sm:text-xs font-semibold text-brand-violet hover:underline inline-flex items-center gap-1"
                 >
-                  <Sparkles size={11} />
+                  <Sparkles size={12} />
                   <span>Load Sample Job Description</span>
                 </button>
               </div>
@@ -257,7 +257,7 @@ export default function AnalyzerPage() {
                 value={jobDescription}
                 onChange={(e) => setJobDescription(e.target.value)}
                 placeholder="Paste the job description or requirements here..."
-                className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-brand-border bg-brand-surface text-brand-slate placeholder:text-brand-muted focus:outline-none focus:border-brand-violet focus:ring-2 focus:ring-brand-violet/20"
+                className="w-full px-3.5 py-2.5 text-xs sm:text-[13px] rounded-xl border border-brand-border bg-brand-surface text-brand-slate placeholder:text-brand-muted focus:outline-none focus:border-brand-violet focus:ring-2 focus:ring-brand-violet/20"
               />
             </div>
 
@@ -266,7 +266,7 @@ export default function AnalyzerPage() {
               type="button"
               disabled={isAnalyzing}
               onClick={handleRunAnalysis}
-              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-violet to-brand-indigo hover:brightness-110 text-white text-xs font-semibold shadow-md shadow-brand-indigo/30 border border-brand-cyan/30 flex items-center justify-center gap-2 transition-all active:scale-[0.99] disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-violet to-brand-indigo hover:brightness-110 text-white text-xs sm:text-sm font-semibold shadow-md shadow-brand-indigo/30 border border-brand-cyan/30 flex items-center justify-center gap-2 transition-all active:scale-[0.99] disabled:opacity-50"
             >
               {isAnalyzing ? (
                 <>
@@ -290,17 +290,17 @@ export default function AnalyzerPage() {
               {/* Header result */}
               <div className="flex items-center justify-between pb-4 border-b border-brand-border">
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-brand-violet">
+                  <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-brand-violet">
                     Evaluation Complete
                   </span>
-                  <h3 className="text-lg font-bold font-heading text-brand-slate m-0">
+                  <h3 className="text-lg sm:text-xl font-bold font-heading text-brand-slate m-0">
                     {analysisResult.roleTitle} Readiness
                   </h3>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <div className="w-14 h-14 rounded-full border-4 border-brand-violet flex items-center justify-center bg-brand-surface shadow-xs">
-                    <span className="font-heading font-bold text-base text-brand-violet">
+                    <span className="font-heading font-bold text-base sm:text-lg text-brand-violet">
                       {analysisResult.score}%
                     </span>
                   </div>
@@ -308,7 +308,7 @@ export default function AnalyzerPage() {
               </div>
 
               {/* Verdict Pill */}
-              <div className="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs text-emerald-300 font-medium flex items-center gap-2">
+              <div className="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs sm:text-[13px] text-emerald-300 font-medium flex items-center gap-2">
                 <CheckCircle2 size={16} className="text-emerald-400 flex-shrink-0" />
                 <span>{analysisResult.verdict}</span>
               </div>
@@ -316,16 +316,16 @@ export default function AnalyzerPage() {
               {/* Sub-scores */}
               <div className="grid grid-cols-3 gap-3">
                 <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center im-card-lift transition-all">
-                  <div className="text-sm font-bold text-brand-slate">{analysisResult.keywordCoverage}%</div>
-                  <div className="text-[10px] text-brand-muted uppercase tracking-wider mt-0.5">Keyword Match</div>
+                  <div className="text-base sm:text-lg font-bold text-brand-slate">{analysisResult.keywordCoverage}%</div>
+                  <div className="text-[10px] sm:text-[11px] text-brand-muted uppercase tracking-wider mt-0.5">Keyword Match</div>
                 </div>
                 <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center im-card-lift transition-all">
-                  <div className="text-sm font-bold text-brand-slate">{analysisResult.formatScore}%</div>
-                  <div className="text-[10px] text-brand-muted uppercase tracking-wider mt-0.5">ATS Formatting</div>
+                  <div className="text-base sm:text-lg font-bold text-brand-slate">{analysisResult.formatScore}%</div>
+                  <div className="text-[10px] sm:text-[11px] text-brand-muted uppercase tracking-wider mt-0.5">ATS Formatting</div>
                 </div>
                 <div className="p-3 rounded-xl bg-brand-surface border border-brand-border text-center im-card-lift transition-all">
-                  <div className="text-sm font-bold text-brand-slate">{analysisResult.actionVerbsScore}%</div>
-                  <div className="text-[10px] text-brand-muted uppercase tracking-wider mt-0.5">Action Metrics</div>
+                  <div className="text-base sm:text-lg font-bold text-brand-slate">{analysisResult.actionVerbsScore}%</div>
+                  <div className="text-[10px] sm:text-[11px] text-brand-muted uppercase tracking-wider mt-0.5">Action Metrics</div>
                 </div>
               </div>
 

@@ -79,14 +79,14 @@ export default function FeedbackPage() {
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       {/* Header Banner */}
       <div className="im-card p-6 md:p-8 space-y-2 text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface border border-brand-border text-brand-violet text-xs font-semibold mb-2">
-          <MessageSquare size={14} />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface border border-brand-border text-brand-violet text-xs sm:text-[13px] font-semibold mb-2">
+          <MessageSquare size={15} />
           <span>Candidate &amp; Student Feedback</span>
         </div>
-        <h1 className="text-2xl md:text-3xl font-bold font-heading text-brand-slate m-0">
+        <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
           Share Your Experience with IntelliMatch
         </h1>
-        <p className="mt-2 text-xs sm:text-sm text-brand-muted font-sans leading-relaxed m-0 max-w-2xl mx-auto">
+        <p className="mt-2 text-sm sm:text-base text-brand-muted font-sans leading-relaxed m-0 max-w-2xl mx-auto">
           Your feedback directly informs our semantic analyzer models, roadmap curricula, and ATS resume
           templates. Help us make technical career readiness accessible to every engineering student.
         </p>

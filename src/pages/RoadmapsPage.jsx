@@ -160,13 +160,13 @@ export default function RoadmapsPage({ onPreviewPdf }) {
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header Banner */}
       <div className="im-card p-6 md:p-8 space-y-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
           Engineering Curriculum
         </span>
-        <h1 className="text-2xl md:text-3xl font-bold font-heading text-brand-slate m-0">
+        <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
           Domains &amp; Learning Roadmaps
         </h1>
-        <p className="text-sm text-brand-muted leading-relaxed m-0 max-w-3xl">
+        <p className="text-sm sm:text-base text-brand-muted leading-relaxed m-0 max-w-3xl">
           A non-linear, multi-year learning progression from foundational programming to industry-grade
           competencies across 10 specialized engineering domains.
         </p>
@@ -180,14 +180,14 @@ export default function RoadmapsPage({ onPreviewPdf }) {
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="text-base font-bold font-heading text-brand-slate m-0">
+              <h3 className="text-base sm:text-lg font-bold font-heading text-brand-slate m-0">
                 {selectedDomainMeta.name} &mdash; Official Curriculum Handbook
               </h3>
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+              <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
                 PDF in Prep
               </span>
             </div>
-            <p className="text-xs text-brand-muted m-0 mt-0.5">
+            <p className="text-xs sm:text-[13px] text-brand-muted m-0 mt-0.5">
               Complete multi-year semester syllabus, milestones, competencies &amp; project blueprints.
             </p>
           </div>
@@ -197,7 +197,7 @@ export default function RoadmapsPage({ onPreviewPdf }) {
           <button
             type="button"
             onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs font-semibold border border-brand-border transition-all shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
           >
             <Eye size={14} />
             <span>Preview PDF</span>
@@ -206,7 +206,7 @@ export default function RoadmapsPage({ onPreviewPdf }) {
           <button
             type="button"
             onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs font-semibold border border-brand-border transition-all shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
           >
             <ExternalLink size={14} />
             <span>Open in Tab</span>
@@ -215,7 +215,7 @@ export default function RoadmapsPage({ onPreviewPdf }) {
           <button
             type="button"
             onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs font-semibold shadow-xs transition-all"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-[13px] font-semibold shadow-xs transition-all"
           >
             <Download size={14} />
             <span>Download PDF</span>
@@ -278,29 +278,29 @@ export default function RoadmapsPage({ onPreviewPdf }) {
           <div className="im-card p-6 sm:p-7 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-brand-border">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-brand-violet">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-brand-violet">
                   Selected Career Track
                 </span>
-                <h2 className="text-xl font-bold font-heading text-brand-slate m-0">
+                <h2 className="text-xl sm:text-2xl font-bold font-heading text-brand-slate m-0">
                   {selectedDomainMeta.name}
                 </h2>
               </div>
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-brand-surface text-brand-cyan border border-brand-border w-fit">
+              <span className="text-xs sm:text-[13px] font-semibold px-3 py-1 rounded-full bg-brand-surface text-brand-cyan border border-brand-border w-fit">
                 {domainRoles.length} Targeted Job Roles
               </span>
             </div>
 
-            <p className="text-xs text-brand-muted leading-relaxed m-0">
+            <p className="text-xs sm:text-sm text-brand-muted leading-relaxed m-0">
               {selectedDomainMeta.description}
             </p>
 
             {/* Specialized Role Pathways Section (Distinct pathways for Data Careers) */}
             <div className="space-y-2.5 pt-1">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-brand-slate uppercase tracking-wide">
+                <span className="text-[11px] sm:text-xs font-bold text-brand-slate uppercase tracking-wide">
                   {isDataOrAi ? "Specialized Data & AI Pathways:" : "Select Role Pathway:"}
                 </span>
-                <span className="text-[10px] text-brand-muted font-medium">Click role to align checkpoint relevance</span>
+                <span className="text-[10px] sm:text-[11px] text-brand-muted font-medium">Click role to align checkpoint relevance</span>
               </div>
 
               {isDataOrAi ? (
@@ -324,16 +324,16 @@ export default function RoadmapsPage({ onPreviewPdf }) {
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className={`text-xs font-bold ${isSelected ? "text-brand-cyan" : "text-brand-slate"}`}>
+                          <span className={`text-xs sm:text-[13px] font-bold ${isSelected ? "text-brand-cyan" : "text-brand-slate"}`}>
                             {pathway.title}
                           </span>
                           {isSelected && (
-                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan">
+                            <span className="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan">
                               Active
                             </span>
                           )}
                         </div>
-                        <p className="text-[11px] text-brand-muted leading-tight m-0 line-clamp-2">
+                        <p className="text-[11px] sm:text-xs text-brand-muted leading-tight m-0 line-clamp-2">
                           {pathway.focus}
                         </p>
                       </button>
@@ -389,7 +389,7 @@ export default function RoadmapsPage({ onPreviewPdf }) {
                   setSelectedYearId(y.id);
                   setExpandedMilestone(0);
                 }}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-[13px] font-semibold transition-all ${
                   selectedYearId === y.id
                     ? "bg-brand-violet text-white shadow-xs"
                     : "bg-brand-card text-brand-slate border border-brand-border hover:bg-brand-surface hover:text-brand-cyan"
@@ -405,11 +405,11 @@ export default function RoadmapsPage({ onPreviewPdf }) {
             <div className="flex items-center justify-between pb-3 border-b border-brand-border">
               <div className="flex items-center gap-2.5">
                 <Calendar size={18} className="text-brand-violet" />
-                <h3 className="text-base font-bold font-heading text-brand-slate m-0">
+                <h3 className="text-base sm:text-lg font-bold font-heading text-brand-slate m-0">
                   {currentRoadmap?.yearLabel || currentRoadmap?.yearMeta?.label || "Foundations"} &mdash; {currentRoadmap?.stageLabel || currentRoadmap?.yearMeta?.stage || "Year 1"}
                 </h3>
               </div>
-              <span className="text-xs font-bold text-brand-muted">
+              <span className="text-xs sm:text-[13px] font-bold text-brand-muted">
                 {(currentRoadmap?.milestones || []).length} Milestones
               </span>
             </div>
@@ -514,7 +514,7 @@ export default function RoadmapsPage({ onPreviewPdf }) {
 
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <h4 className="font-heading font-bold text-base text-brand-slate m-0">
+                        <h4 className="font-heading font-bold text-base sm:text-lg text-brand-slate m-0">
                           {milestone.title}
                         </h4>
                       </div>
@@ -529,7 +529,7 @@ export default function RoadmapsPage({ onPreviewPdf }) {
                               key={st}
                               type="button"
                               onClick={(e) => updateMilestoneStatus(statusKey, st, e)}
-                              className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-all ${
+                              className={`text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded font-semibold transition-all ${
                                 currentStatus === st
                                   ? st === "Completed"
                                     ? "bg-emerald-600 text-white shadow-xs"
@@ -544,16 +544,16 @@ export default function RoadmapsPage({ onPreviewPdf }) {
                           ))}
                         </div>
 
-                        <span className="inline-flex items-center gap-1 text-[11px] font-medium text-brand-muted bg-brand-surface px-2.5 py-0.5 rounded-full border border-brand-border">
-                          <Clock size={11} /> {milestone.timeframe || milestone.duration || "4-6 Weeks"}
+                        <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-medium text-brand-muted bg-brand-surface px-2.5 py-0.5 rounded-full border border-brand-border">
+                          <Clock size={12} /> {milestone.timeframe || milestone.duration || "4-6 Weeks"}
                         </span>
-                        <span className="text-[11px] font-semibold text-brand-cyan">
+                        <span className="text-[11px] sm:text-xs font-semibold text-brand-cyan">
                           {isExpanded ? "Collapse" : "Expand Checkpoint"}
                         </span>
                       </div>
                     </div>
 
-                    <p className="text-xs text-brand-muted leading-relaxed m-0 mt-2">
+                    <p className="text-xs sm:text-[13px] text-brand-muted leading-relaxed m-0 mt-2">
                       {milestone.description}
                     </p>
 

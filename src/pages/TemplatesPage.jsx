@@ -106,20 +106,20 @@ export default function TemplatesPage({ onPreviewPdf }) {
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header Banner */}
       <div className="im-card p-6 md:p-8 space-y-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
           Career Documents Library
         </span>
-        <h1 className="text-2xl md:text-3xl font-bold font-heading text-brand-slate m-0">
+        <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
           ATS Resume Templates
         </h1>
-        <p className="text-sm text-brand-muted leading-relaxed m-0 max-w-3xl">
+        <p className="text-sm sm:text-base text-brand-muted leading-relaxed m-0 max-w-3xl">
           Access 5 verified, single-page PDF resume templates. Designed around document typography,
           scannability, and ATS compliance rather than restrictive engineering silos.
         </p>
       </div>
 
       {/* Assurance Bar */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-brand-surface border border-brand-border text-xs">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-brand-surface border border-brand-border text-xs sm:text-[13px]">
         <div className="flex items-center gap-2.5">
           <ShieldCheck size={18} className="text-emerald-400 flex-shrink-0" />
           <span className="text-brand-slate font-medium">100% Real, Downloadable PDF Documents</span>
@@ -150,34 +150,34 @@ export default function TemplatesPage({ onPreviewPdf }) {
                       0{idx + 1}
                     </div>
                     <div>
-                      <h3 className="font-heading font-bold text-lg text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
+                      <h3 className="font-heading font-bold text-lg sm:text-xl text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
                         {template.title}
                       </h3>
-                      <span className="text-xs text-brand-cyan font-semibold">
+                      <span className="text-xs sm:text-[13px] text-brand-cyan font-semibold">
                         {template.layoutStyle}
                       </span>
                     </div>
                   </div>
 
-                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 whitespace-nowrap">
+                  <span className="text-[11px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 whitespace-nowrap">
                     ATS-Tested
                   </span>
                 </div>
 
-                <p className="text-xs text-brand-muted leading-relaxed m-0">{template.description}</p>
+                <p className="text-xs sm:text-[13px] text-brand-muted leading-relaxed m-0">{template.description}</p>
 
                 <div className="p-3.5 rounded-xl bg-brand-surface border border-brand-border">
-                  <div className="text-[11px] font-bold text-brand-slate uppercase tracking-wide mb-1">
+                  <div className="text-[11px] sm:text-xs font-bold text-brand-slate uppercase tracking-wide mb-1">
                     Ideal Candidate Profile:
                   </div>
-                  <div className="text-xs text-brand-slate font-medium">{template.bestFor}</div>
+                  <div className="text-xs sm:text-[13px] text-brand-slate font-medium">{template.bestFor}</div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <span className="text-[11px] font-bold text-brand-slate block">
+                  <span className="text-[11px] sm:text-xs font-bold text-brand-slate block">
                     Layout Highlights:
                   </span>
-                  <ul className="text-xs text-brand-muted space-y-1 pl-4 m-0 list-disc">
+                  <ul className="text-xs sm:text-[13px] text-brand-muted space-y-1 pl-4 m-0 list-disc">
                     {template.features.map((f, i) => (
                       <li key={i}>{f}</li>
                     ))}
@@ -187,13 +187,13 @@ export default function TemplatesPage({ onPreviewPdf }) {
 
               {/* Action Buttons: Preview PDF, Open in New Tab, Download */}
               <div className="pt-5 mt-6 border-t border-brand-border/70 flex flex-wrap items-center justify-between gap-3">
-                <div className="text-[11px] text-brand-muted font-mono">{template.filename}</div>
+                <div className="text-[11px] sm:text-xs text-brand-muted font-mono">{template.filename}</div>
 
                 <div className="flex items-center gap-2 flex-wrap">
                   <button
                     type="button"
                     onClick={() => handleOpenPreview(template)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs font-semibold border border-brand-border transition-all shadow-xs"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
                   >
                     <Eye size={14} />
                     <span>Preview</span>
@@ -203,7 +203,7 @@ export default function TemplatesPage({ onPreviewPdf }) {
                     href={pdfPath}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs font-semibold border border-brand-border transition-all shadow-xs"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
                   >
                     <ExternalLink size={14} />
                     <span>Open in Tab</span>
@@ -212,7 +212,7 @@ export default function TemplatesPage({ onPreviewPdf }) {
                   <a
                     href={pdfPath}
                     download={template.filename}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs font-semibold shadow-xs transition-all"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-[13px] font-semibold shadow-xs transition-all"
                   >
                     <Download size={14} />
                     <span>Download</span>

@@ -147,14 +147,14 @@ export default function DashboardPage({ onOpenContact }) {
       <div className="im-card p-6 md:p-8 space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-brand-violet text-xs font-semibold mb-2">
-              <LayoutDashboard size={14} />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-brand-violet text-xs sm:text-[13px] font-semibold mb-2">
+              <LayoutDashboard size={15} />
               <span>Candidate Intelligence Portal</span>
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold font-heading text-brand-slate m-0">
+            <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
               Career Readiness Dashboard
             </h1>
-            <p className="mt-1 text-xs sm:text-sm text-brand-muted max-w-2xl font-sans m-0">
+            <p className="mt-1 text-sm sm:text-base text-brand-muted max-w-2xl font-sans m-0">
               Monitor your resume ATS scores, benchmark evaluation logs across 10 technology disciplines,
               saved portfolio documents, and skill readiness baselines.
             </p>
@@ -164,13 +164,13 @@ export default function DashboardPage({ onOpenContact }) {
             <button
               type="button"
               onClick={() => setShowEmptyState(!showEmptyState)}
-              className="px-4 py-2 text-xs font-medium rounded-xl border border-brand-border bg-brand-surface hover:bg-brand-card text-brand-slate transition-colors shadow-xs"
+              className="px-4 py-2 text-xs sm:text-[13px] font-medium rounded-xl border border-brand-border bg-brand-surface hover:bg-brand-card text-brand-slate transition-colors shadow-xs"
             >
               {showEmptyState ? "Show Populated Demo" : "Preview Fresh Empty State"}
             </button>
             <Link
               to="/analyzer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white transition-all shadow-xs"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-[13px] font-semibold rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white transition-all shadow-xs"
             >
               <FileCheck2 size={16} />
               <span>New Resume Analysis</span>

@@ -42,13 +42,13 @@ export default function InternshipsPage() {
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header Banner */}
       <div className="im-card p-6 md:p-8 space-y-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
           Career Opportunities
         </span>
-        <h1 className="text-2xl md:text-3xl font-bold font-heading text-brand-slate m-0">
+        <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
           Internships &amp; Entry-Level Roles
         </h1>
-        <p className="text-sm text-brand-muted leading-relaxed m-0 max-w-3xl">
+        <p className="text-sm sm:text-base text-brand-muted leading-relaxed m-0 max-w-3xl">
           Discover student internships, graduate traineeships, and entry-level engineering roles across
           10 technical domains, or launch verified external platform searches.
         </p>
@@ -56,7 +56,7 @@ export default function InternshipsPage() {
 
       {/* External Sources Search Bar */}
       <div className="im-card p-5 sm:p-6 space-y-3">
-        <div className="text-xs font-bold uppercase tracking-wider text-brand-slate">
+        <div className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-slate">
           Verified External Search Portals:
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -69,12 +69,12 @@ export default function InternshipsPage() {
               className="p-4 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-cyan/40 hover:shadow-subtle transition-all flex items-center justify-between group"
             >
               <div>
-                <span className="text-xs font-bold text-brand-slate block group-hover:text-brand-cyan transition-colors">
+                <span className="text-xs sm:text-[13px] font-bold text-brand-slate block group-hover:text-brand-cyan transition-colors">
                   {source.name}
                 </span>
-                <span className="text-[11px] text-brand-muted">{source.status || "Open Search"}</span>
+                <span className="text-[11px] sm:text-xs text-brand-muted">{source.status || "Open Search"}</span>
               </div>
-              <ExternalLink size={14} className="text-brand-cyan" />
+              <ExternalLink size={15} className="text-brand-cyan" />
             </a>
           ))}
         </div>
@@ -137,32 +137,32 @@ export default function InternshipsPage() {
             <div className="space-y-3.5">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="font-heading font-bold text-base text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
+                  <h3 className="font-heading font-bold text-base sm:text-lg text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
                     {job.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-xs text-brand-muted mt-1">
+                  <div className="flex items-center gap-2 text-xs sm:text-[13px] text-brand-muted mt-1">
                     <span className="flex items-center gap-1 font-semibold text-brand-cyan">
-                      <Building2 size={13} /> {job.company}
+                      <Building2 size={14} /> {job.company}
                     </span>
                     <span>&bull;</span>
                     <span className="flex items-center gap-1">
-                      <MapPin size={13} /> {job.location}
+                      <MapPin size={14} /> {job.location}
                     </span>
                   </div>
                 </div>
 
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-brand-surface text-brand-cyan border border-brand-border capitalize whitespace-nowrap">
+                <span className="text-[11px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-brand-surface text-brand-cyan border border-brand-border capitalize whitespace-nowrap">
                   {job.arrangement}
                 </span>
               </div>
 
-              <p className="text-xs text-brand-muted leading-relaxed m-0">{job.snippet}</p>
+              <p className="text-xs sm:text-[13px] text-brand-muted leading-relaxed m-0">{job.snippet}</p>
 
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {(job.skills || []).map((s) => (
                   <span
                     key={s}
-                    className="text-[11px] px-2 py-0.5 rounded bg-brand-surface text-brand-slate border border-brand-border/70"
+                    className="text-[11px] sm:text-xs px-2.5 py-0.5 rounded bg-brand-surface text-brand-slate border border-brand-border/70"
                   >
                     {s}
                   </span>
@@ -171,14 +171,14 @@ export default function InternshipsPage() {
             </div>
 
             <div className="pt-4 mt-5 border-t border-brand-border/60 flex items-center justify-between">
-              <span className="text-xs font-semibold text-brand-cyan">{job.jobType || job.experienceLevel || "Full-Time"}</span>
+              <span className="text-xs sm:text-[13px] font-semibold text-brand-cyan">{job.jobType || job.experienceLevel || "Full-Time"}</span>
 
               <Link
                 to="/analyzer"
-                className="text-xs font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
+                className="text-xs sm:text-[13px] font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
               >
                 <span>Analyze Match</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={14} />
               </Link>
             </div>
           </div>

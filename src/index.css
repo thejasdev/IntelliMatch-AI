@@ -89,10 +89,27 @@ a:hover {
 h1, h2, h3, h4, .font-heading {
   font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
   color: #FFFFFF;
+  letter-spacing: -0.018em;
+}
+
+h1 {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(1.625rem, 2.75vw, 2.25rem);
+  line-height: 1.22;
+}
+
+h3 {
+  font-size: clamp(1.1875rem, 2vw, 1.4375rem);
+  line-height: 1.3;
 }
 
 .font-hero {
   font-family: "Manrope", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: -0.025em;
 }
 
 /* Focus styles for keyboard accessibility */

@@ -29,14 +29,14 @@ import { MATCHING_DEMO_SCENARIOS, getScenarioById } from "../../data/matchingDem
 import { SAMPLE_MULTI_DOMAIN_JOBS } from "../../data/jobSources.js";
 import { RESUME_TEMPLATES_DATA } from "./TemplatesPage.jsx";
 
-// Part 4 — Core Platform Quick-Access Cards (Modulus Layout Reference)
+// Part 4 â€” Core Platform Quick-Access Cards (Modulus Layout Reference)
 const QUICK_ACCESS_CARDS = [
   {
     id: "roadmaps",
     title: "Domains Roadmaps",
     desc: "Explore 10 engineering tracks and 4-year structured semester roadmaps.",
     icon: Map,
-    iconBg: "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30",
+    circleStyle: "border-indigo-400/40 bg-indigo-950/60 text-indigo-300 group-hover:border-indigo-300",
     path: "/roadmaps",
     actionText: "View Roadmaps",
   },
@@ -45,7 +45,7 @@ const QUICK_ACCESS_CARDS = [
     title: "Projects Hub",
     desc: "Discover verified portfolio blueprints categorized by domain and difficulty.",
     icon: Layers,
-    iconBg: "bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30",
+    circleStyle: "border-cyan-400/40 bg-cyan-950/60 text-brand-cyan group-hover:border-cyan-300",
     path: "/projects",
     actionText: "Browse Projects",
   },
@@ -54,7 +54,7 @@ const QUICK_ACCESS_CARDS = [
     title: "Resume Templates",
     desc: "Access 5 tested, single-page vector PDFs with 100% selectable text.",
     icon: FileText,
-    iconBg: "bg-brand-violet/20 text-brand-periwinkle border border-brand-violet/30",
+    circleStyle: "border-purple-400/40 bg-purple-950/60 text-purple-300 group-hover:border-purple-300",
     path: "/templates",
     actionText: "Preview PDFs",
   },
@@ -63,7 +63,7 @@ const QUICK_ACCESS_CARDS = [
     title: "Resume Analyzer",
     desc: "Benchmark your resume against real job descriptions with ATS scoring.",
     icon: SearchCode,
-    iconBg: "bg-purple-500/20 text-purple-300 border border-purple-500/30",
+    circleStyle: "border-sky-400/40 bg-sky-950/60 text-sky-300 group-hover:border-sky-300",
     path: "/analyzer",
     actionText: "Analyze Resume",
   },
@@ -72,7 +72,7 @@ const QUICK_ACCESS_CARDS = [
     title: "Internships",
     desc: "Discover entry-level roles and verified application portal pipelines.",
     icon: Briefcase,
-    iconBg: "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30",
+    circleStyle: "border-emerald-400/40 bg-emerald-950/60 text-emerald-300 group-hover:border-emerald-300",
     path: "/internships",
     actionText: "Find Roles",
   },
@@ -183,7 +183,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
             category: "milestone",
             categoryLabel: "Curriculum Milestone",
             title: m.title,
-            subtitle: `${rd.name} • ${m.timeframe || yearKey}`,
+            subtitle: `${rd.name} â€¢ ${m.timeframe || yearKey}`,
             description: m.description || "",
             skills: m.skills || m.topics || [],
             path: `/roadmaps?domain=${rd.id}`,
@@ -200,7 +200,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         category: "project",
         categoryLabel: "Project Blueprint",
         title: p.title,
-        subtitle: `${p.difficulty} • ${p.domain || p.domainId}`,
+        subtitle: `${p.difficulty} â€¢ ${p.domain || p.domainId}`,
         description: p.deliverable || p.description || "",
         skills: p.skills || [],
         path: `/projects?id=${p.id}&domain=${p.domainId}`,
@@ -265,7 +265,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
             {/* Top kicker specification */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
               <Sparkles size={12} className="text-[#38BDF8]" />
-              <span className="uppercase tracking-wider">§ 01 — Career Discovery &amp; Readiness</span>
+              <span className="uppercase tracking-wider">Â§ 01 â€” Career Discovery &amp; Readiness</span>
             </div>
 
             {/* Prominent Large Headline across lines */}
@@ -333,44 +333,53 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         </div>
       </section>
 
-      {/* 2. Platform Quick-Access Cards (Modulus-Style Row Directly Below Hero with ~2.5px Hover Lift) */}
-      <section className="space-y-3 pt-2">
+      {/* 2. Platform Quick-Access Cards (Redesigned with Image 2 Circular Badge & Layout) */}
+      <section className="space-y-3.5 pt-2">
         <div className="flex items-center justify-between px-1">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-slate flex items-center gap-1.5">
-            <Sparkles size={13} className="text-brand-violet" />
+          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-cyan flex items-center gap-2">
+            <Sparkles size={14} className="text-brand-cyan" />
             <span>Core Platform Workspaces</span>
           </span>
-          <span className="text-[11px] text-brand-muted font-medium">5 Immediate Capabilities</span>
+          <span className="text-xs text-slate-400 font-medium">5 Immediate Capabilities</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 items-stretch">
           {QUICK_ACCESS_CARDS.map((card) => {
             const Icon = card.icon;
             return (
               <Link
                 key={card.id}
                 to={card.path}
-                className="im-card im-card-lift p-4 sm:p-4.5 flex flex-col justify-between group"
+                className="h-full rounded-2xl border border-blue-500/25 hover:border-cyan-400/50 bg-[#0E162B]/85 hover:bg-[#131D38]/95 p-4 sm:p-5 flex flex-col justify-between group shadow-lg hover:shadow-cyan-950/25 transition-all duration-300 hover:-translate-y-1 backdrop-blur-md"
               >
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className={`w-9 h-9 rounded-xl ${card.iconBg} flex items-center justify-center transition-transform group-hover:scale-105`}>
-                      <Icon size={18} />
+                    {/* Small circular icon badge near the top (Image 2 reference) */}
+                    <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full border ${card.circleStyle} flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-300`}>
+                      <Icon size={20} strokeWidth={2.1} />
                     </div>
-                    <ChevronRight size={14} className="text-brand-muted group-hover:text-brand-cyan group-hover:translate-x-0.5 transition-all" />
+                    <ChevronRight size={15} className="text-slate-500 group-hover:text-brand-cyan group-hover:translate-x-0.5 transition-all" />
                   </div>
+
                   <div>
-                    <h3 className="font-heading font-bold text-sm text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
+                    <h3 className="font-heading font-bold text-[15px] sm:text-base text-white group-hover:text-brand-cyan transition-colors m-0 tracking-tight">
                       {card.title}
                     </h3>
-                    <p className="text-[11px] text-brand-muted leading-relaxed mt-1 m-0 line-clamp-2">
+                    <p className="text-xs sm:text-[13px] text-slate-300/85 leading-relaxed mt-1.5 m-0 line-clamp-3">
                       {card.desc}
                     </p>
                   </div>
                 </div>
-                <div className="pt-2.5 mt-2 border-t border-brand-border/60 flex items-center justify-between text-[11px] font-semibold text-brand-cyan">
-                  <span>{card.actionText}</span>
-                  <span>&rarr;</span>
+
+                <div>
+                  {/* Thin divider */}
+                  <div className="my-3 sm:my-3.5 border-t border-slate-700/60 group-hover:border-blue-500/30 transition-colors" />
+
+                  {/* Clear bottom action label with arrow */}
+                  <div className="w-full py-2 px-3 rounded-xl bg-blue-600/20 group-hover:bg-[#0B57D0] text-cyan-300 group-hover:text-white border border-blue-500/30 group-hover:border-blue-400/60 flex items-center justify-between text-xs font-semibold shadow-xs transition-all duration-200">
+                    <span>{card.actionText}</span>
+                    <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
+                  </div>
                 </div>
               </Link>
             );
@@ -378,16 +387,16 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         </div>
       </section>
 
-      {/* 3. Four-Stage Career Journey (Discover a Domain → Follow a Roadmap → Build Projects → Prepare for Opportunities) */}
+      {/* 3. Four-Stage Career Journey (Discover a Domain -> Follow a Roadmap -> Build Projects -> Prepare for Opportunities) */}
       <section className="space-y-6 pt-2">
-        <div className="max-w-2xl">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+        <div className="max-w-3xl">
+          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
             Four Connected Stages
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-brand-slate m-0 mt-1">
+          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-white m-0 mt-1.5 leading-snug">
             Discover a Domain &rarr; Follow a Roadmap &rarr; Build Projects &rarr; Prepare for Opportunities
           </h2>
-          <p className="text-sm text-brand-muted mt-2 m-0">
+          <p className="text-sm sm:text-base text-slate-300 mt-2 m-0 leading-relaxed">
             A structured path guiding engineering students from technical exploration to verified industry readiness.
           </p>
         </div>
@@ -434,7 +443,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                 className="bg-[#0E162B]/85 hover:bg-[#131D38]/90 border border-blue-500/25 hover:border-blue-400/50 rounded-3xl p-7 sm:p-8 flex flex-col items-center text-center justify-between shadow-xl transition-all duration-300 group hover:-translate-y-1 backdrop-blur-md"
               >
                 <div className="w-full flex flex-col items-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#38BDF8] bg-blue-950/70 px-3.5 py-1 rounded-full border border-blue-500/30 shadow-xs mb-3">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#38BDF8] bg-blue-950/70 px-3.5 py-1 rounded-full border border-blue-500/30 shadow-xs mb-3">
                     Stage 0{i + 1}
                   </span>
                   
@@ -443,15 +452,15 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                   </div>
 
                   <div className="space-y-1.5 my-2">
-                    <span className="text-[11px] font-semibold text-slate-400 block uppercase tracking-wide">
+                    <span className="text-xs sm:text-[13px] font-semibold text-slate-400 block uppercase tracking-wide">
                       {card.stage}
                     </span>
-                    <h3 className="font-heading font-bold text-lg text-white m-0">
+                    <h3 className="font-heading font-bold text-lg sm:text-xl text-white m-0">
                       {card.title}
                     </h3>
                   </div>
 
-                  <p className="text-xs text-slate-300 leading-relaxed m-0 mt-1 max-w-[220px]">
+                  <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 mt-1 max-w-[240px]">
                     {card.desc}
                   </p>
                 </div>
@@ -460,7 +469,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                   {card.href.startsWith("#") ? (
                     <a
                       href={card.href}
-                      className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs font-semibold shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5 group/btn transition-all duration-200"
+                      className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5 group/btn transition-all duration-200"
                     >
                       <span>{card.linkText}</span>
                       <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
@@ -468,7 +477,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                   ) : (
                     <Link
                       to={card.href}
-                      className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs font-semibold shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5 group/btn transition-all duration-200"
+                      className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5 group/btn transition-all duration-200"
                     >
                       <span>{card.linkText}</span>
                       <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
@@ -481,18 +490,17 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         </div>
       </section>
 
-
-      {/* 3. Explore Technology Careers (10 Supported Domains) */}
+      {/* 4. Explore Technology Careers (10 Supported Domains — Image 3 Reference) */}
       <section id="domains" className="space-y-6 pt-2">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#8B7FF5]">
               10 Specialized Tracks
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-brand-slate m-0 mt-1">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white m-0 mt-1.5 leading-tight">
               Explore Technology Domains
             </h2>
-            <p className="text-sm text-brand-muted mt-2 m-0">
+            <p className="text-sm sm:text-base text-slate-300 mt-2 m-0 leading-relaxed">
               Investigate domain overviews, core tech stacks, and specialized job role trajectories.
             </p>
           </div>
@@ -505,7 +513,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               value={domainSearch}
               onChange={(e) => setDomainSearch(e.target.value)}
               placeholder="Search domains or roles..."
-              className="w-full pl-9 pr-3.5 py-2.5 text-xs rounded-xl border border-brand-border bg-brand-card text-brand-slate placeholder:text-brand-muted focus:outline-none focus:border-brand-violet focus:ring-2 focus:ring-brand-violet/20"
+              className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-brand-border bg-brand-card text-brand-slate placeholder:text-brand-muted focus:outline-none focus:border-brand-violet focus:ring-2 focus:ring-brand-violet/20"
             />
           </div>
         </div>
@@ -523,7 +531,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               key={tab.id}
               type="button"
               onClick={() => setDomainCategory(tab.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                 domainCategory === tab.id
                   ? "bg-brand-violet text-white shadow-xs font-semibold"
                   : "bg-brand-card text-brand-slate border border-brand-border hover:bg-brand-surface hover:text-brand-violet"
@@ -550,7 +558,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                   loading="lazy"
                 />
                 <div className="absolute top-3.5 right-3.5">
-                  <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#0B132B]/90 text-cyan-300 shadow-sm border border-blue-500/30 whitespace-nowrap backdrop-blur-md">
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#0B132B]/90 text-cyan-300 shadow-sm border border-blue-500/30 whitespace-nowrap backdrop-blur-md">
                     {domain.roles.length} Roles
                   </span>
                 </div>
@@ -559,26 +567,26 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               {/* Card Body */}
               <div className="p-6 bg-[#0E162B]/90 hover:bg-[#121B36]/95 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#38BDF8] block">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#38BDF8] block">
                     Engineering Track
                   </span>
-                  <h3 className="font-heading font-bold text-lg text-white m-0 group-hover:text-cyan-200 transition-colors">
+                  <h3 className="font-heading font-bold text-xl sm:text-[22px] text-white m-0 group-hover:text-cyan-200 transition-colors">
                     {domain.name}
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed m-0 line-clamp-2">
+                  <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 line-clamp-2">
                     {domain.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {domain.roles.slice(0, 3).map((r) => (
                       <span
                         key={r.id}
-                        className="text-[11px] px-2.5 py-1 rounded-lg bg-[#18223B] text-slate-200 font-medium border border-blue-500/20"
+                        className="text-xs px-2.5 py-1 rounded-lg bg-[#18223B] text-slate-200 font-medium border border-blue-500/20"
                       >
                         {r.title}
                       </span>
                     ))}
                     {domain.roles.length > 3 && (
-                      <span className="text-[11px] px-2.5 py-1 rounded-lg bg-blue-950/70 text-[#38BDF8] font-semibold border border-blue-500/30">
+                      <span className="text-xs px-2.5 py-1 rounded-lg bg-blue-950/70 text-[#38BDF8] font-semibold border border-blue-500/30">
                         +{domain.roles.length - 3} more
                       </span>
                     )}
@@ -588,14 +596,14 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                 <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
                   <Link
                     to={`/roadmaps?domain=${domain.id}`}
-                    className="text-xs font-bold text-[#38BDF8] hover:text-cyan-200 hover:underline inline-flex items-center gap-1 group/btn"
+                    className="text-xs sm:text-sm font-bold text-[#38BDF8] hover:text-cyan-200 hover:underline inline-flex items-center gap-1 group/btn"
                   >
                     <span>View Roadmaps</span>
-                    <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
+                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     to={`/projects?domain=${domain.id}`}
-                    className="text-xs text-slate-400 hover:text-white font-medium inline-flex items-center gap-1"
+                    className="text-xs sm:text-sm text-slate-400 hover:text-white font-medium inline-flex items-center gap-1"
                   >
                     <span>Projects &rarr;</span>
                   </Link>
@@ -609,13 +617,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
       {/* 4. Interactive Learning Roadmaps Preview */}
       <section id="roadmaps" className="space-y-6 pt-2">
         <div className="max-w-2xl">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
             Structured Curriculum
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-brand-slate m-0 mt-1">
+          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-white m-0 mt-1.5 leading-tight">
             Interactive Learning Roadmaps
           </h2>
-          <p className="text-sm text-brand-muted mt-2 m-0">
+          <p className="text-sm sm:text-base text-slate-300 mt-2 m-0 leading-relaxed">
             Select an academic year and engineering domain to review curated semester milestones.
           </p>
         </div>
@@ -625,13 +633,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-brand-border">
             <div className="flex flex-wrap items-center gap-3">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-muted mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
                   College Level
                 </label>
                 <select
                   value={roadmapYear}
                   onChange={(e) => setRoadmapYear(e.target.value)}
-                  className="px-3.5 py-2 text-xs font-medium rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
+                  className="px-3.5 py-2 text-xs sm:text-sm font-medium rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
                 >
                   {ROADMAP_YEARS.map((y) => (
                     <option key={y.id} value={y.id}>
@@ -642,13 +650,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-muted mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
                   Career Track
                 </label>
                 <select
                   value={roadmapDomain}
                   onChange={(e) => setRoadmapDomain(e.target.value)}
-                  className="px-3.5 py-2 text-xs font-medium rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
+                  className="px-3.5 py-2 text-xs sm:text-sm font-medium rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
                 >
                   {ROADMAP_DOMAINS.map((d) => (
                     <option key={d.id} value={d.id}>
@@ -660,7 +668,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
             </div>
 
             <div className="text-right sm:self-end">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-violet/10 text-brand-violet border border-brand-violet/20">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs sm:text-[13px] font-semibold bg-brand-violet/10 text-brand-violet border border-brand-violet/20">
                 {currentRoadmap?.yearLabel || currentRoadmap?.yearMeta?.label || "Foundations"} &bull; {currentRoadmap?.stageLabel || currentRoadmap?.yearMeta?.stage || "Year 1"}
               </span>
             </div>
@@ -668,8 +676,8 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
 
           {/* Overview Banner */}
           <div className="p-4 rounded-xl bg-brand-surface border border-brand-border">
-            <p className="text-xs text-brand-slate leading-relaxed m-0 font-medium">
-              <span className="font-bold text-brand-slate">Year Focus:</span> {currentRoadmap?.overview || currentRoadmap?.domain?.overview || "Master key fundamentals and competencies for this academic year."}
+            <p className="text-[13px] sm:text-sm text-slate-200 leading-relaxed m-0 font-medium">
+              <span className="font-bold text-white">Year Focus:</span> {currentRoadmap?.overview || currentRoadmap?.domain?.overview || "Master key fundamentals and competencies for this academic year."}
             </p>
           </div>
 
@@ -687,38 +695,38 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                     className="relative flex flex-col items-center text-center group"
                   >
                     {/* Numbered Step Circle (Image 5 reference) */}
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#0B57D0] to-[#0284C7] text-white font-heading font-extrabold text-base flex items-center justify-center shadow-lg ring-4 ring-white/90 group-hover:scale-110 group-hover:ring-[#0B57D0]/30 transition-all duration-300 mb-4 z-10 cursor-default">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#0B57D0] to-[#0284C7] text-white font-heading font-extrabold text-base sm:text-lg flex items-center justify-center shadow-lg ring-4 ring-white/90 group-hover:scale-110 group-hover:ring-[#0B57D0]/30 transition-all duration-300 mb-4 z-10 cursor-default">
                       {stepNum}
                     </div>
 
                     {/* Step Content Card */}
-                    <div className="w-full bg-brand-surface/80 hover:bg-brand-surface border border-brand-border hover:border-[#0284C7]/50 rounded-2xl p-5 shadow-sm transition-all duration-200 flex flex-col justify-between flex-1 space-y-3 text-left">
-                      <div className="space-y-1.5">
+                    <div className="w-full bg-brand-surface/80 hover:bg-brand-surface border border-brand-border hover:border-[#0284C7]/50 rounded-2xl p-5 sm:p-6 shadow-sm transition-all duration-200 flex flex-col justify-between flex-1 space-y-3.5 text-left">
+                      <div className="space-y-2">
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#0284C7] bg-[#0284C7]/10 px-2.5 py-0.5 rounded-full border border-[#0284C7]/20">
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-[#0284C7] bg-[#0284C7]/10 px-2.5 py-0.5 rounded-full border border-[#0284C7]/20">
                             Checkpoint {stepNum}
                           </span>
-                          <span className="text-[11px] text-brand-muted font-medium flex items-center gap-1">
-                            <Clock size={11} /> {m.duration || m.timeframe || "4-6 Weeks"}
+                          <span className="text-xs text-slate-400 font-medium flex items-center gap-1">
+                            <Clock size={12} /> {m.duration || m.timeframe || "4-6 Weeks"}
                           </span>
                         </div>
-                        <h4 className="font-heading font-bold text-base text-brand-slate m-0 pt-1 group-hover:text-[#0284C7] transition-colors">
+                        <h4 className="font-heading font-bold text-base sm:text-lg text-white m-0 pt-1 group-hover:text-[#0284C7] transition-colors">
                           {m.title}
                         </h4>
-                        <p className="text-xs text-brand-muted leading-relaxed m-0 pt-0.5">
+                        <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 pt-0.5">
                           {m.description}
                         </p>
                       </div>
 
                       <div className="pt-3 border-t border-brand-border/60">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-brand-slate block mb-1.5">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-300 block mb-1.5">
                           Key Competencies:
                         </span>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-1.5">
                           {(m.topics || m.skills || []).map((t) => (
                             <span
                               key={t}
-                              className="text-[10px] px-2 py-0.5 rounded-md bg-brand-card text-brand-slate border border-brand-border/70"
+                              className="text-xs px-2.5 py-0.5 rounded-md bg-brand-card text-slate-200 border border-brand-border/70"
                             >
                               {t}
                             </span>
@@ -733,13 +741,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
           </div>
 
           {/* Footer CTA */}
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs border-t border-brand-border">
-            <span className="text-brand-muted">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm border-t border-brand-border">
+            <span className="text-slate-400">
               Interactive roadmap milestone preview. Explore all tracks across all 4 engineering years.
             </span>
             <Link
               to="/roadmaps"
-              className="inline-flex items-center gap-1.5 font-semibold text-brand-violet hover:underline"
+              className="inline-flex items-center gap-1.5 font-semibold text-brand-cyan hover:underline"
             >
               <span>Explore Complete Roadmap Matrix</span>
               <ArrowRight size={14} />
@@ -752,13 +760,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
       <section className="space-y-6 pt-2">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#8B7FF5]">
               Learn by Building
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-brand-slate m-0 mt-1">
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-white m-0 mt-1.5 leading-tight">
               Projects Hub Blueprints
             </h2>
-            <p className="text-sm text-brand-muted mt-2 m-0">
+            <p className="text-sm sm:text-base text-slate-300 mt-2 m-0 leading-relaxed">
               Bridge academic concepts and engineering deliverables through curated portfolio projects.
             </p>
           </div>
@@ -769,7 +777,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                 key={diff}
                 type="button"
                 onClick={() => setProjectDiff(diff)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-medium capitalize transition-all ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium capitalize transition-all ${
                   projectDiff === diff
                     ? "bg-brand-violet text-white shadow-xs font-semibold"
                     : "bg-brand-card text-brand-slate border border-brand-border hover:bg-brand-surface"
@@ -791,7 +799,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               <div className="space-y-3.5">
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full capitalize ${
+                    className={`text-xs font-bold px-2.5 py-0.5 rounded-full capitalize ${
                       project.difficulty === "beginner" || project.difficulty === "Beginner"
                         ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
                         : project.difficulty === "intermediate" || project.difficulty === "Intermediate"
@@ -801,19 +809,19 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                   >
                     {project.difficulty}
                   </span>
-                  <span className="text-[11px] text-brand-muted font-medium">{project.estimatedHours || "Self-Paced"}</span>
+                  <span className="text-xs text-slate-400 font-medium">{project.estimatedHours || "Self-Paced"}</span>
                 </div>
 
-                <h3 className="font-heading font-bold text-base text-brand-slate m-0">
+                <h3 className="font-heading font-bold text-lg sm:text-xl text-white m-0 group-hover:text-brand-cyan transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-xs text-brand-muted leading-relaxed m-0">
+                <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0">
                   {project.description || project.deliverable || ""}
                 </p>
 
                 <div className="space-y-1.5 pt-1">
-                  <div className="text-[11px] font-bold text-brand-slate">Deliverables:</div>
-                  <ul className="text-xs text-brand-muted space-y-1 pl-4 m-0 list-disc">
+                  <div className="text-xs font-bold text-slate-200">Deliverables:</div>
+                  <ul className="text-xs sm:text-[13px] text-slate-300 space-y-1 pl-4 m-0 list-disc">
                     {(Array.isArray(project.deliverables)
                       ? project.deliverables
                       : (project.deliverable ? [project.deliverable] : [])
@@ -827,12 +835,12 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               <div className="pt-4 mt-4 border-t border-brand-border/60 flex items-center justify-between">
                 <Link
                   to={`/projects?id=${project.id}`}
-                  className="text-xs font-semibold text-brand-violet hover:underline inline-flex items-center gap-1"
+                  className="text-xs sm:text-sm font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
                 >
                   <span>Inspect Blueprint</span>
-                  <ChevronRight size={13} />
+                  <ChevronRight size={14} />
                 </Link>
-                <span className="text-[11px] text-brand-muted">{project.skills.slice(0, 2).join(", ")}</span>
+                <span className="text-xs text-slate-400">{project.skills.slice(0, 2).join(", ")}</span>
               </div>
             </div>
           ))}
@@ -841,7 +849,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         <div className="text-center pt-2">
           <Link
             to="/projects"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-card border border-brand-border text-brand-violet hover:bg-brand-surface text-xs font-semibold shadow-xs transition-all"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-card border border-brand-border text-brand-cyan hover:bg-brand-surface text-xs sm:text-sm font-semibold shadow-xs transition-all"
           >
             <span>Browse All {CURATED_PROJECTS.length} Project Blueprints</span>
             <ArrowRight size={14} />
@@ -852,13 +860,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
       {/* 6. Resume-to-Job Matching Interactive Demonstration (Clearly Labeled Sample Scenario) */}
       <section className="space-y-6 pt-2">
         <div className="max-w-2xl">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-cyan">
             Algorithmic Intelligence Preview
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-brand-slate m-0 mt-1">
+          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-white m-0 mt-1.5 leading-tight">
             Resume-to-Job Semantic Matching
           </h2>
-          <p className="text-sm text-brand-muted mt-2 m-0">
+          <p className="text-sm sm:text-base text-slate-300 mt-2 m-0 leading-relaxed">
             Interactive simulation illustrating how keyword coverage, experience evaluation, and ATS
             benchmarking work on sample resumes.
           </p>
@@ -867,13 +875,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         <div className="im-card p-6 md:p-8 space-y-6">
           {/* Scenario Buttons */}
           <div className="flex flex-wrap items-center gap-2 pb-4 border-b border-brand-border">
-            <span className="text-xs font-bold text-brand-slate mr-2">Sample Role:</span>
+            <span className="text-xs sm:text-sm font-bold text-slate-300 mr-2">Sample Role:</span>
             {MATCHING_DEMO_SCENARIOS.map((s) => (
               <button
                 key={s.id}
                 type="button"
                 onClick={() => setSelectedScenarioId(s.id)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                   selectedScenarioId === s.id
                     ? "bg-brand-violet text-white shadow-xs font-semibold"
                     : "bg-brand-surface text-brand-slate hover:bg-brand-violet/10 hover:text-brand-violet border border-brand-border"
@@ -889,35 +897,35 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
             {/* Score Wheel */}
             <div className="lg:col-span-4 p-6 rounded-2xl bg-brand-surface border border-brand-border flex flex-col items-center text-center space-y-3">
               <div className="w-28 h-28 rounded-full border-4 border-brand-violet flex flex-col items-center justify-center bg-brand-card shadow-xs">
-                <span className="text-3xl font-bold font-heading text-brand-violet">
+                <span className="text-3xl sm:text-4xl font-bold font-heading text-brand-violet">
                   {currentScenario.matchScore}%
                 </span>
-                <span className="text-[10px] font-semibold text-brand-muted uppercase">Match Score</span>
+                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Match Score</span>
               </div>
 
               <div>
-                <h4 className="font-heading font-bold text-base text-brand-slate m-0">
+                <h4 className="font-heading font-bold text-lg sm:text-xl text-white m-0">
                   {currentScenario.candidateName}
                 </h4>
-                <p className="text-xs text-brand-muted m-0">{currentScenario.candidateBackground}</p>
+                <p className="text-xs sm:text-sm text-slate-300 m-0">{currentScenario.candidateBackground}</p>
               </div>
 
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                <CheckCircle2 size={12} /> {currentScenario.overallVerdict}
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                <CheckCircle2 size={13} /> {currentScenario.overallVerdict}
               </span>
             </div>
 
             {/* Analysis Details */}
             <div className="lg:col-span-8 space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25">
-                  <div className="text-xs font-bold text-emerald-300 mb-2 flex items-center gap-1.5">
-                    <CheckCircle2 size={14} className="text-emerald-400" />
+                  <div className="text-xs sm:text-sm font-bold text-emerald-300 mb-2 flex items-center gap-1.5">
+                    <CheckCircle2 size={15} className="text-emerald-400" />
                     <span>Matched Keywords ({(currentScenario.matchedSkills || []).length})</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {(currentScenario.matchedSkills || []).map((s) => (
-                      <span key={s} className="text-[11px] px-2 py-0.5 rounded bg-brand-card text-emerald-300 font-medium border border-emerald-500/30">
+                      <span key={s} className="text-xs px-2.5 py-0.5 rounded bg-brand-card text-emerald-300 font-medium border border-emerald-500/30">
                         {s}
                       </span>
                     ))}
@@ -925,13 +933,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                 </div>
 
                 <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25">
-                  <div className="text-xs font-bold text-amber-300 mb-2 flex items-center gap-1.5">
-                    <Sparkles size={14} className="text-amber-400" />
+                  <div className="text-xs sm:text-sm font-bold text-amber-300 mb-2 flex items-center gap-1.5">
+                    <Sparkles size={15} className="text-amber-400" />
                     <span>Skill Gaps ({(currentScenario.missingSkills || []).length})</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {(currentScenario.missingSkills || []).map((s) => (
-                      <span key={s} className="text-[11px] px-2 py-0.5 rounded bg-brand-card text-amber-300 font-medium border border-amber-500/30">
+                      <span key={s} className="text-xs px-2.5 py-0.5 rounded bg-brand-card text-amber-300 font-medium border border-amber-500/30">
                         {s}
                       </span>
                     ))}
@@ -941,10 +949,10 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
 
               {/* Bullet Optimization Tip */}
               <div className="p-4 rounded-xl bg-brand-surface border border-brand-border space-y-2">
-                <div className="text-xs font-bold text-brand-cyan uppercase tracking-wide">
+                <div className="text-xs sm:text-sm font-bold text-brand-cyan uppercase tracking-wide">
                   💡 Action Verb &amp; Metrics Optimization Tip
                 </div>
-                <div className="text-xs space-y-1">
+                <div className="text-xs sm:text-sm space-y-1">
                   <div className="text-rose-300">
                     <span className="font-bold">Before:</span> <em>"{currentScenario.sampleBulletOptimization?.original || ""}"</em>
                   </div>
@@ -954,14 +962,14 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between text-xs pt-1">
-                <span className="text-brand-muted">Ready to test your actual resume with ATS parsing?</span>
+              <div className="flex items-center justify-between text-xs sm:text-sm pt-1">
+                <span className="text-slate-400">Ready to test your actual resume with ATS parsing?</span>
                 <Link
                   to="/analyzer"
                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet text-white font-semibold hover:bg-brand-violetHover shadow-xs transition-colors"
                 >
                   <span>Launch Live Analyzer</span>
-                  <ArrowRight size={13} />
+                  <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
@@ -972,13 +980,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
       {/* 7. Career-Readiness Tools & Local Content Search */}
       <section className="space-y-8 pt-2">
         <div className="max-w-2xl">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
             Section 7 • Readiness &amp; Intelligence
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-brand-slate m-0 mt-1">
+          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-white m-0 mt-1.5 leading-tight">
             Career-Readiness Tools &amp; Content Search
           </h2>
-          <p className="text-sm text-brand-muted mt-2 m-0">
+          <p className="text-sm sm:text-base text-slate-300 mt-2 m-0 leading-relaxed">
             Focused applications to benchmark career materials, explore curriculum resources, and instant search across the entire IntelliMatch catalogue.
           </p>
         </div>
@@ -991,17 +999,17 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               <div className="w-12 h-12 rounded-xl bg-brand-violet/20 text-brand-periwinkle border border-brand-violet/30 flex items-center justify-center">
                 <FileText size={24} />
               </div>
-              <h3 className="font-heading font-bold text-lg text-brand-slate m-0">
+              <h3 className="font-heading font-bold text-xl text-white m-0">
                 ATS Resume Templates
               </h3>
-              <p className="text-xs text-brand-muted leading-relaxed m-0">
+              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0">
                 Access 5 tested, single-page PDF templates with selectable text, distinct layout philosophies, and verified ATS compatibility.
               </p>
             </div>
             <div className="pt-6 mt-4 border-t border-brand-border/60">
               <Link
                 to="/templates"
-                className="w-full py-2.5 px-4 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs font-semibold flex items-center justify-center gap-1.5 border border-brand-border transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 border border-brand-border transition-colors"
               >
                 <span>Browse 5 PDF Templates</span>
                 <ArrowRight size={14} />
@@ -1015,17 +1023,17 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               <div className="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center justify-center">
                 <SearchCode size={24} />
               </div>
-              <h3 className="font-heading font-bold text-lg text-brand-slate m-0">
+              <h3 className="font-heading font-bold text-xl text-white m-0">
                 Resume Analyzer
               </h3>
-              <p className="text-xs text-brand-muted leading-relaxed m-0">
+              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0">
                 Upload your resume, select from 10 technical domains, and benchmark missing skills, keyword frequency, and recruiter readiness.
               </p>
             </div>
             <div className="pt-6 mt-4 border-t border-brand-border/60">
               <Link
                 to="/analyzer"
-                className="w-full py-2.5 px-4 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors"
               >
                 <span>Open Resume Analyzer</span>
                 <ArrowRight size={14} />
@@ -1039,17 +1047,17 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               <div className="w-12 h-12 rounded-xl bg-cyan-500/20 text-brand-cyan border border-cyan-500/30 flex items-center justify-center">
                 <Briefcase size={24} />
               </div>
-              <h3 className="font-heading font-bold text-lg text-brand-slate m-0">
+              <h3 className="font-heading font-bold text-xl text-white m-0">
                 Internships &amp; Jobs
               </h3>
-              <p className="text-xs text-brand-muted leading-relaxed m-0">
+              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0">
                 Explore student internships, entry-level roles, and graduate opportunities across 10 engineering tracks with verified external sources.
               </p>
             </div>
             <div className="pt-6 mt-4 border-t border-brand-border/60">
               <Link
                 to="/internships"
-                className="w-full py-2.5 px-4 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-slate text-xs font-semibold flex items-center justify-center gap-1.5 border border-brand-border transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-slate text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 border border-brand-border transition-colors"
               >
                 <span>Explore Opportunities</span>
                 <ArrowRight size={14} />
@@ -1234,23 +1242,23 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
       <section className="space-y-6 pt-2">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-cyan">
+            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-cyan">
               Section 8 • Industry Pipelines
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-brand-slate m-0 mt-1">
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0 mt-1">
               Opportunities &amp; Internships Preview
             </h2>
-            <p className="text-sm text-brand-muted mt-2 m-0">
+            <p className="text-sm sm:text-base text-brand-muted mt-2 m-0">
               Discover student internships, entry-level engineering roles, and graduate opportunities across 10 engineering tracks.
             </p>
           </div>
 
           <Link
             to="/internships"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-cyan hover:underline self-start md:self-end"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-cyan hover:underline self-start md:self-end"
           >
             <span>View All Opportunities Portal</span>
-            <ArrowRight size={14} />
+            <ArrowRight size={15} />
           </Link>
         </div>
 
@@ -1263,35 +1271,35 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  <span className="text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
                     {job.arrangement}
                   </span>
-                  <span className="text-[11px] text-brand-muted font-medium">{job.experienceLevel}</span>
+                  <span className="text-[11px] sm:text-xs text-brand-muted font-medium">{job.experienceLevel}</span>
                 </div>
 
                 <div>
-                  <h3 className="font-heading font-bold text-base text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
+                  <h3 className="font-heading font-bold text-base sm:text-lg text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
                     {job.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-xs text-brand-cyan font-medium mt-1">
-                    <Building2 size={13} />
+                  <div className="flex items-center gap-2 text-xs sm:text-[13px] text-brand-cyan font-medium mt-1">
+                    <Building2 size={14} />
                     <span>{job.company}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[11px] text-brand-muted mt-0.5">
-                    <MapPin size={12} />
+                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-brand-muted mt-0.5">
+                    <MapPin size={13} />
                     <span>{job.location}</span>
                   </div>
                 </div>
 
-                <p className="text-xs text-brand-muted leading-relaxed m-0 line-clamp-2">
+                <p className="text-xs sm:text-[13px] text-brand-muted leading-relaxed m-0 line-clamp-2">
                   {job.snippet}
                 </p>
 
-                <div className="flex flex-wrap gap-1 pt-1">
+                <div className="flex flex-wrap gap-1.5 pt-1">
                   {(job.skills || []).slice(0, 3).map((s) => (
                     <span
                       key={s}
-                      className="text-[10px] px-2 py-0.5 rounded bg-brand-surface text-brand-slate border border-brand-border"
+                      className="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded bg-brand-surface text-brand-slate border border-brand-border"
                     >
                       {s}
                     </span>
@@ -1302,12 +1310,12 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               <div className="pt-4 mt-4 border-t border-brand-border/60 flex items-center justify-between">
                 <Link
                   to="/internships"
-                  className="text-xs font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
+                  className="text-xs sm:text-[13px] font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
                 >
                   <span>Explore Role in Portal</span>
-                  <ChevronRight size={13} />
+                  <ChevronRight size={14} />
                 </Link>
-                <span className="text-[10px] text-brand-muted">{job.jobType}</span>
+                <span className="text-[10px] sm:text-[11px] text-brand-muted">{job.jobType}</span>
               </div>
             </div>
           ))}
@@ -1316,10 +1324,10 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         <div className="text-center pt-2">
           <Link
             to="/internships"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-card border border-brand-border text-brand-cyan hover:bg-brand-surface text-xs font-semibold shadow-xs transition-all"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-card border border-brand-border text-brand-cyan hover:bg-brand-surface text-xs sm:text-sm font-semibold shadow-xs transition-all"
           >
             <span>Launch Verified Search Portals (LinkedIn, Naukri, Internshala)</span>
-            <ExternalLink size={14} />
+            <ExternalLink size={15} />
           </Link>
         </div>
       </section>
@@ -1330,10 +1338,10 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-cyan/20 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl text-center lg:text-left">
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-white m-0">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white m-0">
               Ready to Accelerate Your Career Preparation?
             </h2>
-            <p className="text-sm text-white/80 m-0">
+            <p className="text-sm sm:text-base text-white/85 m-0">
               Follow structured roadmaps, build real engineering projects, and test your resume with
               algorithmic ATS scoring.
             </p>
@@ -1342,13 +1350,13 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <Link
               to="/analyzer"
-              className="px-6 py-3 rounded-xl bg-logo-gradient text-white text-xs font-semibold shadow-brand hover:brightness-110 active:scale-[0.98] transition-all"
+              className="px-6 py-3 rounded-xl bg-logo-gradient text-white text-xs sm:text-sm font-semibold shadow-brand hover:brightness-110 active:scale-[0.98] transition-all"
             >
               Test Resume Analyzer
             </Link>
             <Link
               to="/templates"
-              className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs font-semibold backdrop-blur-sm transition-all"
+              className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-semibold backdrop-blur-sm transition-all"
             >
               Download PDF Templates
             </Link>

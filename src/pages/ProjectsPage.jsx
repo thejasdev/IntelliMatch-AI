@@ -79,13 +79,13 @@ export default function ProjectsPage({ onPreviewPdf }) {
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header Banner */}
       <div className="im-card p-6 md:p-8 space-y-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-brand-violet">
+        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
           Portfolio &amp; Engineering Lab
         </span>
-        <h1 className="text-2xl md:text-3xl font-bold font-heading text-brand-slate m-0">
+        <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
           Projects Hub &amp; Blueprints
         </h1>
-        <p className="text-sm text-brand-muted leading-relaxed m-0 max-w-3xl">
+        <p className="text-sm sm:text-base text-brand-muted leading-relaxed m-0 max-w-3xl">
           Translate theoretical algorithms and concepts into verified, tangible engineering deliverables.
           Categorized by practical difficulty, domain architecture, and recruiter relevance.
         </p>
@@ -99,14 +99,14 @@ export default function ProjectsPage({ onPreviewPdf }) {
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="text-base font-bold font-heading text-brand-slate m-0">
+              <h3 className="text-base sm:text-lg font-bold font-heading text-brand-slate m-0">
                 {selectedDomainMeta ? selectedDomainMeta.name : "All Engineering Domains"} &mdash; Complete Projects Guide
               </h3>
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+              <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
                 Handbook in Prep
               </span>
             </div>
-            <p className="text-xs text-brand-muted m-0 mt-0.5">
+            <p className="text-xs sm:text-[13px] text-brand-muted m-0 mt-0.5">
               Detailed architecture diagrams, API schemas, verification checklists, and GitHub templates.
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function ProjectsPage({ onPreviewPdf }) {
           <button
             type="button"
             onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-violet text-xs font-semibold border border-brand-border transition-all shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-violet text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
           >
             <Eye size={14} />
             <span>Preview Full PDF</span>
@@ -125,7 +125,7 @@ export default function ProjectsPage({ onPreviewPdf }) {
           <button
             type="button"
             onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-violet text-xs font-semibold border border-brand-border transition-all shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-violet text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
           >
             <ExternalLink size={14} />
             <span>Open in Tab</span>
@@ -134,7 +134,7 @@ export default function ProjectsPage({ onPreviewPdf }) {
           <button
             type="button"
             onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs font-semibold shadow-xs transition-all"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-[13px] font-semibold shadow-xs transition-all"
           >
             <Download size={14} />
             <span>Download Full PDF</span>
@@ -147,14 +147,14 @@ export default function ProjectsPage({ onPreviewPdf }) {
         <div className="im-card p-6 sm:p-7 space-y-4 border-t-2 border-t-brand-violet">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-brand-border">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-brand-violet">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-brand-violet">
                 Domain Track Architecture
               </span>
-              <h2 className="text-xl font-bold font-heading text-brand-slate m-0">
+              <h2 className="text-xl sm:text-2xl font-bold font-heading text-brand-slate m-0">
                 {selectedDomainMeta.name} Track Overview
               </h2>
             </div>
-            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-brand-surface text-brand-violet border border-brand-border w-fit">
+            <span className="text-xs sm:text-[13px] font-semibold px-3 py-1 rounded-full bg-brand-surface text-brand-violet border border-brand-border w-fit">
               {filteredProjects.length} Curated Project Blueprints
             </span>
           </div>
@@ -297,21 +297,21 @@ export default function ProjectsPage({ onPreviewPdf }) {
               </div>
 
               <div>
-                <h3 className="font-heading font-bold text-base text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
+                <h3 className="font-heading font-bold text-base sm:text-lg text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
                   {project.title}
                 </h3>
-                <span className="text-[11px] font-semibold text-brand-cyan block mt-0.5">
+                <span className="text-[11px] sm:text-xs font-semibold text-brand-cyan block mt-0.5">
                   {ENGINEERING_DOMAINS.find((d) => d.id === project.domainId)?.name || project.domain || project.domainId}
                 </span>
               </div>
 
-              <p className="text-xs text-brand-muted leading-relaxed m-0">
+              <p className="text-xs sm:text-[13px] text-brand-muted leading-relaxed m-0">
                 {project.description || project.deliverable || ""}
               </p>
 
               <div className="space-y-1.5 pt-1">
-                <span className="text-[11px] font-bold text-brand-slate block">Expected Deliverable:</span>
-                <ul className="text-xs text-brand-muted space-y-1 pl-4 m-0 list-disc">
+                <span className="text-[11px] sm:text-xs font-bold text-brand-slate block">Expected Deliverable:</span>
+                <ul className="text-xs sm:text-[13px] text-brand-muted space-y-1 pl-4 m-0 list-disc">
                   {(Array.isArray(project.deliverables)
                     ? project.deliverables
                     : (project.deliverable ? [project.deliverable] : [])
@@ -322,14 +322,14 @@ export default function ProjectsPage({ onPreviewPdf }) {
               </div>
 
               <div className="pt-1">
-                <span className="text-[11px] font-bold text-brand-slate block mb-1">
+                <span className="text-[11px] sm:text-xs font-bold text-brand-slate block mb-1">
                   Skills &amp; Technologies:
                 </span>
                 <div className="flex flex-wrap gap-1">
                   {(project.skills || []).map((s) => (
                     <span
                       key={s}
-                      className="text-[10px] px-2 py-0.5 rounded bg-brand-surface text-brand-cyan font-medium border border-brand-border/80"
+                      className="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded bg-brand-surface text-brand-cyan font-medium border border-brand-border/80"
                     >
                       {s}
                     </span>
@@ -342,15 +342,15 @@ export default function ProjectsPage({ onPreviewPdf }) {
               <button
                 type="button"
                 onClick={() => setActiveProjectGuide(project)}
-                className="text-xs font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
+                className="text-xs sm:text-[13px] font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
               >
                 <span>View Project Guide</span>
-                <ChevronRight size={13} />
+                <ChevronRight size={14} />
               </button>
 
               <Link
                 to="/analyzer"
-                className="text-xs text-brand-muted hover:text-white font-medium"
+                className="text-xs sm:text-[13px] text-brand-muted hover:text-white font-medium"
               >
                 Benchmark &rarr;
               </Link>

@@ -227,7 +227,7 @@ export default function Header({ onOpenContact }) {
                   to={item.path}
                   end={item.path === "/"}
                   className={({ isActive }) =>
-                    `relative py-2 px-2 text-xs xl:text-[14px] font-medium transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/40 rounded-lg ${
+                    `relative py-2 px-2.5 text-[13px] xl:text-[15px] font-medium transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/40 rounded-lg ${
                       isActive
                         ? "text-[#38BDF8] font-semibold after:absolute after:-bottom-0.5 after:left-2 after:right-2 after:h-[2.5px] after:bg-[#38BDF8] after:rounded-full"
                         : "text-slate-300 hover:text-[#38BDF8]"
@@ -246,7 +246,7 @@ export default function Header({ onOpenContact }) {
                 onClick={() => setMoreOpen(!moreOpen)}
                 aria-haspopup="true"
                 aria-expanded={moreOpen}
-                className={`relative py-2 px-2 text-xs xl:text-[14px] font-medium transition-colors duration-150 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/40 rounded-lg ${
+                className={`relative py-2 px-2.5 text-[13px] xl:text-[15px] font-medium transition-colors duration-150 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-[#38BDF8]/40 rounded-lg ${
                   moreOpen || isMoreActive
                     ? "text-[#38BDF8] font-semibold after:absolute after:-bottom-0.5 after:left-2 after:right-2 after:h-[2.5px] after:bg-[#38BDF8] after:rounded-full"
                     : "text-slate-300 hover:text-[#38BDF8]"
@@ -265,7 +265,7 @@ export default function Header({ onOpenContact }) {
                   className="absolute right-0 top-full mt-3 w-64 bg-[#0D152A] backdrop-blur-2xl border border-blue-500/35 rounded-2xl p-2.5 shadow-2xl shadow-black/80 z-50 flex flex-col space-y-1 animate-in fade-in duration-150"
                   role="menu"
                 >
-                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#38BDF8] border-b border-slate-700/60 mb-1">
+                  <div className="px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#38BDF8] border-b border-slate-700/60 mb-1">
                     Platform Tools &amp; Info
                   </div>
                   {MORE_NAV.map((subItem, index) => {
@@ -290,8 +290,8 @@ export default function Header({ onOpenContact }) {
                           <SubIcon size={16} />
                         </div>
                         <div className="flex flex-col min-w-0">
-                          <span className="text-xs font-semibold text-white">{subItem.label}</span>
-                          <span className="text-[11px] text-slate-400">{subItem.kicker}</span>
+                          <span className="text-[13px] font-semibold text-white">{subItem.label}</span>
+                          <span className="text-xs text-slate-400">{subItem.kicker}</span>
                         </div>
                       </NavLink>
                     );
@@ -394,12 +394,12 @@ export default function Header({ onOpenContact }) {
                       className="w-full text-left p-2.5 rounded-xl hover:bg-slate-800/80 transition-colors flex items-center justify-between group"
                     >
                       <div>
-                        <div className="text-xs font-bold text-white group-hover:text-[#38BDF8]">
+                        <div className="text-sm font-bold text-white group-hover:text-[#38BDF8]">
                           {item.title}
                         </div>
-                        <div className="text-[11px] text-slate-400">{item.subtitle}</div>
+                        <div className="text-xs text-slate-400">{item.subtitle}</div>
                       </div>
-                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-950/70 text-[#38BDF8] border border-blue-800/50 group-hover:border-[#38BDF8]/40">
+                      <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-950/70 text-[#38BDF8] border border-blue-800/50 group-hover:border-[#38BDF8]/40">
                         {item.category}
                       </span>
                     </button>
@@ -475,7 +475,7 @@ export default function Header({ onOpenContact }) {
                     end={item.path === "/"}
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
-                      `flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium transition-all duration-150 focus:outline-none ${
+                      `flex items-center gap-3 px-3.5 py-3 rounded-xl text-[15px] font-medium transition-all duration-150 focus:outline-none ${
                         isActive
                           ? "bg-blue-600/25 text-[#38BDF8] font-semibold border border-blue-500/30 shadow-xs"
                           : "text-slate-300 hover:text-white hover:bg-slate-800/60"

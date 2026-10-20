@@ -18,8 +18,8 @@ export default function AboutPage({ onOpenContact }) {
     <div className="space-y-8 sm:space-y-10 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       {/* Page Header */}
       <div className="im-card p-6 md:p-10 space-y-3 text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface border border-brand-border text-brand-violet text-xs font-semibold mb-2">
-          <Info size={14} />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface border border-brand-border text-brand-violet text-xs sm:text-[13px] font-semibold mb-2">
+          <Info size={15} />
           <span>Platform Overview &amp; Institutional Mission</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-heading font-bold text-brand-slate tracking-tight m-0">
