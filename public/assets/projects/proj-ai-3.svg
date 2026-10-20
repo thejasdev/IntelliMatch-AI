@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B"/><stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg9)"/>
+  
+  <rect x="30" y="20" width="540" height="300" rx="12" fill="#0A0E1A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="30" y="20" width="540" height="36" rx="12" fill="#141E33"/>
+  <rect x="30" y="44" width="540" height="12" fill="#141E33"/>
+  <circle cx="50" cy="38" r="4.5" fill="#EF4444"/>
+  <circle cx="65" cy="38" r="4.5" fill="#F59E0B"/>
+  <circle cx="80" cy="38" r="4.5" fill="#10B981"/>
+  <text x="100" y="42" fill="#94A3B8" font-family="sans-serif" font-size="11" font-weight="600">Triton Server • Low-Latency Model Serving</text>
+  
+  <rect x="440" y="27" width="115" height="22" rx="5" fill="#0E1726" stroke="#34D399" stroke-width="1"/>
+  <text x="497" y="42" fill="#34D399" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">ONNX QUANTIZED • GPU PROMETHEUS</text>
+  
+  
+  
+  <g transform="translate(45, 68)">
+    <!-- Metrics Tiles -->
+    <rect x="0" y="0" width="160" height="60" rx="8" fill="#0F172A" stroke="#1E293B"/>
+    <text x="14" y="20" fill="#94A3B8" font-family="sans-serif" font-size="9" font-weight="bold">GPU MEMORY (VRAM)</text>
+    <text x="14" y="46" fill="#38BDF8" font-family="sans-serif" font-size="18" font-weight="bold">4.2 <tspan font-size="11" fill="#64748B">/ 16 GB</tspan></text>
+
+    <rect x="175" y="0" width="160" height="60" rx="8" fill="#0F172A" stroke="#1E293B"/>
+    <text x="189" y="20" fill="#94A3B8" font-family="sans-serif" font-size="9" font-weight="bold">P99 INFERENCE SLA</text>
+    <text x="189" y="46" fill="#34D399" font-family="sans-serif" font-size="18" font-weight="bold">8.6 ms</text>
+
+    <rect x="350" y="0" width="160" height="60" rx="8" fill="#0F172A" stroke="#1E293B"/>
+    <text x="364" y="20" fill="#94A3B8" font-family="sans-serif" font-size="9" font-weight="bold">QUANTIZATION SPEEDUP</text>
+    <text x="364" y="46" fill="#C084FC" font-family="sans-serif" font-size="18" font-weight="bold">3.8x <tspan font-size="10" fill="#E879F9">INT8</tspan></text>
+
+    <!-- Telemetry Histogram View -->
+    <rect x="0" y="72" width="510" height="162" rx="8" fill="#020617" stroke="#1E293B"/>
+    <text x="16" y="94" fill="#F8FAFC" font-family="sans-serif" font-size="10.5" font-weight="bold">Latency Distribution Histogram &amp; Prometheus Exporter Gauge</text>
+    
+    <g transform="translate(30, 110)">
+      <!-- Bars -->
+      <rect x="0" y="60" width="35" height="35" rx="3" fill="#34D399"/>
+      <rect x="45" y="30" width="35" height="65" rx="3" fill="#34D399"/>
+      <rect x="90" y="10" width="35" height="85" rx="3" fill="#38BDF8"/>
+      <rect x="135" y="5" width="35" height="90" rx="3" fill="#38BDF8"/>
+      <rect x="180" y="20" width="35" height="75" rx="3" fill="#38BDF8"/>
+      <rect x="225" y="45" width="35" height="50" rx="3" fill="#818CF8"/>
+      <rect x="270" y="70" width="35" height="25" rx="3" fill="#818CF8"/>
+      <rect x="315" y="80" width="35" height="15" rx="3" fill="#C084FC"/>
+      
+      <!-- Axis Labels -->
+      <text x="17" y="108" fill="#64748B" font-family="sans-serif" font-size="8.5">4ms</text>
+      <text x="107" y="108" fill="#64748B" font-family="sans-serif" font-size="8.5">8ms</text>
+      <text x="197" y="108" fill="#64748B" font-family="sans-serif" font-size="8.5">12ms</text>
+      <text x="287" y="108" fill="#64748B" font-family="sans-serif" font-size="8.5">16ms</text>
+      <text x="332" y="108" fill="#64748B" font-family="sans-serif" font-size="8.5">20ms</text>
+
+      <!-- Triton Config pill -->
+      <rect x="375" y="15" width="85" height="70" rx="6" fill="#1E293B" stroke="#475569"/>
+      <text x="417" y="35" fill="#38BDF8" font-family="monospace" font-size="8.5" text-anchor="middle">instance_group</text>
+      <text x="417" y="50" fill="#94A3B8" font-family="monospace" font-size="8.5" text-anchor="middle">kind: GPU</text>
+      <text x="417" y="65" fill="#34D399" font-family="monospace" font-size="8.5" text-anchor="middle">count: 2</text>
+    </g>
+  </g>
+</svg>

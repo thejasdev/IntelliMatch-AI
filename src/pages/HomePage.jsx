@@ -789,58 +789,84 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
           </div>
         </div>
 
-        {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Project Cards Grid — Image-Led Project Portfolio (Harmonized with Domain Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {(filteredProjects || []).slice(0, 3).map((project) => (
             <div
               key={project.id}
-              className="im-card im-card-lift p-6 flex flex-col justify-between group hover:border-brand-cyan/40 transition-all duration-200"
+              className="rounded-3xl flex flex-col justify-between group shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border border-blue-500/25 hover:border-blue-400/50 bg-[#0E162B]/90 hover:bg-[#121B36]/95 backdrop-blur-md"
             >
-              <div className="space-y-3.5">
-                <div className="flex items-center justify-between">
+              {/* 1. Project-Specific Visual Preview (Approx 16:9 Aspect Ratio) */}
+              <div className="relative w-full h-48 sm:h-52 bg-slate-950 overflow-hidden border-b border-blue-500/20">
+                <img
+                  src={project.image || `/assets/projects/${project.id}.svg`}
+                  alt={`${project.title} blueprint preview`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute top-3.5 right-3.5">
                   <span
-                    className={`text-xs font-bold px-2.5 py-0.5 rounded-full capitalize ${
+                    className={`text-xs font-bold px-3 py-1 rounded-full capitalize backdrop-blur-md shadow-sm border ${
                       project.difficulty === "beginner" || project.difficulty === "Beginner"
-                        ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
+                        ? "bg-[#064E3B]/90 text-emerald-300 border-emerald-500/40"
                         : project.difficulty === "intermediate" || project.difficulty === "Intermediate"
-                        ? "bg-amber-500/15 text-amber-300 border border-amber-500/30"
-                        : "bg-purple-500/15 text-purple-300 border border-purple-500/30"
+                        ? "bg-[#78350F]/90 text-amber-300 border-amber-500/40"
+                        : "bg-[#581C87]/90 text-purple-300 border-purple-500/40"
                     }`}
                   >
                     {project.difficulty}
                   </span>
-                  <span className="text-xs text-slate-400 font-medium">{project.estimatedHours || "Self-Paced"}</span>
-                </div>
-
-                <h3 className="font-heading font-bold text-lg sm:text-xl text-white m-0 group-hover:text-brand-cyan transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0">
-                  {project.description || project.deliverable || ""}
-                </p>
-
-                <div className="space-y-1.5 pt-1">
-                  <div className="text-xs font-bold text-slate-200">Deliverables:</div>
-                  <ul className="text-xs sm:text-[13px] text-slate-300 space-y-1 pl-4 m-0 list-disc">
-                    {(Array.isArray(project.deliverables)
-                      ? project.deliverables
-                      : (project.deliverable ? [project.deliverable] : [])
-                    ).slice(0, 2).map((d, i) => (
-                      <li key={i}>{d}</li>
-                    ))}
-                  </ul>
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-brand-border/60 flex items-center justify-between">
-                <Link
-                  to={`/projects?id=${project.id}`}
-                  className="text-xs sm:text-sm font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
-                >
-                  <span>Inspect Blueprint</span>
-                  <ChevronRight size={14} />
-                </Link>
-                <span className="text-xs text-slate-400">{project.skills.slice(0, 2).join(", ")}</span>
+              {/* Card Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  {/* 2. Difficulty badge & estimated duration */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">
+                      {ENGINEERING_DOMAINS.find((d) => d.id === project.domainId)?.name || project.domain || "Engineering Project"}
+                    </span>
+                    <span className="text-xs text-slate-400 font-medium flex items-center gap-1">
+                      <Clock size={12} /> {project.estimatedHours || "Self-Paced"}
+                    </span>
+                  </div>
+
+                  {/* 3. Project title */}
+                  <h3 className="font-heading font-bold text-lg sm:text-xl text-white m-0 group-hover:text-cyan-200 transition-colors">
+                    {project.title}
+                  </h3>
+
+                  {/* 4. Existing project description */}
+                  <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 line-clamp-2">
+                    {project.description || project.deliverable || ""}
+                  </p>
+
+                  {/* 5. Existing deliverables or learning outcomes */}
+                  <div className="space-y-1.5 pt-1">
+                    <div className="text-xs font-bold text-slate-200">Deliverables:</div>
+                    <ul className="text-xs sm:text-[13px] text-slate-300 space-y-1 pl-4 m-0 list-disc">
+                      {(Array.isArray(project.deliverables)
+                        ? project.deliverables
+                        : (project.deliverable ? [project.deliverable] : [])
+                      ).slice(0, 2).map((d, i) => (
+                        <li key={i}>{d}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 6. Inspect Blueprint action & 7. Technology or skill info */}
+                <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
+                  <Link
+                    to={`/projects?id=${project.id}`}
+                    className="text-xs sm:text-sm font-bold text-[#38BDF8] hover:text-cyan-200 hover:underline inline-flex items-center gap-1 group/btn"
+                  >
+                    <span>Inspect Blueprint</span>
+                    <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                  <span className="text-xs text-slate-400 font-medium">{project.skills.slice(0, 2).join(", ")}</span>
+                </div>
               </div>
             </div>
           ))}
@@ -991,76 +1017,127 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
           </p>
         </div>
 
-        {/* 3 Focused Career Workspaces */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Tool 1 */}
-          <div className="im-card im-card-lift p-6 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-brand-violet/20 text-brand-periwinkle border border-brand-violet/30 flex items-center justify-center">
+        {/* 3 Focused Career Workspaces — Dark Navy Cards Matching Image 4 Reference */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Tool 1 — ATS Resume Templates */}
+          <div className="rounded-3xl p-7 sm:p-8 bg-[#0D152A]/95 hover:bg-[#111C38] border border-blue-500/25 hover:border-blue-400/50 shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between text-center group">
+            <div>
+              {/* Top Pill Tag */}
+              <div className="flex justify-center">
+                <span className="px-3.5 py-1 text-[11px] font-bold rounded-full border border-purple-400/30 text-purple-200 uppercase tracking-wider bg-purple-950/40">
+                  TOOL 01
+                </span>
+              </div>
+
+              {/* Circular Icon Badge */}
+              <div className="w-14 h-14 rounded-full border border-purple-400/40 bg-purple-950/70 text-purple-300 flex items-center justify-center mx-auto my-4 shadow-md group-hover:scale-105 transition-transform">
                 <FileText size={24} />
               </div>
-              <h3 className="font-heading font-bold text-xl text-white m-0">
+
+              {/* Kicker & Title */}
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                DOCUMENT LIBRARY
+              </span>
+              <h3 className="font-heading font-bold text-xl sm:text-[22px] text-white m-0 group-hover:text-cyan-200 transition-colors">
                 ATS Resume Templates
               </h3>
-              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0">
+
+              {/* Description */}
+              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 mt-2.5">
                 Access 5 tested, single-page PDF templates with selectable text, distinct layout philosophies, and verified ATS compatibility.
               </p>
             </div>
-            <div className="pt-6 mt-4 border-t border-brand-border/60">
+
+            {/* Bottom Royal Blue Pill Action Button (Image 4 Reference) */}
+            <div className="pt-6">
               <Link
                 to="/templates"
-                className="w-full py-2.5 px-4 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 border border-brand-border transition-colors"
+                className="w-full py-3 px-5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-md shadow-blue-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Browse 5 PDF Templates</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={15} />
               </Link>
             </div>
           </div>
 
-          {/* Tool 2 */}
-          <div className="im-card im-card-lift p-6 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center justify-center">
+          {/* Tool 2 — Resume Analyzer */}
+          <div className="rounded-3xl p-7 sm:p-8 bg-[#0D152A]/95 hover:bg-[#111C38] border border-blue-500/25 hover:border-blue-400/50 shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between text-center group">
+            <div>
+              {/* Top Pill Tag */}
+              <div className="flex justify-center">
+                <span className="px-3.5 py-1 text-[11px] font-bold rounded-full border border-sky-400/30 text-sky-200 uppercase tracking-wider bg-sky-950/40">
+                  TOOL 02
+                </span>
+              </div>
+
+              {/* Circular Icon Badge */}
+              <div className="w-14 h-14 rounded-full border border-sky-400/40 bg-sky-950/70 text-sky-300 flex items-center justify-center mx-auto my-4 shadow-md group-hover:scale-105 transition-transform">
                 <SearchCode size={24} />
               </div>
-              <h3 className="font-heading font-bold text-xl text-white m-0">
+
+              {/* Kicker & Title */}
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                ALGORITHMIC ATS EVALUATION
+              </span>
+              <h3 className="font-heading font-bold text-xl sm:text-[22px] text-white m-0 group-hover:text-cyan-200 transition-colors">
                 Resume Analyzer
               </h3>
-              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0">
+
+              {/* Description */}
+              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 mt-2.5">
                 Upload your resume, select from 10 technical domains, and benchmark missing skills, keyword frequency, and recruiter readiness.
               </p>
             </div>
-            <div className="pt-6 mt-4 border-t border-brand-border/60">
+
+            {/* Bottom Royal Blue Pill Action Button (Image 4 Reference) */}
+            <div className="pt-6">
               <Link
                 to="/analyzer"
-                className="w-full py-2.5 px-4 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors"
+                className="w-full py-3 px-5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-md shadow-blue-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Open Resume Analyzer</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={15} />
               </Link>
             </div>
           </div>
 
-          {/* Tool 3 */}
-          <div className="im-card im-card-lift p-6 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/20 text-brand-cyan border border-cyan-500/30 flex items-center justify-center">
+          {/* Tool 3 — Internships & Jobs */}
+          <div className="rounded-3xl p-7 sm:p-8 bg-[#0D152A]/95 hover:bg-[#111C38] border border-blue-500/25 hover:border-blue-400/50 shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between text-center group">
+            <div>
+              {/* Top Pill Tag */}
+              <div className="flex justify-center">
+                <span className="px-3.5 py-1 text-[11px] font-bold rounded-full border border-emerald-400/30 text-emerald-200 uppercase tracking-wider bg-emerald-950/40">
+                  TOOL 03
+                </span>
+              </div>
+
+              {/* Circular Icon Badge */}
+              <div className="w-14 h-14 rounded-full border border-emerald-400/40 bg-emerald-950/70 text-emerald-300 flex items-center justify-center mx-auto my-4 shadow-md group-hover:scale-105 transition-transform">
                 <Briefcase size={24} />
               </div>
-              <h3 className="font-heading font-bold text-xl text-white m-0">
+
+              {/* Kicker & Title */}
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                STUDENT &amp; GRADUATE PIPELINES
+              </span>
+              <h3 className="font-heading font-bold text-xl sm:text-[22px] text-white m-0 group-hover:text-cyan-200 transition-colors">
                 Internships &amp; Jobs
               </h3>
-              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0">
+
+              {/* Description */}
+              <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 mt-2.5">
                 Explore student internships, entry-level roles, and graduate opportunities across 10 engineering tracks with verified external sources.
               </p>
             </div>
-            <div className="pt-6 mt-4 border-t border-brand-border/60">
+
+            {/* Bottom Royal Blue Pill Action Button (Image 4 Reference) */}
+            <div className="pt-6">
               <Link
                 to="/internships"
-                className="w-full py-2.5 px-4 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-slate text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 border border-brand-border transition-colors"
+                className="w-full py-3 px-5 rounded-full bg-[#0B57D0] hover:bg-[#1D6CE5] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-md shadow-blue-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Explore Opportunities</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={15} />
               </Link>
             </div>
           </div>

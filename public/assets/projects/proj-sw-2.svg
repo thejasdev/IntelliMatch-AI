@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/><stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg2)"/>
+  
+  <rect x="30" y="20" width="540" height="300" rx="12" fill="#0A0E1A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="30" y="20" width="540" height="36" rx="12" fill="#141E33"/>
+  <rect x="30" y="44" width="540" height="12" fill="#141E33"/>
+  <circle cx="50" cy="38" r="4.5" fill="#EF4444"/>
+  <circle cx="65" cy="38" r="4.5" fill="#F59E0B"/>
+  <circle cx="80" cy="38" r="4.5" fill="#10B981"/>
+  <text x="100" y="42" fill="#94A3B8" font-family="sans-serif" font-size="11" font-weight="600">DevBoard • Collaborative Kanban Lab</text>
+  
+  <rect x="440" y="27" width="115" height="22" rx="5" fill="#0E1726" stroke="#818CF8" stroke-width="1"/>
+  <text x="497" y="42" fill="#818CF8" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">REACT + NODE + POSTGRES</text>
+  
+  
+  
+  <g transform="translate(45, 68)">
+    <!-- Column 1: Backlog -->
+    <rect x="0" y="0" width="120" height="238" rx="8" fill="#0E162B" stroke="#1E293B"/>
+    <rect x="0" y="0" width="120" height="28" rx="8" fill="#172554"/>
+    <text x="12" y="18" fill="#93C5FD" font-family="sans-serif" font-size="10" font-weight="bold">BACKLOG (3)</text>
+    
+    <rect x="8" y="36" width="104" height="60" rx="6" fill="#131F38" stroke="#1E293B"/>
+    <text x="14" y="52" fill="#F8FAFC" font-family="sans-serif" font-size="10" font-weight="bold">Setup JWT Auth</text>
+    <text x="14" y="68" fill="#94A3B8" font-family="sans-serif" font-size="8.5">bcrypt + refresh token</text>
+    <rect x="14" y="76" width="42" height="14" rx="3" fill="#EF4444" opacity="0.3"/>
+    <text x="35" y="86" fill="#FCA5A5" font-family="sans-serif" font-size="8" text-anchor="middle" font-weight="bold">HIGH</text>
+    
+    <rect x="8" y="104" width="104" height="60" rx="6" fill="#131F38" stroke="#1E293B"/>
+    <text x="14" y="120" fill="#F8FAFC" font-family="sans-serif" font-size="10" font-weight="bold">DB Migrations</text>
+    <text x="14" y="136" fill="#94A3B8" font-family="sans-serif" font-size="8.5">knex / prisma schema</text>
+    <rect x="14" y="144" width="42" height="14" rx="3" fill="#F59E0B" opacity="0.3"/>
+    <text x="35" y="154" fill="#FCD34D" font-family="sans-serif" font-size="8" text-anchor="middle" font-weight="bold">MED</text>
+
+    <!-- Column 2: In Progress -->
+    <rect x="130" y="0" width="120" height="238" rx="8" fill="#0E162B" stroke="#2563EB" stroke-width="1.5"/>
+    <rect x="130" y="0" width="120" height="28" rx="8" fill="#1D4ED8"/>
+    <text x="142" y="18" fill="#FFFFFF" font-family="sans-serif" font-size="10" font-weight="bold">IN PROGRESS (2)</text>
+    
+    <rect x="138" y="36" width="104" height="74" rx="6" fill="#172554" stroke="#38BDF8"/>
+    <text x="144" y="52" fill="#38BDF8" font-family="sans-serif" font-size="10" font-weight="bold">Drag &amp; Drop Hook</text>
+    <text x="144" y="68" fill="#CBD5E1" font-family="sans-serif" font-size="8.5">HTML5 drag events</text>
+    <text x="144" y="80" fill="#94A3B8" font-family="sans-serif" font-size="8">optimistic UI update</text>
+    <circle cx="228" cy="98" r="8" fill="#818CF8"/>
+    <text x="228" y="101" fill="#FFFFFF" font-family="sans-serif" font-size="8" text-anchor="middle" font-weight="bold">AM</text>
+    
+    <!-- Column 3: Review -->
+    <rect x="260" y="0" width="120" height="238" rx="8" fill="#0E162B" stroke="#1E293B"/>
+    <rect x="260" y="0" width="120" height="28" rx="8" fill="#1E293B"/>
+    <text x="272" y="18" fill="#E2E8F0" font-family="sans-serif" font-size="10" font-weight="bold">CODE REVIEW (2)</text>
+    
+    <rect x="268" y="36" width="104" height="60" rx="6" fill="#131F38" stroke="#1E293B"/>
+    <text x="274" y="52" fill="#F8FAFC" font-family="sans-serif" font-size="10" font-weight="bold">Rate Limiting API</text>
+    <text x="274" y="68" fill="#94A3B8" font-family="sans-serif" font-size="8.5">express-rate-limit</text>
+    <rect x="274" y="76" width="55" height="14" rx="3" fill="#6366F1" opacity="0.3"/>
+    <text x="301" y="86" fill="#A5B4FC" font-family="sans-serif" font-size="8" text-anchor="middle" font-weight="bold">PR #14</text>
+
+    <!-- Column 4: Done -->
+    <rect x="390" y="0" width="120" height="238" rx="8" fill="#0E162B" stroke="#1E293B"/>
+    <rect x="390" y="0" width="120" height="28" rx="8" fill="#064E3B"/>
+    <text x="402" y="18" fill="#A7F3D0" font-family="sans-serif" font-size="10" font-weight="bold">DONE (5)</text>
+    
+    <rect x="398" y="36" width="104" height="50" rx="6" fill="#0D2E26" stroke="#047857"/>
+    <text x="404" y="52" fill="#6EE7B7" font-family="sans-serif" font-size="10" font-weight="bold">PostgreSQL Setup</text>
+    <text x="404" y="68" fill="#A7F3D0" font-family="sans-serif" font-size="8.5">Docker container &amp; seed</text>
+
+    <rect x="398" y="94" width="104" height="50" rx="6" fill="#0D2E26" stroke="#047857"/>
+    <text x="404" y="110" fill="#6EE7B7" font-family="sans-serif" font-size="10" font-weight="bold">CORS &amp; Helmet</text>
+    <text x="404" y="126" fill="#A7F3D0" font-family="sans-serif" font-size="8.5">Security middleware</text>
+  </g>
+</svg>

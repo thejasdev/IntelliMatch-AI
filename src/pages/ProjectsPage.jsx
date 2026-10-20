@@ -270,90 +270,108 @@ export default function ProjectsPage({ onPreviewPdf }) {
         </div>
       </div>
 
-      {/* Projects Grid */}
+      {/* Projects Grid — Image-Led Project Cards (Matching Domain Visual Presentation) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className="im-card im-card-lift p-6 flex flex-col justify-between group"
+            className="rounded-3xl flex flex-col justify-between group shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border border-blue-500/25 hover:border-blue-400/50 bg-[#0E162B]/90 hover:bg-[#121B36]/95 backdrop-blur-md"
           >
-            <div className="space-y-3.5">
-              <div className="flex items-center justify-between">
+            {/* 1. Project-Specific Visual Preview (Approx 16:9 Aspect Ratio) */}
+            <div className="relative w-full h-48 sm:h-52 bg-slate-950 overflow-hidden border-b border-blue-500/20">
+              <img
+                src={project.image || `/assets/projects/${project.id}.svg`}
+                alt={`${project.title} blueprint visual`}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div className="absolute top-3.5 right-3.5">
                 <span
-                  className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full capitalize ${
+                  className={`text-[11px] font-bold px-3 py-1 rounded-full capitalize backdrop-blur-md shadow-sm border ${
                     project.difficulty === "beginner" || project.difficulty === "Beginner"
-                      ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
+                      ? "bg-[#064E3B]/90 text-emerald-300 border-emerald-500/40"
                       : project.difficulty === "intermediate" || project.difficulty === "Intermediate"
-                      ? "bg-amber-500/15 text-amber-300 border border-amber-500/30"
-                      : "bg-purple-500/15 text-purple-300 border border-purple-500/30"
+                      ? "bg-[#78350F]/90 text-amber-300 border-amber-500/40"
+                      : "bg-[#581C87]/90 text-purple-300 border-purple-500/40"
                   }`}
                 >
                   {project.difficulty}
                 </span>
-
-                <span className="inline-flex items-center gap-1 text-[11px] font-medium text-brand-muted">
-                  <Clock size={12} /> {project.estimatedHours || "Self-Paced"}
-                </span>
-              </div>
-
-              <div>
-                <h3 className="font-heading font-bold text-base sm:text-lg text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
-                  {project.title}
-                </h3>
-                <span className="text-[11px] sm:text-xs font-semibold text-brand-cyan block mt-0.5">
-                  {ENGINEERING_DOMAINS.find((d) => d.id === project.domainId)?.name || project.domain || project.domainId}
-                </span>
-              </div>
-
-              <p className="text-xs sm:text-[13px] text-brand-muted leading-relaxed m-0">
-                {project.description || project.deliverable || ""}
-              </p>
-
-              <div className="space-y-1.5 pt-1">
-                <span className="text-[11px] sm:text-xs font-bold text-brand-slate block">Expected Deliverable:</span>
-                <ul className="text-xs sm:text-[13px] text-brand-muted space-y-1 pl-4 m-0 list-disc">
-                  {(Array.isArray(project.deliverables)
-                    ? project.deliverables
-                    : (project.deliverable ? [project.deliverable] : [])
-                  ).slice(0, 2).map((d, i) => (
-                    <li key={i}>{d}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pt-1">
-                <span className="text-[11px] sm:text-xs font-bold text-brand-slate block mb-1">
-                  Skills &amp; Technologies:
-                </span>
-                <div className="flex flex-wrap gap-1">
-                  {(project.skills || []).map((s) => (
-                    <span
-                      key={s}
-                      className="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded bg-brand-surface text-brand-cyan font-medium border border-brand-border/80"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="pt-4 mt-5 border-t border-brand-border/60 flex items-center justify-between">
-              <button
-                type="button"
-                onClick={() => setActiveProjectGuide(project)}
-                className="text-xs sm:text-[13px] font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
-              >
-                <span>View Project Guide</span>
-                <ChevronRight size={14} />
-              </button>
+            {/* Card Body */}
+            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div className="space-y-3">
+                {/* 2. Difficulty badge & estimated duration */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">
+                    {ENGINEERING_DOMAINS.find((d) => d.id === project.domainId)?.name || project.domain || project.domainId}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-400">
+                    <Clock size={12} /> {project.estimatedHours || "Self-Paced"}
+                  </span>
+                </div>
 
-              <Link
-                to="/analyzer"
-                className="text-xs sm:text-[13px] text-brand-muted hover:text-white font-medium"
-              >
-                Benchmark &rarr;
-              </Link>
+                {/* 3. Project title */}
+                <h3 className="font-heading font-bold text-base sm:text-lg text-white m-0 group-hover:text-cyan-200 transition-colors">
+                  {project.title}
+                </h3>
+
+                {/* 4. Existing project description */}
+                <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed m-0 line-clamp-2">
+                  {project.description || project.deliverable || ""}
+                </p>
+
+                {/* 5. Existing deliverables or learning outcomes */}
+                <div className="space-y-1.5 pt-1">
+                  <span className="text-[11px] sm:text-xs font-bold text-slate-200 block">Expected Deliverable:</span>
+                  <ul className="text-xs sm:text-[13px] text-slate-300 space-y-1 pl-4 m-0 list-disc">
+                    {(Array.isArray(project.deliverables)
+                      ? project.deliverables
+                      : (project.deliverable ? [project.deliverable] : [])
+                    ).slice(0, 2).map((d, i) => (
+                      <li key={i}>{d}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 7. Technology or skill info */}
+                <div className="pt-1">
+                  <span className="text-[11px] sm:text-xs font-bold text-slate-300 block mb-1">
+                    Skills &amp; Technologies:
+                  </span>
+                  <div className="flex flex-wrap gap-1">
+                    {(project.skills || []).map((s) => (
+                      <span
+                        key={s}
+                        className="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded bg-[#18223B] text-cyan-300 font-medium border border-blue-500/20"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* 6. Inspect Blueprint action */}
+              <div className="pt-4 mt-2 border-t border-slate-700/60 flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => setActiveProjectGuide(project)}
+                  className="text-xs sm:text-[13px] font-bold text-[#38BDF8] hover:text-cyan-200 hover:underline inline-flex items-center gap-1 group/btn"
+                >
+                  <span>View Project Guide</span>
+                  <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+
+                <Link
+                  to="/analyzer"
+                  className="text-xs sm:text-[13px] text-slate-400 hover:text-white font-medium"
+                >
+                  Benchmark &rarr;
+                </Link>
+              </div>
             </div>
           </div>
         ))}
@@ -393,6 +411,15 @@ export default function ProjectsPage({ onPreviewPdf }) {
 
             {/* Modal Body */}
             <div className="p-6 overflow-y-auto space-y-5 text-xs">
+              {/* Visual Preview Artwork */}
+              <div className="relative w-full h-48 rounded-xl overflow-hidden border border-blue-500/30 bg-slate-950 shadow-inner">
+                <img
+                  src={activeProjectGuide.image || `/assets/projects/${activeProjectGuide.id}.svg`}
+                  alt={`${activeProjectGuide.title} architecture`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
               {/* 1. Problem and Purpose */}
               <div className="space-y-1.5">
                 <span className="font-bold text-brand-cyan uppercase tracking-wide flex items-center gap-1.5">

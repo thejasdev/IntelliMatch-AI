@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/><stop offset="100%" stop-color="#14532D"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg15)"/>
+  
+  <rect x="30" y="20" width="540" height="300" rx="12" fill="#0A0E1A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="30" y="20" width="540" height="36" rx="12" fill="#141E33"/>
+  <rect x="30" y="44" width="540" height="12" fill="#141E33"/>
+  <circle cx="50" cy="38" r="4.5" fill="#EF4444"/>
+  <circle cx="65" cy="38" r="4.5" fill="#F59E0B"/>
+  <circle cx="80" cy="38" r="4.5" fill="#10B981"/>
+  <text x="100" y="42" fill="#94A3B8" font-family="sans-serif" font-size="11" font-weight="600">DevSecOps CI/CD Security Gating Pipeline</text>
+  
+  <rect x="440" y="27" width="115" height="22" rx="5" fill="#0E1726" stroke="#10B981" stroke-width="1"/>
+  <text x="497" y="42" fill="#10B981" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">SEMGREP • TRUFFLEHOG • OWASP ZAP</text>
+  
+  
+  
+  <g transform="translate(45, 68)">
+    <!-- Pipeline Stages Graph -->
+    <rect x="0" y="0" width="510" height="85" rx="8" fill="#0A0E1A" stroke="#1E293B"/>
+    <text x="15" y="20" fill="#94A3B8" font-family="sans-serif" font-size="9" font-weight="bold">GITHUB ACTIONS WORKFLOW: security_gate.yml</text>
+    
+    <g transform="translate(15, 32)">
+      <!-- Stage 1 -->
+      <rect x="0" y="0" width="80" height="40" rx="5" fill="#065F46" stroke="#10B981"/>
+      <text x="40" y="18" fill="#A7F3D0" font-family="sans-serif" font-size="8.5" text-anchor="middle" font-weight="bold">Semgrep SAST</text>
+      <text x="40" y="32" fill="#6EE7B7" font-family="sans-serif" font-size="8" text-anchor="middle">✓ 0 High Vulns</text>
+      <line x1="80" y1="20" x2="98" y2="20" stroke="#10B981" stroke-width="2"/>
+
+      <!-- Stage 2 -->
+      <rect x="98" y="0" width="85" height="40" rx="5" fill="#065F46" stroke="#10B981"/>
+      <text x="140" y="18" fill="#A7F3D0" font-family="sans-serif" font-size="8.5" text-anchor="middle" font-weight="bold">TruffleHog</text>
+      <text x="140" y="32" fill="#6EE7B7" font-family="sans-serif" font-size="8" text-anchor="middle">✓ 0 Secret Leaks</text>
+      <line x1="183" y1="20" x2="201" y2="20" stroke="#10B981" stroke-width="2"/>
+
+      <!-- Stage 3 -->
+      <rect x="201" y="0" width="85" height="40" rx="5" fill="#065F46" stroke="#10B981"/>
+      <text x="243" y="18" fill="#A7F3D0" font-family="sans-serif" font-size="8.5" text-anchor="middle" font-weight="bold">Trivy Container</text>
+      <text x="243" y="32" fill="#6EE7B7" font-family="sans-serif" font-size="8" text-anchor="middle">✓ 0 CVE Critical</text>
+      <line x1="286" y1="20" x2="304" y2="20" stroke="#10B981" stroke-width="2"/>
+
+      <!-- Stage 4 -->
+      <rect x="304" y="0" width="85" height="40" rx="5" fill="#065F46" stroke="#10B981"/>
+      <text x="346" y="18" fill="#A7F3D0" font-family="sans-serif" font-size="8.5" text-anchor="middle" font-weight="bold">OWASP ZAP</text>
+      <text x="346" y="32" fill="#6EE7B7" font-family="sans-serif" font-size="8" text-anchor="middle">✓ DAST Clean</text>
+      <line x1="389" y1="20" x2="407" y2="20" stroke="#10B981" stroke-width="2"/>
+
+      <!-- Stage 5 -->
+      <rect x="407" y="0" width="73" height="40" rx="5" fill="#047857" stroke="#34D399" stroke-width="1.5"/>
+      <text x="443" y="18" fill="#FFFFFF" font-family="sans-serif" font-size="8.5" text-anchor="middle" font-weight="bold">Production</text>
+      <text x="443" y="32" fill="#A7F3D0" font-family="sans-serif" font-size="8" text-anchor="middle">DEPLOYED</text>
+    </g>
+
+    <!-- Vulnerability Matrix Summary -->
+    <rect x="0" y="96" width="510" height="138" rx="8" fill="#0F172A" stroke="#1E293B"/>
+    <text x="16" y="118" fill="#F8FAFC" font-family="sans-serif" font-size="10.5" font-weight="bold">Automated Security Gate Audit Verdict: APPROVED FOR MERGE</text>
+    
+    <g transform="translate(16, 132)">
+      <rect x="0" y="0" width="110" height="42" rx="6" fill="#14532D"/>
+      <text x="12" y="18" fill="#86EFAC" font-family="sans-serif" font-size="8.5">CRITICAL FINDINGS</text>
+      <text x="12" y="35" fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold">0 BLOCKED</text>
+
+      <rect x="125" y="0" width="110" height="42" rx="6" fill="#14532D"/>
+      <text x="137" y="18" fill="#86EFAC" font-family="sans-serif" font-size="8.5">HIGH SEVERITY</text>
+      <text x="137" y="35" fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold">0 DETECTED</text>
+
+      <rect x="250" y="0" width="110" height="42" rx="6" fill="#1E293B"/>
+      <text x="262" y="18" fill="#94A3B8" font-family="sans-serif" font-size="8.5">MEDIUM VULNS</text>
+      <text x="262" y="35" fill="#FBBF24" font-family="sans-serif" font-size="14" font-weight="bold">2 WARNINGS</text>
+
+      <rect x="375" y="0" width="105" height="42" rx="6" fill="#1E293B"/>
+      <text x="387" y="18" fill="#94A3B8" font-family="sans-serif" font-size="8.5">DEPENDENCY FIX</text>
+      <text x="387" y="35" fill="#38BDF8" font-family="sans-serif" font-size="14" font-weight="bold">AUTO-PR</text>
+    </g>
+
+    <text x="16" y="215" fill="#34D399" font-family="sans-serif" font-size="9.5" font-weight="bold">Policy Enforcement: Branch protection verified. Zero vulnerabilities permitted on main branch.</text>
+  </g>
+</svg>

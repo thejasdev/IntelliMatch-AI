@@ -211,13 +211,16 @@ export const CURATED_PROJECTS = [
   }
 ];
 
-// Ensure all projects have array deliverables and fallback description
+// Ensure all projects have array deliverables, fallback description, and visual preview image
 CURATED_PROJECTS.forEach((proj) => {
   if (!proj.deliverables) {
     proj.deliverables = proj.deliverable ? [proj.deliverable] : [];
   }
   if (!proj.description) {
     proj.description = proj.deliverable || proj.highlights || "";
+  }
+  if (!proj.image) {
+    proj.image = `/assets/projects/${proj.id}.svg`;
   }
 });
 
@@ -241,6 +244,7 @@ export function getProjectsByFilter(domainOrFilter = "all", difficultyArg = "all
     })
     .map((proj) => ({
       ...proj,
+      image: proj.image || `/assets/projects/${proj.id}.svg`,
       deliverables: Array.isArray(proj.deliverables)
         ? proj.deliverables
         : (proj.deliverable ? [proj.deliverable] : []),

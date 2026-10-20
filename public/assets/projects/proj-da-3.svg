@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/><stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg6)"/>
+  
+  <rect x="30" y="20" width="540" height="300" rx="12" fill="#0A0E1A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="30" y="20" width="540" height="36" rx="12" fill="#141E33"/>
+  <rect x="30" y="44" width="540" height="12" fill="#141E33"/>
+  <circle cx="50" cy="38" r="4.5" fill="#EF4444"/>
+  <circle cx="65" cy="38" r="4.5" fill="#F59E0B"/>
+  <circle cx="80" cy="38" r="4.5" fill="#10B981"/>
+  <text x="100" y="42" fill="#94A3B8" font-family="sans-serif" font-size="11" font-weight="600">Airflow DAG • Retail Demand Forecasting</text>
+  
+  <rect x="440" y="27" width="115" height="22" rx="5" fill="#0E1726" stroke="#A855F7" stroke-width="1"/>
+  <text x="497" y="42" fill="#A855F7" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">PROPHET + LIGHTGBM + STREAMLIT</text>
+  
+  
+  
+  <g transform="translate(45, 68)">
+    <!-- Pipeline Status Bar -->
+    <rect x="0" y="0" width="510" height="78" rx="8" fill="#111827" stroke="#374151"/>
+    <text x="16" y="22" fill="#F8FAFC" font-family="sans-serif" font-size="11" font-weight="bold">Airflow DAG: retail_demand_pipeline_weekly (Status: SUCCESS)</text>
+    
+    <!-- DAG Nodes -->
+    <g transform="translate(15, 34)">
+      <rect x="0" y="0" width="85" height="32" rx="6" fill="#065F46" stroke="#10B981"/>
+      <text x="42" y="20" fill="#A7F3D0" font-family="sans-serif" font-size="9" text-anchor="middle" font-weight="bold">Ingest CSVs</text>
+      <line x1="85" y1="16" x2="100" y2="16" stroke="#10B981" stroke-width="2"/>
+
+      <rect x="100" y="0" width="85" height="32" rx="6" fill="#065F46" stroke="#10B981"/>
+      <text x="142" y="20" fill="#A7F3D0" font-family="sans-serif" font-size="9" text-anchor="middle" font-weight="bold">Feature Eng</text>
+      <line x1="185" y1="16" x2="200" y2="16" stroke="#10B981" stroke-width="2"/>
+
+      <rect x="200" y="0" width="85" height="32" rx="6" fill="#065F46" stroke="#10B981"/>
+      <text x="242" y="20" fill="#A7F3D0" font-family="sans-serif" font-size="9" text-anchor="middle" font-weight="bold">Train LightGBM</text>
+      <line x1="285" y1="16" x2="300" y2="16" stroke="#10B981" stroke-width="2"/>
+
+      <rect x="300" y="0" width="85" height="32" rx="6" fill="#065F46" stroke="#10B981"/>
+      <text x="342" y="20" fill="#A7F3D0" font-family="sans-serif" font-size="9" text-anchor="middle" font-weight="bold">Drift Check</text>
+      <line x1="385" y1="16" x2="400" y2="16" stroke="#10B981" stroke-width="2"/>
+
+      <rect x="400" y="0" width="80" height="32" rx="6" fill="#065F46" stroke="#10B981"/>
+      <text x="440" y="20" fill="#A7F3D0" font-family="sans-serif" font-size="9" text-anchor="middle" font-weight="bold">Serve Streamlit</text>
+    </g>
+
+    <!-- Time Series Forecast Curve -->
+    <rect x="0" y="90" width="510" height="145" rx="8" fill="#0A0E1A" stroke="#1E293B"/>
+    <text x="16" y="112" fill="#94A3B8" font-family="sans-serif" font-size="10.5" font-weight="bold">Historical Sales (Solid) vs 12-Week Demand Forecast Band (Dashed)</text>
+    
+    <!-- Graph -->
+    <path d="M 30 190 Q 70 160, 110 180 T 190 150 T 270 170 T 350 140" fill="none" stroke="#38BDF8" stroke-width="2.5"/>
+    <!-- Forecast Cone -->
+    <polygon points="350,140 470,110 470,170 350,140" fill="#A855F7" opacity="0.2"/>
+    <path d="M 350 140 Q 410 125, 470 140" fill="none" stroke="#C084FC" stroke-width="2.5" stroke-dasharray="4"/>
+    <circle cx="350" cy="140" r="4" fill="#C084FC"/>
+    <text x="345" y="130" fill="#C084FC" font-family="sans-serif" font-size="9" font-weight="bold">T=0</text>
+    <text x="475" y="143" fill="#A855F7" font-family="sans-serif" font-size="10" font-weight="bold">MAPE: 4.8%</text>
+  </g>
+</svg>
