@@ -139,10 +139,10 @@ export default function FeedbackPage() {
                     key={cat.id}
                     type="button"
                     onClick={() => setCategory(cat.id)}
-                    className={`flex items-center gap-2.5 p-3 rounded-xl border text-xs font-medium text-left transition-all ${
+                    className={`flex items-center gap-2.5 p-3 rounded-xl border text-xs font-medium text-left transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-cyan/50 ${
                       isSelected
                         ? "border-brand-violet bg-brand-surface text-brand-violet font-semibold shadow-xs"
-                        : "border-brand-border bg-brand-card text-brand-slate hover:bg-brand-surface"
+                        : "border-brand-border bg-brand-card text-brand-slate hover:bg-brand-surface hover:border-brand-cyan/40"
                     }`}
                   >
                     <Icon className={`w-4 h-4 ${isSelected ? "text-brand-violet" : "text-brand-muted"}`} />
@@ -165,15 +165,15 @@ export default function FeedbackPage() {
             </div>
             <div className="flex items-center gap-2">
               {[1, 2, 3, 4, 5].map((star) => (
-                <button
-                  key={star}
-                  type="button"
-                  onMouseEnter={() => setHoverRating(star)}
-                  onMouseLeave={() => setHoverRating(0)}
-                  onClick={() => setRating(star)}
-                  className="p-1 focus:outline-none transition-transform hover:scale-110"
-                  aria-label={`${star} star rating`}
-                >
+                  <button
+                    key={star}
+                    type="button"
+                    onMouseEnter={() => setHoverRating(star)}
+                    onMouseLeave={() => setHoverRating(0)}
+                    onClick={() => setRating(star)}
+                    className="p-1 focus:outline-none focus:ring-2 focus:ring-brand-cyan/50 rounded-lg transition-transform duration-150 hover:scale-110"
+                    aria-label={`${star} star rating`}
+                  >
                   <Star
                     className={`w-7 h-7 ${
                       star <= (hoverRating || rating)
