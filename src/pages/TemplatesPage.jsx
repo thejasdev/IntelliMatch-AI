@@ -104,19 +104,36 @@ export default function TemplatesPage({ onPreviewPdf }) {
 
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Header Banner — Open, unboxed header sitting directly on the ambient background */}
-      <div className="pt-2 sm:pt-4 pb-1 space-y-3">
-        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet block">
-          Career Documents Library
-        </span>
-        <h1 className="font-display-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight m-0 leading-[1.12]">
-          ATS Resume Templates
-        </h1>
-        <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 max-w-3xl font-sans">
-          Access 5 verified, single-page PDF resume templates. Designed around document typography,
-          scannability, and ATS compliance rather than restrictive engineering silos.
-        </p>
-      </div>
+      {/* 1. Introductory Header Panel — Styled after the master Home hero */}
+      <section
+        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-8 lg:px-10 py-7 sm:py-8 lg:py-9 shadow-2xl backdrop-blur-md"
+        style={{
+          background:
+            "linear-gradient(145deg, rgba(20, 24, 48, 0.55) 0%, rgba(14, 18, 36, 0.7) 100%)",
+        }}
+      >
+        {/* Subtle atmospheric depth glow accents matching hero */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <div className="absolute -top-10 -left-10 w-72 h-72 bg-brand-violet/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 space-y-3 max-w-4xl">
+          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet block">
+            Career Documents Library
+          </span>
+          <h1 className="font-hero font-extrabold text-white text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] leading-[1.12] tracking-[-0.025em] m-0">
+            <span className="text-white">ATS Resume </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
+              Templates
+            </span>
+          </h1>
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-sans">
+            Access 5 verified, single-page PDF resume templates. Designed around document typography,
+            scannability, and ATS compliance rather than restrictive engineering silos.
+          </p>
+        </div>
+      </section>
 
       {/* Assurance Bar */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-brand-surface border border-brand-border text-xs sm:text-[13px]">

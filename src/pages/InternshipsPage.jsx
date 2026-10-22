@@ -40,19 +40,36 @@ export default function InternshipsPage() {
 
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Header Banner */}
-      <div className="im-card p-6 md:p-8 space-y-2">
-        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
-          Career Opportunities
-        </span>
-        <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
-          Internships &amp; Entry-Level Roles
-        </h1>
-        <p className="text-sm sm:text-base text-brand-muted leading-relaxed m-0 max-w-3xl">
-          Discover student internships, graduate traineeships, and entry-level engineering roles across
-          10 technical domains, or launch verified external platform searches.
-        </p>
-      </div>
+      {/* 1. Introductory Header Panel — Styled after the master Home hero */}
+      <section
+        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-8 lg:px-10 py-7 sm:py-8 lg:py-9 shadow-2xl backdrop-blur-md"
+        style={{
+          background:
+            "linear-gradient(145deg, rgba(20, 24, 48, 0.55) 0%, rgba(14, 18, 36, 0.7) 100%)",
+        }}
+      >
+        {/* Subtle atmospheric depth glow accents matching hero */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <div className="absolute -top-10 -left-10 w-72 h-72 bg-brand-violet/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 space-y-3 max-w-4xl">
+          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet block">
+            Career Opportunities
+          </span>
+          <h1 className="font-hero font-extrabold text-white text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] leading-[1.12] tracking-[-0.025em] m-0">
+            <span className="text-white">Internships </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
+              &amp; Entry-Level Roles
+            </span>
+          </h1>
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-sans">
+            Discover student internships, graduate traineeships, and entry-level engineering roles across
+            10 technical domains, or launch verified external platform searches.
+          </p>
+        </div>
+      </section>
 
       {/* External Sources Search Bar */}
       <div className="im-card p-5 sm:p-6 space-y-3">
