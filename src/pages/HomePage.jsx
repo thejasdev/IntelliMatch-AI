@@ -265,7 +265,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
             {/* Top kicker specification */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
               <Sparkles size={12} className="text-[#38BDF8]" />
-              <span className="uppercase tracking-wider">Â§ 01 â€” Career Discovery &amp; Readiness</span>
+              <span className="uppercase tracking-wider">§ 01 — Career Discovery &amp; Readiness</span>
             </div>
 
             {/* Prominent Large Headline across lines */}
@@ -276,8 +276,8 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               </span>
             </h1>
 
-            {/* Secondary line beneath main heading */}
-            <p className="font-heading font-semibold text-lg sm:text-xl lg:text-2xl text-slate-300 m-0 tracking-tight">
+            {/* Secondary line beneath main heading (Preserved with Source Serif 4 via font-hero-subheading) */}
+            <p className="font-hero-subheading font-semibold text-lg sm:text-xl lg:text-2xl text-slate-300 m-0 tracking-tight">
               Career Discovery &amp; Readiness
             </p>
           </div>

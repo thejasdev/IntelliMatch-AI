@@ -104,15 +104,15 @@ export default function TemplatesPage({ onPreviewPdf }) {
 
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Header Banner */}
-      <div className="im-card p-6 md:p-8 space-y-2">
-        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
+      {/* Header Banner — Open, unboxed header sitting directly on the ambient background */}
+      <div className="pt-2 sm:pt-4 pb-1 space-y-3">
+        <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet block">
           Career Documents Library
         </span>
-        <h1 className="text-2xl md:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0">
+        <h1 className="font-display-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight m-0 leading-[1.12]">
           ATS Resume Templates
         </h1>
-        <p className="text-sm sm:text-base text-brand-muted leading-relaxed m-0 max-w-3xl">
+        <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 max-w-3xl font-sans">
           Access 5 verified, single-page PDF resume templates. Designed around document typography,
           scannability, and ATS compliance rather than restrictive engineering silos.
         </p>

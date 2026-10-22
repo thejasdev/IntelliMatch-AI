@@ -64,9 +64,11 @@ export default {
         },
       },
       fontFamily: {
-        serif: ["'Source Serif 4'", "Georgia", "'Times New Roman'", "serif"],
-        sans: ["'Inter'", "'Roboto'", "Arial", "Helvetica", "sans-serif"],
+        sans: ["'IBM Plex Sans'", "Arial", "sans-serif"],
+        serif: ["'IBM Plex Serif'", "Georgia", "serif"],
+        heading: ["'IBM Plex Serif'", "Georgia", "serif"],
         hero: ["'Manrope'", "'Inter'", "Arial", "sans-serif"],
+        mono: ["'IBM Plex Mono'", "monospace"],
       },
       backgroundImage: {
         "logo-gradient":

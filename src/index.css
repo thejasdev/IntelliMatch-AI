@@ -61,7 +61,7 @@ html {
 }
 
 body {
-  font-family: "Inter", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #FFFFFF;
   background: #181727;
   min-height: 100vh;
@@ -85,9 +85,9 @@ a:hover {
   color: var(--wave-cyan);
 }
 
-/* Headings font family: Source Serif 4 for standard headings, Manrope for hero */
+/* Headings font family: IBM Plex Serif for standard headings, Manrope for hero, IBM Plex Sans for display headings */
 h1, h2, h3, h4, .font-heading {
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
   color: #FFFFFF;
   letter-spacing: -0.018em;
 }
@@ -110,6 +110,22 @@ h3 {
 .font-hero {
   font-family: "Manrope", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: -0.025em;
+}
+
+/* Home hero supporting subheading specifically preserved with Source Serif 4 */
+.font-hero-subheading {
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+/* Modern display headings in bold IBM Plex Sans */
+.font-display-heading {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* Technical identifiers, code and terminal elements */
+code, pre, .font-mono {
+  font-family: "IBM Plex Mono", monospace;
 }
 
 /* Focus styles for keyboard accessibility */
