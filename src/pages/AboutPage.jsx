@@ -16,20 +16,49 @@ import LogoMark from "../components/LogoMark.jsx";
 export default function AboutPage({ onOpenContact }) {
   return (
     <div className="space-y-8 sm:space-y-10 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      {/* Page Header */}
-      <div className="im-card p-6 md:p-10 space-y-3 text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface border border-brand-border text-brand-violet text-xs sm:text-[13px] font-semibold mb-2">
-          <Info size={15} />
-          <span>Platform Overview &amp; Institutional Mission</span>
+      {/* 1. Unified Page Header — Styled after the master Home hero */}
+      <section
+        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-10 lg:px-12 py-8 sm:py-10 shadow-2xl backdrop-blur-md"
+        style={{
+          background:
+            "linear-gradient(145deg, rgba(20, 24, 48, 0.55) 0%, rgba(14, 18, 36, 0.7) 100%)",
+        }}
+      >
+        {/* Subtle atmospheric depth glow accents matching hero */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
         </div>
-        <h1 className="text-3xl sm:text-5xl font-heading font-bold text-brand-slate tracking-tight m-0">
-          About IntelliMatch
-        </h1>
-        <p className="mt-3 text-sm sm:text-base text-brand-muted font-sans max-w-3xl mx-auto leading-relaxed m-0">
-          AI-Powered Career Discovery &amp; Readiness Platform — empowering engineering students, freshers,
-          and tech professionals with multi-domain curricula, ATS resume intelligence, and downloadable PDF templates.
-        </p>
-      </div>
+
+        {/* 2-Column Grid matching Home hero */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start lg:items-center">
+          {/* Left Column: Pill badge + Two-tone display title */}
+          <div className="lg:col-span-7 space-y-4 text-left">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
+              <Info size={13} className="text-[#38BDF8]" />
+              <span className="uppercase tracking-wider">Platform Overview &amp; Mission</span>
+            </div>
+
+            <h1 className="font-hero font-extrabold text-white text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-[-0.03em] m-0">
+              <span className="block text-white">About </span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
+                IntelliMatch
+              </span>
+            </h1>
+          </div>
+
+          {/* Right Column: OVERVIEW label + description */}
+          <div className="lg:col-span-5 space-y-2 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
+              OVERVIEW
+            </span>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
+              AI-Powered Career Discovery &amp; Readiness Platform &mdash; empowering engineering students, freshers,
+              and tech professionals with multi-domain curricula, ATS resume intelligence, and downloadable PDF templates.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Mission and Target Audience */}
       <div className="im-card p-6 sm:p-8 space-y-6">

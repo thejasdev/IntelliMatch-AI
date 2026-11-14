@@ -158,9 +158,9 @@ export default function RoadmapsPage({ onPreviewPdf }) {
 
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* 1. Introductory Header Panel — Styled after the master Home hero */}
+      {/* 1. Unified Page Header — Styled after the master Home hero */}
       <section
-        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-8 lg:px-10 py-7 sm:py-8 lg:py-9 shadow-2xl backdrop-blur-md"
+        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-12 shadow-2xl backdrop-blur-md"
         style={{
           background:
             "linear-gradient(145deg, rgba(20, 24, 48, 0.55) 0%, rgba(14, 18, 36, 0.7) 100%)",
@@ -168,77 +168,92 @@ export default function RoadmapsPage({ onPreviewPdf }) {
       >
         {/* Subtle atmospheric depth glow accents matching hero */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-10 -left-10 w-72 h-72 bg-brand-violet/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
         </div>
 
-        <div className="relative z-10 space-y-3 max-w-4xl">
-          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet block">
-            Engineering Curriculum
-          </span>
-          <h1 className="font-hero font-extrabold text-white text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] leading-[1.12] tracking-[-0.025em] m-0">
-            <span className="text-white">Domains </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
-              &amp; Learning Roadmaps
-            </span>
-          </h1>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-sans">
-            A non-linear, multi-year learning progression from foundational programming to industry-grade
-            competencies across 10 specialized engineering domains.
-          </p>
-        </div>
-      </section>
-
-      {/* Domain Roadmap PDF Action Bar */}
-      <div className="im-card p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-l-4 border-l-brand-violet">
-        <div className="flex items-center gap-3.5">
-          <div className="w-11 h-11 rounded-xl bg-brand-violet/10 text-brand-violet flex items-center justify-center flex-shrink-0">
-            <FileText size={22} />
-          </div>
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="text-base sm:text-lg font-bold font-heading text-brand-slate m-0">
-                {selectedDomainMeta.name} &mdash; Official Curriculum Handbook
-              </h3>
-              <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                PDF in Prep
-              </span>
+        {/* Top 2-Column Grid matching Home hero */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center">
+          {/* Left Column: Pill badge + Two-tone display title */}
+          <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-5 text-left">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
+              <Sparkles size={12} className="text-[#38BDF8]" />
+              <span className="uppercase tracking-wider">Engineering Curriculum</span>
             </div>
-            <p className="text-xs sm:text-[13px] text-brand-muted m-0 mt-0.5">
-              Complete multi-year semester syllabus, milestones, competencies &amp; project blueprints.
+
+            <h1 className="font-hero font-extrabold text-white text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-[-0.03em] m-0">
+              <span className="block text-white">Domains </span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
+                &amp; Learning Roadmaps
+              </span>
+            </h1>
+          </div>
+
+          {/* Right Column: OVERVIEW label + description */}
+          <div className="lg:col-span-5 xl:col-span-4 space-y-2 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
+              OVERVIEW
+            </span>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
+              A non-linear, multi-year learning progression from foundational programming to industry-grade
+              competencies across 10 specialized engineering domains.
             </p>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-end flex-shrink-0">
-          <button
-            type="button"
-            onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
-          >
-            <Eye size={14} />
-            <span>Preview PDF</span>
-          </button>
+        {/* Domain Roadmap PDF Action Bar inside the same frame */}
+        <div className="relative z-10 mt-8 pt-6 border-t border-slate-800/80">
+          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-l-4 border-l-brand-violet">
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-xl bg-brand-violet/10 text-brand-violet flex items-center justify-center flex-shrink-0">
+                <FileText size={22} />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="text-base sm:text-lg font-bold font-heading text-brand-slate m-0">
+                    {selectedDomainMeta.name} &mdash; Official Curriculum Handbook
+                  </h3>
+                  <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                    PDF in Prep
+                  </span>
+                </div>
+                <p className="text-xs sm:text-[13px] text-brand-muted m-0 mt-0.5">
+                  Complete multi-year semester syllabus, milestones, competencies &amp; project blueprints.
+                </p>
+              </div>
+            </div>
 
-          <button
-            type="button"
-            onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
-          >
-            <ExternalLink size={14} />
-            <span>Open in Tab</span>
-          </button>
+            <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-end flex-shrink-0">
+              <button
+                type="button"
+                onClick={handleTriggerHandbookPreview}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
+              >
+                <Eye size={14} />
+                <span>Preview PDF</span>
+              </button>
 
-          <button
-            type="button"
-            onClick={handleTriggerHandbookPreview}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-[13px] font-semibold shadow-xs transition-all"
-          >
-            <Download size={14} />
-            <span>Download PDF</span>
-          </button>
+              <button
+                type="button"
+                onClick={handleTriggerHandbookPreview}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-cyan text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
+              >
+                <ExternalLink size={14} />
+                <span>Open in Tab</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleTriggerHandbookPreview}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-[13px] font-semibold shadow-xs transition-all"
+              >
+                <Download size={14} />
+                <span>Download PDF</span>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Main Layout: Domain Selector Sidebar + Content Area */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
