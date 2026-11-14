@@ -7,6 +7,7 @@ import Footer from "./components/Footer.jsx";
 import ContactModal from "./components/ContactModal.jsx";
 import PdfPreviewModal from "./components/PdfPreviewModal.jsx";
 import AmbientWaveBackground from "./components/AmbientWaveBackground.jsx";
+import BackgroundAtmosphere from "./components/BackgroundAtmosphere.jsx";
 
 // Page Views
 import HomePage from "./pages/HomePage.jsx";
@@ -78,7 +79,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen text-white bg-transparent font-sans antialiased selection:bg-brand-cyan/20 selection:text-brand-cyan relative">
-      {/* 1. Global Persistent Midnight Navy Motion-Graphics Video Layer */}
+      {/* 1. Global Persistent Watermark-Free SVG Telemetry Motion Background */}
+      <BackgroundAtmosphere />
       <AmbientWaveBackground />
 
       {/* 2. Scroll-to-top Manager */}
@@ -114,6 +116,7 @@ export default function App() {
               element={<TemplatesPage onPreviewPdf={handleOpenPdfPreview} />}
             />
             <Route path="/analyzer" element={<AnalyzerPage />} />
+            <Route path="/resume-analyzer" element={<Navigate to="/analyzer" replace />} />
             <Route path="/internships" element={<InternshipsPage />} />
             <Route
               path="/dashboard"
