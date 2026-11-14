@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 :root {
+  /* Precision Obsidian-Navy Color System */
+  --bg-obsidian: #030611;
+  --surface-console: #070C1B;
+  --surface-card: #0B1226;
+  --surface-card-hover: #0F1833;
+  --accent-cyan: #38BDF8;
+  --accent-blue: #3B82F6;
+  --accent-violet: #818CF8;
+
   /* Global Midnight Navy, Blue, Cyan and Ice-White Tokens */
   --bg-navy-top: #181727;
   --bg-navy-mid: #1A1B2F;
@@ -62,13 +71,14 @@ html {
 
 body {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #FFFFFF;
-  background: #181727;
+  color: #F8FAFC;
+  background-color: var(--bg-obsidian);
   min-height: 100vh;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
@@ -408,4 +418,95 @@ code, pre, .font-mono {
 .animate-node-twinkle-3 {
   animation: nodeTwinkle 6s ease-in-out 3s infinite;
   transform-origin: center;
+}
+
+@layer utilities {
+  /* Unified Large-Outline Header Frame matching Home Hero */
+  .console-frame {
+    position: relative;
+    background:
+      radial-gradient(80% 120% at 12% 0%, rgba(59, 130, 246, 0.14) 0%, transparent 60%),
+      radial-gradient(70% 100% at 88% 100%, rgba(129, 140, 248, 0.12) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(10, 16, 34, 0.92) 0%, rgba(5, 9, 20, 0.97) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.26);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.14),
+      0 24px 60px -15px rgba(2, 6, 23, 0.92);
+    backdrop-filter: blur(20px);
+  }
+
+  /* Inner Sub-Deck Container Inside the Unified Frame */
+  .console-subdeck {
+    background: linear-gradient(180deg, rgba(13, 21, 42, 0.72) 0%, rgba(8, 13, 28, 0.85) 100%);
+    border: 1px solid rgba(51, 65, 85, 0.55);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* Tier 2: Interactive Engineering Card with Specular Top Edge & Hover Lift */
+  .precision-card {
+    position: relative;
+    background:
+      radial-gradient(120% 120% at 50% 0%, rgba(56, 189, 248, 0.05) 0%, transparent 65%),
+      linear-gradient(180deg, rgba(13, 21, 43, 0.78) 0%, rgba(7, 12, 26, 0.92) 100%);
+    border: 1px solid rgba(51, 65, 85, 0.55);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.07),
+      0 10px 30px -12px rgba(2, 6, 23, 0.75);
+    transition:
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      background 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .precision-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(56, 189, 248, 0.42);
+    box-shadow:
+      inset 0 1px 0 0 rgba(103, 232, 249, 0.28),
+      0 18px 40px -12px rgba(6, 182, 212, 0.16);
+  }
+
+  /* Signature Two-Tone Display Gradient (Violet -> Electric Blue -> Cyan) */
+  .text-display-gradient {
+    background: linear-gradient(92deg, #818CF8 0%, #60A5FA 48%, #22D3EE 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Radial-Masked 1px Architectural Engineering Grid */
+  .bg-architectural-grid {
+    background-size: 36px 36px;
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 30%, #000 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 30%, #000 30%, transparent 100%);
+  }
+}
+
+/* Motion Keyframes for SVG Telemetry Pulses & Shimmer Beams */
+@keyframes telemetryPulseFlow {
+  0% { stroke-dashoffset: 1400; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes borderBeamSweep {
+  0%, 100% { opacity: 0.35; transform: translateX(-15%); }
+  50% { opacity: 0.85; transform: translateX(15%); }
+}
+
+.animate-telemetry-primary {
+  stroke-dasharray: 110 1290;
+  animation: telemetryPulseFlow 10s linear infinite;
+}
+
+.animate-telemetry-secondary {
+  stroke-dasharray: 80 1320;
+  animation: telemetryPulseFlow 14s linear infinite 4s;
+}
+
+.animate-beam-sweep {
+  animation: borderBeamSweep 7s ease-in-out infinite;
 }
