@@ -124,13 +124,9 @@ export default function AnalyzerPage() {
 
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* 1. Unified Page Header — Styled after the master Home hero */}
+      {/* 1. Unified Page Header — Styled after the master Home hero with console-frame */}
       <section
-        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-12 shadow-2xl backdrop-blur-md"
-        style={{
-          background:
-            "linear-gradient(145deg, rgba(20, 24, 48, 0.55) 0%, rgba(14, 18, 36, 0.7) 100%)",
-        }}
+        className="console-frame relative overflow-hidden rounded-3xl text-white px-6 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-12"
       >
         {/* Subtle atmospheric depth glow accents matching hero */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
