@@ -41,7 +41,7 @@ export default function AmbientWaveBackground() {
       className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0 select-none"
       aria-hidden="true"
     >
-      {/* 1. Deep Midnight-Navy Base Atmospheric Foundation */}
+      {/* 1. Deep Obsidian-Navy Base Atmospheric Foundation */}
       <div
         className="absolute inset-0 w-full h-full"
         style={{
@@ -49,10 +49,13 @@ export default function AmbientWaveBackground() {
             radial-gradient(ellipse 90% 55% at 50% 45%, rgba(20, 111, 232, 0.16) 0%, rgba(25, 198, 232, 0.08) 40%, transparent 75%),
             radial-gradient(circle at 15% 35%, rgba(101, 72, 232, 0.18) 0%, transparent 45%),
             radial-gradient(circle at 85% 25%, rgba(22, 132, 255, 0.16) 0%, transparent 45%),
-            linear-gradient(180deg, #090B17 0%, #10132B 35%, #181727 75%, #0B0D1B 100%)
+            linear-gradient(180deg, #030611 0%, #070C1B 35%, #0B1226 75%, #030611 100%)
           `,
         }}
       />
+
+      {/* 1b. Precision Architectural Engineering Grid */}
+      <div className="absolute inset-0 w-full h-full bg-architectural-grid opacity-60 pointer-events-none" />
 
       {/* 2. Soft Slowly Shifting Ambient Lighting Orbs */}
       {!prefersReducedMotion && (
@@ -194,6 +197,30 @@ export default function AmbientWaveBackground() {
             strokeWidth="1"
           />
         </svg>
+
+        {/* Layer C2: SVG Telemetry Pulses */}
+        {!prefersReducedMotion && (
+          <svg
+            className="absolute bottom-0 left-0 w-[112%] h-[56%] min-w-[1200px] pointer-events-none"
+            viewBox="0 0 1600 600"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M -100 266 C 240 386, 580 206, 920 336 C 1240 446, 1480 246, 1700 316"
+              fill="none"
+              stroke="#38BDF8"
+              strokeWidth="2.5"
+              className="animate-telemetry-primary opacity-80"
+            />
+            <path
+              d="M -100 310 C 280 180, 620 390, 990 240 C 1310 110, 1490 320, 1700 220"
+              fill="none"
+              stroke="#818CF8"
+              strokeWidth="1.8"
+              className="animate-telemetry-secondary opacity-70"
+            />
+          </svg>
+        )}
 
         {/* Layer D: Atmospheric Constellation Network with Twinkling Nodes */}
         <svg
