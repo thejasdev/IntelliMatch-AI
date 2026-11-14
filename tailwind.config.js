@@ -64,11 +64,15 @@ export default {
         },
       },
       fontFamily: {
-        hero: ["'Manrope'", "'Inter'", "Arial", "sans-serif"],
-        sans: ["'IBM Plex Sans'", "'Inter'", "system-ui", "sans-serif"],
-        serif: ["'IBM Plex Serif'", "Georgia", "serif"],
-        heading: ["'IBM Plex Serif'", "Georgia", "serif"],
-        mono: ["'IBM Plex Mono'", "Consolas", "monospace"],
+        // Preserves approved Home Hero & top-level Page Header display style
+        hero: ["Manrope", "Inter", "Arial", "sans-serif"],
+        // Primary interface font for navigation, body copy, cards, roadmaps, and forms
+        sans: ["IBM Plex Sans", "Inter", "system-ui", "sans-serif"],
+        // Editorial section headings and official handbook titles
+        serif: ["IBM Plex Serif", "Georgia", "serif"],
+        heading: ["IBM Plex Serif", "Georgia", "serif"],
+        // Eyebrow badges, checkpoint IDs, durations, tech stack tags, and match scores
+        mono: ["IBM Plex Mono", "Consolas", "monospace"],
       },
       backgroundImage: {
         "logo-gradient":
