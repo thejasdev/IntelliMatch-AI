@@ -64,11 +64,11 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["'IBM Plex Sans'", "Arial", "sans-serif"],
+        hero: ["'Manrope'", "'Inter'", "Arial", "sans-serif"],
+        sans: ["'IBM Plex Sans'", "'Inter'", "system-ui", "sans-serif"],
         serif: ["'IBM Plex Serif'", "Georgia", "serif"],
         heading: ["'IBM Plex Serif'", "Georgia", "serif"],
-        hero: ["'Manrope'", "'Inter'", "Arial", "sans-serif"],
-        mono: ["'IBM Plex Mono'", "monospace"],
+        mono: ["'IBM Plex Mono'", "Consolas", "monospace"],
       },
       backgroundImage: {
         "logo-gradient":
