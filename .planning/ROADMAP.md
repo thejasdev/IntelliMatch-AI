@@ -6,10 +6,10 @@ This roadmap establishes the execution path for bringing the existing IntelliMat
 
 ## Phases
 
-- [ ] **Phase 1: Navigation Bar & More Dropdown Harmonization** - Align navbar colors with dark midnight-navy theme and fix More dropdown positioning, stacking order, and contrast.
-- [ ] **Phase 2: Editorial Two-Column Home Hero Redesign** - Implement large editorial two-column hero composition with natural line breaks, aligned CTAs, and framed border.
-- [ ] **Phase 3: Domain Cards Color Harmonization & Semantic Matching Resolution** - Harmonize domain card surfaces with the dark background and eliminate duplicate semantic-matching content on the Home page.
-- [ ] **Phase 4: Cross-Surface Consistency & Verification Audit** - Conduct comprehensive responsive layout verification and color token audit across all 9 platform destinations.
+- [x] **Phase 1: Navigation Bar & More Dropdown Harmonization** - Align navbar colors with dark midnight-navy theme and fix More dropdown positioning, stacking order, and contrast.
+- [x] **Phase 2: Editorial Two-Column Home Hero Redesign** - Implement large editorial two-column hero composition with natural line breaks, aligned CTAs, and framed border.
+- [x] **Phase 3: Domain Cards Color Harmonization & Semantic Matching Resolution** - Harmonize domain card surfaces with the dark background and eliminate duplicate semantic-matching content on the Home page.
+- [x] **Phase 4: Cross-Surface Consistency & Verification Audit** - Conduct comprehensive responsive layout verification and color token audit across all 9 platform destinations.
 
 ## Phase Details
 
@@ -79,10 +79,10 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Navigation Bar & More Dropdown Harmonization | 0/2 | Not started | - |
-| 2. Editorial Two-Column Home Hero Redesign | 0/2 | Not started | - |
-| 3. Domain Cards Color Harmonization & Semantic Matching Resolution | 0/2 | Not started | - |
-| 4. Cross-Surface Consistency & Verification Audit | 0/1 | Not started | - |
+| 1. Navigation Bar & More Dropdown Harmonization | 2/2 | Complete | 2026-10-22 |
+| 2. Editorial Two-Column Home Hero Redesign | 2/2 | Complete | 2026-10-22 |
+| 3. Domain Cards Color Harmonization & Semantic Matching Resolution | 2/2 | Complete | 2026-10-22 |
+| 4. Cross-Surface Consistency & Verification Audit | 1/1 | Complete | 2026-11-14 |
 
 ---
 *Roadmap defined: 2026-10-20*

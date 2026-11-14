@@ -9,31 +9,31 @@ Requirements for the current refinement milestone. Each maps to roadmap phases.
 
 ### Navigation & Header Surfaces
 
-- [ ] **NAV-01**: Correct overly bright/white navbar surfaces and conflicting light headers to harmonize with the midnight-navy (`#181727`), wave-blue, and cyan background palette.
-- [ ] **NAV-02**: Preserve horizontal navigation layout, official logo mark, all 9 platform destinations, and prominent Resume Analyzer action button.
-- [ ] **NAV-03**: Fix "More" navigation dropdown positioning, clipping, stacking order (z-index), background opacity, and text contrast so the entire dropdown appears directly below its trigger and remains clearly readable above the Home hero.
+- [x] **NAV-01**: Correct overly bright/white navbar surfaces and conflicting light headers to harmonize with the midnight-navy (`#181727`), wave-blue, and cyan background palette.
+- [x] **NAV-02**: Preserve horizontal navigation layout, official logo mark, all 9 platform destinations, and prominent Resume Analyzer action button.
+- [x] **NAV-03**: Fix "More" navigation dropdown positioning, clipping, stacking order (z-index), background opacity, and text contrast so the entire dropdown appears directly below its trigger and remains clearly readable above the Home hero.
 
 ### Home Hero Composition
 
-- [ ] **HERO-01**: Transform the current centered hero into a large, editorial-style, two-column layout inspired by the reference design.
-- [ ] **HERO-02**: Prominently display headline on the left column with natural line breaks, preserving exact copy: "Find Your Path. Build Your Future." and secondary line "Career Discovery & Readiness".
-- [ ] **HERO-03**: Neatly align supporting description and functional CTAs (Explore Domains, Launch Roadmaps, Open Resume Analyzer) in the right column.
-- [ ] **HERO-04**: Preserve the midnight-navy motion background, high-readability text hierarchy, and subtle light-colored border.
+- [x] **HERO-01**: Transform the current centered hero into a large, editorial-style, two-column layout inspired by the reference design.
+- [x] **HERO-02**: Prominently display headline on the left column with natural line breaks, preserving exact copy: "Find Your Path. Build Your Future." and secondary line "Career Discovery & Readiness".
+- [x] **HERO-03**: Neatly align supporting description and functional CTAs (Explore Domains, Launch Roadmaps, Open Resume Analyzer) in the right column.
+- [x] **HERO-04**: Preserve the midnight-navy motion background, high-readability text hierarchy, and subtle light-colored border.
 
 ### Domain Cards & Content Surfaces
 
-- [ ] **CARD-01**: Harmonize existing domain-card container surfaces, titles, descriptions, role badges, borders, and buttons with the dark background theme.
-- [ ] **CARD-02**: Preserve all 10 domain datasets, role inventories, layout structure, and click-through navigation to roadmaps without unnecessary structural redesign.
+- [x] **CARD-01**: Harmonize existing domain-card container surfaces, titles, descriptions, role badges, borders, and buttons with the dark background theme.
+- [x] **CARD-02**: Preserve all 10 domain datasets, role inventories, layout structure, and click-through navigation to roadmaps without unnecessary structural redesign.
 
 ### Semantic Matching Interactive Demonstration
 
-- [ ] **MATCH-01**: Identify and eliminate the root cause of duplicated Resume-to-Job Semantic Matching section on the Home page.
-- [ ] **MATCH-02**: Preserve exactly one clean, fully functional instance with interactive role scenario buttons, circular match score wheel, matched/missing keyword chips, and bullet optimization tips.
+- [x] **MATCH-01**: Identify and eliminate the root cause of duplicated Resume-to-Job Semantic Matching section on the Home page.
+- [x] **MATCH-02**: Preserve exactly one clean, fully functional instance with interactive role scenario buttons, circular match score wheel, matched/missing keyword chips, and bullet optimization tips.
 
 ### Cross-Surface Quality & Cohesion
 
-- [ ] **COHESION-01**: Audit and harmonize visual consistency across all 9 platform destinations (`/`, `/roadmaps`, `/projects`, `/templates`, `/analyzer`, `/internships`, `/dashboard`, `/feedback`, `/about`) against unified dark design tokens.
-- [ ] **COHESION-02**: Verify responsive layout integrity and keyboard navigation accessibility across desktop and mobile viewports.
+- [x] **COHESION-01**: Audit and harmonize visual consistency across all 9 platform destinations (`/`, `/roadmaps`, `/projects`, `/templates`, `/analyzer`, `/internships`, `/dashboard`, `/feedback`, `/about`) against unified dark design tokens.
+- [x] **COHESION-02**: Verify responsive layout integrity and keyboard navigation accessibility across desktop and mobile viewports.
 
 ---
 
@@ -75,19 +75,19 @@ Which phases cover which requirements.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NAV-01 | Phase 1 | Pending |
-| NAV-02 | Phase 1 | Pending |
-| NAV-03 | Phase 1 | Pending |
-| HERO-01 | Phase 2 | Pending |
-| HERO-02 | Phase 2 | Pending |
-| HERO-03 | Phase 2 | Pending |
-| HERO-04 | Phase 2 | Pending |
-| CARD-01 | Phase 3 | Pending |
-| CARD-02 | Phase 3 | Pending |
-| MATCH-01 | Phase 3 | Pending |
-| MATCH-02 | Phase 3 | Pending |
-| COHESION-01 | Phase 4 | Pending |
-| COHESION-02 | Phase 4 | Pending |
+| NAV-01 | Phase 1 | Completed |
+| NAV-02 | Phase 1 | Completed |
+| NAV-03 | Phase 1 | Completed |
+| HERO-01 | Phase 2 | Completed |
+| HERO-02 | Phase 2 | Completed |
+| HERO-03 | Phase 2 | Completed |
+| HERO-04 | Phase 2 | Completed |
+| CARD-01 | Phase 3 | Completed |
+| CARD-02 | Phase 3 | Completed |
+| MATCH-01 | Phase 3 | Completed |
+| MATCH-02 | Phase 3 | Completed |
+| COHESION-01 | Phase 4 | Completed |
+| COHESION-02 | Phase 4 | Completed |
 
 **Coverage:**
 - v1 requirements: 13 total
