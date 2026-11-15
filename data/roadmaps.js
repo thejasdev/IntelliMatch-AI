@@ -14,7 +14,11 @@ export const ROADMAP_YEARS = [
 export const ROADMAP_DOMAINS = [
   {
     id: "software-dev",
+    slug: "software-engineering",
     name: "Software Engineering & Full Stack",
+    title: "Software Engineering & Full Stack",
+    milestoneCount: 9,
+    totalMilestones: 9,
     icon: "code",
     overview: "Build reliable, scalable full-stack applications from data structures up to production microservices.",
     years: {
@@ -102,7 +106,11 @@ export const ROADMAP_DOMAINS = [
   },
   {
     id: "data-analytics",
+    slug: "data-science",
     name: "Data Analytics & Data Science",
+    title: "Data Analytics & Data Science",
+    milestoneCount: 8,
+    totalMilestones: 8,
     icon: "database",
     overview: "Extract business insights from raw datasets using advanced SQL, statistical modeling, and interactive dashboards.",
     years: {
@@ -182,7 +190,11 @@ export const ROADMAP_DOMAINS = [
   },
   {
     id: "ai-ml",
+    slug: "ai-ml",
     name: "Artificial Intelligence & Machine Learning",
+    title: "Artificial Intelligence & Machine Learning",
+    milestoneCount: 8,
+    totalMilestones: 8,
     icon: "cpu",
     overview: "Develop deep learning architectures, Transformer embeddings, computer vision models, and production generative AI solutions.",
     years: {
@@ -262,7 +274,11 @@ export const ROADMAP_DOMAINS = [
   },
   {
     id: "cloud-devops",
+    slug: "cloud-devops",
     name: "Cloud, DevOps & SRE",
+    title: "Cloud, DevOps & SRE",
+    milestoneCount: 8,
+    totalMilestones: 8,
     icon: "cloud",
     overview: "Automate continuous software delivery, manage multi-region cloud infrastructure, and maintain 99.99% service reliability.",
     years: {
@@ -342,7 +358,11 @@ export const ROADMAP_DOMAINS = [
   },
   {
     id: "cybersecurity",
+    slug: "cybersecurity",
     name: "Cybersecurity & Information Security",
+    title: "Cybersecurity & Information Security",
+    milestoneCount: 8,
+    totalMilestones: 8,
     icon: "shield",
     overview: "Protect enterprise networks, investigate threat vectors, conduct penetration testing, and ensure security compliance.",
     years: {
@@ -419,420 +439,32 @@ export const ROADMAP_DOMAINS = [
         }
       ]
     }
-  },
-  {
-    id: "networking-it",
-    name: "Networking & Systems Infrastructure",
-    icon: "network",
-    overview: "Architect enterprise network topologies, configure routing/switching protocols, manage system administration, and automate infrastructure.",
-    years: {
-      "year-1": [
-        {
-          id: "net-y1-1",
-          title: "Network Fundamentals & TCP/IP Model",
-          description: "Master OSI 7 layers, TCP/IP stack, IPv4/IPv6 subnetting, CIDR notation, and network hardware components.",
-          skills: ["IPv4 / IPv6 Subnetting", "TCP/IP & UDP", "DNS & DHCP", "Wireshark Packet Analysis"],
-          task: "Design an IP addressing scheme for a 4-department corporate office and verify packet routing in Cisco Packet Tracer.",
-          timeframe: "Semester 1 • 6 Weeks"
-        },
-        {
-          id: "net-y1-2",
-          title: "Linux & Windows Server Administration",
-          description: "Configure user authentication, file permissions, systemd services, SSH hardening, and Active Directory domain services.",
-          skills: ["Linux Server Admin", "Active Directory / LDAP", "SSH & Firewall (UFW)", "Bash Scripting"],
-          task: "Deploy an Ubuntu Server with hardened SSH, centralized user group permissions, and an automated backup cron job.",
-          timeframe: "Semester 2 • 6 Weeks"
-        }
-      ],
-      "year-2": [
-        {
-          id: "net-y2-1",
-          title: "Enterprise Switching, Routing & VLANs",
-          description: "Configure Cisco Catalyst switches, static/dynamic routing (OSPF, BGP basics), Spanning Tree Protocol (STP), and 802.1Q trunking.",
-          skills: ["VLANs & Trunking (802.1Q)", "OSPF Dynamic Routing", "STP / RSTP", "Access Control Lists (ACLs)"],
-          task: "Build a multi-switch corporate campus topology with inter-VLAN routing, OSPF convergence, and security ACLs in GNS3.",
-          timeframe: "Semester 3 • 8 Weeks"
-        },
-        {
-          id: "net-y2-2",
-          title: "Network Automation with Python & Ansible",
-          description: "Automate configuration provisioning across multi-vendor network devices using Python (Netmiko, Scrapli) and Ansible playbooks.",
-          skills: ["Python for Network Engineers", "Netmiko / Paramiko", "Ansible Network Modules", "RESTCONF / NETCONF"],
-          task: "Write an Ansible playbook to audit and enforce standard NTP, syslog, and banner configurations across 10 simulated routers.",
-          timeframe: "Semester 4 • 6 Weeks"
-        }
-      ],
-      "year-3": [
-        {
-          id: "net-y3-1",
-          title: "Cloud VPCs, Hybrid Networking & VPNs",
-          description: "Design AWS VPC / Azure Virtual Networks, configure Site-to-Site IPsec VPN tunnels, Direct Connect / ExpressRoute, and transit gateways.",
-          skills: ["AWS VPC / Transit Gateway", "IPsec & WireGuard VPN", "BGP Peering", "Software-Defined WAN (SD-WAN)"],
-          task: "Establish an encrypted Site-to-Site WireGuard VPN bridge connecting an on-premises Linux laboratory to an AWS Cloud VPC.",
-          timeframe: "Semester 5 • 8 Weeks"
-        },
-        {
-          id: "net-y3-2",
-          title: "Network Observability, Telemetry & Security",
-          description: "Implement SNMP monitoring, Prometheus network exporters, centralized syslog collection, and Zero Trust network segmentation.",
-          skills: ["SNMP / NetFlow", "Prometheus & Grafana", "Zero Trust Architecture", "SIEM Syslog Ingestion"],
-          task: "Build a real-time Grafana dashboard tracking network bandwidth saturation, interface packet drops, and latency anomalies.",
-          timeframe: "Semester 6 • 8 Weeks"
-        }
-      ],
-      "year-4": [
-        {
-          id: "net-y4-1",
-          title: "High-Availability Infrastructure & Disaster Recovery",
-          description: "Deploy redundant gateway protocols (HSRP/VRRP), DNS failover with Anycast, multi-homed BGP routing, and automated disaster recovery plans.",
-          skills: ["HSRP / VRRP Redundancy", "Anycast Routing", "Disaster Recovery Runbooks", "Network Capacity Planning"],
-          task: "Simulate core link failure and measure automated gateway failover convergence times under simulated high throughput traffic.",
-          timeframe: "Semester 7 • 8 Weeks"
-        },
-        {
-          id: "net-y4-2",
-          title: "Network Engineering Capstone & CCNA / Network+ Readiness",
-          description: "Architect a full enterprise network specification, simulate campus-to-cloud infrastructure, and validate CCNA/Network+ fresher certification readiness.",
-          skills: ["Enterprise Network Design", "CCNA Certification Prep", "Technical RFC Documentation", "ATS Resume Alignment"],
-          task: "Publish a complete enterprise network engineering design specification and benchmark your profile against Network Engineer job postings.",
-          timeframe: "Semester 8 • 6 Weeks"
-        }
-      ]
-    }
-  },
-  {
-    id: "qa-testing",
-    name: "Quality Assurance & Test Automation",
-    icon: "check-circle",
-    overview: "Engineer automated end-to-end test suites, conduct performance benchmarking, build CI/CD test gates, and guarantee high software reliability.",
-    years: {
-      "year-1": [
-        {
-          id: "qa-y1-1",
-          title: "Software Testing Principles & Test Design",
-          description: "Understand SDLC/STLC phases, black-box vs white-box testing, boundary value analysis, equivalence partitioning, and Jira bug tracking.",
-          skills: ["STLC & Test Design", "Boundary Value Analysis", "Defect Life Cycle", "Jira & TestRail"],
-          task: "Write a comprehensive 25-point test plan and test cases with pre-conditions, steps, and expected results for an authentication service.",
-          timeframe: "Semester 1 • 6 Weeks"
-        },
-        {
-          id: "qa-y1-2",
-          title: "Python/JavaScript Basics & Unit Testing",
-          description: "Write clean automated unit tests using PyTest or Jest, implement test fixtures, mocking, and calculate statement/branch code coverage.",
-          skills: ["PyTest / Jest", "Test Mocking & Fixtures", "Code Coverage (Coverage.py)", "Git Version Control"],
-          task: "Build an automated test suite achieving >90% code coverage on a Python REST utility module with parameterized edge-case assertions.",
-          timeframe: "Semester 2 • 6 Weeks"
-        }
-      ],
-      "year-2": [
-        {
-          id: "qa-y2-1",
-          title: "Web UI Test Automation with Playwright / Selenium",
-          description: "Implement the Page Object Model (POM), handle dynamic DOM elements, async waits, headless browser execution, and automated screenshots.",
-          skills: ["Playwright / Selenium", "Page Object Model (POM)", "Cross-Browser Testing", "TypeScript / Python"],
-          task: "Develop a robust automated test suite using Playwright POM covering login, checkout, and search workflows on an ecommerce portal.",
-          timeframe: "Semester 3 • 8 Weeks"
-        },
-        {
-          id: "qa-y2-2",
-          title: "API Automation & Contract Testing",
-          description: "Automate REST API test verification using Postman Newman and Python Requests/REST Assured, validating status codes, JSON schemas, and response SLAs.",
-          skills: ["REST API Testing", "Postman / Newman", "JSON Schema Validation", "REST Assured"],
-          task: "Build an automated API regression test suite validating CRUD endpoints, authentication tokens, and payload schema contracts.",
-          timeframe: "Semester 4 • 6 Weeks"
-        }
-      ],
-      "year-3": [
-        {
-          id: "qa-y3-1",
-          title: "Performance, Load & Stress Testing with k6",
-          description: "Simulate high concurrent user traffic with k6 or Apache JMeter, measure p95/p99 latency distributions, and identify backend memory bottlenecks.",
-          skills: ["k6 Load Testing", "Apache JMeter", "p95/p99 Latency Analysis", "Bottleneck Profiling"],
-          task: "Execute a 1,000 virtual user stress test against target API endpoints, generating automated HTML performance metric reports.",
-          timeframe: "Semester 5 • 8 Weeks"
-        },
-        {
-          id: "qa-y3-2",
-          title: "CI/CD Test Gates & Mobile Automation with Appium",
-          description: "Integrate automated test runs into GitHub Actions pipelines with Slack notifications, and automate mobile Android/iOS flows using Appium.",
-          skills: ["GitHub Actions Test Gates", "Appium Mobile Testing", "Dockerized Test Runners", "Allure Reporting"],
-          task: "Configure a CI pipeline that launches headless Playwright tests in Docker containers on every pull request and blocks merges on test failures.",
-          timeframe: "Semester 6 • 8 Weeks"
-        }
-      ],
-      "year-4": [
-        {
-          id: "qa-y4-1",
-          title: "Security & Chaos Testing in Production",
-          description: "Perform automated DAST security scanning using OWASP ZAP, chaos fault-injection (Chaos Mesh), and API fuzzing testing.",
-          skills: ["OWASP ZAP Integration", "Chaos Engineering", "API Fuzzing", "Reliability Verification"],
-          task: "Inject network delay and process failure into a microservice mesh and verify automated system recovery without data loss.",
-          timeframe: "Semester 7 • 8 Weeks"
-        },
-        {
-          id: "qa-y4-2",
-          title: "SDET Capstone Framework & Career Placement",
-          description: "Build an enterprise-grade modular test automation framework with parallel execution, reporting dashboards, and interview readiness.",
-          skills: ["SDET Framework Architecture", "Allure Dashboard", "Technical Interview Prep", "ATS Resume Alignment"],
-          task: "Publish a full-stack SDET framework on GitHub and benchmark your profile against Software Development Engineer in Test (SDET) postings.",
-          timeframe: "Semester 8 • 6 Weeks"
-        }
-      ]
-    }
-  },
-  {
-    id: "embedded-systems",
-    name: "Embedded Systems & IoT",
-    icon: "cpu",
-    overview: "Program low-level microcontrollers, implement real-time operating systems (RTOS), interface hardware sensors, and architect connected IoT devices.",
-    years: {
-      "year-1": [
-        {
-          id: "emb-y1-1",
-          title: "C Programming & Computer Architecture Fundamentals",
-          description: "Master pointers, memory addressing, bitwise bitmasks, volatile keyword, structs, and computer architecture ALU/register basics.",
-          skills: ["Embedded C", "Bitwise Manipulation", "Pointers & Memory Layout", "Digital Logic Basics"],
-          task: "Implement a ring buffer and bit-manipulation library in ANSI C to manage real-time serial packet ingestion without dynamic allocation.",
-          timeframe: "Semester 1 • 6 Weeks"
-        },
-        {
-          id: "emb-y1-2",
-          title: "Microcontroller Foundations (ESP32 / Arduino)",
-          description: "Interface GPIOs, configure PWM for motor speed, handle hardware interrupts (ISR), and read analog sensors via ADC/DAC.",
-          skills: ["ESP32 / Arduino C++", "Interrupt Service Routines (ISR)", "Timers & PWM", "Sensor Interfacing"],
-          task: "Build an interrupt-driven temperature and humidity data logger with an OLED display and deep-sleep power management.",
-          timeframe: "Semester 2 • 6 Weeks"
-        }
-      ],
-      "year-2": [
-        {
-          id: "emb-y2-1",
-          title: "Hardware Protocols: I2C, SPI, UART & CAN Bus",
-          description: "Understand timing diagrams, baud rates, master-slave addressing, arbitration, differential signaling, and packet framing across bus protocols.",
-          skills: ["I2C / SPI Bus", "UART Framing", "CAN Bus Basics", "Logic Analyzer Debugging"],
-          task: "Decode and analyze real SPI and I2C signal packets using a USB Logic Analyzer and PulseView to debug communication glitches.",
-          timeframe: "Semester 3 • 8 Weeks"
-        },
-        {
-          id: "emb-y2-2",
-          title: "ARM Cortex-M Architecture & Bare-Metal Programming",
-          description: "Write bare-metal register-level drivers for STM32 microcontrollers using CMSIS without vendor HAL libraries, configuring clock trees and DMA.",
-          skills: ["STM32 (ARM Cortex-M)", "Direct Memory Access (DMA)", "Register-Level Programming", "CMSIS Standard"],
-          task: "Program an STM32 timer and DMA controller from scratch using direct memory-mapped register manipulation in C.",
-          timeframe: "Semester 4 • 6 Weeks"
-        }
-      ],
-      "year-3": [
-        {
-          id: "emb-y3-1",
-          title: "Real-Time Operating Systems (FreeRTOS)",
-          description: "Design multi-task firmware using FreeRTOS, managing task priorities, mutexes, binary/counting semaphores, message queues, and event groups.",
-          skills: ["FreeRTOS", "Task Scheduling & Context Switch", "Mutexes & Semaphores", "Priority Inversion"],
-          task: "Construct a multi-threaded FreeRTOS firmware application with thread-safe sensor acquisition, watchdog timer, and display tasks.",
-          timeframe: "Semester 5 • 8 Weeks"
-        },
-        {
-          id: "emb-y3-2",
-          title: "Connected IoT Devices & Cloud Telemetry",
-          description: "Connect microcontrollers to Wi-Fi / BLE, publish lightweight telemetry over MQTT with TLS encryption, and interface with AWS IoT Core.",
-          skills: ["MQTT / CoAP Protocols", "TLS Encryption for IoT", "AWS IoT Core", "Bluetooth Low Energy (BLE)"],
-          task: "Build an industrial environmental monitor transmitting encrypted telemetry to an AWS IoT Core MQTT broker with shadow device syncing.",
-          timeframe: "Semester 6 • 8 Weeks"
-        }
-      ],
-      "year-4": [
-        {
-          id: "emb-y4-1",
-          title: "Embedded Linux & Device Driver Basics",
-          description: "Compile custom Linux kernels using Buildroot/Yocto for Raspberry Pi / BeagleBone, understand character device drivers, and device tree overlays.",
-          skills: ["Embedded Linux (Yocto)", "Device Tree Overlays", "Character Drivers", "Kernel Debugging"],
-          task: "Compile a minimal bootable embedded Linux image with a custom kernel module controlling GPIO hardware on single-board computers.",
-          timeframe: "Semester 7 • 8 Weeks"
-        },
-        {
-          id: "emb-y4-2",
-          title: "Production Firmware Capstone & Hardware Placement",
-          description: "Deliver a low-power, commercial-grade embedded IoT capstone with OTA firmware updating, hardware schematics (KiCad), and interview readiness.",
-          skills: ["OTA Firmware Updates", "KiCad Schematic Design", "Embedded Interview Prep", "ATS Resume Alignment"],
-          task: "Publish complete firmware code, KiCad schematic files, and video hardware demo, benchmarking your resume for Embedded/Firmware Engineer roles.",
-          timeframe: "Semester 8 • 6 Weeks"
-        }
-      ]
-    }
-  },
-  {
-    id: "enterprise-tech",
-    name: "Enterprise Technology & Systems",
-    icon: "briefcase",
-    overview: "Configure corporate ERP/CRM platforms (SAP, Salesforce), architect enterprise application integrations, and build business workflow automations.",
-    years: {
-      "year-1": [
-        {
-          id: "ent-y1-1",
-          title: "Enterprise Architecture & Relational Data Modeling",
-          description: "Understand 3-tier enterprise architecture, ACID database transactions, complex relational schemas, and business requirement documentation (BRD).",
-          skills: ["Enterprise Architecture", "Relational Schemas & SQL", "BRD Documentation", "Business Process Modeling (BPMN)"],
-          task: "Model an enterprise supply chain database schema with order fulfillment, inventory tracking, and invoice validation constraints in PostgreSQL.",
-          timeframe: "Semester 1 • 6 Weeks"
-        },
-        {
-          id: "ent-y1-2",
-          title: "Business Process Automation & Scripting",
-          description: "Automate administrative workflows, CSV/Excel data transformation, and scheduled system integrations using Python and PowerShell.",
-          skills: ["Python Automation", "PowerShell Scripting", "Data Transformation (ETL)", "Cron & Scheduled Tasks"],
-          task: "Write an automated script that ingests multi-branch accounting spreadsheets, validates fiscal reconciliation, and emails summary reports.",
-          timeframe: "Semester 2 • 6 Weeks"
-        }
-      ],
-      "year-2": [
-        {
-          id: "ent-y2-1",
-          title: "Salesforce Platform & Apex / LWC Development",
-          description: "Configure Salesforce CRM, write Apex triggers, SOQL/SOSL queries, and build custom reactive Lightning Web Components (LWC).",
-          skills: ["Salesforce CRM", "Apex Programming", "Lightning Web Components", "SOQL / SOSL"],
-          task: "Develop a custom lead scoring module in Salesforce with automated email routing triggers and interactive LWC dashboard cards.",
-          timeframe: "Semester 3 • 8 Weeks"
-        },
-        {
-          id: "ent-y2-2",
-          title: "SAP S/4HANA & ERP Business Modules",
-          description: "Understand core SAP ERP modules (MM, SD, FICO), master data management, business partner models, and SAP Fiori user experience.",
-          skills: ["SAP S/4HANA Basics", "Procure-to-Pay (MM)", "Order-to-Cash (SD)", "SAP Fiori UI"],
-          task: "Map an end-to-end procure-to-pay workflow in an enterprise ERP simulation, tracking purchase requisitions, PO creation, and goods receipts.",
-          timeframe: "Semester 4 • 6 Weeks"
-        }
-      ],
-      "year-3": [
-        {
-          id: "ent-y3-1",
-          title: "Enterprise Application Integration (MuleSoft / REST)",
-          description: "Build API-led connectivity across disparate corporate systems using MuleSoft Anypoint, OpenAPI specs, message queues, and webhook transformations.",
-          skills: ["MuleSoft / Boomi", "API-Led Connectivity", "Enterprise Service Bus", "SOAP & REST Gateways"],
-          task: "Design an integration flow synchronizing customer profile changes from an external e-commerce database to Salesforce CRM in real time.",
-          timeframe: "Semester 5 • 8 Weeks"
-        },
-        {
-          id: "ent-y3-2",
-          title: "Robotic Process Automation (RPA) with UiPath",
-          description: "Automate repetitive business tasks using UiPath Studio, orchestrating attended and unattended bots with optical character recognition (OCR).",
-          skills: ["UiPath RPA", "Orchestrator Deployment", "Document Understanding (OCR)", "Exception Handling"],
-          task: "Deploy an unattended UiPath bot that extracts invoice line items from PDF attachments and automatically reconciles entries into an ERP test sandbox.",
-          timeframe: "Semester 6 • 8 Weeks"
-        }
-      ],
-      "year-4": [
-        {
-          id: "ent-y4-1",
-          title: "Enterprise Solutions Architecture & Data Governance",
-          description: "Design multi-tier integration architectures, master data management (MDM) governance, SOC2/GDPR compliance, and cloud migration frameworks.",
-          skills: ["Solutions Architecture", "Master Data Management", "Enterprise Governance", "Cloud ERP Migration"],
-          task: "Draft a formal Solution Design Document (SDD) for migrating an on-premises billing system to a cloud-based multi-tenant ERP platform.",
-          timeframe: "Semester 7 • 8 Weeks"
-        },
-        {
-          id: "ent-y4-2",
-          title: "Enterprise Tech Capstone & Consulting Placement",
-          description: "Deliver a production enterprise integration prototype, prepare case studies, and benchmark resume keywords for ERP/CRM Consultant roles.",
-          skills: ["Technical Case Studies", "Client Prototyping", "Consulting Interview Prep", "ATS Resume Alignment"],
-          task: "Publish a full enterprise architecture case study on GitHub and benchmark your profile for Technical Consultant and Solutions Engineer roles.",
-          timeframe: "Semester 8 • 6 Weeks"
-        }
-      ]
-    }
-  },
-  {
-    id: "emerging-tech",
-    name: "Emerging Technologies & Creative Computing",
-    icon: "sparkles",
-    overview: "Develop decentralized Web3 smart contracts, build spatial AR/VR interactive experiences, and engineer high-performance graphics engines.",
-    years: {
-      "year-1": [
-        {
-          id: "emg-y1-1",
-          title: "Math for Graphics, Cryptography & Modern Languages",
-          description: "Master 3D vectors, matrix transformations, quaternions, SHA-256 hashing, and modern language foundations (C# or Rust).",
-          skills: ["3D Vector Math", "Linear Algebra", "Modern C# / Rust", "Applied Cryptography"],
-          task: "Build a 3D procedural mesh generator or cryptographic signature verification CLI in C# / Rust without external graphics engines.",
-          timeframe: "Semester 1 • 6 Weeks"
-        },
-        {
-          id: "emg-y1-2",
-          title: "Interactive 3D Foundations (Unity / Three.js)",
-          description: "Understand scene graphs, materials, lighting, physics colliders, camera controllers, and rendering pipelines in Unity or Three.js.",
-          skills: ["Unity Engine / Three.js", "Shader Basics", "Physics Colliders", "Asset Optimization"],
-          task: "Develop an interactive 3D web showcase with real-time orbit controls, PBR materials, and custom camera transitions in Three.js.",
-          timeframe: "Semester 2 • 6 Weeks"
-        }
-      ],
-      "year-2": [
-        {
-          id: "emg-y2-1",
-          title: "Smart Contract Engineering with Solidity & EVM",
-          description: "Write secure Ethereum smart contracts in Solidity, manage EVM storage slots, ERC-20/ERC-721 token standards, and Hardhat test suites.",
-          skills: ["Solidity", "Ethereum Virtual Machine (EVM)", "ERC-20 / ERC-721", "Hardhat & ethers.js"],
-          task: "Deploy an audited ERC-721 digital asset collection smart contract on the Sepolia testnet with automated unit tests for all access controls.",
-          timeframe: "Semester 3 • 8 Weeks"
-        },
-        {
-          id: "emg-y2-2",
-          title: "AR/VR Spatial Computing with OpenXR",
-          description: "Build immersive virtual reality environments using OpenXR and Unity XR Interaction Toolkit, handling 6DoF head/hand tracking and teleportation.",
-          skills: ["OpenXR", "Unity XR Toolkit", "6DoF Spatial Tracking", "Spatial UI Design"],
-          task: "Create an interactive VR training simulation with grab physics, interactive dials, and spatial audio feedback for VR headsets.",
-          timeframe: "Semester 4 • 6 Weeks"
-        }
-      ],
-      "year-3": [
-        {
-          id: "emg-y3-1",
-          title: "Decentralized Protocols, IPFS & Web3 Full-Stack",
-          description: "Build decentralized full-stack applications (dApps) connecting React frontends with smart contracts via Wagmi/Viem, with decentralized IPFS storage.",
-          skills: ["dApp Architecture", "Wagmi / Viem", "IPFS / Arweave", "WalletConnect"],
-          task: "Construct an end-to-end decentralized portfolio verification portal with wallet authentication and tamper-evident IPFS metadata pinning.",
-          timeframe: "Semester 5 • 8 Weeks"
-        },
-        {
-          id: "emg-y3-2",
-          title: "Shader Programming & Real-Time Graphics Pipelines",
-          description: "Write custom vertex and fragment shaders in HLSL/GLSL, implementing procedural noise, post-processing bloom, and compute shader optimizations.",
-          skills: ["GLSL / HLSL", "Vertex & Fragment Shaders", "Post-Processing Pipelines", "Compute Shaders"],
-          task: "Develop a real-time volumetric atmospheric lighting shader and procedural water simulation running at 60+ FPS on mobile hardware.",
-          timeframe: "Semester 6 • 8 Weeks"
-        }
-      ],
-      "year-4": [
-        {
-          id: "emg-y4-1",
-          title: "Smart Contract Security, Auditing & Gas Optimization",
-          description: "Audit smart contracts for reentrancy, integer overflow, front-running, and flash loan attacks using Slither, Echidna, and Foundry fuzzing.",
-          skills: ["Foundry Fuzz Testing", "Slither Static Analysis", "Gas Optimization", "Reentrancy Defense"],
-          task: "Audit a vulnerable DeFi staking protocol, write proof-of-concept exploit scripts in Foundry, and implement gas-optimized remediations.",
-          timeframe: "Semester 7 • 8 Weeks"
-        },
-        {
-          id: "emg-y4-2",
-          title: "Emerging Tech Capstone & Web3/XR Career Launch",
-          description: "Deliver a polished Web3 or Spatial Computing capstone product, publish technical documentation, and benchmark for Blockchain/XR Engineer roles.",
-          skills: ["Web3 / XR Capstone", "Decentralized Hosting", "Technical Interview Prep", "ATS Resume Alignment"],
-          task: "Deploy a live production decentralized application or interactive spatial demo with public source code and benchmark your ATS resume score.",
-          timeframe: "Semester 8 • 6 Weeks"
-        }
-      ]
-    }
   }
 ];
 
+export const FIVE_CORE_ROADMAP_DOMAINS = ROADMAP_DOMAINS;
+
 export function getRoadmapForDomainAndYear(domainId, yearId) {
-  const domain = ROADMAP_DOMAINS.find((d) => d.id === domainId) || ROADMAP_DOMAINS[0];
+  const domain =
+    ROADMAP_DOMAINS.find(
+      (d) =>
+        d.id === domainId ||
+        d.slug === domainId ||
+        (domainId === "software-engineering" && d.id === "software-dev") ||
+        (domainId === "software-dev" && d.slug === "software-engineering") ||
+        (domainId === "data-science" && d.id === "data-analytics") ||
+        (domainId === "data-analytics" && d.slug === "data-science")
+    ) || ROADMAP_DOMAINS[0];
   const yearMeta = ROADMAP_YEARS.find((y) => y.id === yearId) || ROADMAP_YEARS[0];
-  const rawMilestones = (domain && domain.years && domain.years[yearId])
-    ? domain.years[yearId]
-    : (domain?.years?.["year-1"] || []);
+  const rawMilestones =
+    domain && domain.years && domain.years[yearId]
+      ? domain.years[yearId]
+      : domain?.years?.["year-1"] || [];
 
   const milestones = rawMilestones.map((m) => ({
     ...m,
-    topics: Array.isArray(m.topics) ? m.topics : (Array.isArray(m.skills) ? m.skills : []),
-    skills: Array.isArray(m.skills) ? m.skills : (Array.isArray(m.topics) ? m.topics : []),
+    topics: Array.isArray(m.topics) ? m.topics : Array.isArray(m.skills) ? m.skills : [],
+    skills: Array.isArray(m.skills) ? m.skills : Array.isArray(m.topics) ? m.topics : [],
     duration: m.duration || m.timeframe || "",
     timeframe: m.timeframe || m.duration || "",
   }));
@@ -843,7 +475,6 @@ export function getRoadmapForDomainAndYear(domainId, yearId) {
     yearMeta,
     yearLabel: yearMeta ? yearMeta.label : "",
     stageLabel: yearMeta ? yearMeta.stage : "",
-    overview: domain ? (domain.overview || "") : "",
+    overview: domain ? domain.overview || "" : "",
   };
 }
-
