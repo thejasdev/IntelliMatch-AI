@@ -10,6 +10,7 @@ import {
   Bug,
   Sparkles,
 } from "lucide-react";
+import PageConsoleHeader from "../components/PageConsoleHeader.jsx";
 
 const CATEGORIES = [
   { id: "ui-ux", label: "UI / UX Experience", icon: Sparkles },
@@ -78,44 +79,12 @@ export default function FeedbackPage() {
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       {/* 1. Unified Page Header — Styled after the master Home hero with console-frame */}
-      <section
-        className="console-frame relative overflow-hidden rounded-3xl text-white px-6 sm:px-10 lg:px-12 py-8 sm:py-10"
-      >
-        {/* Subtle atmospheric depth glow accents matching hero */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
-        </div>
-
-        {/* 2-Column Grid matching Home hero */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start lg:items-center">
-          {/* Left Column: Pill badge + Two-tone display title */}
-          <div className="lg:col-span-7 space-y-4 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
-              <MessageSquare size={13} className="text-[#38BDF8]" />
-              <span className="uppercase tracking-wider">Candidate &amp; Student Feedback</span>
-            </div>
-
-            <h1 className="font-hero font-extrabold text-white text-[clamp(2rem,4vw,3.25rem)] leading-[1.1] tracking-[-0.03em] m-0">
-              <span className="block text-white">Share Your Experience </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
-                with IntelliMatch
-              </span>
-            </h1>
-          </div>
-
-          {/* Right Column: OVERVIEW label + description */}
-          <div className="lg:col-span-5 space-y-2 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
-              OVERVIEW
-            </span>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
-              Your feedback directly informs our semantic analyzer models, roadmap curricula, and ATS resume
-              templates. Help us make technical career readiness accessible to every engineering student.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageConsoleHeader
+        eyebrow="Candidate & Student Feedback"
+        titleWhite="Share Your Experience"
+        titleGradient="with IntelliMatch"
+        overviewText="Your feedback directly informs our semantic analyzer models, roadmap curricula, and ATS resume templates. Help us make technical career readiness accessible to every engineering student."
+      />
 
       {/* Success Alert */}
       {successToast && (

@@ -8,6 +8,7 @@ import ContactModal from "./components/ContactModal.jsx";
 import PdfPreviewModal from "./components/PdfPreviewModal.jsx";
 import AmbientWaveBackground from "./components/AmbientWaveBackground.jsx";
 import BackgroundAtmosphere from "./components/BackgroundAtmosphere.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
 // Page Views
 import HomePage from "./pages/HomePage.jsx";
@@ -93,43 +94,45 @@ export default function App() {
 
         {/* Dynamic Route Outlet */}
         <main className="flex-1 w-full bg-transparent relative z-10">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <HomePage
-                  onOpenContact={handleOpenContact}
-                  onPreviewPdf={handleOpenPdfPreview}
-                />
-              }
-            />
-            <Route
-              path="/roadmaps"
-              element={<RoadmapsPage onPreviewPdf={handleOpenPdfPreview} />}
-            />
-            <Route
-              path="/projects"
-              element={<ProjectsPage onPreviewPdf={handleOpenPdfPreview} />}
-            />
-            <Route
-              path="/templates"
-              element={<TemplatesPage onPreviewPdf={handleOpenPdfPreview} />}
-            />
-            <Route path="/analyzer" element={<AnalyzerPage />} />
-            <Route path="/resume-analyzer" element={<Navigate to="/analyzer" replace />} />
-            <Route path="/internships" element={<InternshipsPage />} />
-            <Route
-              path="/dashboard"
-              element={<DashboardPage onOpenContact={handleOpenContact} />}
-            />
-            <Route path="/feedback" element={<FeedbackPage />} />
-            <Route
-              path="/about"
-              element={<AboutPage onOpenContact={handleOpenContact} />}
-            />
-            {/* Fallback to Home */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <ErrorBoundary>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <HomePage
+                    onOpenContact={handleOpenContact}
+                    onPreviewPdf={handleOpenPdfPreview}
+                  />
+                }
+              />
+              <Route
+                path="/roadmaps"
+                element={<RoadmapsPage onPreviewPdf={handleOpenPdfPreview} />}
+              />
+              <Route
+                path="/projects"
+                element={<ProjectsPage onPreviewPdf={handleOpenPdfPreview} />}
+              />
+              <Route
+                path="/templates"
+                element={<TemplatesPage onPreviewPdf={handleOpenPdfPreview} />}
+              />
+              <Route path="/analyzer" element={<AnalyzerPage />} />
+              <Route path="/resume-analyzer" element={<Navigate to="/analyzer" replace />} />
+              <Route path="/internships" element={<InternshipsPage />} />
+              <Route
+                path="/dashboard"
+                element={<DashboardPage onOpenContact={handleOpenContact} />}
+              />
+              <Route path="/feedback" element={<FeedbackPage />} />
+              <Route
+                path="/about"
+                element={<AboutPage onOpenContact={handleOpenContact} />}
+              />
+              {/* Fallback to Home */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </ErrorBoundary>
         </main>
 
         {/* Master Declaration Footer */}

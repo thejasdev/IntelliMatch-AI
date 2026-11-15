@@ -10,6 +10,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import PdfPreviewModal from "../components/PdfPreviewModal";
+import PageConsoleHeader from "../components/PageConsoleHeader.jsx";
 
 export const RESUME_TEMPLATES_DATA = [
   {
@@ -104,67 +105,29 @@ export default function TemplatesPage({ onPreviewPdf }) {
 
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* 1. Unified Page Header — Styled after the master Home hero */}
-      <section
-        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-12 shadow-2xl backdrop-blur-md"
-        style={{
-          background:
-            "linear-gradient(145deg, rgba(20, 24, 48, 0.55) 0%, rgba(14, 18, 36, 0.7) 100%)",
-        }}
+      {/* 1. Unified Page Header — Styled after the master Home hero with console-frame */}
+      <PageConsoleHeader
+        eyebrow="Career Documents Library"
+        titleWhite="ATS Resume"
+        titleGradient="Templates"
+        overviewText="Access 5 verified, single-page PDF resume templates. Designed around document typography, scannability, and ATS compliance rather than restrictive engineering silos."
       >
-        {/* Subtle atmospheric depth glow accents matching hero */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
-        </div>
-
-        {/* Top 2-Column Grid matching Home hero */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center">
-          {/* Left Column: Pill badge + Two-tone display title */}
-          <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
-              <Sparkles size={12} className="text-[#38BDF8]" />
-              <span className="uppercase tracking-wider">Career Documents Library</span>
-            </div>
-
-            <h1 className="font-hero font-extrabold text-white text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-[-0.03em] m-0">
-              <span className="block text-white">ATS Resume </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
-                Templates
-              </span>
-            </h1>
-          </div>
-
-          {/* Right Column: OVERVIEW label + description */}
-          <div className="lg:col-span-5 xl:col-span-4 space-y-2 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
-              OVERVIEW
-            </span>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
-              Access 5 verified, single-page PDF resume templates. Designed around document typography,
-              scannability, and ATS compliance rather than restrictive engineering silos.
-            </p>
-          </div>
-        </div>
-
         {/* Assurance Bar inside the same frame */}
-        <div className="relative z-10 mt-8 pt-6 border-t border-slate-800/80">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-xs sm:text-[13px]">
-            <div className="flex items-center gap-2.5">
-              <ShieldCheck size={18} className="text-emerald-400 flex-shrink-0" />
-              <span className="text-brand-slate font-medium">100% Real, Downloadable PDF Documents</span>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <CheckCircle2 size={18} className="text-brand-violet flex-shrink-0" />
-              <span className="text-brand-slate font-medium">Tested for Keyword Extraction &amp; Selectable Text</span>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <Layout size={18} className="text-brand-cyan flex-shrink-0" />
-              <span className="text-brand-slate font-medium">Single-Page Recruiter Scannable Architecture</span>
-            </div>
+        <div className="console-subdeck grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl text-xs sm:text-[13px]">
+          <div className="flex items-center gap-2.5">
+            <ShieldCheck size={18} className="text-emerald-400 flex-shrink-0" />
+            <span className="text-brand-slate font-medium">100% Real, Downloadable PDF Documents</span>
+          </div>
+          <div className="flex items-center gap-2.5">
+            <CheckCircle2 size={18} className="text-brand-violet flex-shrink-0" />
+            <span className="text-brand-slate font-medium">Tested for Keyword Extraction &amp; Selectable Text</span>
+          </div>
+          <div className="flex items-center gap-2.5">
+            <Layout size={18} className="text-brand-cyan flex-shrink-0" />
+            <span className="text-brand-slate font-medium">Single-Page Recruiter Scannable Architecture</span>
           </div>
         </div>
-      </section>
+      </PageConsoleHeader>
 
       {/* Templates Grid (All 5 PDFs) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -12,7 +12,8 @@ import {
   Check,
   FileCheck,
 } from "lucide-react";
-import { ENGINEERING_DOMAINS, getRolesForDomain } from "../../data/jobRoles.js";
+import { ENGINEERING_DOMAINS, getRolesForDomain } from "../data/jobRoles.js";
+import PageConsoleHeader from "../components/PageConsoleHeader.jsx";
 
 const SAMPLE_JOB_DESCRIPTIONS = {
   "software-dev": `We are seeking an enthusiastic Software Development Engineer to join our team. 
@@ -125,44 +126,12 @@ export default function AnalyzerPage() {
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* 1. Unified Page Header — Styled after the master Home hero with console-frame */}
-      <section
-        className="console-frame relative overflow-hidden rounded-3xl text-white px-6 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-12"
-      >
-        {/* Subtle atmospheric depth glow accents matching hero */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
-        </div>
-
-        {/* Top 2-Column Grid matching Home hero */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center">
-          {/* Left Column: Pill badge + Two-tone display title */}
-          <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
-              <Sparkles size={12} className="text-[#38BDF8]" />
-              <span className="uppercase tracking-wider">Intelligence Workspace</span>
-            </div>
-
-            <h1 className="font-hero font-extrabold text-white text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-[-0.03em] m-0">
-              <span className="block text-white">Resume Analyzer </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
-                &amp; ATS Benchmark
-              </span>
-            </h1>
-          </div>
-
-          {/* Right Column: OVERVIEW label + description */}
-          <div className="lg:col-span-5 xl:col-span-4 space-y-2 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
-              OVERVIEW
-            </span>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
-              Compare your resume against real-world engineering job descriptions. Evaluate keyword coverage,
-              detect missing competencies, and review actionable writing suggestions.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageConsoleHeader
+        eyebrow="Intelligence Workspace"
+        titleWhite="Resume Analyzer"
+        titleGradient="& ATS Benchmark"
+        overviewText="Compare your resume against real-world engineering job descriptions. Evaluate keyword coverage, detect missing competencies, and review actionable writing suggestions."
+      />
 
       {/* Main Analyzer Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

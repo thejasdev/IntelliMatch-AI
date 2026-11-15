@@ -15,7 +15,8 @@ import {
   BarChart3,
   Compass,
 } from "lucide-react";
-import { ENGINEERING_DOMAINS, getRolesForDomain } from "../../data/jobRoles.js";
+import { ENGINEERING_DOMAINS, getRolesForDomain } from "../data/jobRoles.js";
+import PageConsoleHeader from "../components/PageConsoleHeader.jsx";
 
 const DEMO_ANALYSES = [
   {
@@ -144,63 +145,30 @@ export default function DashboardPage({ onOpenContact }) {
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* 1. Unified Page Header — Styled after the master Home hero with console-frame */}
-      <section
-        className="console-frame relative overflow-hidden rounded-3xl text-white px-6 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-12"
-      >
-        {/* Subtle atmospheric depth glow accents matching hero */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
-        </div>
-
-        {/* Top 2-Column Grid matching Home hero */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center">
-          {/* Left Column: Pill badge + Two-tone display title */}
-          <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
-              <LayoutDashboard size={13} className="text-[#38BDF8]" />
-              <span className="uppercase tracking-wider">Candidate Intelligence Portal</span>
-            </div>
-
-            <h1 className="font-hero font-extrabold text-white text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-[-0.03em] m-0">
-              <span className="block text-white">Career Readiness </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
-                Dashboard
-              </span>
-            </h1>
+      <PageConsoleHeader
+        eyebrow="Candidate Intelligence Portal"
+        titleWhite="Career Readiness"
+        titleGradient="Dashboard"
+        overviewText="Monitor your resume ATS scores, benchmark evaluation logs across 5 core Software & IT domains, saved portfolio documents, and skill readiness baselines."
+        overviewExtra={
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <button
+              type="button"
+              onClick={() => setShowEmptyState(!showEmptyState)}
+              className="px-4 py-2 text-xs sm:text-[13px] font-medium rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-brand-slate transition-colors shadow-xs"
+            >
+              {showEmptyState ? "Show Populated Demo" : "Preview Fresh Empty State"}
+            </button>
+            <Link
+              to="/analyzer"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-[13px] font-semibold rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white transition-all shadow-xs"
+            >
+              <FileCheck2 size={16} />
+              <span>New Resume Analysis</span>
+            </Link>
           </div>
-
-          {/* Right Column: OVERVIEW label + description + Action buttons */}
-          <div className="lg:col-span-5 xl:col-span-4 space-y-4 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
-            <div>
-              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
-                OVERVIEW
-              </span>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
-                Monitor your resume ATS scores, benchmark evaluation logs across 10 technology disciplines,
-                saved portfolio documents, and skill readiness baselines.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => setShowEmptyState(!showEmptyState)}
-                className="px-4 py-2 text-xs sm:text-[13px] font-medium rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-brand-slate transition-colors shadow-xs"
-              >
-                {showEmptyState ? "Show Populated Demo" : "Preview Fresh Empty State"}
-              </button>
-              <Link
-                to="/analyzer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-[13px] font-semibold rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white transition-all shadow-xs"
-              >
-                <FileCheck2 size={16} />
-                <span>New Resume Analysis</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+        }
+      />
 
       {/* Main Content Area */}
       {showEmptyState ? (
@@ -217,7 +185,7 @@ export default function DashboardPage({ onOpenContact }) {
           </h2>
           <p className="mt-2 text-xs sm:text-sm text-brand-muted font-sans leading-relaxed m-0">
             You haven't evaluated a resume yet in this active session. Upload your resume or paste a job
-            description across any of our 10 engineering domains to populate your telemetry history.
+            description across any of our 5 core Software & IT domains to populate your telemetry history.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
@@ -275,7 +243,7 @@ export default function DashboardPage({ onOpenContact }) {
                   }}
                   className="w-full text-xs py-2 px-3 rounded-xl border border-brand-border bg-brand-surface focus:outline-none focus:border-brand-violet text-brand-slate font-medium"
                 >
-                  <option value="all">All 10 Domains</option>
+                  <option value="all">All 5 Core Domains</option>
                   {ENGINEERING_DOMAINS.map((d) => (
                     <option key={d.id} value={d.id}>
                       {d.name}

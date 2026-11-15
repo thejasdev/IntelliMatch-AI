@@ -1,13 +1,53 @@
+# Operating System files
 .DS_Store
 Thumbs.db
 desktop.ini
+*.tmp
+*.swp
+
+# Logs and debug output
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment secrets
 .env
 .env.*
+!.env.example
+
+# IDE and Editor configurations
 .vscode/
 .idea/
-*.swp
-*.tmp
+
+# Node.js dependencies and build output
 node_modules/
 dist/
+dist-ssr/
+build/
+.eslintcache
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Local SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Legacy pre-react backups
 _backup_pre_react/

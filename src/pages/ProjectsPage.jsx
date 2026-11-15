@@ -18,13 +18,18 @@ import {
   ShieldAlert,
   Cpu,
 } from "lucide-react";
-import { CURATED_PROJECTS, getProjectsByFilter } from "../../data/projects.js";
-import { ENGINEERING_DOMAINS } from "../../data/jobRoles.js";
+import { CURATED_PROJECTS, getProjectsByFilter } from "../data/projects.js";
+import { ENGINEERING_DOMAINS } from "../data/jobRoles.js";
+import PageConsoleHeader from "../components/PageConsoleHeader.jsx";
+import ProjectBlueprintPreview from "../components/ProjectBlueprintPreview.jsx";
 
 export default function ProjectsPage({ onPreviewPdf }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialDomain = searchParams.get("domain") || "all";
   const initialId = searchParams.get("id");
+  const fromDomain = searchParams.get("fromDomain");
+  const fromRole = searchParams.get("fromRole");
+  const fromMilestone = searchParams.get("milestone");
 
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [selectedDomain, setSelectedDomain] = useState(initialDomain);
@@ -77,102 +82,64 @@ export default function ProjectsPage({ onPreviewPdf }) {
 
   return (
     <div className="space-y-8 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* 1. Unified Page Header — Styled after the master Home hero */}
-      <section
-        className="relative overflow-hidden rounded-3xl text-white border border-white/15 px-6 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-12 shadow-2xl backdrop-blur-md"
-        style={{
-          background:
-            "linear-gradient(145deg, rgba(20, 24, 48, 0.55) 0%, rgba(14, 18, 36, 0.7) 100%)",
-        }}
+      {/* 1. Unified Page Header — Styled after the master Home hero with console-frame */}
+      <PageConsoleHeader
+        eyebrow="Portfolio & Engineering Lab"
+        titleWhite="Projects Hub"
+        titleGradient="& Blueprints"
+        overviewText="Translate theoretical algorithms and concepts into verified, tangible engineering deliverables. Categorized by practical difficulty, domain architecture, and recruiter relevance."
       >
-        {/* Subtle atmospheric depth glow accents matching hero */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
-        </div>
-
-        {/* Top 2-Column Grid matching Home hero */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center">
-          {/* Left Column: Pill badge + Two-tone display title */}
-          <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
-              <Sparkles size={12} className="text-[#38BDF8]" />
-              <span className="uppercase tracking-wider">Portfolio &amp; Engineering Lab</span>
-            </div>
-
-            <h1 className="font-hero font-extrabold text-white text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-[-0.03em] m-0">
-              <span className="block text-white">Projects Hub </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
-                &amp; Blueprints
-              </span>
-            </h1>
-          </div>
-
-          {/* Right Column: OVERVIEW label + description */}
-          <div className="lg:col-span-5 xl:col-span-4 space-y-2 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
-              OVERVIEW
-            </span>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
-              Translate theoretical algorithms and concepts into verified, tangible engineering deliverables.
-              Categorized by practical difficulty, domain architecture, and recruiter relevance.
-            </p>
-          </div>
-        </div>
-
         {/* Projects Handbook Action Bar inside the same frame */}
-        <div className="relative z-10 mt-8 pt-6 border-t border-slate-800/80">
-          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-l-4 border-l-brand-cyan">
-            <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-xl bg-brand-cyan/15 text-brand-cyan flex items-center justify-center flex-shrink-0">
-                <FileText size={22} />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="text-base sm:text-lg font-bold font-heading text-brand-slate m-0">
-                    {selectedDomainMeta ? selectedDomainMeta.name : "All Engineering Domains"} &mdash; Complete Projects Guide
-                  </h3>
-                  <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                    Handbook in Prep
-                  </span>
-                </div>
-                <p className="text-xs sm:text-[13px] text-brand-muted m-0 mt-0.5">
-                  Detailed architecture diagrams, API schemas, verification checklists, and GitHub templates.
-                </p>
-              </div>
+        <div className="console-subdeck p-4 sm:p-5 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-l-4 border-l-brand-cyan">
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-xl bg-brand-cyan/15 text-brand-cyan flex items-center justify-center flex-shrink-0">
+              <FileText size={22} />
             </div>
-
-            <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-end flex-shrink-0">
-              <button
-                type="button"
-                onClick={handleTriggerHandbookPreview}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-violet text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
-              >
-                <Eye size={14} />
-                <span>Preview Full PDF</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleTriggerHandbookPreview}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-violet text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
-              >
-                <ExternalLink size={14} />
-                <span>Open in Tab</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleTriggerHandbookPreview}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-[13px] font-semibold shadow-xs transition-all"
-              >
-                <Download size={14} />
-                <span>Download Full PDF</span>
-              </button>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="text-base sm:text-lg font-bold font-heading text-brand-slate m-0">
+                  {selectedDomainMeta ? selectedDomainMeta.name : "All Engineering Domains"} &mdash; Complete Projects Guide
+                </h3>
+                <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                  Handbook in Prep
+                </span>
+              </div>
+              <p className="text-xs sm:text-[13px] text-brand-muted m-0 mt-0.5">
+                Detailed architecture diagrams, API schemas, verification checklists, and GitHub templates.
+              </p>
             </div>
           </div>
+
+          <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-end flex-shrink-0">
+            <button
+              type="button"
+              onClick={handleTriggerHandbookPreview}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-violet text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
+            >
+              <Eye size={14} />
+              <span>Preview Full PDF</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleTriggerHandbookPreview}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-surface hover:bg-brand-violet hover:text-white text-brand-violet text-xs sm:text-[13px] font-semibold border border-brand-border transition-all shadow-xs"
+            >
+              <ExternalLink size={14} />
+              <span>Open in Tab</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleTriggerHandbookPreview}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet hover:bg-brand-violetHover text-white text-xs sm:text-[13px] font-semibold shadow-xs transition-all"
+            >
+              <Download size={14} />
+              <span>Download Full PDF</span>
+            </button>
+          </div>
         </div>
-      </section>
+      </PageConsoleHeader>
 
       {/* Domain Overview Header Card (Before Project Cards) */}
       {selectedDomainMeta ? (
@@ -310,26 +277,23 @@ export default function ProjectsPage({ onPreviewPdf }) {
             className="rounded-3xl flex flex-col justify-between group shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border border-blue-500/25 hover:border-blue-400/50 bg-[#0E162B]/90 hover:bg-[#121B36]/95 backdrop-blur-md"
           >
             {/* 1. Project-Specific Visual Preview (Approx 16:9 Aspect Ratio) */}
-            <div className="relative w-full h-48 sm:h-52 bg-slate-950 overflow-hidden border-b border-blue-500/20">
-              <img
-                src={project.image || `/assets/projects/${project.id}.svg`}
-                alt={`${project.title} blueprint visual`}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div className="absolute top-3.5 right-3.5">
+            <div className="relative w-full h-48 overflow-hidden border-b border-slate-800/80 bg-[#070B16]">
+              <ProjectBlueprintPreview project={project} />
+
+              {/* Preserve Existing Difficulty Pill Badge in Top-Right */}
+              {project.difficulty && (
                 <span
-                  className={`text-[11px] font-bold px-3 py-1 rounded-full capitalize backdrop-blur-md shadow-sm border ${
+                  className={`absolute top-3 right-3 z-10 px-3 py-1 rounded-full font-mono text-xs font-semibold backdrop-blur-md border ${
                     project.difficulty === "beginner" || project.difficulty === "Beginner"
-                      ? "bg-[#064E3B]/90 text-emerald-300 border-emerald-500/40"
+                      ? "bg-emerald-950/90 text-emerald-300 border-emerald-500/40"
                       : project.difficulty === "intermediate" || project.difficulty === "Intermediate"
-                      ? "bg-[#78350F]/90 text-amber-300 border-amber-500/40"
-                      : "bg-[#581C87]/90 text-purple-300 border-purple-500/40"
+                      ? "bg-amber-950/90 text-amber-300 border-amber-500/40"
+                      : "bg-purple-950/90 text-purple-300 border-purple-500/40"
                   }`}
                 >
                   {project.difficulty}
                 </span>
-              </div>
+              )}
             </div>
 
             {/* Card Body */}
@@ -443,13 +407,27 @@ export default function ProjectsPage({ onPreviewPdf }) {
 
             {/* Modal Body */}
             <div className="p-6 overflow-y-auto space-y-5 text-xs">
+              {fromDomain && (
+                <div className="p-3 rounded-xl bg-gradient-to-r from-blue-900/40 via-cyan-900/30 to-blue-950/40 border border-cyan-400/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                    <span className="font-mono text-xs text-cyan-200">
+                      Navigated from <strong>{fromRole || fromDomain}</strong> (Milestone {fromMilestone || "Active"})
+                    </span>
+                  </div>
+                  <Link
+                    to={`/roadmaps?domain=${fromDomain}${fromRole ? `&role=${fromRole}` : ""}${fromMilestone ? `&milestone=${fromMilestone}` : ""}`}
+                    onClick={() => setActiveProjectGuide(null)}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-200 border border-cyan-400/50 font-mono text-xs font-semibold"
+                  >
+                    <span>&larr; Back to Active Roadmap Milestone</span>
+                  </Link>
+                </div>
+              )}
+
               {/* Visual Preview Artwork */}
-              <div className="relative w-full h-48 rounded-xl overflow-hidden border border-blue-500/30 bg-slate-950 shadow-inner">
-                <img
-                  src={activeProjectGuide.image || `/assets/projects/${activeProjectGuide.id}.svg`}
-                  alt={`${activeProjectGuide.title} architecture`}
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative w-full h-48 rounded-xl overflow-hidden border border-blue-500/30 bg-[#070B16] shadow-inner">
+                <ProjectBlueprintPreview project={activeProjectGuide} />
               </div>
 
               {/* 1. Problem and Purpose */}
@@ -589,11 +567,15 @@ export default function ProjectsPage({ onPreviewPdf }) {
                   </span>
                 </div>
                 <Link
-                  to={`/roadmaps?domain=${activeProjectGuide.domainId}`}
+                  to={
+                    fromDomain
+                      ? `/roadmaps?domain=${fromDomain}${fromRole ? `&role=${fromRole}` : ""}${fromMilestone ? `&milestone=${fromMilestone}` : ""}`
+                      : `/roadmaps?domain=${activeProjectGuide.domainId}`
+                  }
                   className="font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
                   onClick={() => setActiveProjectGuide(null)}
                 >
-                  <span>View Domain Roadmap</span>
+                  <span>{fromDomain ? "← Back to Active Roadmap Milestone" : "View Domain Roadmap"}</span>
                   <ArrowRight size={13} />
                 </Link>
               </div>

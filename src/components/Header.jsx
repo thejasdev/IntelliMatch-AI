@@ -18,8 +18,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import LogoMark from "./LogoMark.jsx";
-import { ENGINEERING_DOMAINS } from "../../data/jobRoles.js";
-import { CURATED_PROJECTS } from "../../data/projects.js";
+import { ENGINEERING_DOMAINS } from "../data/jobRoles.js";
+import { CURATED_PROJECTS } from "../data/projects.js";
 
 // Primary visible navigation destinations on desktop
 const PRIMARY_NAV = [
@@ -375,7 +375,7 @@ export default function Header({ onOpenContact }) {
             <div className="max-h-80 overflow-y-auto p-2">
               {searchQuery.trim() === "" ? (
                 <div className="p-6 text-center text-slate-400 text-xs">
-                  Type to search across all 10 engineering tracks, 50+ roles, roadmaps, and projects.
+                  Type to search across all 5 core IT tracks, 40+ roles, roadmaps, and projects.
                 </div>
               ) : searchResults.length === 0 ? (
                 <div className="p-6 text-center text-slate-400 text-xs">

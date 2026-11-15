@@ -10,51 +10,20 @@ import {
   Server,
   Cpu,
 } from "lucide-react";
-import { ENGINEERING_DOMAINS } from "../../data/jobRoles.js";
+import { ENGINEERING_DOMAINS } from "../data/jobRoles.js";
 import LogoMark from "../components/LogoMark.jsx";
+import PageConsoleHeader from "../components/PageConsoleHeader.jsx";
 
 export default function AboutPage({ onOpenContact }) {
   return (
     <div className="space-y-8 sm:space-y-10 pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       {/* 1. Unified Page Header — Styled after the master Home hero with console-frame */}
-      <section
-        className="console-frame relative overflow-hidden rounded-3xl text-white px-6 sm:px-10 lg:px-12 py-8 sm:py-10"
-      >
-        {/* Subtle atmospheric depth glow accents matching hero */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-12 -left-12 w-96 h-96 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none" />
-        </div>
-
-        {/* 2-Column Grid matching Home hero */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start lg:items-center">
-          {/* Left Column: Pill badge + Two-tone display title */}
-          <div className="lg:col-span-7 space-y-4 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#38BDF8] bg-[#1E293B]/70 border border-white/20">
-              <Info size={13} className="text-[#38BDF8]" />
-              <span className="uppercase tracking-wider">Platform Overview &amp; Mission</span>
-            </div>
-
-            <h1 className="font-hero font-extrabold text-white text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-[-0.03em] m-0">
-              <span className="block text-white">About </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6E56CF] via-[#818CF8] to-[#38BDF8]">
-                IntelliMatch
-              </span>
-            </h1>
-          </div>
-
-          {/* Right Column: OVERVIEW label + description */}
-          <div className="lg:col-span-5 space-y-2 text-left lg:border-l lg:border-white/10 lg:pl-8 lg:py-2">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-[#38BDF8] block mb-2">
-              OVERVIEW
-            </span>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed m-0 font-normal">
-              AI-Powered Career Discovery &amp; Readiness Platform &mdash; empowering engineering students, freshers,
-              and tech professionals with multi-domain curricula, ATS resume intelligence, and downloadable PDF templates.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageConsoleHeader
+        eyebrow="Platform Overview & Mission"
+        titleWhite="About"
+        titleGradient="IntelliMatch"
+        overviewText="AI-Powered Career Discovery & Readiness Platform — empowering engineering students, freshers, and tech professionals with multi-domain curricula, ATS resume intelligence, and downloadable PDF templates."
+      />
 
       {/* Mission and Target Audience */}
       <div className="im-card p-6 sm:p-8 space-y-6">
@@ -76,7 +45,7 @@ export default function AboutPage({ onOpenContact }) {
             For thousands of ambitious engineering students and freshers, the recruitment barrier is rarely a lack of talent or passion—it is the challenge of accurately structuring their accomplishments into industry-recognized technical vocabularies.
           </p>
           <p className="m-0">
-            <strong className="text-brand-slate">IntelliMatch</strong> was engineered to solve this information asymmetry. By directly comparing candidate resumes against live job descriptions, analyzing skill gaps across 10 specialized technology domains, and providing structured Year 1–4 roadmaps, IntelliMatch turns career readiness into a verifiable, step-by-step engineering discipline.
+            <strong className="text-brand-slate">IntelliMatch</strong> was engineered to solve this information asymmetry. By directly comparing candidate resumes against live job descriptions, analyzing skill gaps across 5 specialized Software & IT domains, and providing structured Year 1–4 roadmaps, IntelliMatch turns career readiness into a verifiable, step-by-step engineering discipline.
           </p>
         </div>
 
@@ -113,12 +82,12 @@ export default function AboutPage({ onOpenContact }) {
         </div>
       </div>
 
-      {/* 10 Supported Domains Catalogue */}
+      {/* 5 Core Software IT Domains Catalogue */}
       <div className="im-card p-6 sm:p-8 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-xl sm:text-2xl font-heading font-bold text-brand-slate m-0">
-              10 Supported Technology Domains
+              5 Core Software & IT Domains
             </h2>
             <p className="text-xs text-brand-muted mt-1 m-0">
               A centralized ontology mapping 40+ specialized career trajectories

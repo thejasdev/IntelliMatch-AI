@@ -18,23 +18,21 @@ import {
   Award,
   Zap,
   X,
-  Building2,
-  MapPin,
   ExternalLink,
 } from "lucide-react";
-import { ENGINEERING_DOMAINS } from "../../data/jobRoles.js";
-import { ROADMAP_DOMAINS, ROADMAP_YEARS, getRoadmapForDomainAndYear } from "../../data/roadmaps.js";
-import { CURATED_PROJECTS, getProjectsByFilter } from "../../data/projects.js";
-import { MATCHING_DEMO_SCENARIOS, getScenarioById } from "../../data/matchingDemo.js";
-import { SAMPLE_MULTI_DOMAIN_JOBS } from "../../data/jobSources.js";
+import { ENGINEERING_DOMAINS } from "../data/jobRoles.js";
+import { ROADMAP_DOMAINS, ROADMAP_YEARS, getRoadmapForDomainAndYear } from "../data/roadmaps.js";
+import { CURATED_PROJECTS, getProjectsByFilter } from "../data/projects.js";
+import { MATCHING_DEMO_SCENARIOS, getScenarioById } from "../data/matchingDemo.js";
 import { RESUME_TEMPLATES_DATA } from "./TemplatesPage.jsx";
+import ProjectBlueprintPreview from "../components/ProjectBlueprintPreview.jsx";
 
 // Part 4 â€” Core Platform Quick-Access Cards (Modulus Layout Reference)
 const QUICK_ACCESS_CARDS = [
   {
     id: "roadmaps",
     title: "Domains Roadmaps",
-    desc: "Explore 10 engineering tracks and 4-year structured semester roadmaps.",
+    desc: "Explore 5 core IT tracks and 4-year structured semester roadmaps.",
     icon: Map,
     circleStyle: "border-indigo-400/40 bg-indigo-950/60 text-indigo-300 group-hover:border-indigo-300",
     path: "/roadmaps",
@@ -78,6 +76,15 @@ const QUICK_ACCESS_CARDS = [
   },
 ];
 
+const POPULAR_INTERNSHIP_ROLES = [
+  "Software Engineering Intern",
+  "Full Stack Developer",
+  "AI / ML Engineer",
+  "Cloud & DevOps Intern",
+  "Data Analyst Intern",
+  "Cybersecurity Analyst",
+];
+
 export default function HomePage({ onOpenContact, onPreviewPdf }) {
   // Domain Search & Filter State
   const [domainCategory, setDomainCategory] = useState("all");
@@ -86,6 +93,17 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
   // Roadmap Preview State
   const [roadmapYear, setRoadmapYear] = useState("year-1");
   const [roadmapDomain, setRoadmapDomain] = useState("software-dev");
+  const [completedCheckpoints, setCompletedCheckpoints] = useState([0]);
+  const [activeCheckpointIdx, setActiveCheckpointIdx] = useState(0);
+
+  const toggleCheckpointComplete = (idx) => {
+    setCompletedCheckpoints((prev) =>
+      prev.includes(idx) ? prev.filter((item) => item !== idx) : [...prev, idx]
+    );
+  };
+
+  // Opportunities & Verified Portals Query State
+  const [selectedInternshipRole, setSelectedInternshipRole] = useState("Software Engineering Intern");
 
   // Project Lab Filter State
   const [projectDiff, setProjectDiff] = useState("all");
@@ -93,6 +111,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
 
   // Matching Demo Scenario State
   const [selectedScenarioId, setSelectedScenarioId] = useState("scenario-sw");
+  const [addedGapSkills, setAddedGapSkills] = useState([]);
 
   // Local Content Search State
   const [contentSearchQuery, setContentSearchQuery] = useState("");
@@ -101,10 +120,9 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
   // Filtered Domains
   const domainCategoryMap = {
     all: null,
-    software: ["software-dev", "emerging-tech"],
-    data: ["data-analytics", "ai-ml"],
+    software: ["software-dev", "software-engineering"],
+    data: ["data-analytics", "data-science", "ai-ml"],
     cloud: ["cloud-devops", "cybersecurity"],
-    systems: ["networking-it", "qa-testing", "embedded-systems", "enterprise-tech"],
   };
 
   const filteredDomains = useMemo(() => {
@@ -228,15 +246,24 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
 
   // Filtered Local Search Results
   const localSearchResults = useMemo(() => {
-    if (!contentSearchQuery.trim()) return [];
     const q = contentSearchQuery.toLowerCase().trim();
+    if (!q && contentSearchCategory === "all") return [];
     return localSearchIndex.filter((item) => {
-      const matchCat = contentSearchCategory === "all" || item.category === contentSearchCategory;
+      const matchCat =
+        contentSearchCategory === "all" ||
+        item.category === contentSearchCategory ||
+        item.category.startsWith(contentSearchCategory) ||
+        (contentSearchCategory === "domains" && item.category === "domain") ||
+        (contentSearchCategory === "roles" && item.category === "role") ||
+        (contentSearchCategory === "roadmaps" && item.category === "milestone") ||
+        (contentSearchCategory === "projects" && item.category === "project") ||
+        (contentSearchCategory === "templates" && item.category === "template");
       if (!matchCat) return false;
+      if (!q) return true;
       const inTitle = item.title.toLowerCase().includes(q);
-      const inDesc = item.description.toLowerCase().includes(q);
-      const inSubtitle = item.subtitle.toLowerCase().includes(q);
-      const inSkills = item.skills.some((s) => s.toLowerCase().includes(q));
+      const inDesc = (item.description || "").toLowerCase().includes(q);
+      const inSubtitle = (item.subtitle || "").toLowerCase().includes(q);
+      const inSkills = (item.skills || []).some((s) => s.toLowerCase().includes(q));
       return inTitle || inDesc || inSubtitle || inSkills;
     });
   }, [contentSearchQuery, contentSearchCategory, localSearchIndex]);
@@ -407,7 +434,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               stage: "Discover a Domain",
               icon: Compass,
               title: "Career Explorer",
-              desc: "Survey 10 technical domains and understand industry role expectations.",
+              desc: "Survey 5 core IT domains and understand industry role expectations.",
               linkText: "Explore Domains",
               href: "#domains",
             },
@@ -495,7 +522,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="max-w-xl">
             <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#8B7FF5]">
-              10 Specialized Tracks
+              5 Core IT Tracks
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white m-0 mt-1.5 leading-tight">
               Explore Technology Domains
@@ -521,11 +548,10 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         {/* Category Tabs */}
         <div className="flex flex-wrap gap-2">
           {[
-            { id: "all", label: "All 10 Domains" },
+            { id: "all", label: "All 5 Core Domains" },
             { id: "software", label: "Software & Web" },
             { id: "data", label: "Data & AI" },
             { id: "cloud", label: "Cloud & Security" },
-            { id: "systems", label: "Systems & Hardware" },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -533,8 +559,8 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               onClick={() => setDomainCategory(tab.id)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                 domainCategory === tab.id
-                  ? "bg-brand-violet text-white shadow-xs font-semibold"
-                  : "bg-brand-card text-brand-slate border border-brand-border hover:bg-brand-surface hover:text-brand-violet"
+                  ? "bg-blue-500/20 text-cyan-300 border border-cyan-400/45 shadow-sm shadow-cyan-500/10 font-semibold"
+                  : "bg-slate-900/70 text-slate-300 border border-slate-800 hover:bg-slate-800/90 hover:text-white"
               }`}
             >
               {tab.label}
@@ -617,140 +643,294 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
       {/* 4. Interactive Learning Roadmaps Preview */}
       <section id="roadmaps" className="space-y-6 pt-2">
         <div className="max-w-2xl">
-          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-violet">
-            Structured Curriculum
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-white m-0 mt-1.5 leading-tight">
+          <p className="font-mono text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-2">
+            STRUCTURED CURRICULUM
+          </p>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Interactive Learning Roadmaps
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 mt-2 m-0 leading-relaxed">
+          <p className="font-sans text-sm sm:text-base text-slate-300 mt-2.5 max-w-2xl leading-relaxed">
             Select an academic year and engineering domain to review curated semester milestones.
           </p>
         </div>
 
-        <div className="im-card p-6 md:p-8 space-y-6">
-          {/* Controls Bar */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-brand-border">
-            <div className="flex flex-wrap items-center gap-3">
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                  College Level
-                </label>
-                <select
-                  value={roadmapYear}
-                  onChange={(e) => setRoadmapYear(e.target.value)}
-                  className="px-3.5 py-2 text-xs sm:text-sm font-medium rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
-                >
-                  {ROADMAP_YEARS.map((y) => (
-                    <option key={y.id} value={y.id}>
-                      {y.label}: {y.stage}
-                    </option>
-                  ))}
-                </select>
-              </div>
+        <div className="console-frame rounded-2xl p-6 sm:p-8 bg-[#050916]/95 border border-slate-800/90 shadow-2xl relative overflow-hidden space-y-6">
+          {/* Top-Edge Specular Light Sweep */}
+          <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-beam-sweep" />
 
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Career Track
-                </label>
+          {/* Controls Bar: 12-col grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 pb-6 border-b border-slate-800/80 items-end">
+            {/* Left 7 Cols: Interactive 4-Year Academic Stage Tabs */}
+            <div className="lg:col-span-7">
+              <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-2.5">
+                1. Select Academic Year &amp; Stage
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {ROADMAP_YEARS.map((y) => {
+                  const isActive = roadmapYear === y.id;
+                  return (
+                    <button
+                      key={y.id}
+                      type="button"
+                      onClick={() => {
+                        setRoadmapYear(y.id);
+                        setActiveCheckpointIdx(0);
+                      }}
+                      className={`px-3 py-2.5 rounded-xl font-sans text-xs font-semibold text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-0.5 ${
+                        isActive
+                          ? "bg-gradient-to-r from-blue-600/30 via-indigo-600/25 to-cyan-500/25 text-white border border-cyan-400/50 shadow-md shadow-cyan-500/10"
+                          : "bg-[#080E20] text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                      }`}
+                    >
+                      <span className="font-mono text-[10px] text-cyan-400">{y.badge || `Stage ${y.id.replace("year-", "")}`}</span>
+                      <span className="truncate max-w-full text-slate-200">{y.stage}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right 5 Cols: Interactive Career Track Selector (Matched to Obsidian-Navy Theme) */}
+            <div className="lg:col-span-5">
+              <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-2.5">
+                2. Select Engineering Career Track
+              </label>
+              <div className="relative">
                 <select
                   value={roadmapDomain}
-                  onChange={(e) => setRoadmapDomain(e.target.value)}
-                  className="px-3.5 py-2 text-xs sm:text-sm font-medium rounded-xl border border-brand-border bg-brand-surface text-brand-slate focus:outline-none focus:border-brand-violet"
+                  onChange={(e) => {
+                    setRoadmapDomain(e.target.value);
+                    setActiveCheckpointIdx(0);
+                  }}
+                  className="w-full appearance-none bg-[#080E20] text-white font-sans text-sm font-medium rounded-xl px-4 py-3 pr-10 border border-cyan-500/30 hover:border-cyan-400/60 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all cursor-pointer shadow-inner"
                 >
-                  {ROADMAP_DOMAINS.map((d) => (
-                    <option key={d.id} value={d.id}>
-                      {d.name}
-                    </option>
-                  ))}
+                  {ROADMAP_DOMAINS.map((dom, idx) => {
+                    const domId = dom.id || dom.value || dom;
+                    const domLabel = dom.name || dom.label || dom.title || String(dom);
+                    return (
+                      <option key={domId || idx} value={domId} className="bg-[#080E20] text-slate-100">
+                        {domLabel}
+                      </option>
+                    );
+                  })}
                 </select>
+                <span className="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-cyan-400">
+                  ▼
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Domain Switcher Chips for Instant 1-Click Exploration */}
+          <div className="flex items-center gap-2 overflow-x-auto py-4 border-b border-slate-800/80 no-scrollbar">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400 shrink-0 mr-1">
+              Quick Track:
+            </span>
+            {ROADMAP_DOMAINS.map((dom, idx) => {
+              const domId = dom.id || dom.value || dom;
+              const domLabel = dom.name || dom.label || dom.title || String(dom);
+              const isActive = roadmapDomain === domId;
+              return (
+                <button
+                  key={domId || idx}
+                  type="button"
+                  onClick={() => {
+                    setRoadmapDomain(domId);
+                    setActiveCheckpointIdx(0);
+                  }}
+                  className={`px-3 py-1.5 rounded-lg font-sans text-xs font-medium shrink-0 transition-all cursor-pointer ${
+                    isActive
+                      ? "bg-blue-500/20 text-cyan-300 border border-cyan-400/45 shadow-sm"
+                      : "bg-[#080E20] text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                  }`}
+                >
+                  {domLabel}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Year Focus & Interactive Progress Telemetry Banner */}
+          <div className="bg-[#080E20] border border-blue-500/25 rounded-xl p-4 my-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start sm:items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center text-cyan-300 font-mono text-xs shrink-0">
+                🎯
+              </span>
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-cyan-400 block">
+                  ACTIVE STAGE OBJECTIVE
+                </span>
+                <p className="font-sans text-xs sm:text-sm text-slate-200 font-medium mt-0.5">
+                  {currentRoadmap?.focus ||
+                    currentRoadmap?.yearFocus ||
+                    currentRoadmap?.overview ||
+                    "Build reliable, scalable applications from foundational concepts up to production systems."}
+                </p>
               </div>
             </div>
 
-            <div className="text-right sm:self-end">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs sm:text-[13px] font-semibold bg-brand-violet/10 text-brand-violet border border-brand-violet/20">
-                {currentRoadmap?.yearLabel || currentRoadmap?.yearMeta?.label || "Foundations"} &bull; {currentRoadmap?.stageLabel || currentRoadmap?.yearMeta?.stage || "Year 1"}
-              </span>
+            {/* Simulated Milestone Readiness Meter */}
+            <div className="flex items-center gap-3 shrink-0 bg-[#050916] px-3.5 py-2 rounded-lg border border-slate-800/90">
+              <div className="text-right">
+                <span className="block font-mono text-[10px] uppercase text-slate-400">
+                  Stage Progress
+                </span>
+                <span className="font-mono text-xs font-bold text-emerald-400 tabular-nums">
+                  {Math.round(
+                    (completedCheckpoints.length /
+                      Math.max(1, (currentRoadmap?.milestones || []).length)) *
+                      100
+                  )}
+                  % Completed
+                </span>
+              </div>
+              <div className="w-20 h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div
+                  style={{
+                    width: `${Math.round(
+                      (completedCheckpoints.length /
+                        Math.max(1, (currentRoadmap?.milestones || []).length)) *
+                        100
+                    )}%`,
+                  }}
+                  className="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Overview Banner */}
-          <div className="p-4 rounded-xl bg-brand-surface border border-brand-border">
-            <p className="text-[13px] sm:text-sm text-slate-200 leading-relaxed m-0 font-medium">
-              <span className="font-bold text-white">Year Focus:</span> {currentRoadmap?.overview || currentRoadmap?.domain?.overview || "Master key fundamentals and competencies for this academic year."}
-            </p>
+          {/* Connected Horizontal Timeline Conduit (Desktop) */}
+          <div className="hidden lg:grid lg:grid-cols-3 gap-6 relative mb-5 px-4">
+            <div className="absolute top-1/2 left-16 right-16 -translate-y-1/2 h-0.5 bg-slate-800 z-0" />
+            <div
+              style={{
+                width:
+                  activeCheckpointIdx === 0
+                    ? "18%"
+                    : activeCheckpointIdx === 1
+                    ? "50%"
+                    : "84%",
+              }}
+              className="absolute top-1/2 left-16 -translate-y-1/2 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 z-0 transition-all duration-500"
+            />
+            {(currentRoadmap?.milestones || []).map((milestone, idx) => {
+              const isCompleted = completedCheckpoints.includes(idx);
+              const isActive = activeCheckpointIdx === idx;
+              return (
+                <div key={idx} className="relative z-10 flex items-center justify-between">
+                  <button
+                    type="button"
+                    onClick={() => setActiveCheckpointIdx(idx)}
+                    className={`group flex items-center gap-2.5 px-3.5 py-1.5 rounded-full font-mono text-xs font-bold transition-all cursor-pointer ${
+                      isActive
+                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/30 scale-105"
+                        : isCompleted
+                        ? "bg-emerald-950 text-emerald-300 border border-emerald-500/50"
+                        : "bg-[#080E20] text-slate-400 border border-slate-700 hover:border-cyan-400/50 hover:text-white"
+                    }`}
+                  >
+                    <span>{isCompleted ? "✓" : `0${idx + 1}`}</span>
+                    <span className="text-[11px] font-medium">
+                      {`Step 0${idx + 1}`}
+                    </span>
+                  </button>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Connected Numbered Roadmap Timeline (Image 5 Reference) */}
-          <div className="relative pt-6 pb-2">
-            {/* Horizontal Connecting Line for Desktop */}
-            <div className="hidden md:block absolute top-[44px] left-[10%] right-[10%] h-[3px] bg-gradient-to-r from-[#0B57D0] via-[#0284C7] to-[#8B5CF6] -z-0 opacity-70 rounded-full" />
+          {/* 3 Interactive Milestone Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            {(currentRoadmap?.milestones || []).map((milestone, idx) => {
+              const isCompleted = completedCheckpoints.includes(idx);
+              const isActive = activeCheckpointIdx === idx;
+              const skills = milestone.skills || milestone.topics || milestone.competencies || [];
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-              {(currentRoadmap?.milestones || []).map((m, idx) => {
-                const stepNum = String(idx + 1).padStart(2, "0");
-                return (
-                  <div
-                    key={m.id || idx}
-                    className="relative flex flex-col items-center text-center group"
-                  >
-                    {/* Numbered Step Circle (Image 5 reference) */}
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#0B57D0] to-[#0284C7] text-white font-heading font-extrabold text-base sm:text-lg flex items-center justify-center shadow-lg ring-4 ring-white/90 group-hover:scale-110 group-hover:ring-[#0B57D0]/30 transition-all duration-300 mb-4 z-10 cursor-default">
-                      {stepNum}
+              return (
+                <div
+                  key={milestone.title || idx}
+                  onClick={() => setActiveCheckpointIdx(idx)}
+                  className={`precision-card rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-200 ${
+                    isActive
+                      ? "bg-[#0B142C] border-cyan-400/60 shadow-xl shadow-cyan-500/10 -translate-y-1"
+                      : "bg-[#080E20] border-slate-800/90 hover:border-blue-500/40"
+                  }`}
+                >
+                  <div>
+                    {/* Top Checkpoint & Duration Telemetry Bar */}
+                    <div className="flex items-center justify-between gap-2 mb-4">
+                      <span
+                        className={`px-2.5 py-1 rounded-md font-mono text-[11px] font-semibold uppercase tracking-wider ${
+                          isActive
+                            ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40"
+                            : "bg-blue-500/10 text-blue-300 border border-blue-500/25"
+                        }`}
+                      >
+                        {`CHECKPOINT 0${idx + 1}`}
+                      </span>
+                      <span className="font-mono text-xs text-slate-400 tabular-nums">
+                        ⏱ {milestone.duration || milestone.timeframe || `Semester ${(idx % 2) + 1} • 4–6 Weeks`}
+                      </span>
                     </div>
 
-                    {/* Step Content Card */}
-                    <div className="w-full bg-brand-surface/80 hover:bg-brand-surface border border-brand-border hover:border-[#0284C7]/50 rounded-2xl p-5 sm:p-6 shadow-sm transition-all duration-200 flex flex-col justify-between flex-1 space-y-3.5 text-left">
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="text-[11px] font-bold uppercase tracking-wider text-[#0284C7] bg-[#0284C7]/10 px-2.5 py-0.5 rounded-full border border-[#0284C7]/20">
-                            Checkpoint {stepNum}
-                          </span>
-                          <span className="text-xs text-slate-400 font-medium flex items-center gap-1">
-                            <Clock size={12} /> {m.duration || m.timeframe || "4-6 Weeks"}
-                          </span>
-                        </div>
-                        <h4 className="font-heading font-bold text-base sm:text-lg text-white m-0 pt-1 group-hover:text-[#0284C7] transition-colors">
-                          {m.title}
-                        </h4>
-                        <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 pt-0.5">
-                          {m.description}
-                        </p>
-                      </div>
+                    {/* Milestone Heading & Description */}
+                    <h3 className="font-serif text-lg sm:text-xl font-bold text-white leading-snug mb-2.5">
+                      {milestone.title}
+                    </h3>
+                    <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed mb-5">
+                      {milestone.description}
+                    </p>
+                  </div>
 
-                      <div className="pt-3 border-t border-brand-border/60">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-300 block mb-1.5">
-                          Key Competencies:
+                  {/* Bottom Competencies & Interactive Complete Toggle */}
+                  <div className="pt-4 border-t border-slate-800/90">
+                    <div className="flex items-center justify-between mb-2.5">
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400 font-semibold">
+                        KEY COMPETENCIES:
+                      </span>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleCheckpointComplete(idx);
+                        }}
+                        className={`px-2 py-0.5 rounded font-mono text-[10px] transition-colors cursor-pointer ${
+                          isCompleted
+                            ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
+                            : "bg-slate-900 text-slate-400 border border-slate-700 hover:text-cyan-300 hover:border-cyan-500/40"
+                        }`}
+                      >
+                        {isCompleted ? "✓ Completed" : "+ Mark Complete"}
+                      </button>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5">
+                      {skills.map((skill, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="px-2.5 py-1 rounded-md font-mono text-[11px] bg-[#050916] text-cyan-200/90 border border-cyan-500/20"
+                        >
+                          {skill}
                         </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {(m.topics || m.skills || []).map((t) => (
-                            <span
-                              key={t}
-                              className="text-xs px-2.5 py-0.5 rounded-md bg-brand-card text-slate-200 border border-brand-border/70"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Footer CTA */}
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm border-t border-brand-border">
-            <span className="text-slate-400">
-              Interactive roadmap milestone preview. Explore all tracks across all 4 engineering years.
+          {/* Footer Action Row */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-6 mt-6 border-t border-slate-800/80">
+            <span className="font-sans text-xs sm:text-sm text-slate-400">
+              Click any checkpoint card to inspect or mark your milestone completion across all 4 engineering years.
             </span>
             <Link
               to="/roadmaps"
-              className="inline-flex items-center gap-1.5 font-semibold text-brand-cyan hover:underline"
+              className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm font-semibold text-cyan-300 hover:text-cyan-200 transition-colors"
             >
               <span>Explore Complete Roadmap Matrix</span>
-              <ArrowRight size={14} />
+              <span>→</span>
             </Link>
           </div>
         </div>
@@ -797,26 +977,23 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
               className="rounded-3xl flex flex-col justify-between group shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border border-blue-500/25 hover:border-blue-400/50 bg-[#0E162B]/90 hover:bg-[#121B36]/95 backdrop-blur-md"
             >
               {/* 1. Project-Specific Visual Preview (Approx 16:9 Aspect Ratio) */}
-              <div className="relative w-full h-48 sm:h-52 bg-slate-950 overflow-hidden border-b border-blue-500/20">
-                <img
-                  src={project.image || `/assets/projects/${project.id}.svg`}
-                  alt={`${project.title} blueprint preview`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute top-3.5 right-3.5">
+              <div className="relative w-full h-48 overflow-hidden border-b border-slate-800/80 bg-[#070B16]">
+                <ProjectBlueprintPreview project={project} />
+
+                {/* Preserve Existing Difficulty Pill Badge in Top-Right */}
+                {project.difficulty && (
                   <span
-                    className={`text-xs font-bold px-3 py-1 rounded-full capitalize backdrop-blur-md shadow-sm border ${
+                    className={`absolute top-3 right-3 z-10 px-3 py-1 rounded-full font-mono text-xs font-semibold backdrop-blur-md border ${
                       project.difficulty === "beginner" || project.difficulty === "Beginner"
-                        ? "bg-[#064E3B]/90 text-emerald-300 border-emerald-500/40"
+                        ? "bg-emerald-950/90 text-emerald-300 border-emerald-500/40"
                         : project.difficulty === "intermediate" || project.difficulty === "Intermediate"
-                        ? "bg-[#78350F]/90 text-amber-300 border-amber-500/40"
-                        : "bg-[#581C87]/90 text-purple-300 border-purple-500/40"
+                        ? "bg-amber-950/90 text-amber-300 border-amber-500/40"
+                        : "bg-purple-950/90 text-purple-300 border-purple-500/40"
                     }`}
                   >
                     {project.difficulty}
                   </span>
-                </div>
+                )}
               </div>
 
               {/* Card Body */}
@@ -884,124 +1061,281 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
       </section>
 
       {/* 6. Resume-to-Job Matching Interactive Demonstration (Clearly Labeled Sample Scenario) */}
-      <section className="space-y-6 pt-2">
-        <div className="max-w-2xl">
-          <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-cyan">
-            Algorithmic Intelligence Preview
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-white m-0 mt-1.5 leading-tight">
+      <section className="py-12">
+        {/* Section Header — Matches "Projects Hub Blueprints" Exactly (Outside the Card Box) */}
+        <div className="mb-8">
+          <p className="font-mono text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-2">
+            ALGORITHMIC INTELLIGENCE PREVIEW
+          </p>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Resume-to-Job Semantic Matching
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 mt-2 m-0 leading-relaxed">
-            Interactive simulation illustrating how keyword coverage, experience evaluation, and ATS
-            benchmarking work on sample resumes.
+          <p className="font-sans text-sm sm:text-base text-slate-300 mt-2.5 max-w-2xl leading-relaxed">
+            Interactive simulation illustrating how keyword coverage, experience evaluation, and ATS benchmarking work on sample resumes.
           </p>
         </div>
 
-        <div className="im-card p-6 md:p-8 space-y-6">
-          {/* Scenario Buttons */}
-          <div className="flex flex-wrap items-center gap-2 pb-4 border-b border-brand-border">
-            <span className="text-xs sm:text-sm font-bold text-slate-300 mr-2">Sample Role:</span>
-            {MATCHING_DEMO_SCENARIOS.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => setSelectedScenarioId(s.id)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
-                  selectedScenarioId === s.id
-                    ? "bg-brand-violet text-white shadow-xs font-semibold"
-                    : "bg-brand-surface text-brand-slate hover:bg-brand-violet/10 hover:text-brand-violet border border-brand-border"
-                }`}
-              >
-                {s.roleTitle}
-              </button>
-            ))}
-          </div>
+        {/* Interactive Workspace Container Below the Heading */}
+        {(() => {
+          const currentRole = currentScenario;
+          const baseScore = Number(currentRole.overallScore || currentRole.score || currentRole.matchScore || 86);
+          const liveScore = Math.min(99, baseScore + addedGapSkills.length * 5);
+          const activeMatchedKeywords = [
+            ...(currentRole.matchedSkills || []),
+            ...addedGapSkills,
+          ];
+          const remainingSkillGaps = (currentRole.missingSkills || []).filter(
+            (gap) => !addedGapSkills.includes(gap)
+          );
+          const radius = 52;
+          const circumference = 2 * Math.PI * radius;
+          const strokeDashoffset = circumference - (liveScore / 100) * circumference;
+          const beforeBullet =
+            currentRole.sampleBulletOptimization?.original ||
+            currentRole.beforeBullet ||
+            "Built REST APIs for user registration and login.";
+          const afterBullet =
+            currentRole.sampleBulletOptimization?.optimized ||
+            currentRole.afterBullet ||
+            "Architected high-throughput Node.js authentication endpoints with JWT and bcrypt, reducing login latency by 32% across 45k+ monthly users.";
 
-          {/* Scenario Results Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            {/* Score Wheel */}
-            <div className="lg:col-span-4 p-6 rounded-2xl bg-brand-surface border border-brand-border flex flex-col items-center text-center space-y-3">
-              <div className="w-28 h-28 rounded-full border-4 border-brand-violet flex flex-col items-center justify-center bg-brand-card shadow-xs">
-                <span className="text-3xl sm:text-4xl font-bold font-heading text-brand-violet">
-                  {currentScenario.matchScore}%
+          return (
+            <div className="console-frame rounded-2xl p-6 sm:p-8 bg-[#050916]/95 border border-slate-800/90 shadow-2xl relative overflow-hidden">
+              {/* Top-Edge Specular Light Sweep */}
+              <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-beam-sweep" />
+
+              {/* Interactive Obsidian-Navy Sample Role Buttons */}
+              <div className="flex flex-wrap items-center gap-2.5 pb-6 border-b border-slate-800/90">
+                <span className="font-mono text-xs uppercase tracking-wider text-slate-400 mr-1">
+                  Sample Role:
                 </span>
-                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Match Score</span>
+                {MATCHING_DEMO_SCENARIOS.map((role) => {
+                  const isSelected = selectedScenarioId === role.id;
+                  return (
+                    <button
+                      key={role.id}
+                      type="button"
+                      onClick={() => {
+                        setSelectedScenarioId(role.id);
+                        setAddedGapSkills([]);
+                      }}
+                      className={`group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-sans text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? "bg-gradient-to-r from-blue-600/25 via-indigo-600/20 to-cyan-500/20 text-cyan-200 border border-cyan-400/50 shadow-lg shadow-cyan-500/10 -translate-y-0.5"
+                          : "bg-[#091022] text-slate-300 border border-slate-800/90 hover:bg-[#0D1730] hover:border-blue-500/40 hover:text-white"
+                      }`}
+                    >
+                      <span
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          isSelected ? "bg-cyan-400 shadow-[0_0_8px_#22d3ee]" : "bg-slate-600 group-hover:bg-slate-400"
+                        }`}
+                      />
+                      <span>{role.roleTitle}</span>
+                    </button>
+                  );
+                })}
               </div>
 
-              <div>
-                <h4 className="font-heading font-bold text-lg sm:text-xl text-white m-0">
-                  {currentScenario.candidateName}
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-300 m-0">{currentScenario.candidateBackground}</p>
-              </div>
+            {/* Semantic Matching Interactive Workspace Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 pt-6">
+              {/* Left Column: Animated SVG Match Score Gauge & Sub-Metrics */}
+              <div className="lg:col-span-4 bg-[#080E20] border border-slate-800/90 rounded-xl p-5 flex flex-col items-center justify-between shadow-inner">
+                <div className="w-full flex items-center justify-between mb-2">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                    Semantic Score
+                  </span>
+                  <span className="font-mono text-[11px] text-cyan-400">
+                    ATS Engine v2.4
+                  </span>
+                </div>
 
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                <CheckCircle2 size={13} /> {currentScenario.overallVerdict}
-              </span>
-            </div>
-
-            {/* Analysis Details */}
-            <div className="lg:col-span-8 space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25">
-                  <div className="text-xs sm:text-sm font-bold text-emerald-300 mb-2 flex items-center gap-1.5">
-                    <CheckCircle2 size={15} className="text-emerald-400" />
-                    <span>Matched Keywords ({(currentScenario.matchedSkills || []).length})</span>
+                {/* Fixed SVG Radial Gauge with Real Numeric Percentage */}
+                <div className="relative w-36 h-36 flex items-center justify-center my-2">
+                  <svg className="w-full h-full -rotate-90" viewBox="0 0 128 128">
+                    <defs>
+                      <linearGradient id="scoreRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#22D3EE" />
+                        <stop offset="50%" stopColor="#3B82F6" />
+                        <stop offset="100%" stopColor="#818CF8" />
+                      </linearGradient>
+                    </defs>
+                    <circle
+                      cx="64"
+                      cy="64"
+                      r={radius}
+                      stroke="rgba(30, 41, 59, 0.8)"
+                      strokeWidth="10"
+                      fill="transparent"
+                    />
+                    <circle
+                      cx="64"
+                      cy="64"
+                      r={radius}
+                      stroke="url(#scoreRingGrad)"
+                      strokeWidth="10"
+                      strokeDasharray={circumference}
+                      strokeDashoffset={strokeDashoffset}
+                      strokeLinecap="round"
+                      fill="transparent"
+                      className="transition-all duration-500 ease-out"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <span className="font-mono text-3xl font-extrabold text-white tabular-nums">
+                      {liveScore}%
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-cyan-300 mt-0.5">
+                      MATCH SCORE
+                    </span>
                   </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {(currentScenario.matchedSkills || []).map((s) => (
-                      <span key={s} className="text-xs px-2.5 py-0.5 rounded bg-brand-card text-emerald-300 font-medium border border-emerald-500/30">
-                        {s}
+                </div>
+
+                {/* Populated Status Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>{liveScore >= 90 ? "ATS Benchmark: Excellent" : "ATS Benchmark: Strong Match"}</span>
+                </div>
+
+                {/* Sub-Metric Breakdown Bars */}
+                <div className="w-full space-y-2 mt-4 pt-3 border-t border-slate-800/80">
+                  <div>
+                    <div className="flex justify-between font-mono text-[11px] text-slate-300 mb-1">
+                      <span>Keyword Coverage</span>
+                      <span className="text-cyan-300 tabular-nums">{liveScore}%</span>
+                    </div>
+                    <div className="w-full h-1.5 rounded-full bg-slate-900 overflow-hidden">
+                      <div
+                        style={{ width: `${liveScore}%` }}
+                        className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-500"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between font-mono text-[11px] text-slate-300 mb-1">
+                      <span>Role Impact Alignment</span>
+                      <span className="text-indigo-300 tabular-nums">{Math.min(98, liveScore - 2)}%</span>
+                    </div>
+                    <div className="w-full h-1.5 rounded-full bg-slate-900 overflow-hidden">
+                      <div
+                        style={{ width: `${Math.min(98, liveScore - 2)}%` }}
+                        className="h-full bg-gradient-to-r from-indigo-400 to-violet-500 transition-all duration-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right 8 Columns: Matched Keywords, Interactive Skill Gaps & Optimization Diff */}
+              <div className="lg:col-span-8 flex flex-col justify-between gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Matched Keywords Card */}
+                  <div className="bg-[#080E20] border border-emerald-500/25 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2 font-sans text-sm font-semibold text-emerald-300">
+                        <span className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-xs">
+                          ✓
+                        </span>
+                        <span>Matched Keywords ({activeMatchedKeywords.length})</span>
+                      </div>
+                      {addedGapSkills.length > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => setAddedGapSkills([])}
+                          className="font-mono text-[11px] text-slate-400 hover:text-cyan-300 underline cursor-pointer"
+                        >
+                          Reset Demo
+                        </button>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {activeMatchedKeywords.map((kw, i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-1 rounded-lg font-mono text-xs bg-emerald-950/60 text-emerald-200 border border-emerald-500/35 shadow-sm"
+                        >
+                          ✓ {kw}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Interactive Skill Gaps Card (Click a gap to simulate adding it) */}
+                  <div className="bg-[#080E20] border border-amber-500/25 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2 font-sans text-sm font-semibold text-amber-300">
+                        <span className="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-xs">
+                          ✦
+                        </span>
+                        <span>Skill Gaps ({remainingSkillGaps.length})</span>
+                      </div>
+                      <span className="font-mono text-[10px] text-amber-300/80">
+                        Click to simulate +5%
                       </span>
-                    ))}
+                    </div>
+
+                    {remainingSkillGaps.length > 0 ? (
+                      <div className="flex flex-wrap gap-2">
+                        {remainingSkillGaps.map((gap, i) => (
+                          <button
+                            key={i}
+                            type="button"
+                            onClick={() => setAddedGapSkills((prev) => [...prev, gap])}
+                            className="group px-3 py-1.5 rounded-lg font-mono text-xs bg-amber-950/40 text-amber-200 border border-amber-500/35 hover:bg-emerald-950/60 hover:text-emerald-200 hover:border-emerald-400/50 transition-all cursor-pointer flex items-center gap-1.5"
+                          >
+                            <span className="text-amber-400 group-hover:text-emerald-300 font-bold">+</span>
+                            <span>{gap}</span>
+                          </button>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="rounded-lg bg-emerald-950/30 border border-emerald-500/30 p-2.5 font-mono text-xs text-emerald-300">
+                        ✓ All target role skill gaps resolved in simulation!
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25">
-                  <div className="text-xs sm:text-sm font-bold text-amber-300 mb-2 flex items-center gap-1.5">
-                    <Sparkles size={15} className="text-amber-400" />
-                    <span>Skill Gaps ({(currentScenario.missingSkills || []).length})</span>
+                {/* Action Verb & Metrics Optimization Tip Card */}
+                <div className="bg-[#080E20] border border-cyan-500/25 rounded-xl p-4 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300">
+                      💡 ACTION VERB &amp; METRICS OPTIMIZATION TIP
+                    </span>
+                    <span className="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-400/30 font-mono text-[10px] text-cyan-300">
+                      ATS Impact Rewrite
+                    </span>
                   </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {(currentScenario.missingSkills || []).map((s) => (
-                      <span key={s} className="text-xs px-2.5 py-0.5 rounded bg-brand-card text-amber-300 font-medium border border-amber-500/30">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
 
-              {/* Bullet Optimization Tip */}
-              <div className="p-4 rounded-xl bg-brand-surface border border-brand-border space-y-2">
-                <div className="text-xs sm:text-sm font-bold text-brand-cyan uppercase tracking-wide">
-                  💡 Action Verb &amp; Metrics Optimization Tip
-                </div>
-                <div className="text-xs sm:text-sm space-y-1">
-                  <div className="text-rose-300">
-                    <span className="font-bold">Before:</span> <em>"{currentScenario.sampleBulletOptimization?.original || ""}"</em>
+                  <div className="p-2.5 rounded-lg bg-rose-950/25 border border-rose-500/20 font-sans text-xs sm:text-sm text-slate-300">
+                    <span className="font-mono text-xs font-semibold text-rose-300 mr-1.5">Before:</span>
+                    "{beforeBullet}"
                   </div>
-                  <div className="text-emerald-300">
-                    <span className="font-bold">Optimized:</span> <strong>"{currentScenario.sampleBulletOptimization?.optimized || ""}"</strong>
-                  </div>
-                </div>
-              </div>
 
-              <div className="flex items-center justify-between text-xs sm:text-sm pt-1">
-                <span className="text-slate-400">Ready to test your actual resume with ATS parsing?</span>
-                <Link
-                  to="/analyzer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-violet text-white font-semibold hover:bg-brand-violetHover shadow-xs transition-colors"
-                >
-                  <span>Launch Live Analyzer</span>
-                  <ArrowRight size={14} />
-                </Link>
+                  <div className="p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-500/30 font-sans text-xs sm:text-sm text-emerald-200">
+                    <span className="font-mono text-xs font-semibold text-emerald-400 mr-1.5">Optimized:</span>
+                    "{afterBullet}"
+                  </div>
+                </div>
+
+                {/* Bottom CTA Bar */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+                  <span className="font-sans text-xs sm:text-sm text-slate-400">
+                    Ready to test your actual resume with ATS parsing?
+                  </span>
+                  <Link
+                    to="/analyzer"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-sans text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 hover:brightness-110 shadow-lg shadow-blue-600/25 transition-all"
+                  >
+                    <span>Launch Live Analyzer</span>
+                    <span>→</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        );
+      })()}
+    </section>
 
       {/* 7. Career-Readiness Tools & Local Content Search */}
       <section className="space-y-8 pt-2">
@@ -1126,7 +1460,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
 
               {/* Description */}
               <p className="text-[13px] sm:text-sm text-slate-300 leading-relaxed m-0 mt-2.5">
-                Explore student internships, entry-level roles, and graduate opportunities across 10 engineering tracks with verified external sources.
+                Explore student internships, entry-level roles, and graduate opportunities across 5 core IT tracks with verified external sources.
               </p>
             </div>
 
@@ -1143,130 +1477,186 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
           </div>
         </div>
 
-        {/* Local Content Search (Real-time in-memory index querying domains, roles, milestones, projects, templates) */}
-        <div className="im-card p-6 sm:p-8 space-y-6 border-t-2 border-t-brand-cyan">
+        {/* Local Content Search Header — Standardized Unboxed Header Matching "Projects Hub Blueprints" */}
+        <div className="pt-6">
+          <p className="font-mono text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-2">
+            INSTANT LOCAL CONTENT SEARCH
+          </p>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-cyan mb-1">
-                <Search size={14} />
-                <span>Instant Local Content Search</span>
-              </div>
-              <h3 className="text-xl font-bold font-heading text-brand-slate m-0">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
                 Query Real IntelliMatch Resources
-              </h3>
-              <p className="text-xs text-brand-muted mt-1 m-0">
-                Search across all 10 engineering domains, career roles, curriculum milestones, project blueprints, and ATS templates.
+              </h2>
+              <p className="font-sans text-sm sm:text-base text-slate-300 mt-2.5 max-w-2xl leading-relaxed">
+                Search across all 5 core Software & IT domains, career roles, curriculum milestones, project blueprints, and ATS templates.
               </p>
             </div>
 
             {/* Live Match Counter */}
-            {contentSearchQuery.trim() && (
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-brand-surface text-brand-cyan border border-brand-border w-fit">
+            {(contentSearchQuery.trim() || contentSearchCategory !== "all") && (
+              <span className="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-400/30 w-fit shrink-0">
                 {localSearchResults.length} Matching Results
               </span>
             )}
           </div>
+        </div>
+
+        {/* Local Content Search Workspace (Real-time in-memory index querying domains, roles, milestones, projects, templates) */}
+        <div className="console-frame rounded-2xl p-6 sm:p-8 bg-[#050916]/95 border border-slate-800/90 shadow-2xl relative overflow-hidden space-y-6">
+          {/* Top-Edge Specular Light Sweep */}
+          <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-beam-sweep" />
 
           {/* Search Input Bar */}
           <div className="relative">
-            <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-muted" />
-            <input
-              type="text"
-              value={contentSearchQuery}
-              onChange={(e) => setContentSearchQuery(e.target.value)}
-              placeholder="Search by topic, skill, role, project, or template (e.g. Python, SQL, React, Docker, Machine Learning)..."
-              className="w-full pl-11 pr-10 py-3 text-xs sm:text-sm rounded-xl border border-brand-border bg-brand-surface text-brand-slate placeholder:text-brand-muted focus:outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
-            />
-            {contentSearchQuery && (
-              <button
-                type="button"
-                onClick={() => setContentSearchQuery("")}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-brand-muted hover:text-white p-1 rounded-lg"
-                aria-label="Clear search query"
-              >
-                <X size={16} />
-              </button>
-            )}
+            <div className="bg-[#080E20] border border-slate-700/80 focus-within:border-cyan-400/70 focus-within:ring-2 focus-within:ring-cyan-500/15 rounded-xl px-4 py-3.5 flex items-center justify-between gap-3 transition-all shadow-inner">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                <Search size={18} className="text-cyan-400/80 shrink-0" />
+                <input
+                  type="text"
+                  value={contentSearchQuery}
+                  onChange={(e) => setContentSearchQuery(e.target.value)}
+                  placeholder="Search by topic, skill, role, project, or template (e.g. Python, SQL, React, Docker, Machine Learning)..."
+                  className="w-full bg-transparent text-xs sm:text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none"
+                />
+              </div>
+              {contentSearchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setContentSearchQuery("")}
+                  className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
+                  aria-label="Clear search query"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
           </div>
 
-          {/* Category Filter Chips */}
-          <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-brand-border">
-            <span className="text-xs font-bold text-brand-slate mr-1">Filter By:</span>
+          {/* Category Filter Buttons */}
+          <div className="flex flex-wrap items-center gap-2.5 pt-5 pb-5 border-b border-slate-800/90">
+            <span className="font-mono text-xs uppercase tracking-wider text-slate-400 mr-1">
+              Filter By:
+            </span>
             {[
-              { id: "all", label: "All Resources" },
-              { id: "domain", label: "Domains (10)" },
-              { id: "role", label: "Roles (50+)" },
-              { id: "milestone", label: "Roadmaps" },
-              { id: "project", label: "Projects" },
-              { id: "template", label: "Templates" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setContentSearchCategory(tab.id)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
-                  contentSearchCategory === tab.id
-                    ? "bg-brand-cyan/20 text-brand-cyan font-semibold border border-brand-cyan/40 shadow-xs"
-                    : "bg-brand-surface text-brand-slate border border-brand-border hover:bg-brand-card hover:text-brand-cyan"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+              { id: "all", label: "All Resources", icon: "◈" },
+              { id: "domain", label: "Domains (10)", icon: "⬡" },
+              { id: "role", label: "Roles (50+)", icon: "◎" },
+              { id: "milestone", label: "Roadmaps", icon: "⊶" },
+              { id: "project", label: "Projects", icon: "⚡" },
+              { id: "template", label: "Templates", icon: "▤" },
+            ].map((filter) => {
+              const isActive = contentSearchCategory === filter.id;
+              return (
+                <button
+                  key={filter.id}
+                  type="button"
+                  onClick={() => setContentSearchCategory(filter.id)}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-sans text-xs sm:text-sm font-medium transition-all duration-150 cursor-pointer ${
+                    isActive
+                      ? "bg-gradient-to-r from-cyan-500/20 to-blue-600/25 text-cyan-300 border border-cyan-400/50 shadow-md shadow-cyan-500/10 -translate-y-0.5"
+                      : "bg-[#091022] text-slate-300 border border-slate-800/90 hover:bg-[#0E1834] hover:border-blue-500/40 hover:text-white"
+                  }`}
+                >
+                  <span className={isActive ? "text-cyan-400" : "text-slate-500"}>
+                    {filter.icon}
+                  </span>
+                  <span>{filter.label}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Quick Keyword Suggestion Chips (Shown when query is empty) */}
-          {!contentSearchQuery.trim() && (
-            <div className="p-4 rounded-xl bg-brand-surface border border-brand-border space-y-2">
-              <span className="text-[11px] font-bold text-brand-slate uppercase tracking-wider block">
-                Popular Search Queries:
+          {/* Popular Search Queries Panel */}
+          <div className="bg-[#080E20] border border-slate-800/90 rounded-xl p-4 sm:p-5 mt-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3.5">
+              <span className="font-mono text-xs uppercase tracking-widest text-slate-300 font-semibold">
+                POPULAR SEARCH QUERIES:
               </span>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Full Stack",
-                  "Python",
-                  "Data Science",
-                  "Machine Learning",
-                  "Cloud & DevOps",
-                  "Cybersecurity",
-                  "SQL",
-                  "ATS Templates",
-                ].map((tag) => (
+              <span className="font-mono text-[11px] text-cyan-400/80">
+                Click any tag to filter live resources
+              </span>
+            </div>
+
+            <div className="flex flex-wrap gap-2.5">
+              {[
+                "Full Stack",
+                "Python",
+                "Data Science",
+                "Machine Learning",
+                "Cloud & DevOps",
+                "Cybersecurity",
+                "SQL",
+                "ATS Templates",
+              ].map((tag) => {
+                const isSelected =
+                  (contentSearchQuery || "").toLowerCase() === tag.toLowerCase();
+                return (
                   <button
                     key={tag}
                     type="button"
-                    onClick={() => setContentSearchQuery(tag)}
-                    className="text-xs px-3 py-1 rounded-lg bg-brand-card hover:bg-brand-cyan/15 hover:text-brand-cyan text-brand-slate border border-brand-border transition-colors font-medium"
+                    onClick={() => {
+                      setContentSearchQuery(isSelected ? "" : tag);
+                    }}
+                    className={`group inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-mono text-xs font-medium transition-all duration-150 cursor-pointer ${
+                      isSelected
+                        ? "bg-gradient-to-r from-indigo-600/30 to-cyan-500/25 text-cyan-200 border border-cyan-400/50 shadow-md shadow-cyan-500/10 -translate-y-0.5"
+                        : "bg-[#0C142C] text-slate-300 border border-blue-500/20 hover:bg-[#111C3D] hover:border-cyan-400/45 hover:text-cyan-300 active:scale-95"
+                    }`}
                   >
-                    + {tag}
+                    <span
+                      className={`font-bold transition-transform duration-150 ${
+                        isSelected
+                          ? "text-cyan-300 rotate-45"
+                          : "text-blue-400 group-hover:text-cyan-300"
+                      }`}
+                    >
+                      +
+                    </span>
+                    <span>{tag}</span>
                   </button>
-                ))}
-              </div>
+                );
+              })}
             </div>
-          )}
+          </div>
 
-          {/* Results Display */}
-          {contentSearchQuery.trim() && (
-            <div className="space-y-3 pt-2">
+          {/* Live Interactive Results Tray */}
+          {(contentSearchQuery.trim() || contentSearchCategory !== "all") && (
+            <div className="space-y-4 pt-4">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs uppercase tracking-wider text-slate-300 font-semibold">
+                  Matching Resources ({localSearchResults.length}):
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setContentSearchQuery("");
+                    setContentSearchCategory("all");
+                  }}
+                  className="font-mono text-xs text-cyan-400 hover:underline cursor-pointer"
+                >
+                  Clear Search
+                </button>
+              </div>
+
               {localSearchResults.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {localSearchResults.slice(0, 9).map((result) => (
                     <Link
                       key={result.id}
                       to={result.path}
-                      className="p-4 rounded-xl border border-brand-border bg-brand-surface/70 hover:border-brand-cyan/40 hover:bg-brand-surface transition-all flex flex-col justify-between group"
+                      className="p-4 rounded-xl border border-slate-800 bg-[#0B1328] hover:border-cyan-400/40 hover:bg-[#0E1834] transition-all flex flex-col justify-between group shadow-sm hover:shadow-cyan-950/20"
                     >
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${result.badgeColor}`}>
+                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border ${result.badgeColor}`}>
                             {result.categoryLabel}
                           </span>
-                          <span className="text-[11px] text-brand-muted">{result.subtitle}</span>
+                          <span className="text-[11px] font-mono text-slate-400">{result.subtitle}</span>
                         </div>
-                        <h4 className="font-heading font-bold text-sm text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
+                        <h4 className="font-heading font-bold text-sm sm:text-base text-white m-0 group-hover:text-cyan-300 transition-colors">
                           {result.title}
                         </h4>
-                        <p className="text-xs text-brand-muted leading-relaxed m-0 line-clamp-2">
+                        <p className="text-xs text-slate-300 leading-relaxed m-0 line-clamp-2">
                           {result.description}
                         </p>
                         {result.skills && result.skills.length > 0 && (
@@ -1274,7 +1664,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                             {result.skills.slice(0, 3).map((s) => (
                               <span
                                 key={s}
-                                className="text-[10px] px-2 py-0.5 rounded bg-brand-card text-brand-slate border border-brand-border/60"
+                                className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800"
                               >
                                 {s}
                               </span>
@@ -1283,7 +1673,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                         )}
                       </div>
 
-                      <div className="pt-3 mt-3 border-t border-brand-border/60 flex items-center justify-between text-xs font-semibold text-brand-cyan">
+                      <div className="pt-3 mt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-cyan-400">
                         <span>View Resource</span>
                         <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                       </div>
@@ -1291,11 +1681,11 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                   ))}
                 </div>
               ) : (
-                <div className="p-8 rounded-xl bg-brand-surface border border-brand-border text-center space-y-2">
-                  <p className="text-sm font-semibold text-brand-slate m-0">
+                <div className="p-8 rounded-xl bg-[#080E20] border border-slate-800 text-center space-y-2">
+                  <p className="text-sm font-semibold text-white m-0">
                     No resources found matching "{contentSearchQuery}"
                   </p>
-                  <p className="text-xs text-brand-muted m-0">
+                  <p className="text-xs text-slate-400 m-0">
                     Try searching for core technologies like Python, React, SQL, AWS, Docker, or reset the category filter.
                   </p>
                   <button
@@ -1304,7 +1694,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
                       setContentSearchQuery("");
                       setContentSearchCategory("all");
                     }}
-                    className="mt-2 px-4 py-1.5 rounded-xl bg-brand-card border border-brand-border text-xs font-semibold text-brand-cyan hover:bg-brand-surface"
+                    className="mt-2 px-4 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-cyan-300 hover:bg-slate-800"
                   >
                     Reset Search Filter
                   </button>
@@ -1319,81 +1709,160 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
       <section className="space-y-6 pt-2">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-brand-cyan">
-              Section 8 • Industry Pipelines
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold font-heading text-brand-slate m-0 mt-1">
+            <p className="font-mono text-xs font-semibold uppercase tracking-widest text-cyan-400 mb-2">
+              SECTION 8 • INDUSTRY PIPELINES
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
               Opportunities &amp; Internships Preview
             </h2>
-            <p className="text-sm sm:text-base text-brand-muted mt-2 m-0">
-              Discover student internships, entry-level engineering roles, and graduate opportunities across 10 engineering tracks.
+            <p className="font-sans text-sm sm:text-base text-slate-300 mt-2.5 max-w-2xl leading-relaxed">
+              Discover student internships, entry-level engineering roles, and graduate opportunities across 5 core IT tracks.
             </p>
           </div>
 
           <Link
             to="/internships"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-cyan hover:underline self-start md:self-end"
+            className="inline-flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold text-cyan-300 hover:text-cyan-200 hover:underline self-start md:self-end transition-colors"
           >
             <span>View All Opportunities Portal</span>
             <ArrowRight size={15} />
           </Link>
         </div>
 
-        {/* 3 Real Sample Opportunities */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {SAMPLE_MULTI_DOMAIN_JOBS.slice(0, 3).map((job) => (
+        {/* Quick Role Search Switcher */}
+        <div className="flex items-center gap-2 overflow-x-auto py-2 border-b border-slate-800/80 no-scrollbar">
+          <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400 shrink-0 mr-1">
+            Target Role Query:
+          </span>
+          {POPULAR_INTERNSHIP_ROLES.map((role) => {
+            const isActive = selectedInternshipRole === role;
+            return (
+              <button
+                key={role}
+                type="button"
+                onClick={() => setSelectedInternshipRole(role)}
+                className={`px-3 py-1.5 rounded-lg font-sans text-xs font-medium shrink-0 transition-all cursor-pointer ${
+                  isActive
+                    ? "bg-blue-500/20 text-cyan-300 border border-cyan-400/50 shadow-sm"
+                    : "bg-[#080E20] text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                }`}
+              >
+                {role}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* 3 Verified External Portal Cards (Matching TOOL 01 / 02 / 03 Layout) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              id: "PORTAL 01",
+              eyebrow: "GLOBAL & INDIA NETWORK",
+              name: "LinkedIn Jobs",
+              description:
+                "Search verified student internships, campus hiring drives, and entry-level engineering roles with direct recruiter filters and company links.",
+              ctaText: "Search on LinkedIn",
+              pillStyle: "bg-purple-950/60 border-purple-400/40 text-purple-200",
+              iconCircleStyle: "bg-purple-950/50 border-purple-500/40 text-purple-300",
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              ),
+              getUrl: (role) =>
+                `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
+                  role || "Software Engineer Intern"
+                )}&location=India`,
+            },
+            {
+              id: "PORTAL 02",
+              eyebrow: "INDIA CAMPUS & FRESHERS",
+              name: "Naukri",
+              description:
+                "Explore fresh graduate engineering roles, off-campus drives, and IT traineeships across top Indian technology hubs and product teams.",
+              ctaText: "Search on Naukri",
+              pillStyle: "bg-sky-950/60 border-sky-400/40 text-sky-200",
+              iconCircleStyle: "bg-sky-950/50 border-sky-500/40 text-sky-300",
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              ),
+              getUrl: (role) =>
+                `https://www.naukri.com/${(role || "software-engineer-intern")
+                  .toLowerCase()
+                  .replace(/[^a-z0-9]+/g, "-")}-jobs`,
+            },
+            {
+              id: "PORTAL 03",
+              eyebrow: "STUDENT & GRADUATE PIPELINES",
+              name: "Internshala",
+              description:
+                "Find stipend-backed summer internships, semester-long technical projects, and pre-placement offer (PPO) opportunities across 5 core tracks.",
+              ctaText: "Search on Internshala",
+              pillStyle: "bg-emerald-950/60 border-emerald-400/40 text-emerald-200",
+              iconCircleStyle: "bg-emerald-950/50 border-emerald-500/40 text-emerald-300",
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              ),
+              getUrl: (role) =>
+                `https://internshala.com/internships/keywords-${encodeURIComponent(
+                  role || "Software Engineer Intern"
+                )}`,
+            },
+          ].map((portal) => (
             <div
-              key={job.id}
-              className="im-card im-card-lift p-6 flex flex-col justify-between group"
+              key={portal.id}
+              className="rounded-[24px] bg-[#060B19]/95 border border-slate-600/70 hover:border-slate-400/80 p-7 sm:p-8 flex flex-col items-center text-center justify-between shadow-2xl transition-all duration-200 hover:-translate-y-1"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                    {job.arrangement}
-                  </span>
-                  <span className="text-[11px] sm:text-xs text-brand-muted font-medium">{job.experienceLevel}</span>
+              <div className="flex flex-col items-center w-full">
+                {/* Top Centered Pill Badge (Matches TOOL 01 / 02 / 03) */}
+                <span
+                  className={`px-4 py-1 rounded-full border font-mono text-xs font-semibold uppercase tracking-wider mb-6 ${portal.pillStyle}`}
+                >
+                  {portal.id}
+                </span>
+
+                {/* Centered Circular Tinted Icon (Matches TOOL 01 / 02 / 03) */}
+                <div
+                  className={`w-14 h-14 rounded-full border flex items-center justify-center mb-6 ${portal.iconCircleStyle}`}
+                >
+                  {portal.icon}
                 </div>
 
-                <div>
-                  <h3 className="font-heading font-bold text-base sm:text-lg text-brand-slate m-0 group-hover:text-brand-cyan transition-colors">
-                    {job.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-xs sm:text-[13px] text-brand-cyan font-medium mt-1">
-                    <Building2 size={14} />
-                    <span>{job.company}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-brand-muted mt-0.5">
-                    <MapPin size={13} />
-                    <span>{job.location}</span>
-                  </div>
-                </div>
-
-                <p className="text-xs sm:text-[13px] text-brand-muted leading-relaxed m-0 line-clamp-2">
-                  {job.snippet}
+                {/* Centered Uppercase Category Label */}
+                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 mb-2">
+                  {portal.eyebrow}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {(job.skills || []).slice(0, 3).map((s) => (
-                    <span
-                      key={s}
-                      className="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded bg-brand-surface text-brand-slate border border-brand-border"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
+                {/* Centered Bold White Serif Heading */}
+                <h3 className="font-serif text-2xl sm:text-[28px] font-bold text-white tracking-tight mb-3.5">
+                  {portal.name}
+                </h3>
+
+                {/* Centered Readable 3-Line Description */}
+                <p className="font-sans text-sm text-slate-300 leading-relaxed max-w-sm mb-8">
+                  {portal.description}
+                </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-brand-border/60 flex items-center justify-between">
-                <Link
-                  to="/internships"
-                  className="text-xs sm:text-[13px] font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1"
-                >
-                  <span>Explore Role in Portal</span>
-                  <ChevronRight size={14} />
-                </Link>
-                <span className="text-[10px] sm:text-[11px] text-brand-muted">{job.jobType}</span>
-              </div>
+              {/* Full-Width Solid Royal Blue Pill CTA Button (Matches Browse 5 PDF Templates / Open Resume Analyzer / Explore Opportunities) */}
+              <a
+                href={portal.getUrl(
+                  typeof selectedInternshipRole !== "undefined"
+                    ? selectedInternshipRole
+                    : "Software Engineer Intern"
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 px-6 rounded-full bg-[#185ADB] hover:bg-[#2563EB] text-white font-sans text-sm font-semibold flex items-center justify-center gap-2 shadow-lg shadow-blue-600/25 transition-all"
+              >
+                <span>{portal.ctaText}</span>
+                <span>→</span>
+              </a>
             </div>
           ))}
         </div>
@@ -1401,7 +1870,7 @@ export default function HomePage({ onOpenContact, onPreviewPdf }) {
         <div className="text-center pt-2">
           <Link
             to="/internships"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-card border border-brand-border text-brand-cyan hover:bg-brand-surface text-xs sm:text-sm font-semibold shadow-xs transition-all"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#080E20] border border-cyan-500/30 text-cyan-300 hover:border-cyan-400/60 hover:text-white text-xs sm:text-sm font-semibold shadow-xs transition-all"
           >
             <span>Launch Verified Search Portals (LinkedIn, Naukri, Internshala)</span>
             <ExternalLink size={15} />
