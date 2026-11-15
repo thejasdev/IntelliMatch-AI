@@ -1,14 +1,17 @@
 /**
  * Centralized Engineering Domain and Job Role Catalogue — IntelliMatch AI
- * Extensible multi-domain career catalogue supporting 10 engineering domains,
+ * Extensible multi-domain career catalogue supporting the 5 core Software & IT domains,
  * representative roles, core skill sets, and sample job descriptions.
  */
 
 export const ENGINEERING_DOMAINS = [
   {
     id: "software-dev",
-    name: "Software Development",
-    description: "Full-stack, backend, frontend, mobile, and systems programming.",
+    slug: "software-engineering",
+    name: "Software Engineering & Full Stack",
+    title: "Software Engineering & Full Stack",
+    milestoneCount: 9,
+    description: "Full-stack, backend, frontend, API design, and distributed systems engineering.",
     icon: "code",
     roles: [
       {
@@ -83,8 +86,11 @@ Requirements:
   },
   {
     id: "data-analytics",
-    name: "Data and Analytics",
-    description: "Data pipelines, warehousing, business intelligence, and analytical modeling.",
+    slug: "data-science",
+    name: "Data Analytics & Data Science",
+    title: "Data Analytics & Data Science",
+    milestoneCount: 8,
+    description: "Data pipelines, warehousing, business intelligence, predictive modeling, and statistical analytics.",
     icon: "database",
     roles: [
       {
@@ -141,8 +147,11 @@ Requirements:
   },
   {
     id: "ai-ml",
-    name: "AI and Machine Learning",
-    description: "Deep learning, LLMs, computer vision, NLP, and model deployment.",
+    slug: "ai-ml",
+    name: "Artificial Intelligence & Machine Learning",
+    title: "Artificial Intelligence & Machine Learning",
+    milestoneCount: 8,
+    description: "Deep learning, LLMs, computer vision, NLP, vector retrieval, and production model deployment.",
     icon: "cpu",
     roles: [
       {
@@ -193,8 +202,11 @@ Requirements:
   },
   {
     id: "cloud-devops",
-    name: "Cloud, DevOps and Infrastructure",
-    description: "Cloud platforms, container orchestration, SRE, and infrastructure as code.",
+    slug: "cloud-devops",
+    name: "Cloud, DevOps & SRE",
+    title: "Cloud, DevOps & SRE",
+    milestoneCount: 8,
+    description: "Cloud infrastructure, container orchestration, CI/CD pipelines, SRE, and infrastructure as code.",
     icon: "cloud",
     roles: [
       {
@@ -235,8 +247,11 @@ Requirements:
   },
   {
     id: "cybersecurity",
-    name: "Cybersecurity",
-    description: "Threat detection, penetration testing, security operations, and compliance.",
+    slug: "cybersecurity",
+    name: "Cybersecurity & Information Security",
+    title: "Cybersecurity & Information Security",
+    milestoneCount: 8,
+    description: "Threat detection, penetration testing, web application security, SOC operations, and incident response.",
     icon: "shield",
     roles: [
       {
@@ -274,117 +289,10 @@ Responsibilities:
       { id: "sec-vuln-mgr", title: "Vulnerability Management Analyst", skills: ["Qualys", "Tenable Nessus", "CVSS Scoring", "Remediation Tracking"] },
       { id: "sec-forensics", title: "Digital Forensics Analyst", skills: ["EnCase", "Volatility Memory Analysis", "Chain of Custody", "Malware Analysis"] }
     ]
-  },
-  {
-    id: "networking-it",
-    name: "Networking and IT Support",
-    description: "Enterprise IT infrastructure, systems administration, NOC, and user support.",
-    icon: "network",
-    roles: [
-      { id: "it-support", title: "IT Support Engineer", skills: ["Hardware Diagnostics", "Windows/macOS Admin", "Active Directory", "Ticketing (Jira/ServiceNow)", "Office 365"] },
-      { id: "it-tech-support", title: "Technical Support Engineer", skills: ["Customer Troubleshooting", "API Debugging", "Log Analysis", "SLA Management"] },
-      { id: "it-net-admin", title: "Network Administrator", skills: ["LAN/WAN", "Switching & Routing", "DHCP/DNS", "Wireless APs", "Network Monitoring"] },
-      { id: "it-net-ops", title: "Network Operations Engineer", skills: ["Network Monitoring", "Routing Protocols", "Troubleshooting", "Hardware Maintenance"] },
-      { id: "it-noc", title: "NOC Engineer", skills: ["24/7 Monitoring", "Alert Escalation", "Nagios/Zabbix", "Runbooks", "Circuit Testing"] },
-      { id: "it-sys-admin", title: "System Administrator", skills: ["Windows Server", "Active Directory", "Group Policy", "PowerShell", "VMware"] },
-      { id: "it-infra-eng", title: "IT Infrastructure Engineer", skills: ["Server Hardware", "Data Center Operations", "Virtualization", "Disaster Recovery"] },
-      { id: "it-ops-eng", title: "IT Operations Engineer", skills: ["ITIL Processes", "Change Management", "Service Delivery", "Automation Scripts"] },
-      { id: "it-consultant", title: "Technical Consultant", skills: ["Client Requirements", "System Integration", "Solution Architecture", "Vendor Management"] }
-    ]
-  },
-  {
-    id: "qa-testing",
-    name: "Testing and Quality Assurance",
-    description: "Automated test suites, manual validation, SDET, and performance testing.",
-    icon: "check-circle",
-    roles: [
-      {
-        id: "qa-eng",
-        title: "QA Engineer",
-        skills: ["Test Case Design", "Regression Testing", "Jira", "API Testing (Postman)", "Bug Tracking"],
-        sampleJob: `QA Engineer
-Responsibilities:
-- Formulate comprehensive test plans, test cases, and acceptance test suites.
-- Perform exploratory, functional, and regression testing across releases.`
-      },
-      { id: "qa-sw-test", title: "Software Test Engineer", skills: ["Manual & Automation Testing", "Test Matrix", "Defect Life Cycle", "Cross-Browser Testing"] },
-      {
-        id: "qa-automation",
-        title: "Automation Test Engineer",
-        skills: ["Selenium", "Playwright", "Cypress", "Python/Java", "CI/CD Test Pipelines", "Page Object Model"]
-      },
-      { id: "qa-manual", title: "Manual Test Engineer", skills: ["Functional Testing", "Usability Testing", "Test Case Documentation", "UAT Coordination"] },
-      {
-        id: "qa-sdet",
-        title: "SDET",
-        skills: ["Test Automation Frameworks", "Java/Python/TypeScript", "CI/CD", "Load Testing", "API Automation", "Docker"],
-        sampleJob: `Software Development Engineer in Test (SDET)
-Responsibilities:
-- Architect scalable test automation frameworks for end-to-end and API testing.
-- Integrate automated tests into continuous delivery pipelines.`
-      },
-      { id: "qa-perf", title: "Performance Test Engineer", skills: ["JMeter", "k6", "Locust", "Load & Stress Testing", "Bottleneck Analysis"] },
-      { id: "qa-quality-eng", title: "Quality Engineer", skills: ["Quality Metrics", "Process Auditing", "Root Cause Analysis", "Standards Compliance"] },
-      { id: "qa-test-dev", title: "Test Automation Developer", skills: ["BDD/Cucumber", "Python Automation", "REST Assured", "Reporting Dashboards"] }
-    ]
-  },
-  {
-    id: "embedded-systems",
-    name: "Embedded Systems and Electronics",
-    description: "Microcontrollers, firmware, IoT, FPGA, and hardware validation.",
-    icon: "microchip",
-    roles: [
-      {
-        id: "emb-sw-eng",
-        title: "Embedded Software Engineer",
-        skills: ["Embedded C/C++", "RTOS (FreeRTOS)", "Microcontrollers (STM32/ESP32)", "I2C/SPI/UART", "Oscilloscopes"],
-        sampleJob: `Embedded Software Engineer
-Responsibilities:
-- Develop low-level firmware and device drivers for ARM Cortex-M microcontrollers.
-- Interface with hardware peripherals using standard communication protocols.`
-      },
-      { id: "emb-firmware", title: "Firmware Engineer", skills: ["C/C++", "Bootloaders", "Hardware Debugging (JTAG)", "Power Optimization", "Memory Constraints"] },
-      { id: "emb-iot", title: "IoT Engineer", skills: ["MQTT", "CoAP", "Embedded Linux", "BLE/WiFi", "Sensor Interfacing", "AWS IoT Core"] },
-      { id: "emb-robotics", title: "Robotics Software Engineer", skills: ["ROS/ROS2", "C++", "Kinematics", "LIDAR/Sensors", "Path Planning"] },
-      { id: "emb-hw-val", title: "Hardware Validation Engineer", skills: ["Signal Integrity", "Board Bring-up", "LabVIEW", "Schematic Review", "Test Benches"] },
-      { id: "emb-vlsi", title: "VLSI Design Engineer", skills: ["Verilog/VHDL", "RTL Design", "Synthesis", "Static Timing Analysis", "ASIC Flow"] },
-      { id: "emb-fpga", title: "FPGA Engineer", skills: ["Xilinx Vivado", "VHDL/Verilog", "High-Speed Interfaces", "DSP Blocks", "Simulation"] },
-      { id: "emb-electronics", title: "Electronics Design Engineer", skills: ["PCB Layout (Altium/KiCad)", "Circuit Simulation (SPICE)", "Analog & Digital Design", "Component Selection"] },
-      { id: "emb-sys-val", title: "Systems Validation Engineer", skills: ["Hardware-in-the-Loop (HIL)", "Automated Test Benches", "Python Instrument Control", "Compliance"] }
-    ]
-  },
-  {
-    id: "enterprise-tech",
-    name: "Enterprise and Business Technology",
-    description: "ERP, CRM, enterprise integrations, automation, and solutions engineering.",
-    icon: "briefcase",
-    roles: [
-      { id: "ent-sap", title: "SAP Technical Consultant", skills: ["SAP ABAP", "SAP S/4HANA", "Fiori", "BAPI", "IDocs", "Integration"] },
-      { id: "ent-salesforce", title: "Salesforce Developer", skills: ["Apex", "Lightning Web Components (LWC)", "SOQL", "Triggers", "Salesforce Flow"] },
-      { id: "ent-erp", title: "ERP Technical Consultant", skills: ["ERP Customization", "Data Migration", "Business Process Mapping", "SQL"] },
-      { id: "ent-rpa", title: "RPA Developer", skills: ["UiPath", "Automation Anywhere", "Process Automation", "VBA", "Power Automate"] },
-      { id: "ent-integration", title: "Integration Engineer", skills: ["MuleSoft", "Boomi", "REST/SOAP", "API Gateways", "Enterprise Service Bus"] },
-      { id: "ent-solutions", title: "Solutions Engineer", skills: ["Technical Pre-Sales", "System Architecture", "Client Demos", "POC Development"] },
-      { id: "ent-implementation", title: "Implementation Engineer", skills: ["Software Deployment", "Client Configuration", "Data Onboarding", "User Training"] },
-      { id: "ent-tech-ba", title: "Technical Business Analyst", skills: ["Business Requirements", "Functional Specs", "Gap Analysis", "Stakeholder Management"] }
-    ]
-  },
-  {
-    id: "emerging-tech",
-    name: "Emerging and Specialist Roles",
-    description: "Blockchain, AR/VR, gaming, GIS, product engineering, and R&D.",
-    icon: "sparkles",
-    roles: [
-      { id: "emg-blockchain", title: "Blockchain Developer", skills: ["Solidity", "Smart Contracts", "Web3.js/Ethers.js", "Ethereum", "Cryptography", "DeFi"] },
-      { id: "emg-ar-vr", title: "AR/VR Developer", skills: ["Unity/Unreal Engine", "C#", "3D Math", "Spatial Audio", "OpenXR", "Shader Programming"] },
-      { id: "emg-game", title: "Game Developer", skills: ["C++", "Unity/Unreal", "Game Physics", "Rendering Pipelines", "Gameplay Mechanics"] },
-      { id: "emg-gis", title: "GIS Developer", skills: ["ArcGIS", "QGIS", "GeoServer", "PostGIS", "Leaflet/Mapbox", "Spatial Analysis"] },
-      { id: "emg-rd", title: "Research and Development Engineer", skills: ["Prototyping", "Technical Feasibility", "Patents", "Applied Science", "Experimental Design"] },
-      { id: "emg-product-eng", title: "Product Engineer", skills: ["Full-Lifecycle Delivery", "Customer Discovery", "Technical Scoping", "Fast Iteration"] },
-      { id: "emg-tech-pa", title: "Technical Product Analyst", skills: ["Product Metrics", "SQL Analysis", "Feature Prioritization", "A/B Testing"] }
-    ]
   }
 ];
+
+export const FIVE_IT_DOMAINS = ENGINEERING_DOMAINS;
 
 /**
  * Other / Custom Role option definition
@@ -406,7 +314,18 @@ export function getDomains() {
  * Returns a domain by its ID
  */
 export function getDomainById(domainId) {
-  return ENGINEERING_DOMAINS.find((d) => d.id === domainId) || null;
+  if (!domainId) return null;
+  return (
+    ENGINEERING_DOMAINS.find(
+      (d) =>
+        d.id === domainId ||
+        d.slug === domainId ||
+        (domainId === "software-engineering" && d.id === "software-dev") ||
+        (domainId === "software-dev" && d.slug === "software-engineering") ||
+        (domainId === "data-science" && d.id === "data-analytics") ||
+        (domainId === "data-analytics" && d.slug === "data-science")
+    ) || null
+  );
 }
 
 /**
